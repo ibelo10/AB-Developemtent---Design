@@ -4,23 +4,41 @@ export function initializeHeaderEffects() {
   const header = document.querySelector(".content-wrapper h1");
   if (!header) return;
 
-  // Interactive gradient effect on mousemove
-  header.addEventListener("mousemove", (e) => {
-    const rect = header.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = (x / rect.width) * 100;
+  // Split text into individual letters and wrap each in a span
+  const text = header.textContent;
+  header.innerHTML = text
+    .split("")
+    .map((letter) =>
+      letter === " " ? " " : `<span class="letter">${letter}</span>`
+    )
+    .join("");
 
-    header.style.backgroundPosition = `${percentage}% 50%`;
-  });
+  // Add hover effects to each letter
+  const letters = header.querySelectorAll(".letter");
+  letters.forEach((letter) => {
+    letter.addEventListener("mouseover", () => {
+      letter.classList.add("letter-hover");
+      // Add hover effect to adjacent letters with delay
+      const index = Array.from(letters).indexOf(letter);
 
-  // Add click animation
-  header.addEventListener("click", () => {
-    header.style.transform = "scale(0.95)";
-    setTimeout(() => {
-      header.style.transform = "scale(1.02)";
-    }, 150);
-    setTimeout(() => {
-      header.style.transform = "scale(1)";
-    }, 300);
+      // Previous letter
+      if (index > 0) {
+        setTimeout(() => {
+          letters[index - 1].classList.add("letter-hover-adjacent");
+        }, 50);
+      }
+
+      // Next letter
+      if (index < letters.length - 1) {
+        setTimeout(() => {
+          letters[index + 1].classList.add("letter-hover-adjacent");
+        }, 50);
+      }
+    });
+
+    letter.addEventListener("mouseout", () => {
+      letter.classList.remove("letter-hover");
+      letters.forEach((l) => l.classList.remove("letter-hover-adjacent"));
+    });
   });
 }

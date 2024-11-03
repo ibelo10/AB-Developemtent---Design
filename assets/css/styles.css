@@ -285,35 +285,99 @@ h1 {
     background-position: 0% 50%;
   }
 }
-
+/* Header letter hover effects */
 .content-wrapper h1 {
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 }
 
-.content-wrapper h1:hover {
-  background: linear-gradient(
-    90deg,
-    #2ecc71,
-    /* Green */ #3498db,
-    /* Blue */ #9b59b6,
-    /* Purple */ #2ecc71 /* Back to green */
-  );
+.content-wrapper h1 .letter {
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  color: white;
+}
+
+/* Individual letter hover effect */
+.content-wrapper h1 .letter-hover {
+  color: #2ecc71;
+  transform: translateY(-5px) scale(1.2);
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+/* Adjacent letters effect */
+.content-wrapper h1 .letter-hover-adjacent {
+  color: #27ae60;
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Alternative gradient effect */
+@keyframes letterGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.content-wrapper h1 .letter-hover {
+  background: linear-gradient(90deg, #2ecc71, #3498db, #9b59b6, #2ecc71);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: colorChange 4s ease infinite;
+  animation: letterGradient 2s ease infinite;
 }
 
-/* Add this to ensure crisp text rendering */
-.content-wrapper {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Add a subtle bounce effect */
+@keyframes letterBounce {
+  0% {
+    transform: translateY(-5px) scale(1.2);
+  }
+  50% {
+    transform: translateY(-7px) scale(1.2);
+  }
+  100% {
+    transform: translateY(-5px) scale(1.2);
+  }
 }
 
-/* Optional: Add a subtle transform on hover */
-.content-wrapper h1:hover {
-  transform: scale(1.02);
+.content-wrapper h1 .letter-hover {
+  animation: letterBounce 0.6s ease infinite;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content-wrapper h1 {
+    font-size: 2.5rem;
+  }
+
+  .content-wrapper h1 .letter-hover {
+    transform: translateY(-3px) scale(1.15);
+  }
+
+  .content-wrapper h1 .letter-hover-adjacent {
+    transform: translateY(-1px) scale(1.05);
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper h1 {
+    font-size: 2rem;
+  }
+
+  .content-wrapper h1 .letter-hover {
+    transform: translateY(-2px) scale(1.1);
+  }
+
+  .content-wrapper h1 .letter-hover-adjacent {
+    transform: translateY(-1px) scale(1.05);
+  }
 }
