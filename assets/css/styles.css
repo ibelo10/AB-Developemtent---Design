@@ -262,3 +262,58 @@ h1 {
     min-width: 250px;
   }
 }
+
+/* Option 1: Simple color transition */
+.content-wrapper h1 {
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.content-wrapper h1:hover {
+  color: #2ecc71; /* Your accent color */
+}
+
+/* Option 2: Dynamic gradient effect */
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.content-wrapper h1 {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.content-wrapper h1:hover {
+  background: linear-gradient(
+    90deg,
+    #2ecc71,
+    /* Green */ #3498db,
+    /* Blue */ #9b59b6,
+    /* Purple */ #2ecc71 /* Back to green */
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: colorChange 4s ease infinite;
+}
+
+/* Add this to ensure crisp text rendering */
+.content-wrapper {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: Add a subtle transform on hover */
+.content-wrapper h1:hover {
+  transform: scale(1.02);
+}
