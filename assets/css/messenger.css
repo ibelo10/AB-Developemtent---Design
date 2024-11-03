@@ -1,0 +1,167 @@
+/* Messenger Chat Widget Customization */
+.fb_dialog {
+  position: fixed !important;
+  bottom: 80px !important;
+  right: 18pt !important;
+  z-index: 10000 !important;
+}
+
+.fb_dialog_content iframe {
+  transition: transform 0.3s ease !important;
+  background: none !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1)) !important;
+}
+
+.fb_dialog:hover .fb_dialog_content iframe {
+  transform: scale(1.05) !important;
+}
+
+.fb-customerchat iframe {
+  position: fixed !important;
+  right: 18pt !important;
+  bottom: 70px !important;
+  z-index: 9999 !important;
+}
+
+/* Chat Toast Notification */
+.chat-toast {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  min-width: 200px;
+  max-width: 300px;
+  background: rgba(46, 204, 113, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(100px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.chat-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: white;
+  gap: 10px;
+}
+
+.toast-icon {
+  font-size: 1.2rem;
+}
+
+.toast-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.toast-progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateX(-100%);
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Custom Animation for Chat Open */
+@keyframes chatBounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.fb_dialog.bounce {
+  animation: chatBounce 1s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-toast {
+    bottom: 90px;
+    left: 20px;
+    right: 20px;
+    max-width: none;
+    border-radius: 8px;
+  }
+
+  .fb_dialog {
+    bottom: 70px !important;
+  }
+
+  .fb-customerchat iframe {
+    bottom: 60px !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .chat-toast {
+    background: rgba(46, 204, 113, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .fb_dialog_content iframe,
+  .chat-toast,
+  .toast-progress::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

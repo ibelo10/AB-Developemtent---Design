@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AB Development & Design</title>
 
+    <!-- Facebook Meta Tags -->
+    <meta property="og:title" content="AB Development & Design" />
+    <meta
+      property="og:description"
+      content="We build innovative solutions with passion"
+    />
+    <meta property="og:image" content="assets/images/ABLogo.png" />
+    <meta property="og:url" content="https://abdevndesign.com" />
+    <meta property="og:type" content="website" />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,6 +35,7 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/messenger.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -58,37 +69,75 @@
       </div>
     </div>
 
-    <!-- Load Facebook SDK for JavaScript -->
+    <!-- Chat Toast Notification -->
+    <div class="chat-toast" id="chatToast">
+      <div class="toast-content">
+        <span class="toast-icon">💬</span>
+        <p>Need help? Chat with us!</p>
+        <button class="toast-close" onclick="closeToast()">&times;</button>
+      </div>
+      <div class="toast-progress"></div>
+    </div>
+
+    <!-- Messenger Chat Integration -->
     <div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+
+    <!-- Messenger Script -->
     <script>
+      // Initialize Facebook SDK
       window.fbAsyncInit = function () {
         FB.init({
           xfbml: true,
-          version: "v12.0",
+          version: "v18.0",
+        });
+
+        // Chat widget event handlers
+        FB.Event.subscribe("customerchat.load", function () {
+          console.log("Chat widget loaded successfully");
+          initializeChatToast();
+        });
+
+        FB.Event.subscribe("customerchat.show", function () {
+          hideToast();
+          trackChatOpen();
+        });
+
+        FB.Event.subscribe("customerchat.hide", function () {
+          console.log("Chat widget hidden");
         });
       };
 
+      // Load Facebook SDK
       (function (d, s, id) {
         var js,
           fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-          return;
-        }
+        if (d.getElementById(id)) return;
         js = d.createElement(s);
         js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
         fjs.parentNode.insertBefore(js, fjs);
       })(document, "script", "facebook-jssdk");
-    </script>
 
-    <!-- Your Chat Plugin code -->
-    <div
-      class="fb-customerchat"
-      attribution="setup_tool"
-      page_id="113394291657712"
-    ></div>
+      // Configure chat widget
+      var chatbox = document.getElementById("fb-customer-chat");
+      chatbox.setAttribute("page_id", "113394291657712");
+      chatbox.setAttribute("attribution", "biz_inbox");
+      chatbox.setAttribute("theme_color", "#2ecc71");
+      chatbox.setAttribute("greeting_dialog_display", "fade");
+      chatbox.setAttribute("greeting_dialog_delay", "5");
+      chatbox.setAttribute(
+        "logged_in_greeting",
+        "Hi! 👋 How can we help you today?"
+      );
+      chatbox.setAttribute(
+        "logged_out_greeting",
+        "Hi! 👋 Log in to chat with us."
+      );
+    </script>
 
     <!-- Custom Scripts -->
     <script src="assets/js/main.js" type="module"></script>
+    <script src="assets/js/messenger.js" type="module"></script>
   </body>
 </html>
