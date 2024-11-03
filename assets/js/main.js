@@ -28,3 +28,10 @@ $(document).ready(function () {
     console.error("Ripples effect error: ", e);
   }
 });
+
+import { initializeScrollingText } from "./components/scrolling-text.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize scrolling text
+  initializeScrollingText();
+});

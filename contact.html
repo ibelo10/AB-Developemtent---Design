@@ -17,16 +17,6 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/messenger.css" />
     <link rel="stylesheet" href="assets/css/contact.css" />
-    <!-- Add this in the head section -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        emailjs.init("MBrxhIpRv7K8wvN9z"); // Add your EmailJS public key here
-      })();
-    </script>
   </head>
   <body>
     <nav class="navbar">
@@ -77,56 +67,48 @@
               <a
                 href="https://www.facebook.com/ABdevndesign"
                 class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
                 >Facebook</a
               >
-              <a href="https://github.com/ibelo10" class="social-link"
+              <a
+                href="https://github.com/ibelo10"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
                 >GitHub</a
               >
-              <a href="https://www.tiktok.com/@iaa_ron" class="social-link"
+              <a
+                href="https://www.tiktok.com/@iaa_ron"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
                 >Tik-Tok</a
               >
               <a
                 href="https://www.instagram.com/abdevndesign/"
                 class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
                 >Instagram</a
               >
             </div>
           </div>
         </div>
 
-        <div class="contact-form-container">
-          <form id="contactForm" class="contact-form">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" required />
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="6"
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" class="submit-button">Send Message</button>
-          </form>
+        <div class="google-form-container">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSd1l8QntEzcgBoMex_4sHkv_HeDjT13zLJTjDGeNVHvfpaWOQ/viewform?embedded=true"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+          >
+            Loading…
+          </iframe>
         </div>
       </div>
     </main>
-    <!-- Add this before the closing body tag in portfolio.html and contact.html -->
+
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
@@ -153,6 +135,5 @@
       chatbox.setAttribute("page_id", "113394291657712");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
-    <script src="assets/js/contact.js" type="module"></script>
   </body>
 </html>
