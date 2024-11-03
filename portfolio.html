@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio - AB Development & Design</title>
 
+    <!-- Meta tags for better SEO -->
+    <meta
+      name="description"
+      content="Portfolio of AB Development & Design - Showcasing innovative web solutions and creative designs"
+    />
+    <meta property="og:title" content="Portfolio - AB Development & Design" />
+    <meta
+      property="og:description"
+      content="Showcasing innovative web solutions and creative designs"
+    />
+    <meta property="og:image" content="assets/images/ABLogo.png" />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +27,7 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/messenger.css">
+    <link rel="stylesheet" href="assets/css/messenger.css" />
     <link rel="stylesheet" href="assets/css/portfolio.css" />
     <link rel="stylesheet" href="assets/css/devices.css" />
   </head>
@@ -39,80 +51,104 @@
       </header>
 
       <div class="portfolio-item">
-        <div class="frame-controls">
-          <button class="device-button active" data-device="desktop">
-            <span>💻</span> Desktop
-          </button>
-          <button class="device-button" data-device="tablet">
-            <span>📱</span> Tablet
-          </button>
-          <button class="device-button" data-device="phone">
-            <span>📱</span> Phone
-          </button>
-        </div>
+        <!-- Device Preview Section -->
+        <div class="preview-section">
+          <!-- Frame Controls -->
+          <div class="frame-controls">
+            <div class="device-buttons">
+              <button class="device-button active" data-device="desktop">
+                <span>💻</span> Desktop
+              </button>
+              <button class="device-button" data-device="tablet">
+                <span>📱</span> Tablet
+              </button>
+              <button class="device-button" data-device="phone">
+                <span>📱</span> Phone
+              </button>
+            </div>
+            <button class="refresh-button"><span>↻</span> Refresh</button>
+          </div>
 
-        <div class="preview-container">
-          <!-- Desktop Frame -->
-          <div class="device-frame monitor-frame active" data-frame="desktop">
-            <div class="screen-container">
-              <div class="browser-chrome">
-                <div class="browser-dots">
-                  <div class="browser-dot dot-red"></div>
-                  <div class="browser-dot dot-yellow"></div>
-                  <div class="browser-dot dot-green"></div>
+          <!-- Preview Container -->
+          <div class="preview-container">
+            <!-- Desktop Frame -->
+            <div class="device-frame monitor-frame active" data-frame="desktop">
+              <div class="screen-container">
+                <div class="browser-chrome">
+                  <div class="browser-dots">
+                    <div class="browser-dot dot-red"></div>
+                    <div class="browser-dot dot-yellow"></div>
+                    <div class="browser-dot dot-green"></div>
+                  </div>
+                  <div class="browser-address">
+                    <i>🔒</i> msvivalasvegas.org
+                  </div>
                 </div>
-                <div class="browser-address"><i>🔒</i> msvivalasvegas.org</div>
+                <div class="iframe-container">
+                  <iframe
+                    src="https://msvivalasvegas.org"
+                    class="preview-frame"
+                    title="MS Viva Las Vegas Website Preview"
+                    loading="lazy"
+                  ></iframe>
+                </div>
               </div>
-              <div class="iframe-container">
-                <iframe
-                  src="https://msvivalasvegas.org"
-                  class="preview-frame"
-                  title="MS Viva Las Vegas Website Preview"
-                  loading="lazy"
-                ></iframe>
+              <div class="monitor-stand"></div>
+              <div class="monitor-base"></div>
+            </div>
+
+            <!-- Tablet Frame -->
+            <div class="device-frame tablet-frame" data-frame="tablet">
+              <div class="tablet-inner">
+                <div class="tablet-screen">
+                  <iframe
+                    src="https://msvivalasvegas.org"
+                    class="preview-frame"
+                    title="MS Viva Las Vegas Website Preview"
+                    loading="lazy"
+                  ></iframe>
+                </div>
+                <div class="tablet-home-button"></div>
               </div>
             </div>
-            <div class="monitor-stand"></div>
-            <div class="monitor-base"></div>
-          </div>
 
-          <!-- Tablet Frame -->
-          <div class="device-frame tablet-frame" data-frame="tablet">
-            <div class="tablet-inner">
-              <div class="tablet-screen">
-                <iframe
-                  src="https://msvivalasvegas.org"
-                  class="preview-frame"
-                  title="MS Viva Las Vegas Website Preview"
-                  loading="lazy"
-                ></iframe>
+            <!-- Phone Frame -->
+            <div class="device-frame phone-frame" data-frame="phone">
+              <div class="phone-inner">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <iframe
+                    src="https://msvivalasvegas.org"
+                    class="preview-frame"
+                    title="MS Viva Las Vegas Website Preview"
+                    loading="lazy"
+                  ></iframe>
+                </div>
+                <div class="phone-home-indicator"></div>
               </div>
-              <div class="tablet-home-button"></div>
             </div>
-          </div>
 
-          <!-- Phone Frame -->
-          <div class="device-frame phone-frame" data-frame="phone">
-            <div class="phone-inner">
-              <div class="phone-notch"></div>
-              <div class="phone-screen">
-                <iframe
-                  src="https://msvivalasvegas.org"
-                  class="preview-frame"
-                  title="MS Viva Las Vegas Website Preview"
-                  loading="lazy"
-                ></iframe>
-              </div>
-              <div class="phone-home-indicator"></div>
+            <!-- Loading Indicator -->
+            <div class="loading-indicator">
+              <div class="loading-spinner"></div>
+              <p>Loading preview...</p>
             </div>
           </div>
         </div>
 
+        <!-- Project Info Section -->
         <div class="preview-info">
           <h2 class="site-title">MS Viva Las Vegas</h2>
-          <a href="https://msvivalasvegas.org" target="_blank" class="site-link"
-            >Visit Site →</a
-          >
+          <div class="site-links">
+            <a
+              href="https://msvivalasvegas.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="site-link"
+            >
+              Visit Site →
+            </a>
+          </div>
           <p class="preview-description">
             A dynamic beauty pageant platform built with Wix, featuring
             sophisticated functionality for contestant management and event
@@ -132,12 +168,13 @@
       </div>
     </main>
 
-    <!-- Add this before the closing body tag in portfolio.html and contact.html -->
-    <!-- Messenger Chat Plugin Code -->
+    <!-- Messenger Chat Plugin -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
+    <!-- Scripts -->
     <script>
+      // Messenger Chat Configuration
       window.fbAsyncInit = function () {
         FB.init({
           xfbml: true,
@@ -146,21 +183,29 @@
       };
 
       (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-        fjs.parentNode.insertBefore(js, fjs);
+        try {
+          var js,
+            fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src =
+            "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+          js.crossOrigin = "anonymous";
+          fjs.parentNode.insertBefore(js, fjs);
+        } catch (e) {
+          console.error("Failed to load Messenger chat:", e);
+        }
       })(document, "script", "facebook-jssdk");
 
+      // Initialize chat widget
       var chatbox = document.getElementById("fb-customer-chat");
       chatbox.setAttribute("page_id", "113394291657712");
       chatbox.setAttribute("attribution", "biz_inbox");
+      chatbox.setAttribute("theme_color", "#2ecc71");
     </script>
 
+    <!-- Custom Scripts -->
     <script src="assets/js/devices.js"></script>
   </body>
 </html>
-
