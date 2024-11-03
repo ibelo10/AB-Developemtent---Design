@@ -38,7 +38,6 @@
       </header>
 
       <div class="portfolio-item">
-        <!-- Device Frame Controls -->
         <div class="frame-controls">
           <button class="device-button active" data-device="desktop">
             <span>💻</span> Desktop
@@ -51,70 +50,66 @@
           </button>
         </div>
 
-        <!-- Desktop Frame -->
-        <div class="device-frame monitor-frame active" data-frame="desktop">
-          <div class="screen-container">
-            <div class="browser-chrome">
-              <div class="browser-dots">
-                <div class="browser-dot dot-red"></div>
-                <div class="browser-dot dot-yellow"></div>
-                <div class="browser-dot dot-green"></div>
+        <div class="preview-container">
+          <!-- Desktop Frame -->
+          <div class="device-frame monitor-frame active" data-frame="desktop">
+            <div class="screen-container">
+              <div class="browser-chrome">
+                <div class="browser-dots">
+                  <div class="browser-dot dot-red"></div>
+                  <div class="browser-dot dot-yellow"></div>
+                  <div class="browser-dot dot-green"></div>
+                </div>
+                <div class="browser-address"><i>🔒</i> msvivalasvegas.org</div>
               </div>
-              <div class="browser-address">
-                <i>🔒</i> www.msvivalasvegas.org
+              <div class="iframe-container">
+                <iframe
+                  src="https://msvivalasvegas.org"
+                  class="preview-frame"
+                  title="MS Viva Las Vegas Website Preview"
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
-            <div class="iframe-container">
-              <iframe
-                src="https://www.msvivalasvegas.org/"
-                class="preview-frame"
-                title="MS Viva Las Vegas Website Preview"
-                loading="lazy"
-              ></iframe>
+            <div class="monitor-stand"></div>
+            <div class="monitor-base"></div>
+          </div>
+
+          <!-- Tablet Frame -->
+          <div class="device-frame tablet-frame" data-frame="tablet">
+            <div class="tablet-inner">
+              <div class="tablet-screen">
+                <iframe
+                  src="https://msvivalasvegas.org"
+                  class="preview-frame"
+                  title="MS Viva Las Vegas Website Preview"
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <div class="tablet-home-button"></div>
             </div>
           </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-        </div>
 
-        <!-- Tablet Frame -->
-        <div class="device-frame tablet-frame" data-frame="tablet">
-          <div class="tablet-inner">
-            <div class="tablet-screen">
-              <iframe
-                src="https://www.msvivalasvegas.org/"
-                class="preview-frame"
-                title="MS Viva Las Vegas Website Preview"
-                loading="lazy"
-              ></iframe>
+          <!-- Phone Frame -->
+          <div class="device-frame phone-frame" data-frame="phone">
+            <div class="phone-inner">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <iframe
+                  src="https://msvivalasvegas.org"
+                  class="preview-frame"
+                  title="MS Viva Las Vegas Website Preview"
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <div class="phone-home-indicator"></div>
             </div>
-            <div class="tablet-home-button"></div>
-          </div>
-        </div>
-
-        <!-- Phone Frame -->
-        <div class="device-frame phone-frame" data-frame="phone">
-          <div class="phone-inner">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <iframe
-                src="https://www.msvivalasvegas.org/"
-                class="preview-frame"
-                title="MS Viva Las Vegas Website Preview"
-                loading="lazy"
-              ></iframe>
-            </div>
-            <div class="phone-home-indicator"></div>
           </div>
         </div>
 
-        <!-- Project Info -->
         <div class="preview-info">
           <h2 class="site-title">MS Viva Las Vegas</h2>
-          <a
-            href="https://www.msvivalasvegas.org/"
-            target="_blank"
-            class="site-link"
+          <a href="https://msvivalasvegas.org" target="_blank" class="site-link"
             >Visit Site →</a
           >
           <p class="preview-description">
@@ -122,9 +117,7 @@
             sophisticated functionality for contestant management and event
             operations. The site includes a custom-built contestant gallery with
             filtering and search capabilities, streamlined registration system,
-            and dynamic user profiles with secure authentication. Integrated
-            voting and payment systems enable seamless audience participation
-            and transaction processing.
+            and dynamic user profiles with secure authentication.
           </p>
           <div class="tech-stack">
             <span class="tech-tag">Wix Platform</span>

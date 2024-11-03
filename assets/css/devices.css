@@ -1,3 +1,19 @@
+/* Portfolio container */
+.portfolio-container {
+  padding: 120px 5% 60px;
+  min-height: 100vh;
+  background-color: #000;
+}
+
+/* Portfolio item */
+.portfolio-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
 /* Frame Controls */
 .frame-controls {
   display: flex;
@@ -35,19 +51,36 @@
   border-color: #2ecc71;
 }
 
-/* Device Frames */
+/* Preview Container */
+.preview-container {
+  position: relative;
+  width: 100%;
+  min-height: 700px;
+  margin-bottom: 2rem;
+}
+
+/* Device Frames Base */
 .device-frame {
-  display: none;
-  margin: 0 auto 2rem;
-  transition: all 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  width: 100%;
 }
 
 .device-frame.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
   display: block;
 }
 
 /* Monitor Frame */
 .monitor-frame {
+  aspect-ratio: 16 / 10;
   width: 100%;
   max-width: 1000px;
   background: #1a1a1a;
@@ -58,10 +91,11 @@
 }
 
 .screen-container {
+  width: 100%;
+  height: 100%;
   background: white;
   border-radius: 5px;
   overflow: hidden;
-  height: 600px;
 }
 
 .browser-chrome {
@@ -132,11 +166,11 @@
 
 /* Tablet Frame */
 .tablet-frame {
+  aspect-ratio: 4 / 3;
   width: 768px;
   padding: 20px;
   background: #1a1a1a;
   border-radius: 30px;
-  position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -145,11 +179,12 @@
   padding: 20px;
   border-radius: 20px;
   background: #000;
+  height: 100%;
 }
 
 .tablet-screen {
   width: 100%;
-  height: 1024px;
+  height: 100%;
   background: #fff;
   overflow: hidden;
   border-radius: 10px;
@@ -165,11 +200,11 @@
 
 /* Phone Frame */
 .phone-frame {
+  aspect-ratio: 9 / 19;
   width: 375px;
   padding: 15px;
   background: #1a1a1a;
   border-radius: 50px;
-  position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -178,6 +213,7 @@
   padding: 10px;
   border-radius: 40px;
   background: #000;
+  height: 100%;
 }
 
 .phone-notch {
@@ -195,11 +231,10 @@
 
 .phone-screen {
   width: 100%;
-  height: 812px;
+  height: 100%;
   background: #fff;
   overflow: hidden;
   border-radius: 30px;
-  position: relative;
 }
 
 .phone-home-indicator {
@@ -218,6 +253,9 @@
 }
 
 .preview-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
@@ -229,84 +267,57 @@
   opacity: 1;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .tablet-frame {
-    width: 640px;
-  }
-
-  .tablet-screen {
-    height: 880px;
-  }
+/* Preview Info */
+.preview-info {
+  margin-top: 4rem;
+  color: white;
+  text-align: left;
 }
 
-@media (max-width: 768px) {
-  .frame-controls {
-    flex-wrap: wrap;
-  }
-
-  .monitor-frame {
-    padding: 10px 10px 25px 10px;
-  }
-
-  .screen-container {
-    height: 400px;
-  }
-
-  .tablet-frame {
-    width: 90%;
-    max-width: 500px;
-  }
-
-  .tablet-screen {
-    height: 700px;
-  }
-
-  .phone-frame {
-    width: 320px;
-  }
-
-  .phone-screen {
-    height: 680px;
-  }
+.site-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2ecc71;
 }
 
-@media (max-width: 480px) {
-  .device-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-  }
-
-  .monitor-frame {
-    padding: 5px 5px 20px 5px;
-  }
-
-  .screen-container {
-    height: 300px;
-  }
-
-  .phone-frame {
-    width: 280px;
-  }
-
-  .phone-screen {
-    height: 600px;
-  }
+.site-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.2);
+  border-radius: 30px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-/* Smooth transitions */
-.device-frame {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.site-link:hover {
+  background: rgba(46, 204, 113, 0.2);
+  transform: translateX(5px);
 }
 
-.device-frame.active {
-  display: block;
-  opacity: 1;
+.preview-description {
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-/* Loading progress bar */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tech-tag {
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Loading and Error States */
 .loading-progress {
   position: absolute;
   top: 0;
@@ -318,51 +329,41 @@
   z-index: 1000;
 }
 
-/* Error state */
 .iframe-error {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #fff;
   padding: 2rem;
 }
 
-.error-link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  background: #2ecc71;
-  color: white;
-  text-decoration: none;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .preview-container {
+    min-height: 600px;
+  }
+
+  .tablet-frame {
+    width: 640px;
+  }
 }
 
-.error-link:hover {
-  background: #27ae60;
-  transform: translateY(-2px);
-}
+@media (max-width: 768px) {
+  .portfolio-item {
+    padding: 1rem;
+  }
 
-/* Refresh button */
-.refresh-button {
-  padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
-  color: #fff;
-  cursor: pointer;
-  font-family: "Raleway", sans-serif;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-}
+  .frame-controls {
+    flex-wrap: wrap;
+  }
 
-.refresh-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  .preview-container {
+    min-height: 500px;
+  }
+
+  .tablet-frame {
+    width: 90%;
+    max-width: 500px;
+  }
 }
