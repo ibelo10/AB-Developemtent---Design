@@ -12,6 +12,8 @@ body {
   min-height: 100vh;
   background-color: #000;
   color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Navbar styles */
@@ -27,6 +29,7 @@ body {
   z-index: 1000;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-logo {
@@ -35,7 +38,7 @@ body {
   gap: 1rem;
 }
 
-/* Updated logo styles */
+/* Logo styles */
 .logo-img {
   width: 40px;
   height: auto;
@@ -66,7 +69,14 @@ body {
   color: #2ecc71;
 }
 
-/* Hero container */
+/* Container styles */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+}
+
 .hero-container {
   width: 100%;
   height: 100vh;
@@ -81,7 +91,53 @@ body {
   overflow: hidden;
 }
 
-/* Large centered logo */
+.hero-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* Background effects */
+.background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.background-effects-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Content styles */
+.page-content {
+  position: relative;
+  z-index: 10;
+  padding: 120px 5% 60px;
+}
+
+.content-wrapper {
+  text-align: center;
+  z-index: 2;
+  padding: 0 20px;
+  margin-top: 100px;
+}
+
+/* Logo positioning */
 .logo-large {
   position: absolute;
   width: 120px;
@@ -91,15 +147,7 @@ body {
   z-index: 2;
 }
 
-/* Content wrapper */
-.content-wrapper {
-  text-align: center;
-  z-index: 2;
-  padding: 0 20px;
-  margin-top: 100px;
-}
-
-/* Title */
+/* Typography */
 h1 {
   font-size: 4rem;
   font-weight: 800;
@@ -109,7 +157,29 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Tagline container */
+/* Interactive text effects */
+.content-wrapper h1 .letter {
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  color: white;
+}
+
+.content-wrapper h1 .letter-hover {
+  background: linear-gradient(90deg, #2ecc71, #3498db, #9b59b6, #2ecc71);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: letterGradient 2s ease infinite, letterBounce 0.6s ease infinite;
+}
+
+.content-wrapper h1 .letter-hover-adjacent {
+  color: #27ae60;
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Tagline styles */
 .tagline-container {
   display: flex;
   align-items: center;
@@ -120,7 +190,7 @@ h1 {
 }
 
 .scrolling-text {
-  min-width: 300px; /* Adjust based on your longest text */
+  min-width: 300px;
   min-height: 1.5em;
   text-align: center;
   display: inline-flex;
@@ -130,7 +200,7 @@ h1 {
 
 .scrolling-text__item {
   transition: opacity 0.5s ease;
-  color: #2ecc71; /* Your accent color */
+  color: #2ecc71;
   font-weight: 600;
 }
 
@@ -138,7 +208,20 @@ h1 {
   color: #2ecc71;
 }
 
-/* CTA Button */
+/* Glass panel effect */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  margin: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Button styles */
 .cta-button {
   display: inline-block;
   padding: 1rem 2.5rem;
@@ -151,6 +234,8 @@ h1 {
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  z-index: 10;
+  position: relative;
 }
 
 .cta-button:hover {
@@ -159,16 +244,74 @@ h1 {
   box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
 }
 
-/* Dark overlay */
-.hero-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+/* Animations */
+@keyframes letterGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes letterBounce {
+  0% {
+    transform: translateY(-5px) scale(1.2);
+  }
+  50% {
+    transform: translateY(-7px) scale(1.2);
+  }
+  100% {
+    transform: translateY(-5px) scale(1.2);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Page-specific styles */
+.portfolio-container,
+.contact-container {
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio-container {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+}
+
+.contact-container {
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+}
+
+/* Form and interactive elements */
+form,
+button,
+input,
+textarea,
+.google-form-container iframe {
+  position: relative;
+  z-index: 10;
+}
+
+/* Chat widget */
+#fb-root,
+.fb-customerchat,
+.chat-toast {
+  position: relative;
+  z-index: 1000;
 }
 
 /* Responsive styles */
@@ -185,10 +328,22 @@ h1 {
     font-size: 2.5rem;
   }
 
+  .content-wrapper h1 .letter-hover {
+    transform: translateY(-3px) scale(1.15);
+  }
+
+  .content-wrapper h1 .letter-hover-adjacent {
+    transform: translateY(-1px) scale(1.05);
+  }
+
   .tagline-container {
     font-size: 1.5rem;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .scrolling-text {
+    min-width: 250px;
   }
 
   .logo-img {
@@ -197,6 +352,10 @@ h1 {
 
   .logo-large {
     width: 100px;
+  }
+
+  .page-content {
+    padding: 100px 20px 40px;
   }
 }
 
@@ -207,6 +366,14 @@ h1 {
 
   h1 {
     font-size: 2rem;
+  }
+
+  .content-wrapper h1 .letter-hover {
+    transform: translateY(-2px) scale(1.1);
+  }
+
+  .content-wrapper h1 .letter-hover-adjacent {
+    transform: translateY(-1px) scale(1.05);
   }
 
   .tagline-container {
@@ -225,204 +392,4 @@ h1 {
   .logo-large {
     width: 80px;
   }
-}
-
-.tagline-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 1.5rem 0;
-  font-size: 1.5rem;
-}
-
-.scrolling-text {
-  min-width: 300px; /* Adjust based on your longest text */
-  min-height: 1.5em;
-  text-align: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.scrolling-text__item {
-  transition: opacity 0.5s ease;
-  color: #2ecc71; /* Your accent color */
-  font-weight: 600;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .tagline-container {
-    flex-direction: column;
-    font-size: 1.2rem;
-  }
-
-  .scrolling-text {
-    min-width: 250px;
-  }
-}
-
-/* Option 1: Simple color transition */
-.content-wrapper h1 {
-  transition: color 0.3s ease;
-  cursor: pointer;
-}
-
-.content-wrapper h1:hover {
-  color: #2ecc71; /* Your accent color */
-}
-
-/* Option 2: Dynamic gradient effect */
-@keyframes colorChange {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-/* Header letter hover effects */
-.content-wrapper h1 {
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-.content-wrapper h1 .letter {
-  display: inline-block;
-  transition: all 0.3s ease;
-  position: relative;
-  color: white;
-}
-
-/* Individual letter hover effect */
-.content-wrapper h1 .letter-hover {
-  color: #2ecc71;
-  transform: translateY(-5px) scale(1.2);
-  text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
-}
-
-/* Adjacent letters effect */
-.content-wrapper h1 .letter-hover-adjacent {
-  color: #27ae60;
-  transform: translateY(-2px) scale(1.1);
-}
-
-/* Alternative gradient effect */
-@keyframes letterGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.content-wrapper h1 .letter-hover {
-  background: linear-gradient(90deg, #2ecc71, #3498db, #9b59b6, #2ecc71);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: letterGradient 2s ease infinite;
-}
-
-/* Add a subtle bounce effect */
-@keyframes letterBounce {
-  0% {
-    transform: translateY(-5px) scale(1.2);
-  }
-  50% {
-    transform: translateY(-7px) scale(1.2);
-  }
-  100% {
-    transform: translateY(-5px) scale(1.2);
-  }
-}
-
-.content-wrapper h1 .letter-hover {
-  animation: letterBounce 0.6s ease infinite;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .content-wrapper h1 {
-    font-size: 2.5rem;
-  }
-
-  .content-wrapper h1 .letter-hover {
-    transform: translateY(-3px) scale(1.15);
-  }
-
-  .content-wrapper h1 .letter-hover-adjacent {
-    transform: translateY(-1px) scale(1.05);
-  }
-}
-
-@media (max-width: 480px) {
-  .content-wrapper h1 {
-    font-size: 2rem;
-  }
-
-  .content-wrapper h1 .letter-hover {
-    transform: translateY(-2px) scale(1.1);
-  }
-
-  .content-wrapper h1 .letter-hover-adjacent {
-    transform: translateY(-1px) scale(1.05);
-  }
-}
-
-/* Add to your styles.css */
-
-.page-container {
-  position: relative;
-  min-height: 100vh;
-  background-color: #000;
-  overflow: hidden;
-}
-
-.background-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Make sure content appears above the canvas */
-.page-content {
-  position: relative;
-  z-index: 1;
-}
-
-/* Specific page containers */
-.portfolio-container {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-}
-
-.contact-container {
-  background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
-}
-
-/* Add glass effect to content areas */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  margin: 1rem;
 }
