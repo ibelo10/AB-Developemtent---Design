@@ -15,8 +15,18 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/messenger.css">
+    <link rel="stylesheet" href="assets/css/messenger.css" />
     <link rel="stylesheet" href="assets/css/contact.css" />
+    <!-- Add this in the head section -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("MBrxhIpRv7K8wvN9z"); // Add your EmailJS public key here
+      })();
+    </script>
   </head>
   <body>
     <nav class="navbar">
@@ -141,4 +151,3 @@
     <script src="assets/js/contact.js" type="module"></script>
   </body>
 </html>
-
