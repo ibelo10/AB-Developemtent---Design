@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const deviceFrames = document.querySelectorAll(".device-frame");
   const iframes = document.querySelectorAll(".preview-frame");
 
+  // Device viewport configurations
+  const deviceViewports = {
+    desktop: { width: "100%", height: "100%" },
+    tablet: { width: "768px", height: "1024px" },
+    phone: { width: "375px", height: "812px" },
+  };
+
   // Check if elements exist before adding listeners
   if (deviceButtons.length && deviceFrames.length) {
     // Handle device switching
@@ -13,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         deviceButtons.forEach((btn) => btn.classList.remove("active"));
         button.classList.add("active");
 
-        // Update active frame with animation
         const targetDevice = button.dataset.device;
         const targetFrame = document.querySelector(
           `[data-frame="${targetDevice}"]`
@@ -32,10 +38,40 @@ document.addEventListener("DOMContentLoaded", () => {
             targetFrame.style.opacity = "1";
           }, 50);
 
-          // Ensure iframe is loaded in the new frame
+          // Handle iframe in the new frame
           const iframe = targetFrame.querySelector(".preview-frame");
-          if (iframe && !iframe.classList.contains("loaded")) {
-            iframe.src = iframe.src;
+          if (iframe) {
+            // Set viewport size based on device
+            const viewport = deviceViewports[targetDevice];
+            iframe.style.width = viewport.width;
+            iframe.style.height = viewport.height;
+
+            // Special handling for phone view
+            if (targetDevice === "phone") {
+              iframe.addEventListener("load", () => {
+                try {
+                  const iframeDoc = iframe.contentWindow.document;
+                  let viewportMeta = iframeDoc.querySelector(
+                    'meta[name="viewport"]'
+                  );
+                  if (!viewportMeta) {
+                    viewportMeta = iframeDoc.createElement("meta");
+                    viewportMeta.name = "viewport";
+                    iframeDoc.head.appendChild(viewportMeta);
+                  }
+                  viewportMeta.content = "width=375, initial-scale=1";
+                } catch (e) {
+                  console.log(
+                    "Cannot modify iframe content due to same-origin policy"
+                  );
+                }
+              });
+            }
+
+            // Reload iframe if not loaded
+            if (!iframe.classList.contains("loaded")) {
+              iframe.src = iframe.src;
+            }
           }
         }
       });
@@ -48,6 +84,25 @@ document.addEventListener("DOMContentLoaded", () => {
       iframe.addEventListener("load", () => {
         iframe.classList.add("loaded");
         iframe.style.opacity = "1";
+
+        // Check if this is a phone view
+        const parentFrame = iframe.closest(".device-frame");
+        if (parentFrame && parentFrame.dataset.frame === "phone") {
+          try {
+            const iframeDoc = iframe.contentWindow.document;
+            let viewportMeta = iframeDoc.querySelector('meta[name="viewport"]');
+            if (!viewportMeta) {
+              viewportMeta = iframeDoc.createElement("meta");
+              viewportMeta.name = "viewport";
+              iframeDoc.head.appendChild(viewportMeta);
+            }
+            viewportMeta.content = "width=375, initial-scale=1";
+          } catch (e) {
+            console.log(
+              "Cannot modify iframe content due to same-origin policy"
+            );
+          }
+        }
       });
 
       // Add error handling
@@ -55,13 +110,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = iframe.parentElement;
         if (container) {
           container.innerHTML = `
-                        <div class="iframe-error">
-                            <p>Unable to load preview.</p>
-                            <a href="${iframe.src}" target="_blank" class="error-link">
-                                Open site in new tab
-                            </a>
-                        </div>
-                    `;
+                      <div class="iframe-error">
+                          <p>Unable to load preview.</p>
+                          <a href="${iframe.src}" target="_blank" class="error-link">
+                              Open site in new tab
+                          </a>
+                      </div>
+                  `;
         }
       });
     });
