@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - AB Development & Design</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+        <span>AB Development & Design</span>
+      </div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/portfolio" class="active">Portfolio</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </nav>
+
+    <main class="portfolio-container">
+      <header class="portfolio-header">
+        <h1>Our Work</h1>
+        <p>Showcasing innovative solutions and creative designs</p>
+      </header>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-item">
+          <div class="portfolio-image">
+            <img src="/api/placeholder/600/400" alt="Project 1" />
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-content">
+                <h3>Project Name</h3>
+                <p>Web Development</p>
+                <a href="#" class="portfolio-button">View Project</a>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h3>Project Name</h3>
+            <p class="portfolio-category">Web Development</p>
+            <p class="portfolio-description">
+              Brief description of the project and the technologies used.
+            </p>
+          </div>
+        </article>
+        <!-- Repeat portfolio-item for more projects -->
+      </div>
+    </main>
+
+    <script src="assets/js/portfolio.js" type="module"></script>
+  </body>
+</html>
