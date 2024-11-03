@@ -191,11 +191,13 @@
   font-size: 13px;
 }
 
-/* Iframe Container */
+/* Update the iframe container styles */
 .iframe-container {
   width: 100%;
   height: calc(100% - 40px);
-  overflow: hidden;
+  overflow: auto;
+  position: relative;
+  background: white;
 }
 
 .preview-frame {
@@ -204,6 +206,7 @@
   border: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  background: white;
 }
 
 .preview-frame.loaded {
