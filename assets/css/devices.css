@@ -1,0 +1,295 @@
+/* Frame Controls */
+.frame-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.device-button {
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.device-button span {
+  font-size: 1.2rem;
+}
+
+.device-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.device-button.active {
+  background: #2ecc71;
+  border-color: #2ecc71;
+}
+
+/* Device Frames */
+.device-frame {
+  display: none;
+  margin: 0 auto 2rem;
+  transition: all 0.3s ease;
+}
+
+.device-frame.active {
+  display: block;
+}
+
+/* Monitor Frame */
+.monitor-frame {
+  width: 100%;
+  max-width: 1000px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 20px 20px 35px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.screen-container {
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 600px;
+}
+
+.browser-chrome {
+  height: 40px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  gap: 10px;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: #ff5f57;
+}
+.dot-yellow {
+  background: #ffbd2e;
+}
+.dot-green {
+  background: #28c940;
+}
+
+.browser-address {
+  flex: 1;
+  height: 28px;
+  background: white;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 13px;
+}
+
+.monitor-stand {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+  background: linear-gradient(to bottom, #1a1a1a, #000);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.monitor-base {
+  position: absolute;
+  bottom: -75px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 15px;
+  background: #1a1a1a;
+  border-radius: 5px;
+}
+
+/* Tablet Frame */
+.tablet-frame {
+  width: 768px;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.tablet-inner {
+  position: relative;
+  padding: 20px;
+  border-radius: 20px;
+  background: #000;
+}
+
+.tablet-screen {
+  width: 100%;
+  height: 1024px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.tablet-home-button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  margin: 20px auto 0;
+}
+
+/* Phone Frame */
+.phone-frame {
+  width: 375px;
+  padding: 15px;
+  background: #1a1a1a;
+  border-radius: 50px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.phone-inner {
+  position: relative;
+  padding: 10px;
+  border-radius: 40px;
+  background: #000;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 25px;
+  background: #000;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 2;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 812px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 30px;
+  position: relative;
+}
+
+.phone-home-indicator {
+  width: 100px;
+  height: 5px;
+  background: #333;
+  border-radius: 3px;
+  margin: 10px auto 0;
+}
+
+/* Iframe Container */
+.iframe-container {
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: hidden;
+}
+
+.preview-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.preview-frame.loaded {
+  opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .tablet-frame {
+    width: 640px;
+  }
+
+  .tablet-screen {
+    height: 880px;
+  }
+}
+
+@media (max-width: 768px) {
+  .frame-controls {
+    flex-wrap: wrap;
+  }
+
+  .monitor-frame {
+    padding: 10px 10px 25px 10px;
+  }
+
+  .screen-container {
+    height: 400px;
+  }
+
+  .tablet-frame {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .tablet-screen {
+    height: 700px;
+  }
+
+  .phone-frame {
+    width: 320px;
+  }
+
+  .phone-screen {
+    height: 680px;
+  }
+}
+
+@media (max-width: 480px) {
+  .device-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .monitor-frame {
+    padding: 5px 5px 20px 5px;
+  }
+
+  .screen-container {
+    height: 300px;
+  }
+
+  .phone-frame {
+    width: 280px;
+  }
+
+  .phone-screen {
+    height: 600px;
+  }
+}

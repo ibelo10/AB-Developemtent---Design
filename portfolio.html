@@ -16,6 +16,7 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/portfolio.css" />
+    <link rel="stylesheet" href="assets/css/devices.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -36,74 +37,107 @@
         <p>Showcasing innovative solutions and creative designs</p>
       </header>
 
-      <div class="portfolio-grid">
-        <article class="portfolio-item">
-          <div class="portfolio-preview">
-            <div class="preview-header">
+      <div class="portfolio-item">
+        <!-- Device Frame Controls -->
+        <div class="frame-controls">
+          <button class="device-button active" data-device="desktop">
+            <span>💻</span> Desktop
+          </button>
+          <button class="device-button" data-device="tablet">
+            <span>📱</span> Tablet
+          </button>
+          <button class="device-button" data-device="phone">
+            <span>📱</span> Phone
+          </button>
+        </div>
+
+        <!-- Desktop Frame -->
+        <div class="device-frame monitor-frame active" data-frame="desktop">
+          <div class="screen-container">
+            <div class="browser-chrome">
               <div class="browser-dots">
-                <span></span>
-                <span></span>
-                <span></span>
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
               </div>
-              <div class="browser-bar">
-                <span>msvivalasvegas.com</span>
-              </div>
-            </div>
-            <div class="preview-container">
-              <div class="device-frame desktop active" data-device="desktop">
-                <iframe
-                  src="https://msvivalasvegas.org"
-                  title="Ms Viva Las Vegas Website"
-                  class="live-preview"
-                ></iframe>
+              <div class="browser-address">
+                <i>🔒</i> www.msvivalasvegas.org
               </div>
             </div>
-            <div class="preview-controls">
-              <div class="device-buttons">
-                <button class="device-button active" data-device="desktop">
-                  <span>Desktop</span>
-                </button>
-                <button class="device-button" data-device="tablet">
-                  <span>Tablet</span>
-                </button>
-                <button class="device-button" data-device="mobile">
-                  <span>Mobile</span>
-                </button>
-              </div>
-              <div class="scale-buttons">
-                <button class="scale-button active" data-scale="1">100%</button>
-                <button class="scale-button" data-scale="0.75">75%</button>
-                <button class="scale-button" data-scale="0.5">50%</button>
-              </div>
+            <div class="iframe-container">
+              <iframe
+                src="https://www.msvivalasvegas.org/"
+                class="preview-frame"
+                title="MS Viva Las Vegas Website Preview"
+                loading="lazy"
+              ></iframe>
             </div>
           </div>
-          <div class="portfolio-content">
-            <h3>Ms Viva Las Vegas</h3>
-            <p class="portfolio-category">Website Design & Development</p>
-            <p class="portfolio-description">
-              A custom website designed and developed for Ms Viva Las Vegas,
-              featuring events, photos, and booking information. Built with
-              modern web technologies to ensure a seamless user experience
-              across all devices.
-            </p>
-            <div class="portfolio-tech">
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">Responsive Design</span>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+        </div>
+
+        <!-- Tablet Frame -->
+        <div class="device-frame tablet-frame" data-frame="tablet">
+          <div class="tablet-inner">
+            <div class="tablet-screen">
+              <iframe
+                src="https://www.msvivalasvegas.org/"
+                class="preview-frame"
+                title="MS Viva Las Vegas Website Preview"
+                loading="lazy"
+              ></iframe>
             </div>
-            <a
-              href="https://msvivalasvegas.com"
-              target="_blank"
-              class="portfolio-button"
-            >
-              Visit Full Site
-            </a>
+            <div class="tablet-home-button"></div>
           </div>
-        </article>
+        </div>
+
+        <!-- Phone Frame -->
+        <div class="device-frame phone-frame" data-frame="phone">
+          <div class="phone-inner">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <iframe
+                src="https://www.msvivalasvegas.org/"
+                class="preview-frame"
+                title="MS Viva Las Vegas Website Preview"
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="phone-home-indicator"></div>
+          </div>
+        </div>
+
+        <!-- Project Info -->
+        <div class="preview-info">
+          <h2 class="site-title">MS Viva Las Vegas</h2>
+          <a
+            href="https://www.msvivalasvegas.org/"
+            target="_blank"
+            class="site-link"
+            >Visit Site →</a
+          >
+          <p class="preview-description">
+            A dynamic beauty pageant platform built with Wix, featuring
+            sophisticated functionality for contestant management and event
+            operations. The site includes a custom-built contestant gallery with
+            filtering and search capabilities, streamlined registration system,
+            and dynamic user profiles with secure authentication. Integrated
+            voting and payment systems enable seamless audience participation
+            and transaction processing.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Wix Platform</span>
+            <span class="tech-tag">User Authentication</span>
+            <span class="tech-tag">Dynamic Profiles</span>
+            <span class="tech-tag">Payment Integration</span>
+            <span class="tech-tag">Custom Gallery</span>
+            <span class="tech-tag">Voting System</span>
+          </div>
+        </div>
       </div>
     </main>
 
-    <script src="assets/js/portfolio.js"></script>
+    <script src="assets/js/devices.js"></script>
   </body>
 </html>
