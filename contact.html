@@ -30,7 +30,9 @@
         <a href="/contact" class="active">Contact</a>
       </div>
     </nav>
-
+    <div class="page-container contact-container">
+      <div class="page-content">
+          <div class="glass-panel">
     <main class="contact-container">
       <header class="contact-header">
         <h1>Get in Touch</h1>
@@ -112,7 +114,12 @@
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
-
+    <script type="module">
+      import { initializeBackgroundEffects } from "./assets/js/components/background-effects.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeBackgroundEffects("contact");
+      });
+    </script>
     <script>
       window.fbAsyncInit = function () {
         FB.init({

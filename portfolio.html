@@ -45,7 +45,9 @@
         <a href="/contact">Contact</a>
       </div>
     </nav>
-
+    <div class="page-container portfolio-container">
+      <div class="page-content">
+          <div class="glass-panel">
     <main class="portfolio-container">
       <header class="portfolio-header">
         <h1>Our Work</h1>
@@ -206,6 +208,13 @@
       chatbox.setAttribute("attribution", "biz_inbox");
       chatbox.setAttribute("theme_color", "#2ecc71");
     </script>
+
+<script type="module">
+  import { initializeBackgroundEffects } from './assets/js/components/background-effects.js';
+  document.addEventListener('DOMContentLoaded', () => {
+      initializeBackgroundEffects('portfolio');
+  });
+</script>
 
     <!-- Custom Scripts -->
     <script src="assets/js/devices.js"></script>
