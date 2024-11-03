@@ -38,21 +38,42 @@
 
       <div class="portfolio-grid">
         <article class="portfolio-item">
-          <div class="portfolio-image">
-            <img
-              src="assets/images/viva-preview.jpg"
-              alt="Ms Viva Las Vegas Website"
-            />
-            <div class="portfolio-overlay">
-              <div class="portfolio-overlay-content">
-                <h3>Ms Viva Las Vegas</h3>
-                <p>Website Design & Development</p>
-                <a
-                  href="https://msvivalasvegas.org"
-                  target="_blank"
-                  class="portfolio-button"
-                  >Visit Site</a
-                >
+          <div class="portfolio-preview">
+            <div class="preview-header">
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="browser-bar">
+                <span>msvivalasvegas.com</span>
+              </div>
+            </div>
+            <div class="preview-container">
+              <div class="device-frame desktop active" data-device="desktop">
+                <iframe
+                  src="https://msvivalasvegas.org"
+                  title="Ms Viva Las Vegas Website"
+                  class="live-preview"
+                ></iframe>
+              </div>
+            </div>
+            <div class="preview-controls">
+              <div class="device-buttons">
+                <button class="device-button active" data-device="desktop">
+                  <span>Desktop</span>
+                </button>
+                <button class="device-button" data-device="tablet">
+                  <span>Tablet</span>
+                </button>
+                <button class="device-button" data-device="mobile">
+                  <span>Mobile</span>
+                </button>
+              </div>
+              <div class="scale-buttons">
+                <button class="scale-button active" data-scale="1">100%</button>
+                <button class="scale-button" data-scale="0.75">75%</button>
+                <button class="scale-button" data-scale="0.5">50%</button>
               </div>
             </div>
           </div>
@@ -71,9 +92,18 @@
               <span class="tech-tag">JavaScript</span>
               <span class="tech-tag">Responsive Design</span>
             </div>
+            <a
+              href="https://msvivalasvegas.com"
+              target="_blank"
+              class="portfolio-button"
+            >
+              Visit Full Site
+            </a>
           </div>
         </article>
       </div>
     </main>
+
+    <script src="assets/js/portfolio.js"></script>
   </body>
 </html>

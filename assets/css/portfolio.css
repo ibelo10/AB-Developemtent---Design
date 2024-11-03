@@ -22,105 +22,214 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Portfolio grid */
+/* Portfolio Grid */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 3rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Portfolio items */
+/* Portfolio Item */
 .portfolio-item {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.portfolio-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
-}
-
-/* Portfolio images */
-.portfolio-image {
-  position: relative;
+/* Preview Container */
+.portfolio-preview {
+  background: #1a1a1a;
+  border-radius: 10px;
   overflow: hidden;
-  aspect-ratio: 16/9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.portfolio-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+/* Browser Header */
+.preview-header {
+  background: #2a2a2a;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.portfolio-item:hover .portfolio-image img {
-  transform: scale(1.05);
+.browser-dots {
+  display: flex;
+  gap: 0.5rem;
 }
 
-/* Overlay effect */
-.portfolio-overlay {
+.browser-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.browser-dots span:nth-child(1) {
+  background: #ff5f57;
+}
+.browser-dots span:nth-child(2) {
+  background: #febc2e;
+}
+.browser-dots span:nth-child(3) {
+  background: #28c840;
+}
+
+.browser-bar {
+  background: #1a1a1a;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+.browser-bar span {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Device Frames */
+.preview-container {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
+.device-frame {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.device-frame.active {
+  display: block;
+}
+
+/* Device-specific styles */
+.device-frame.desktop {
+  padding: 0;
+}
+
+.device-frame.tablet {
+  padding: 20px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.device-frame.mobile {
+  padding: 20px;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+/* Live Preview iframe */
+.live-preview {
+  width: 100%;
+  height: 100%;
+  border: none;
+  transform-origin: 0 0;
+  background: white;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.portfolio-item:hover .portfolio-overlay {
+.live-preview.loaded {
   opacity: 1;
 }
 
-.portfolio-overlay-content {
-  text-align: center;
-  padding: 20px;
+/* Preview Controls */
+.preview-controls {
+  background: #2a2a2a;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.device-buttons,
+.scale-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.device-button,
+.scale-button {
+  padding: 0.5rem 1rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.device-button:hover,
+.scale-button:hover {
+  background: #333;
   color: white;
 }
 
-.portfolio-overlay-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.device-button.active,
+.scale-button.active {
+  background: #2ecc71;
+  border-color: #2ecc71;
+  color: white;
 }
 
-.portfolio-overlay-content p {
+/* Portfolio Content */
+.portfolio-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.portfolio-content h3 {
+  font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #2ecc71;
 }
 
-/* Portfolio content */
-.portfolio-content {
-  padding: 1.5rem;
-}
-
-.portfolio-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: white;
-}
-
 .portfolio-category {
-  color: #2ecc71;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
 }
 
 .portfolio-description {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
 }
 
-/* Portfolio button */
+/* Tech Tags */
+.portfolio-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+/* Buttons */
 .portfolio-button {
   display: inline-block;
   padding: 0.8rem 1.5rem;
@@ -128,18 +237,41 @@
   color: white;
   text-decoration: none;
   border-radius: 25px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin-top: 1rem;
+  text-align: center;
 }
 
 .portfolio-button:hover {
   background: #27ae60;
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
 }
 
-/* Responsive adjustments */
+/* Loading State */
+.preview-container::before {
+  content: "Loading preview...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2rem;
+  z-index: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .portfolio-item {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-container {
+    height: 500px;
+  }
+}
+
 @media (max-width: 768px) {
   .portfolio-container {
     padding: 100px 20px 40px;
@@ -149,9 +281,27 @@
     font-size: 2.5rem;
   }
 
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+  .portfolio-item {
+    padding: 1rem;
+  }
+
+  .preview-container {
+    height: 400px;
+  }
+
+  .portfolio-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .preview-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .device-buttons,
+  .scale-buttons {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -160,11 +310,13 @@
     font-size: 2rem;
   }
 
-  .portfolio-header p {
-    font-size: 1rem;
+  .preview-container {
+    height: 300px;
   }
 
-  .portfolio-grid {
-    grid-template-columns: 1fr;
+  .device-button,
+  .scale-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
