@@ -46,6 +46,7 @@
       <div class="nav-links">
         <a href="/" class="active">Home</a>
         <a href="/portfolio">Portfolio</a>
+        <a href="/services">Services</a>
         <a href="/contact">Contact</a>
       </div>
     </nav>
@@ -67,7 +68,12 @@
           </div>
           <span>with passion</span>
         </div>
-        <a href="/portfolio" class="cta-button">VIEW PORTFOLIO</a>
+        <div class="cta-container">
+          <a href="/portfolio" class="cta-button">VIEW PORTFOLIO</a>
+          <a href="/services" class="cta-button cta-button--secondary"
+            >OUR SERVICES</a
+          >
+        </div>
       </div>
     </div>
 
@@ -87,14 +93,12 @@
 
     <!-- Messenger Script -->
     <script>
-      // Initialize Facebook SDK
       window.fbAsyncInit = function () {
         FB.init({
           xfbml: true,
           version: "v18.0",
         });
 
-        // Chat widget event handlers
         FB.Event.subscribe("customerchat.load", function () {
           console.log("Chat widget loaded successfully");
           initializeChatToast();
@@ -110,7 +114,6 @@
         });
       };
 
-      // Load Facebook SDK
       (function (d, s, id) {
         var js,
           fjs = d.getElementsByTagName(s)[0];
@@ -121,7 +124,6 @@
         fjs.parentNode.insertBefore(js, fjs);
       })(document, "script", "facebook-jssdk");
 
-      // Configure chat widget
       var chatbox = document.getElementById("fb-customer-chat");
       chatbox.setAttribute("page_id", "113394291657712");
       chatbox.setAttribute("attribution", "biz_inbox");
