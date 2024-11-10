@@ -1,41 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Get the iframe element
-  const formIframe = document.querySelector(".google-form-container iframe");
+  const form = document.getElementById("contactForm");
+  const submitButton = form.querySelector(".submit-button");
+  const buttonText = submitButton.querySelector(".button-text");
+  const buttonLoader = submitButton.querySelector(".button-loader");
+  const formMessage = document.getElementById("formMessage");
 
-  // Function to handle message from iframe
-  window.addEventListener("message", (event) => {
-    // Verify the origin is from Google Forms
-    if (event.origin !== "https://docs.google.com") return;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Show loading state
+    submitButton.disabled = true;
+    buttonText.style.opacity = "0";
+    buttonLoader.style.display = "block";
+    formMessage.style.display = "none";
 
     try {
-      // Check if the form was submitted
-      if (event.data.includes("formResponse")) {
-        // You could add custom behavior here, such as:
-        // - Show a custom thank you message
-        // - Track the submission in analytics
-        // - Redirect to a thank you page
-        console.log("Form submitted successfully");
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-        // Example: Show a custom success message
-        const successMessage = document.createElement("div");
-        successMessage.className = "success-message";
-        successMessage.innerHTML = `
-          <div class="success-content">
-            <span class="success-icon">✓</span>
-            <p>Thank you for your message! We'll get back to you soon.</p>
-          </div>
-        `;
-        document
-          .querySelector(".google-form-container")
-          .appendChild(successMessage);
+      const data = await response.json();
 
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-          successMessage.remove();
-        }, 5000);
+      if (response.ok) {
+        // Show success message
+        formMessage.textContent =
+          "Thank you for your message! We'll get back to you soon.";
+        formMessage.className = "form-message success";
+        form.reset();
+      } else {
+        throw new Error(
+          data.error || "Something went wrong. Please try again."
+        );
       }
     } catch (error) {
-      console.error("Error processing form submission:", error);
+      // Show error message
+      formMessage.textContent = error.message;
+      formMessage.className = "form-message error";
+    } finally {
+      // Reset button state
+      submitButton.disabled = false;
+      buttonText.style.opacity = "1";
+      buttonLoader.style.display = "none";
+      formMessage.style.display = "block";
     }
   });
 });

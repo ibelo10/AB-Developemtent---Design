@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const deviceButtons = document.querySelectorAll(".device-button");
   const scaleButtons = document.querySelectorAll(".scale-button");
 
-  // Device frame sizes
+  // Device frame sizes - using percentage-based sizing
   const deviceSizes = {
     desktop: { width: "100%", height: "100%" },
-    tablet: { width: "768px", height: "1024px" },
-    mobile: { width: "375px", height: "812px" },
+    tablet: { width: "100%", height: "100%" },
+    mobile: { width: "100%", height: "100%" },
   };
 
   // Handle device switching
@@ -31,10 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
       iframe.style.width = size.width;
       iframe.style.height = size.height;
 
-      // Reset scale
+      // Reset scale and ensure content is centered
       scaleButtons.forEach((btn) => btn.classList.remove("active"));
       scaleButtons[0].classList.add("active");
       iframe.style.transform = "scale(1)";
+
+      // Reset scroll position
+      const iframeContainer = iframe.parentElement;
+      if (iframeContainer) {
+        iframeContainer.scrollTop = 0;
+        iframeContainer.scrollLeft = 0;
+      }
     });
   });
 
@@ -47,35 +54,46 @@ document.addEventListener("DOMContentLoaded", () => {
       scaleButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
 
-      // Apply scaling
+      // Apply scaling with centered transform origin
       iframe.style.transform = `scale(${scale})`;
-
-      // Adjust container if needed
-      if (scale !== 1) {
-        iframe.style.transformOrigin = "top left";
-      }
+      iframe.style.transformOrigin = "center top";
     });
   });
 
   // Handle iframe load
   iframe.addEventListener("load", () => {
     iframe.classList.add("loaded");
+    previewContainer.classList.add("loaded");
   });
 
-  // Handle iframe errors
+  // Handle iframe errors with improved error message
   iframe.addEventListener("error", () => {
     previewContainer.innerHTML = `
-            <div class="preview-error">
-                <p>Unable to load preview. Please visit the full site.</p>
-            </div>
-        `;
+      <div class="preview-error">
+        <p>Unable to load preview. Please check your connection and try again.</p>
+        <a href="${iframe.src}" target="_blank" class="preview-error-link">
+          Open in New Tab
+        </a>
+      </div>
+    `;
   });
 
-  // Optional: Add touch support for mobile devices
+  // Improved touch support for mobile devices
   let touchStartX = 0;
   let touchStartY = 0;
+  let isTouching = false;
+
+  previewContainer.addEventListener("touchstart", (e) => {
+    if (e.target === previewContainer) {
+      isTouching = true;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  });
 
   previewContainer.addEventListener("touchmove", (e) => {
+    if (!isTouching) return;
+
     // Prevent default only if we're not in an iframe
     if (e.target === previewContainer) {
       e.preventDefault();
@@ -87,96 +105,87 @@ document.addEventListener("DOMContentLoaded", () => {
     const deltaX = touchStartX - touchX;
     const deltaY = touchStartY - touchY;
 
-    // Update iframe scroll position
+    // Update iframe scroll position with smooth behavior
     if (iframe.contentWindow) {
-      iframe.contentWindow.scrollBy(deltaX, deltaY);
+      iframe.contentWindow.scrollBy({
+        top: deltaY,
+        left: deltaX,
+        behavior: "smooth",
+      });
     }
 
     touchStartX = touchX;
     touchStartY = touchY;
   });
 
-  // Add refresh button functionality
+  previewContainer.addEventListener("touchend", () => {
+    isTouching = false;
+  });
+
+  // Add refresh button with loading state
   const refreshButton = document.createElement("button");
   refreshButton.className = "refresh-button";
   refreshButton.innerHTML = "↻ Refresh";
   refreshButton.addEventListener("click", () => {
+    refreshButton.classList.add("loading");
     iframe.src = iframe.src;
+    setTimeout(() => refreshButton.classList.remove("loading"), 1000);
   });
 
   // Add refresh button to controls
   document.querySelector(".preview-controls").appendChild(refreshButton);
 
-  // Handle responsive preview
+  // Handle responsive preview with debouncing
+  let resizeTimeout;
   function updatePreviewSize() {
-    const activeDevice = document.querySelector(".device-button.active").dataset
-      .device;
-    const activeScale = parseFloat(
-      document.querySelector(".scale-button.active").dataset.scale
-    );
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const activeDevice = document.querySelector(".device-button.active")
+        .dataset.device;
+      const activeScale = parseFloat(
+        document.querySelector(".scale-button.active").dataset.scale
+      );
 
-    const size = deviceSizes[activeDevice];
-    iframe.style.width = size.width;
-    iframe.style.height = size.height;
-    iframe.style.transform = `scale(${activeScale})`;
+      const size = deviceSizes[activeDevice];
+      iframe.style.width = size.width;
+      iframe.style.height = size.height;
+      iframe.style.transform = `scale(${activeScale})`;
+      iframe.style.transformOrigin = "center top";
+    }, 250);
   }
 
   // Update on window resize
   window.addEventListener("resize", updatePreviewSize);
 
-  // Initialize with desktop view
-  updatePreviewSize();
+  // Handle orientation changes
+  window.addEventListener("orientationchange", () => {
+    setTimeout(updatePreviewSize, 100);
+  });
 
-  // Add keyboard shortcuts
+  // Add keyboard shortcuts with visual feedback
   document.addEventListener("keydown", (e) => {
-    // Alt + 1/2/3 for device switching
     if (e.altKey) {
+      let button;
       switch (e.key) {
         case "1":
-          document.querySelector('[data-device="desktop"]').click();
+          button = document.querySelector('[data-device="desktop"]');
           break;
         case "2":
-          document.querySelector('[data-device="tablet"]').click();
+          button = document.querySelector('[data-device="tablet"]');
           break;
         case "3":
-          document.querySelector('[data-device="mobile"]').click();
+          button = document.querySelector('[data-device="mobile"]');
           break;
+      }
+
+      if (button) {
+        button.click();
+        button.classList.add("keyboard-activated");
+        setTimeout(() => button.classList.remove("keyboard-activated"), 200);
       }
     }
   });
 
-  // Optional: Add loading progress indicator
-  let loadingProgress = 0;
-  const loadingInterval = setInterval(() => {
-    loadingProgress += 10;
-    if (loadingProgress <= 90) {
-      previewContainer.style.setProperty(
-        "--loading-progress",
-        `${loadingProgress}%`
-      );
-    }
-  }, 200);
-
-  iframe.addEventListener("load", () => {
-    clearInterval(loadingInterval);
-    previewContainer.style.setProperty("--loading-progress", "100%");
-    setTimeout(() => {
-      previewContainer.classList.add("loaded");
-    }, 300);
-  });
-
-  // Add error boundary
-  window.addEventListener("error", (e) => {
-    if (e.target === iframe) {
-      console.error("Preview failed to load:", e);
-      previewContainer.innerHTML = `
-                <div class="preview-error">
-                    <p>Preview unavailable. Please visit the full site.</p>
-                    <a href="${iframe.src}" target="_blank" class="portfolio-button">
-                        Open in New Tab
-                    </a>
-                </div>
-            `;
-    }
-  });
+  // Initialize with desktop view
+  updatePreviewSize();
 });
