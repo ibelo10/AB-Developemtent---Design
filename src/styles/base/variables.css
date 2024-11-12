@@ -1,0 +1,52 @@
+/* src/styles/base/variables.css */
+:root {
+  /* Colors */
+  --color-primary: #2ecc71;
+  --color-primary-rgb: 46, 204, 113;
+  --color-background: #000;
+  --color-text: #fff;
+  --color-text-secondary: rgba(255, 255, 255, 0.8);
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  /* Typography */
+  --font-family-primary: "Raleway", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 4rem;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Layout */
+  --container-width: 1200px;
+  --header-height: 80px;
+  --footer-height: 60px;
+
+  /* Z-index layers */
+  --z-background: 1;
+  --z-content: 10;
+  --z-header: 100;
+  --z-modal: 1000;
+
+  /* Device Preview */
+  --preview-height-desktop: 600px;
+  --preview-height-tablet: 500px;
+  --preview-height-mobile: 400px;
+
+  /* Transitions */
+  --transition-base: all 0.3s ease;
+
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 20px;
+  --border-radius-full: 50px;
+}

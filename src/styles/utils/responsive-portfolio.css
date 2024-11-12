@@ -1,0 +1,44 @@
+/* src/styles/utils/responsive-portfolio.css */
+@media (max-width: 1200px) {
+  .preview-container {
+    height: var(--preview-height-tablet);
+  }
+
+  .device-frame.tablet {
+    width: min(640px, 90%);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-md);
+  }
+
+  .portfolio-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .preview-controls {
+    flex-wrap: wrap;
+  }
+
+  .preview-container {
+    height: var(--preview-height-mobile);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --preview-height-mobile: 300px;
+  }
+
+  .portfolio-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .device-button {
+    min-width: 90px;
+    font-size: var(--font-size-base);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}

@@ -1,0 +1,41 @@
+/* src/styles/components/browser-chrome.css */
+.browser-chrome {
+  background: var(--color-bg-darker);
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: var(--color-chrome-red);
+}
+.dot-yellow {
+  background: var(--color-chrome-yellow);
+}
+.dot-green {
+  background: var(--color-chrome-green);
+}
+
+.browser-address {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

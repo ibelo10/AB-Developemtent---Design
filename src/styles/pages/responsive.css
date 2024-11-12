@@ -1,0 +1,33 @@
+/* src/styles/pages/responsive.css */
+@media (max-width: 768px) {
+  :root {
+    --font-size-4xl: 2.5rem;
+  }
+
+  .navbar {
+    padding: var(--spacing-sm);
+  }
+
+  .nav-links {
+    gap: var(--spacing-sm);
+  }
+
+  .content-wrapper {
+    padding: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-4xl: 2rem;
+  }
+
+  .nav-logo span {
+    display: none;
+  }
+
+  .cta-button {
+    padding: 0.8rem 2rem;
+    font-size: var(--font-size-base);
+  }
+}

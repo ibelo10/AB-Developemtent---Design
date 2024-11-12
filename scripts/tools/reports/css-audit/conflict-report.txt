@@ -1,0 +1,250 @@
+
+CSS Conflict Analysis Report
+Generated: 2024-11-05T12:52:43.056Z
+
+Summary:
+- Total Files Analyzed: 22
+- Total Selectors: 96
+- Total Conflicts: 29
+- Total Specificity Issues: 0
+
+Files Analyzed by Category:
+
+BASE:
+  - base\reset.css
+  - base\typography.css
+  - base\variables.css
+
+LAYOUTS:
+  - layouts\grid.css
+  - layouts\header.css
+  - layouts\footer.css
+  - layouts\containers.css
+
+COMPONENTS:
+  - components\buttons.css
+  - components\cards.css
+  - components\navbar.css
+  - components\device-preview.css
+  - components\background.css
+  - components\browser-chrome.css
+  - components\portfolio-item.css
+  - components\tech-tags.css
+
+PAGES:
+  - pages\home.css
+  - pages\portfolio.css
+  - pages\contact.css
+  - pages\responsive.css
+
+UTILS:
+  - utils\animations.css
+  - utils\responsive-portfolio.css
+  - utils\responsive.css
+
+Selector Conflicts:
+
+- Selector: .contact-content
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: .contact-info
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: .social-links
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: .google-form-container iframe
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: .contact-content
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: .contact-header h1
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: .contact-content
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: .social-links
+  Files: 
+    - pages\contact.css
+    - pages\contact.css
+  Specificity: 10
+
+
+- Selector: :root
+  Files: 
+    - pages\responsive.css
+    - base\variables.css
+  Specificity: 10
+
+
+- Selector: .navbar
+  Files: 
+    - pages\responsive.css
+    - components\navbar.css
+  Specificity: 10
+
+
+- Selector: .nav-links
+  Files: 
+    - pages\responsive.css
+    - components\navbar.css
+  Specificity: 10
+
+
+- Selector: .content-wrapper
+  Files: 
+    - pages\responsive.css
+    - layouts\containers.css
+  Specificity: 10
+
+
+- Selector: :root
+  Files: 
+    - pages\responsive.css
+    - pages\responsive.css
+  Specificity: 10
+
+
+- Selector: .cta-button
+  Files: 
+    - pages\responsive.css
+    - components\buttons.css
+  Specificity: 10
+
+
+- Selector: 0%
+  Files: 
+    - utils\animations.css
+    - utils\animations.css
+  Specificity: 0
+
+
+- Selector: 50%
+  Files: 
+    - utils\animations.css
+    - utils\animations.css
+  Specificity: 0
+
+
+- Selector: 100%
+  Files: 
+    - utils\animations.css
+    - utils\animations.css
+  Specificity: 0
+
+
+- Selector: .portfolio-container
+  Files: 
+    - utils\responsive-portfolio.css
+    - pages\portfolio.css
+  Specificity: 10
+
+
+- Selector: .portfolio-header h1
+  Files: 
+    - utils\responsive-portfolio.css
+    - pages\portfolio.css
+  Specificity: 10
+
+
+- Selector: .preview-controls
+  Files: 
+    - utils\responsive-portfolio.css
+    - components\device-preview.css
+  Specificity: 10
+
+
+- Selector: .preview-container
+  Files: 
+    - utils\responsive-portfolio.css
+    - utils\responsive-portfolio.css
+  Specificity: 10
+
+
+- Selector: :root
+  Files: 
+    - utils\responsive-portfolio.css
+    - pages\responsive.css
+  Specificity: 10
+
+
+- Selector: .portfolio-header h1
+  Files: 
+    - utils\responsive-portfolio.css
+    - utils\responsive-portfolio.css
+  Specificity: 10
+
+
+- Selector: .device-button
+  Files: 
+    - utils\responsive-portfolio.css
+    - components\device-preview.css
+  Specificity: 10
+
+
+- Selector: :root
+  Files: 
+    - utils\responsive.css
+    - utils\responsive-portfolio.css
+  Specificity: 10
+
+
+- Selector: :root
+  Files: 
+    - utils\responsive.css
+    - utils\responsive.css
+  Specificity: 10
+
+
+- Selector: .page-container
+  Files: 
+    - utils\responsive.css
+    - layouts\containers.css
+  Specificity: 10
+
+
+- Selector: :root
+  Files: 
+    - utils\responsive.css
+    - utils\responsive.css
+  Specificity: 10
+
+
+- Selector: .page-container
+  Files: 
+    - utils\responsive.css
+    - utils\responsive.css
+  Specificity: 10
+
+
+High Specificity Issues:

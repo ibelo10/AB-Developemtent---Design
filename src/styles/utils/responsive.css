@@ -1,0 +1,29 @@
+/* src/styles/utils/responsive.css */
+/* Base responsive rules */
+@media (max-width: 1200px) {
+  :root {
+    --container-width: 960px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-4xl: 2.5rem;
+    --spacing-lg: 1.5rem;
+  }
+
+  .page-container {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-4xl: 2rem;
+    --spacing-md: 1rem;
+  }
+
+  .page-container {
+    padding: var(--spacing-md);
+  }
+}

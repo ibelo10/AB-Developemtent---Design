@@ -1,0 +1,29 @@
+/* src/styles/components/portfolio-item.css */
+.portfolio-item {
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  padding: var(--spacing-lg);
+}
+
+.portfolio-content {
+  padding: var(--spacing-lg) 0;
+}
+
+.portfolio-content h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.portfolio-category {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.portfolio-description {
+  line-height: 1.6;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+}

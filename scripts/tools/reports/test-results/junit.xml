@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="13" failures="2" errors="0" time="5.848">
+  <testsuite name="Messenger Component" errors="0" failures="0" skipped="0" timestamp="2024-11-05T16:11:16" time="3.387" tests="3">
+    <testcase classname="Messenger Component" name="should initialize Facebook SDK" time="0.02">
+    </testcase>
+    <testcase classname="Messenger Component" name="should create chat container" time="0.002">
+    </testcase>
+    <testcase classname="Messenger Component" name="should handle show/hide events" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="ScrollingText Component" errors="0" failures="0" skipped="0" timestamp="2024-11-05T16:11:16" time="3.406" tests="3">
+    <testcase classname="ScrollingText Component" name="should initialize with default options" time="0.024">
+    </testcase>
+    <testcase classname="ScrollingText Component" name="should cycle through texts" time="0.004">
+    </testcase>
+    <testcase classname="ScrollingText Component" name="should pause and resume animation" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="PortfolioGrid Component" errors="0" failures="1" skipped="0" timestamp="2024-11-05T16:11:16" time="3.504" tests="4">
+    <testcase classname="PortfolioGrid Component" name="should initialize with controls" time="0.034">
+    </testcase>
+    <testcase classname="PortfolioGrid Component" name="should toggle layout" time="0.026">
+    </testcase>
+    <testcase classname="PortfolioGrid Component" name="should filter items" time="0.014">
+    </testcase>
+    <testcase classname="PortfolioGrid Component" name="should respond to viewport changes" time="0.014">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: &quot;mobile&quot;
+
+Number of calls: 0
+    at Object.toHaveBeenCalledWith (E:\BotApp\AB-Developemtent---Design\src\scripts\tests\components\PortfolioGrid.test.js:93:29)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="ContactForm Component" errors="0" failures="1" skipped="0" timestamp="2024-11-05T16:11:16" time="3.879" tests="3">
+    <testcase classname="ContactForm Component" name="should validate required fields" time="0.149">
+    </testcase>
+    <testcase classname="ContactForm Component" name="should validate email format" time="0.125">
+    </testcase>
+    <testcase classname="ContactForm Component" name="should emit event on successful submission" time="0.22">
+      <failure>ReferenceError: eventBus is not defined
+    at ContactForm.eventBus [as handleSubmit] (E:\BotApp\AB-Developemtent---Design\src\scripts\components\contact-form.js:55:7)
+    at HTMLFormElement.callTheUserObjectsOperation (E:\BotApp\AB-Developemtent---Design\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
+    at innerInvokeEventListeners (E:\BotApp\AB-Developemtent---Design\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:350:25)
+    at invokeEventListeners (E:\BotApp\AB-Developemtent---Design\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLFormElementImpl._dispatch (E:\BotApp\AB-Developemtent---Design\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLFormElementImpl.dispatchEvent (E:\BotApp\AB-Developemtent---Design\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLFormElement.dispatchEvent (E:\BotApp\AB-Developemtent---Design\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at Object.dispatchEvent (E:\BotApp\AB-Developemtent---Design\src\scripts\tests\components\ContactForm.test.js:83:10)
+    at Promise.then.completed (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\run.js:316:40)
+    at _runTest (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\run.js:121:9)
+    at run (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (E:\BotApp\AB-Developemtent---Design\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (E:\BotApp\AB-Developemtent---Design\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (E:\BotApp\AB-Developemtent---Design\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (E:\BotApp\AB-Developemtent---Design\node_modules\jest-runner\build\testWorker.js:106:12)</failure>
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: &quot;contactFormSubmit&quot;, Any&lt;Object&gt;
+
+Number of calls: 0
+    at Object.toHaveBeenCalledWith (E:\BotApp\AB-Developemtent---Design\src\scripts\tests\components\ContactForm.test.js:88:22)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

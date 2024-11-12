@@ -1,0 +1,16 @@
+/* src/styles/components/tech-tags.css */
+.portfolio-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.tech-tag {
+  background: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-base);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}
