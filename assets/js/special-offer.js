@@ -13,27 +13,45 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0;
         transition: opacity 0.3s ease;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         font-family: 'Raleway', sans-serif;
+        padding: 5rem 1rem 2rem;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(46, 213, 115, 0.3) transparent;
+      }
+  
+      .special-offer-overlay::-webkit-scrollbar {
+        width: 6px;
+      }
+  
+      .special-offer-overlay::-webkit-scrollbar-track {
+        background: transparent;
+      }
+  
+      .special-offer-overlay::-webkit-scrollbar-thumb {
+        background-color: rgba(46, 213, 115, 0.3);
+        border-radius: 3px;
       }
   
       .special-offer-content {
         background: rgba(18, 18, 18, 0.95);
         border: 1px solid rgba(46, 213, 115, 0.2);
         border-radius: 15px;
-        padding: 2rem;
+        padding: 3rem 2rem 2rem;
         position: relative;
         width: 90%;
         max-width: 700px;
         transform: translateY(20px);
         transition: transform 0.3s ease;
         box-shadow: 0 0 30px rgba(46, 213, 115, 0.1);
+        margin: 0 auto;
       }
   
       .offer-badge {
         position: absolute;
-        top: -20px;
+        top: -22px;
         left: 50%;
         transform: translateX(-50%);
         background: linear-gradient(to right, #2ed573, #1dd1a1);
@@ -43,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
         font-weight: bold;
         font-size: 1.1rem;
         box-shadow: 0 4px 15px rgba(46, 213, 115, 0.3);
+        white-space: nowrap;
+        z-index: 1;
       }
   
       .timer-badge {
@@ -57,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        z-index: 1;
       }
   
       .close-btn {
@@ -69,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cursor: pointer;
         padding: 0.5rem;
         transition: color 0.2s ease;
+        z-index: 2;
       }
   
       .close-btn:hover {
@@ -125,12 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         margin: 2rem 0;
-      }
-  
-      @media (min-width: 640px) {
-        .features-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
       }
   
       .feature-list {
@@ -202,6 +218,45 @@ document.addEventListener("DOMContentLoaded", () => {
       .maybe-later-btn:hover {
         background: rgba(255, 255, 255, 0.1);
       }
+  
+      @media (max-height: 800px) {
+        .special-offer-overlay {
+          padding: 6rem 1rem 2rem;
+        }
+      }
+  
+      @media (min-width: 640px) {
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+  
+      @media (max-width: 640px) {
+        .special-offer-overlay {
+          padding: 5rem 0.75rem 1.5rem;
+        }
+  
+        .special-offer-content {
+          padding: 3rem 1.5rem 1.5rem;
+          margin: 0 auto;
+        }
+  
+        .offer-title {
+          font-size: 2rem;
+        }
+  
+        .current-price {
+          font-size: 2.5rem;
+        }
+  
+        .features-grid {
+          gap: 1rem;
+        }
+  
+        .feature-list li {
+          margin-bottom: 0.5rem;
+        }
+      }
     `;
     document.head.appendChild(style);
   
@@ -220,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Black Friday Deal
           </div>
           
-          <button class="close-btn">
+          <button class="close-btn" aria-label="Close popup">
             <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -321,6 +376,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // Close on background click
       popup.addEventListener('click', (e) => {
         if (e.target === popup) {
+          closePopup();
+        }
+      });
+  
+      // Add escape key support
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
           closePopup();
         }
       });
