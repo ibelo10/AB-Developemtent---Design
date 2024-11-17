@@ -1,107 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - AB Development & Design</title>
-
-    <!-- Meta tags for better SEO -->
-    <meta name="description" content="Portfolio of AB Development & Design - Showcasing innovative web solutions and creative designs" />
-    <meta property="og:title" content="Portfolio - AB Development & Design" />
-    <meta property="og:description" content="Showcasing innovative web solutions and creative designs" />
-    <meta property="og:image" content="assets/images/ABLogo.png" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/portfolio.css" />
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Development & Design</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-      .portfolio-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: calc(100vh - 80px);
-        padding: 20px;
-        text-align: center;
-      }
+        * {
+            box-sizing: border-box;
+        }
 
-      .glass-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 20px;
-        padding: 40px;
-        max-width: 600px;
-        width: 90%;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      }
+        body {
+            margin: 0;
+            background: #1C1A30;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
 
-      .linktree-button {
-        display: inline-block;
-        background: linear-gradient(135deg, #2ecc71, #27ae60);
-        color: white;
-        text-decoration: none;
-        padding: 16px 32px;
-        border-radius: 30px;
-        font-weight: 600;
-        margin-top: 24px;
-        transition: transform 0.2s, box-shadow 0.2s;
-      }
+        .container {
+            width: 600px;
+            height: 340px;
+            margin: 0 auto;
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            perspective-origin: right;
+        }
 
-      .linktree-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-      }
+        .card {
+            width: 600px;
+            height: 340px;
+            box-shadow: 0 27px 55px 0 rgba(0, 0, 0, .7), 0 17px 17px 0 rgba(0, 0, 0, .5);
+            position: relative;
+            transform: rotate(0deg);
+            transform-origin: 100% 0%;
+            transform-style: preserve-3d;
+            transition: .8s ease-in-out;
+        }
 
-      h1 {
-        color: white;
-        margin-bottom: 20px;
-        font-size: 2.5rem;
-      }
+        .front, .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-      p {
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 30px;
-        line-height: 1.6;
-      }
+        .front {
+            z-index: 2;
+            transform: rotateY(0deg);
+            background: #1C1A30;
+        }
+
+        .back {
+            transform: rotateY(-180deg);
+            background: linear-gradient(135deg, #1C1A30, #2a2845);
+            color: white;
+        }
+
+        .container:hover .card {
+            transform: rotateY(180deg) translateX(100%);
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 200px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover .logo-img {
+            transform: scale(1.1);
+        }
+
+        .back h1 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .linktree-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .linktree-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .back p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 20px 0;
+            text-align: center;
+            max-width: 80%;
+        }
     </style>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="nav-logo">
-        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
-        <span>AB Development & Design</span>
-      </div>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/portfolio" class="active">Portfolio</a>
-        <a href="/contact">Contact</a>
-      </div>
-    </nav>
-    
-    <div class="page-container portfolio-container">
-      <div class="portfolio-content">
-        <div class="glass-card">
-          <h1>My Portfolio</h1>
-          <p>Explore my work, projects, and social media presence through my comprehensive Linktree profile.</p>
-          <a href="https://linktr.ee/Iaaron" target="_blank" rel="noopener noreferrer" class="linktree-button">
-            View My Links
-          </a>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="front">
+                <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img">
+            </div>
+            <div class="back">
+                <h1>AB Development & Design</h1>
+                <p>Discover my portfolio, projects, and social media presence</p>
+                <a href="https://linktr.ee/Iaaron" target="_blank" class="linktree-btn">
+                    Visit My Linktree
+                </a>
+            </div>
         </div>
-      </div>
     </div>
-
-    <script type="module">
-      import { initializeBackgroundEffects } from './assets/js/components/background-effects.js';
-      document.addEventListener('DOMContentLoaded', () => {
-          initializeBackgroundEffects('portfolio');
-      });
-    </script>
-  </body>
+</body>
 </html>
