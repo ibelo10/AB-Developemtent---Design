@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-H16CFGEXZP');
+    </script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AB Development & Design</title>
+    <title>Portfolio - AB Development & Design</title>
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:title" content="AB Development & Design" />
+    <meta property="og:description" content="We build innovative solutions with passion" />
+    <meta property="og:image" content="assets/images/ABLogo.png" />
+    <meta property="og:url" content="https://abdevndesign.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+    <!-- jQuery and Ripples Plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/messenger.css" />
+
     <style>
         * {
             margin: 0;
@@ -15,7 +47,8 @@
         body {
             background: #0a0c10;
             font-family: 'Raleway', sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         #particle-canvas {
@@ -25,6 +58,7 @@
             z-index: 1;
         }
 
+        /* Navbar Styles */
         .navbar {
             background: rgba(15, 19, 23, 0.95);
             padding: 1rem 2rem;
@@ -32,13 +66,14 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 1000;
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 1rem;
+            z-index: 1001;
         }
 
         .logo-img {
@@ -71,6 +106,71 @@
             color: #2ecc71;
         }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Menu Styles */
+        @media screen and (max-width: 768px) {
+            .nav-logo span {
+                font-size: 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: rgba(15, 19, 23, 0.98);
+                flex-direction: column;
+                padding: 80px 40px;
+                gap: 2rem;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+        }
+
         .page-container {
             display: flex;
             justify-content: center;
@@ -78,10 +178,12 @@
             min-height: calc(100vh - 73px);
             position: relative;
             z-index: 2;
+            padding: 1rem;
         }
 
         .flip-container {
-            width: 600px;
+            width: 100%;
+            max-width: 600px;
             height: 340px;
             position: relative;
             perspective: 1000px;
@@ -141,6 +243,8 @@
             margin-bottom: 30px;
             font-size: 1.8em;
             font-weight: 400;
+            text-align: center;
+            padding: 0 1rem;
         }
 
         .linktree-btn {
@@ -167,6 +271,31 @@
             text-align: center;
             max-width: 80%;
             font-size: 0.9em;
+            padding: 0 1rem;
+        }
+
+        @media screen and (max-width: 480px) {
+            .card-logo-circle {
+                width: 150px;
+                height: 150px;
+            }
+
+            .card-logo {
+                width: 100px;
+            }
+
+            .back h1 {
+                font-size: 1.5em;
+            }
+
+            .back p {
+                font-size: 0.8em;
+            }
+
+            .linktree-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -178,6 +307,11 @@
             <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
             <span>AB Development & Design</span>
         </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-links">
             <a href="/">Home</a>
             <a href="/portfolio" class="active">Portfolio</a>
@@ -205,7 +339,22 @@
         </div>
     </div>
 
+    <!-- Chat Toast Notification -->
+    <div class="chat-toast" id="chatToast">
+        <div class="toast-content">
+            <span class="toast-icon">💬</span>
+            <p>Need help? Chat with us!</p>
+            <button class="toast-close" onclick="closeToast()">&times;</button>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- Messenger Chat Integration -->
+    <div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+
     <script>
+        // Particle Animation
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         const colors = ['#2ecc71', '#27ae60', '#145a32', '#186a3b', '#1d8348'];
@@ -217,7 +366,6 @@
         const size = 7;
         const speed = 20;
         let time = 0;
-        let count = 0;
         const parts = [];
         const mouse = { x: 0, y: 0 };
 
@@ -287,9 +435,95 @@
             return Math.sqrt(dx * dx + dy * dy);
         }
 
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Initialize particle animation
         canvas.addEventListener('mousemove', MouseMove, false);
         create();
         particles();
+
+        // Messenger Chat Configuration
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+FB.Event.subscribe('customerchat.load', function() {
+                console.log('Chat widget loaded successfully');
+                initializeChatToast();
+            });
+
+            FB.Event.subscribe('customerchat.show', function() {
+                hideToast();
+                trackChatOpen();
+            });
+
+            FB.Event.subscribe('customerchat.hide', function() {
+                console.log('Chat widget hidden');
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            js.crossOrigin = 'anonymous';
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'facebook-jssdk');
+
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute('page_id', '113394291657712');
+        chatbox.setAttribute('attribution', 'biz_inbox');
+        chatbox.setAttribute('theme_color', '#2ecc71');
+        chatbox.setAttribute('greeting_dialog_display', 'fade');
+        chatbox.setAttribute('greeting_dialog_delay', '5');
+        chatbox.setAttribute('logged_in_greeting', 'Hi! 👋 How can we help you today?');
+        chatbox.setAttribute('logged_out_greeting', 'Hi! 👋 Log in to chat with us.');
+
+        // Chat Toast Functions
+        function initializeChatToast() {
+            setTimeout(function() {
+                document.getElementById('chatToast').classList.add('show');
+            }, 3000);
+        }
+
+        function hideToast() {
+            document.getElementById('chatToast').classList.remove('show');
+        }
+
+        function closeToast() {
+            hideToast();
+        }
+
+        function trackChatOpen() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'chat_opened', {
+                    'event_category': 'Chat',
+                    'event_label': 'Messenger Chat Opened'
+                });
+            }
+        }
     </script>
+
+    <!-- Custom Scripts -->
+    <script src="assets/js/main.js" type="module"></script>
+    <script src="assets/js/messenger.js" type="module"></script>
 </body>
 </html>
