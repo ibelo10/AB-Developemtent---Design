@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-H16CFGEXZP');
-</script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
-     crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-H16CFGEXZP');
+    </script>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AB Development & Design</title>
 
     <!-- Facebook Meta Tags -->
     <meta property="og:title" content="AB Development & Design" />
-    <meta
-      property="og:description"
-      content="We build innovative solutions with passion"
-    />
+    <meta property="og:description" content="We build innovative solutions with passion" />
     <meta property="og:image" content="assets/images/ABLogo.png" />
     <meta property="og:url" content="https://abdevndesign.com" />
     <meta property="og:type" content="website" />
@@ -29,131 +24,199 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
     <!-- jQuery and Ripples Plugin -->
-    <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-      defer
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"
-      defer
-    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/messenger.css" />
-  </head>
+    
+    <style>
+        .page-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 73px);
+            background: radial-gradient(circle at center, #111827 0%, #0a0c10 100%);
+        }
 
-  <body>
+        .flip-container {
+            width: 600px;
+            height: 340px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flip-container:hover .card {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #111827;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .front {
+            background: #0f1317;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            background: #0f1317;
+        }
+
+        .card-logo {
+            width: 150px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .card-logo-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #111827;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .back h1 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            font-weight: 400;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .linktree-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Raleway', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .linktree-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .back p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 20px 0;
+            text-align: center;
+            max-width: 80%;
+            font-size: 0.9em;
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+</head>
+<body>
     <nav class="navbar">
-      <div class="nav-logo">
-        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
-        <span>AB Development & Design</span>
-      </div>
-      <div class="nav-links">
-        <a href="/" class="active">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/services">Services</a>
-        <a href="/contact">Contact</a>
-      </div>
+        <div class="nav-logo">
+            <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+            <span>AB Development & Design</span>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/portfolio" class="active">Portfolio</a>
+            <a href="/services">Services</a>
+            <a href="/contact">Contact</a>
+        </div>
     </nav>
 
-    <div class="hero-container">
-      <div class="logo-large">
-        <img
-          src="assets/images/ABLogo.png"
-          alt="AB Logo"
-          class="logo-img-large"
-        />
-      </div>
-      <div class="content-wrapper">
-        <h1>AB Development & Design</h1>
-        <div class="tagline-container">
-          <span>We</span>
-          <div class="scrolling-text">
-            <span class="scrolling-text__item">build innovative solutions</span>
-          </div>
-          <span>with passion</span>
+    <div class="page-container">
+        <div class="flip-container">
+            <div class="card">
+                <div class="front">
+                    <div class="card-logo-circle">
+                        <img src="assets/images/ABLogo.png" alt="AB Logo" class="card-logo">
+                    </div>
+                </div>
+                <div class="back">
+                    <h1>AB Development & Design</h1>
+                    <p>We build innovative solutions with passion</p>
+                    <a href="https://linktr.ee/Iaaron" target="_blank" class="linktree-btn">
+                        View Portfolio
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="cta-container">
-          <a href="/portfolio" class="cta-button">VIEW PORTFOLIO</a>
-          <a href="/services" class="cta-button cta-button--secondary"
-            >OUR SERVICES</a
-          >
-        </div>
-      </div>
     </div>
 
     <!-- Chat Toast Notification -->
     <div class="chat-toast" id="chatToast">
-      <div class="toast-content">
-        <span class="toast-icon">💬</span>
-        <p>Need help? Chat with us!</p>
-        <button class="toast-close" onclick="closeToast()">&times;</button>
-      </div>
-      <div class="toast-progress"></div>
+        <div class="toast-content">
+            <span class="toast-icon">💬</span>
+            <p>Need help? Chat with us!</p>
+            <button class="toast-close" onclick="closeToast()">&times;</button>
+        </div>
+        <div class="toast-progress"></div>
     </div>
 
     <!-- Messenger Chat Integration -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
-    <!-- Messenger Script -->
-    <script>
-      window.fbAsyncInit = function () {
-        FB.init({
-          xfbml: true,
-          version: "v18.0",
-        });
-
-        FB.Event.subscribe("customerchat.load", function () {
-          console.log("Chat widget loaded successfully");
-          initializeChatToast();
-        });
-
-        FB.Event.subscribe("customerchat.show", function () {
-          hideToast();
-          trackChatOpen();
-        });
-
-        FB.Event.subscribe("customerchat.hide", function () {
-          console.log("Chat widget hidden");
-        });
-      };
-
-      (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "facebook-jssdk");
-
-      var chatbox = document.getElementById("fb-customer-chat");
-      chatbox.setAttribute("page_id", "113394291657712");
-      chatbox.setAttribute("attribution", "biz_inbox");
-      chatbox.setAttribute("theme_color", "#2ecc71");
-      chatbox.setAttribute("greeting_dialog_display", "fade");
-      chatbox.setAttribute("greeting_dialog_delay", "5");
-      chatbox.setAttribute(
-        "logged_in_greeting",
-        "Hi! 👋 How can we help you today?"
-      );
-      chatbox.setAttribute(
-        "logged_out_greeting",
-        "Hi! 👋 Log in to chat with us."
-      );
-    </script>
-
     <!-- Custom Scripts -->
     <script src="assets/js/main.js" type="module"></script>
     <script src="assets/js/messenger.js" type="module"></script>
-  </body>
+
+    <!-- Messenger Script -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: "v18.0",
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, "script", "facebook-jssdk");
+
+        var chatbox = document.getElementById("fb-customer-chat");
+        chatbox.setAttribute("page_id", "113394291657712");
+        chatbox.setAttribute("attribution", "biz_inbox");
+        chatbox.setAttribute("theme_color", "#2ecc71");
+        chatbox.setAttribute("greeting_dialog_display", "fade");
+        chatbox.setAttribute("greeting_dialog_delay", "5");
+        chatbox.setAttribute("logged_in_greeting", "Hi! 👋 How can we help you today?");
+        chatbox.setAttribute("logged_out_greeting", "Hi! 👋 Log in to chat with us.");
+    </script>
+</body>
 </html>
