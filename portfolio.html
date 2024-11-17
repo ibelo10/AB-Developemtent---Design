@@ -1,46 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-H16CFGEXZP');
-    </script>
-    
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AB Development & Design</title>
-
-    <!-- Facebook Meta Tags -->
-    <meta property="og:title" content="AB Development & Design" />
-    <meta property="og:description" content="We build innovative solutions with passion" />
-    <meta property="og:image" content="assets/images/ABLogo.png" />
-    <meta property="og:url" content="https://abdevndesign.com" />
-    <meta property="og:type" content="website" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
-
-    <!-- jQuery and Ripples Plugin -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/messenger.css" />
-    
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c10;
+            font-family: 'Raleway', sans-serif;
+            overflow: hidden;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .navbar {
+            background: rgba(15, 19, 23, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-logo span {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2ecc71;
+        }
+
+        .nav-links a.active {
+            color: #2ecc71;
+        }
+
         .page-container {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: calc(100vh - 73px);
-            background: radial-gradient(circle at center, #111827 0%, #0a0c10 100%);
+            position: relative;
+            z-index: 2;
         }
 
         .flip-container {
@@ -72,18 +109,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: #111827;
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .front {
-            background: #0f1317;
-        }
-
         .back {
             transform: rotateY(180deg);
-            background: #0f1317;
         }
 
         .card-logo {
@@ -96,7 +129,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: #111827;
+            background: rgba(17, 24, 39, 0.5);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -108,7 +141,6 @@
             margin-bottom: 30px;
             font-size: 1.8em;
             font-weight: 400;
-            font-family: 'Raleway', sans-serif;
         }
 
         .linktree-btn {
@@ -120,7 +152,6 @@
             border-radius: 6px;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-family: 'Raleway', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -136,11 +167,12 @@
             text-align: center;
             max-width: 80%;
             font-size: 0.9em;
-            font-family: 'Raleway', sans-serif;
         }
     </style>
 </head>
 <body>
+    <canvas id="particle-canvas"></canvas>
+
     <nav class="navbar">
         <div class="nav-logo">
             <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
@@ -173,50 +205,91 @@
         </div>
     </div>
 
-    <!-- Chat Toast Notification -->
-    <div class="chat-toast" id="chatToast">
-        <div class="toast-content">
-            <span class="toast-icon">💬</span>
-            <p>Need help? Chat with us!</p>
-            <button class="toast-close" onclick="closeToast()">&times;</button>
-        </div>
-        <div class="toast-progress"></div>
-    </div>
-
-    <!-- Messenger Chat Integration -->
-    <div id="fb-root"></div>
-    <div id="fb-customer-chat" class="fb-customerchat"></div>
-
-    <!-- Custom Scripts -->
-    <script src="assets/js/main.js" type="module"></script>
-    <script src="assets/js/messenger.js" type="module"></script>
-
-    <!-- Messenger Script -->
     <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: "v18.0",
-            });
-        };
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        const colors = ['#2ecc71', '#27ae60', '#145a32', '#186a3b', '#1d8348'];
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, "script", "facebook-jssdk");
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        const rate = 60;
+        const arc = 100;
+        const size = 7;
+        const speed = 20;
+        let time = 0;
+        let count = 0;
+        const parts = [];
+        const mouse = { x: 0, y: 0 };
 
-        var chatbox = document.getElementById("fb-customer-chat");
-        chatbox.setAttribute("page_id", "113394291657712");
-        chatbox.setAttribute("attribution", "biz_inbox");
-        chatbox.setAttribute("theme_color", "#2ecc71");
-        chatbox.setAttribute("greeting_dialog_display", "fade");
-        chatbox.setAttribute("greeting_dialog_delay", "5");
-        chatbox.setAttribute("logged_in_greeting", "Hi! 👋 How can we help you today?");
-        chatbox.setAttribute("logged_out_greeting", "Hi! 👋 Log in to chat with us.");
+        function resizeCanvas() {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function create() {
+            for(let i = 0; i < arc; i++) {
+                parts[i] = {
+                    x: Math.ceil(Math.random() * w),
+                    y: Math.ceil(Math.random() * h),
+                    toX: Math.random() * 5 - 1,
+                    toY: Math.random() * 2 - 1,
+                    c: colors[Math.floor(Math.random() * colors.length)],
+                    size: Math.random() * size
+                }
+            }
+        }
+
+        function particles() {
+            ctx.clearRect(0, 0, w, h);
+            for(let i = 0; i < arc; i++) {
+                let li = parts[i];
+                let distanceFactor = DistanceBetween(mouse, parts[i]);
+                distanceFactor = Math.max(Math.min(15 - (distanceFactor / 10), 10), 1);
+                
+                ctx.beginPath();
+                ctx.arc(li.x, li.y, li.size * distanceFactor, 0, Math.PI * 2, false);
+                ctx.fillStyle = li.c;
+                ctx.strokeStyle = li.c;
+                
+                if(i % 2 == 0)
+                    ctx.stroke();
+                else
+                    ctx.fill();
+                
+                li.x = li.x + li.toX * (time * 0.05);
+                li.y = li.y + li.toY * (time * 0.05);
+                
+                if(li.x > w) li.x = 0;
+                if(li.y > h) li.y = 0;
+                if(li.x < 0) li.x = w;
+                if(li.y < 0) li.y = h;
+            }
+            
+            if(time < speed) {
+                time++;
+            }
+            requestAnimationFrame(particles);
+        }
+
+        function MouseMove(e) {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        }
+
+        function DistanceBetween(p1, p2) {
+            const dx = p2.x - p1.x;
+            const dy = p2.y - p1.y;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        canvas.addEventListener('mousemove', MouseMove, false);
+        create();
+        particles();
     </script>
 </body>
 </html>
