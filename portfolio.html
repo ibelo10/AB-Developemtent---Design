@@ -6,46 +6,69 @@
     <title>Portfolio - AB Development & Design</title>
 
     <!-- Meta tags for better SEO -->
-    <meta
-      name="description"
-      content="Portfolio of AB Development & Design - Showcasing innovative web solutions and creative designs"
-    />
+    <meta name="description" content="Portfolio of AB Development & Design - Showcasing innovative web solutions and creative designs" />
     <meta property="og:title" content="Portfolio - AB Development & Design" />
-    <meta
-      property="og:description"
-      content="Showcasing innovative web solutions and creative designs"
-    />
+    <meta property="og:description" content="Showcasing innovative web solutions and creative designs" />
     <meta property="og:image" content="assets/images/ABLogo.png" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/portfolio.css" />
     
     <style>
-      .linktree-container {
-        width: 100%;
-        height: calc(100vh - 80px); /* Adjust based on your navbar height */
-        border: none;
-        border-radius: 12px;
+      .portfolio-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 80px);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .glass-card {
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 600px;
+        width: 90%;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       }
 
-      .portfolio-content {
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-        height: calc(100vh - 80px);
+      .linktree-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        color: white;
+        text-decoration: none;
+        padding: 16px 32px;
+        border-radius: 30px;
+        font-weight: 600;
+        margin-top: 24px;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .linktree-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+      }
+
+      h1 {
+        color: white;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+        line-height: 1.6;
       }
     </style>
   </head>
@@ -64,13 +87,13 @@
     
     <div class="page-container portfolio-container">
       <div class="portfolio-content">
-        <iframe
-          class="linktree-container"
-          src="https://linktr.ee/Iaaron"
-          title="AB Development & Design Linktree"
-          loading="lazy"
-          allow="clipboard-write"
-        ></iframe>
+        <div class="glass-card">
+          <h1>My Portfolio</h1>
+          <p>Explore my work, projects, and social media presence through my comprehensive Linktree profile.</p>
+          <a href="https://linktr.ee/Iaaron" target="_blank" rel="noopener noreferrer" class="linktree-button">
+            View My Links
+          </a>
+        </div>
       </div>
     </div>
 
