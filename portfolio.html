@@ -45,20 +45,22 @@
         }
 
         body {
-            background: #0a0c10;
             font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
+            background: transparent;
         }
 
         #particle-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 1;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: #0a0c10;
         }
 
-        /* Navbar Styles */
         .navbar {
             background: rgba(15, 19, 23, 0.95);
             padding: 1rem 2rem;
@@ -67,6 +69,8 @@
             align-items: center;
             position: relative;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .nav-logo {
@@ -148,6 +152,8 @@
                 padding: 80px 40px;
                 gap: 2rem;
                 transition: right 0.3s ease;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
             }
 
             .nav-links.active {
@@ -201,24 +207,26 @@
             transform: rotateY(180deg);
         }
 
-       .front, .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(17, 24, 39, 0.3); /* Made more transparent */
-    backdrop-filter: blur(5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(17, 24, 39, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
         .back {
             transform: rotateY(180deg);
+            background: rgba(17, 24, 39, 0.2);
         }
 
         .card-logo {
@@ -231,11 +239,13 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: rgba(17, 24, 39, 0.5);
+            background: rgba(17, 24, 39, 0.2);
             display: flex;
             justify-content: center;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .back h1 {
@@ -320,7 +330,7 @@
         </div>
     </nav>
 
-    <div class="page-container">
+<div class="page-container">
         <div class="flip-container">
             <div class="card">
                 <div class="front">
@@ -354,17 +364,19 @@
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
     <script>
-        // Particle Animation
+        // Particle Animation Configuration
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
+        
+        // Updated colors to match your brand
         const colors = ['#2ecc71', '#27ae60', '#145a32', '#186a3b', '#1d8348'];
 
         let w = window.innerWidth;
         let h = window.innerHeight;
         const rate = 60;
-        const arc = 100;
-        const size = 7;
-        const speed = 20;
+        const arc = 50; // Reduced particle count for better performance
+        const size = 5; // Slightly smaller particles
+        const speed = 15; // Adjusted speed
         let time = 0;
         const parts = [];
         const mouse = { x: 0, y: 0 };
@@ -374,20 +386,23 @@
             h = window.innerHeight;
             canvas.width = w;
             canvas.height = h;
+            // Recreate particles on resize
+            create();
         }
 
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
         function create() {
+            parts.length = 0; // Clear existing particles
             for(let i = 0; i < arc; i++) {
                 parts[i] = {
                     x: Math.ceil(Math.random() * w),
                     y: Math.ceil(Math.random() * h),
-                    toX: Math.random() * 5 - 1,
-                    toY: Math.random() * 2 - 1,
+                    toX: Math.random() * 3 - 1.5, // Adjusted movement range
+                    toY: Math.random() * 1.5 - 0.75, // Adjusted vertical movement
                     c: colors[Math.floor(Math.random() * colors.length)],
-                    size: Math.random() * size
+                    size: Math.random() * size + 1 // Minimum size of 1
                 }
             }
         }
@@ -400,18 +415,29 @@
                 distanceFactor = Math.max(Math.min(15 - (distanceFactor / 10), 10), 1);
                 
                 ctx.beginPath();
-                ctx.arc(li.x, li.y, li.size * distanceFactor, 0, Math.PI * 2, false);
-                ctx.fillStyle = li.c;
-                ctx.strokeStyle = li.c;
+                ctx.arc(li.x, li.y, li.size * distanceFactor * 0.75, 0, Math.PI * 2, false);
                 
-                if(i % 2 == 0)
+                // Create gradient for particles
+                let gradient = ctx.createRadialGradient(
+                    li.x, li.y, 0,
+                    li.x, li.y, li.size * distanceFactor
+                );
+                gradient.addColorStop(0, li.c);
+                gradient.addColorStop(1, 'transparent');
+                
+                if(i % 2 == 0) {
+                    ctx.strokeStyle = li.c;
                     ctx.stroke();
-                else
+                } else {
+                    ctx.fillStyle = gradient;
                     ctx.fill();
+                }
                 
-                li.x = li.x + li.toX * (time * 0.05);
-                li.y = li.y + li.toY * (time * 0.05);
+                // Smoother movement
+                li.x += li.toX * (time * 0.05);
+                li.y += li.toY * (time * 0.05);
                 
+                // Wrap around screen edges
                 if(li.x > w) li.x = 0;
                 if(li.y > h) li.y = 0;
                 if(li.x < 0) li.x = w;
@@ -425,8 +451,9 @@
         }
 
         function MouseMove(e) {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
         }
 
         function DistanceBetween(p1, p2) {
@@ -439,17 +466,23 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar')) {
+            if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             }
+        });
+
+        // Prevent menu close when clicking inside nav
+        navLinks.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
 
         // Initialize particle animation
@@ -463,7 +496,8 @@
                 xfbml: true,
                 version: 'v18.0'
             });
-FB.Event.subscribe('customerchat.load', function() {
+
+            FB.Event.subscribe('customerchat.load', function() {
                 console.log('Chat widget loaded successfully');
                 initializeChatToast();
             });
@@ -488,6 +522,7 @@ FB.Event.subscribe('customerchat.load', function() {
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'facebook-jssdk');
 
+        // Chat configuration
         var chatbox = document.getElementById('fb-customer-chat');
         chatbox.setAttribute('page_id', '113394291657712');
         chatbox.setAttribute('attribution', 'biz_inbox');
@@ -521,9 +556,5 @@ FB.Event.subscribe('customerchat.load', function() {
             }
         }
     </script>
-
-    <!-- Custom Scripts -->
-    <script src="assets/js/main.js" type="module"></script>
-    <script src="assets/js/messenger.js" type="module"></script>
 </body>
 </html>
