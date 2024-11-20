@@ -1,5 +1,3 @@
-# Correcting the issue with dynamic row insertion and regenerating the HTML file
-html_content_fixed = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,78 +5,170 @@ html_content_fixed = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Greeter Cost Estimate</title>
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --border-color: #e5e7eb;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.8;
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--light-gray);
+            color: var(--text-color);
         }
+
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        h1, h2 {
+
+        .header {
             text-align: center;
-            color: #0056b3;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
         }
+
         h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin: 0 0 1rem 0;
+            font-weight: 800;
         }
+
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin: 2.5rem 0 1.5rem 0;
+            font-weight: 700;
         }
-        p, li {
+
+        .summary {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .summary p {
+            margin: 0;
             font-size: 1.1rem;
-            margin-bottom: 10px;
+            line-height: 1.7;
         }
+
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 1.1rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
         }
-        table th {
-            background-color: #0056b3;
+
+        th {
+            background-color: var(--primary-color);
             color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
         }
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        tr:nth-child(even) {
+            background-color: var(--light-gray);
         }
-        .summary, .features {
-            margin: 20px 0;
+
+        td:first-child {
+            font-weight: 500;
         }
-        .features ul {
-            list-style-type: disc;
-            margin-left: 20px;
+
+        .features {
+            margin: 2rem 0;
         }
-        .features ul li {
-            margin-bottom: 12px;
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: #4b5563;
+        }
+
         footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 1rem;
-            color: #777;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>AI Greeter Cost Estimate</h1>
-        <div class="summary">
-            <p>The AI Greeter system provides personalized, automated greetings for your business. It uses advanced technology, including a Raspberry Pi, facial recognition, text-to-speech capabilities, and OpenAI API for conversational responses. Additionally, the system can cast any content to a screen tailored to your specific business needs, such as promotional material, personalized greetings, or instructions.</p>
+        <div class="header">
+            <h1>AI Greeter Cost Estimate</h1>
+            <div class="summary">
+                <p>The AI Greeter system provides personalized, automated greetings for your business using advanced technology, including a Raspberry Pi, facial recognition, text-to-speech capabilities, and OpenAI API for conversational responses. The system can cast customized content to screens for promotional material, personalized greetings, or instructions.</p>
+            </div>
         </div>
+
         <h2>Cost Breakdown</h2>
         <table>
             <thead>
@@ -89,47 +179,64 @@ html_content_fixed = """
                 </tr>
             </thead>
             <tbody>
-"""
-
-# Add the rows dynamically with corrected insertion logic
-for _, row in df.iterrows():
-    html_content_fixed += f"""
-        <tr>
-            <td>{row['Component']}</td>
-            <td>{row['Low-End Estimate ($)']}</td>
-            <td>{row['High-End Estimate ($)']}</td>
-        </tr>
-    """
-
-# Add the explanation section
-html_content_fixed += """
+                <tr>
+                    <td>Hardware Components</td>
+                    <td>300</td>
+                    <td>800</td>
+                </tr>
+                <tr>
+                    <td>Software Licensing</td>
+                    <td>200</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <td>Development Cost</td>
+                    <td>1500</td>
+                    <td>3000</td>
+                </tr>
+                <tr>
+                    <td>Monthly Maintenance</td>
+                    <td>100</td>
+                    <td>250</td>
+                </tr>
             </tbody>
         </table>
-        <h2>Explanation of Costs</h2>
-        <div class="features">
-            <ul>
-                <li><strong>Hardware:</strong> Essential components like a Raspberry Pi, camera for facial recognition, and optional peripherals such as a display screen or external storage.</li>
-                <li><strong>Software:</strong> Includes OpenAI API usage for conversational responses, facial recognition libraries, and optional text-to-speech systems.</li>
-                <li><strong>Development:</strong> Custom development to integrate hardware, software, and create a user-friendly experience.</li>
-                <li><strong>Maintenance:</strong> Covers recurring costs for API usage, software updates, and hardware replacements.</li>
-            </ul>
+
+        <h2>System Components</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Hardware</h3>
+                <p>Essential components including Raspberry Pi, camera for facial recognition, display screen, and external storage solutions for optimal performance.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Software</h3>
+                <p>Comprehensive software suite with OpenAI API integration, facial recognition libraries, and advanced text-to-speech systems.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Development</h3>
+                <p>Custom integration of hardware and software components, creating a seamless and user-friendly experience tailored to your needs.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Maintenance</h3>
+                <p>Ongoing support including API usage monitoring, regular software updates, and hardware maintenance to ensure consistent performance.</p>
+            </div>
         </div>
+
         <h2>Enhanced Features</h2>
-        <div class="features">
-            <p><strong>Screen Casting:</strong> The system can display personalized content or visuals on a connected screen. Use this feature for promotional material, personalized greetings, or business-specific instructions.</p>
-            <p><strong>Business Tailoring:</strong> Customization options allow the system to align with your unique branding and operational requirements.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Screen Casting</h3>
+                <p>Dynamic content display system for promotional materials, personalized greetings, and business-specific instructions on connected screens.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Business Tailoring</h3>
+                <p>Comprehensive customization options to align the system with your unique branding and operational requirements.</p>
+            </div>
         </div>
+
         <footer>
-            &copy; 2024 AI Greeter | Designed for Smart Business Automation
+            <p>&copy; 2024 AI Greeter | Designed for Smart Business Automation</p>
         </footer>
     </div>
 </body>
 </html>
-"""
-
-# Save the updated HTML content to a file
-html_file_path_corrected = "/mnt/data/AIGreeter_Cost_Estimate_Corrected.html"
-with open(html_file_path_corrected, "w") as file:
-    file.write(html_content_fixed)
-
-html_file_path_corrected
