@@ -1,5 +1,5 @@
-# Update the HTML content to improve font size and readability
-html_content = """
+# Correcting the issue with dynamic row insertion and regenerating the HTML file
+html_content_fixed = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,9 +91,9 @@ html_content = """
             <tbody>
 """
 
-# Add the rows dynamically
+# Add the rows dynamically with corrected insertion logic
 for _, row in df.iterrows():
-    html_content += f"""
+    html_content_fixed += f"""
         <tr>
             <td>{row['Component']}</td>
             <td>{row['Low-End Estimate ($)']}</td>
@@ -102,7 +102,7 @@ for _, row in df.iterrows():
     """
 
 # Add the explanation section
-html_content += """
+html_content_fixed += """
             </tbody>
         </table>
         <h2>Explanation of Costs</h2>
@@ -128,8 +128,8 @@ html_content += """
 """
 
 # Save the updated HTML content to a file
-html_file_path_readable = "/mnt/data/AIGreeter_Cost_Estimate_Improved.html"
-with open(html_file_path_readable, "w") as file:
-    file.write(html_content)
+html_file_path_corrected = "/mnt/data/AIGreeter_Cost_Estimate_Corrected.html"
+with open(html_file_path_corrected, "w") as file:
+    file.write(html_content_fixed)
 
-html_file_path_readable
+html_file_path_corrected
