@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Greeter Cost Estimate</title>
+    <title>AI Greeter Business Setup & Cost Analysis</title>
     <style>
         :root {
             --primary-color: #2563eb;
@@ -12,6 +12,7 @@
             --light-gray: #f3f4f6;
             --border-color: #e5e7eb;
             --highlight-bg: #dbeafe;
+            --success-color: #059669;
         }
 
         body {
@@ -24,13 +25,12 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 2rem auto;
             padding: 2rem;
             background: white;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .header {
@@ -52,51 +52,43 @@
             color: var(--secondary-color);
             margin: 2.5rem 0 1.5rem 0;
             font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
         }
 
-        .summary {
-            background-color: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            margin: 2rem 0;
+        h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.25rem;
         }
 
-        .summary p {
-            margin: 0;
-            font-size: 1.1rem;
-            line-height: 1.7;
+        .phase-indicator {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            margin-right: 1rem;
         }
 
-        .highlight-box {
-            background-color: var(--highlight-bg);
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            margin: 2rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .highlight-box p {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        table {
+        .cost-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             border-radius: 0.75rem;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        th, td {
+        .cost-table th, .cost-table td {
             padding: 1rem;
             text-align: left;
             border: 1px solid var(--border-color);
         }
 
-        th {
+        .cost-table th {
             background-color: var(--primary-color);
             color: white;
             font-weight: 600;
@@ -105,26 +97,53 @@
             letter-spacing: 0.05em;
         }
 
-        tr:nth-child(even) {
+        .cost-table tr:nth-child(even) {
             background-color: var(--light-gray);
         }
 
-        td:first-child {
-            font-weight: 500;
-        }
-
-        .features {
+        .timeline {
             margin: 2rem 0;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 0.75rem;
         }
 
-        .features-grid {
+        .timeline-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin-top: 1.5rem;
+            margin: 1.5rem 0;
         }
 
-        .feature-card {
+        .card {
             background: white;
             padding: 1.5rem;
             border-radius: 0.75rem;
@@ -132,24 +151,13 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        .feature-card h3 {
-            color: var(--primary-color);
-            margin: 0 0 1rem 0;
-            font-size: 1.25rem;
-        }
-
-        .feature-card p {
-            margin: 0;
-            color: #4b5563;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--border-color);
-            color: #6b7280;
-            font-size: 0.875rem;
+        .success-metric {
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            margin: 0.5rem 0;
         }
 
         @media (max-width: 768px) {
@@ -166,7 +174,7 @@
                 font-size: 1.5rem;
             }
 
-            table {
+            .cost-table {
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;
@@ -177,83 +185,174 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>AI Greeter Cost Estimate</h1>
-            <div class="summary">
-                <p>The AI Greeter system provides personalized, automated greetings for your business using advanced technology, including a Raspberry Pi, facial recognition, text-to-speech capabilities, and OpenAI API for conversational responses. The system can cast customized content to screens for promotional material, personalized greetings, or instructions.</p>
+            <h1>AI Greeter Business Setup & Cost Analysis</h1>
+            <p>Comprehensive business establishment and operational plan for your AI Greeter venture</p>
+        </div>
+
+        <h2>Initial Business Formation</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Legal Setup</h3>
+                <table class="cost-table">
+                    <tr>
+                        <td>LLC Formation</td>
+                        <td>$500 - $1,000</td>
+                    </tr>
+                    <tr>
+                        <td>Business Licenses</td>
+                        <td>$200 - $500</td>
+                    </tr>
+                    <tr>
+                        <td>Legal Consultation</td>
+                        <td>$500 - $1,500</td>
+                    </tr>
+                    <tr>
+                        <td>Insurance Setup</td>
+                        <td>$1,000 - $2,500</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Brand Development</h3>
+                <table class="cost-table">
+                    <tr>
+                        <td>Logo & Brand Identity</td>
+                        <td>$1,000 - $2,500</td>
+                    </tr>
+                    <tr>
+                        <td>Website Development</td>
+                        <td>$3,000 - $7,000</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing Materials</td>
+                        <td>$1,500 - $3,000</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
-        <div class="highlight-box">
-            <p><strong>Premium Development Note:</strong> Our in-house development team ensures enterprise-grade reliability, security, and customization. The increased development investment reflects our commitment to delivering a robust, scalable solution that seamlessly integrates with your business operations.</p>
-        </div>
-
-        <h2>Cost Breakdown</h2>
-        <table>
+        <h2>Core Product Development</h2>
+        <table class="cost-table">
             <thead>
                 <tr>
                     <th>Component</th>
-                    <th>Low-End Estimate ($)</th>
-                    <th>High-End Estimate ($)</th>
+                    <th>Initial Cost ($)</th>
+                    <th>Monthly Cost ($)</th>
+                    <th>Notes</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Hardware Components</td>
-                    <td>400</td>
-                    <td>1,000</td>
+                    <td>Hardware Setup</td>
+                    <td>400 - 1,000</td>
+                    <td>50 - 100</td>
+                    <td>Includes Raspberry Pi, camera, display, storage</td>
                 </tr>
                 <tr>
-                    <td>Software Licensing</td>
-                    <td>300</td>
-                    <td>800</td>
+                    <td>Software Development</td>
+                    <td>2,500 - 5,000</td>
+                    <td>300 - 800</td>
+                    <td>Custom development, API integration</td>
                 </tr>
                 <tr>
-                    <td>Development Cost</td>
-                    <td>2,500</td>
-                    <td>5,000</td>
+                    <td>Cloud Infrastructure</td>
+                    <td>500 - 1,000</td>
+                    <td>100 - 300</td>
+                    <td>Hosting, storage, backups</td>
                 </tr>
                 <tr>
-                    <td>Monthly Maintenance</td>
-                    <td>150</td>
-                    <td>350</td>
+                    <td>Testing & Quality Assurance</td>
+                    <td>1,000 - 2,000</td>
+                    <td>200 - 400</td>
+                    <td>Continuous testing and improvements</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>System Components</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Hardware</h3>
-                <p>Premium-grade components including Raspberry Pi, high-resolution camera for facial recognition, commercial-quality display screen, and reliable external storage solutions for optimal performance.</p>
+        <h2>Marketing & Business Development</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Digital Marketing</h3>
+                <ul>
+                    <li>SEO Optimization: $500 - $1,000/month</li>
+                    <li>Content Marketing: $1,000 - $2,000/month</li>
+                    <li>Social Media Management: $800 - $1,500/month</li>
+                    <li>Email Marketing: $300 - $800/month</li>
+                </ul>
             </div>
-            <div class="feature-card">
-                <h3>Software</h3>
-                <p>Enterprise-level software suite with OpenAI API integration, advanced facial recognition libraries, and professional text-to-speech systems with multi-language support.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Development</h3>
-                <p>Professional in-house development team providing custom integration, security hardening, and creating a robust, scalable system tailored to your specific business requirements.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Maintenance</h3>
-                <p>Comprehensive support including API usage monitoring, priority software updates, hardware maintenance, and dedicated technical support to ensure optimal system performance.</p>
+            <div class="card">
+                <h3>Traditional Marketing</h3>
+                <ul>
+                    <li>Trade Show Participation: $5,000 - $10,000/event</li>
+                    <li>Print Materials: $1,000 - $2,000/quarter</li>
+                    <li>Local Business Networking: $500 - $1,000/month</li>
+                </ul>
             </div>
         </div>
 
-        <h2>Enhanced Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Screen Casting</h3>
-                <p>Enterprise-grade content display system supporting dynamic promotional materials, personalized greetings, and business-specific instructions with remote management capabilities.</p>
+        <h2>Ongoing Operations</h2>
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Monthly Cost ($)</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Technical Support</td>
+                    <td>1,000 - 2,000</td>
+                    <td>24/7 customer support, maintenance</td>
+                </tr>
+                <tr>
+                    <td>Software Updates</td>
+                    <td>500 - 1,000</td>
+                    <td>Regular updates, security patches</td>
+                </tr>
+                <tr>
+                    <td>Content Management</td>
+                    <td>300 - 800</td>
+                    <td>Regular content updates, customization</td>
+                </tr>
+                <tr>
+                    <td>Business Operations</td>
+                    <td>1,500 - 3,000</td>
+                    <td>Administration, accounting, legal</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Implementation Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div>
+                    <h3>Phase 1: Business Formation (1-2 months)</h3>
+                    <p>LLC setup, licensing, insurance, initial branding</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3>Business Tailoring</h3>
-                <p>Deep customization options including branded interfaces, custom workflows, and integration with existing business systems and databases.</p>
+            <div class="timeline-item">
+                <div>
+                    <h3>Phase 2: Product Development (2-3 months)</h3>
+                    <p>Core product development, testing, initial deployment</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div>
+                    <h3>Phase 3: Marketing Launch (1-2 months)</h3>
+                    <p>Website launch, marketing campaigns, business development</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div>
+                    <h3>Phase 4: Scale & Optimize (Ongoing)</h3>
+                    <p>Business growth, product refinement, market expansion</p>
+                </div>
             </div>
         </div>
 
         <footer>
-            <p>&copy; 2024 AI Greeter | Designed for Smart Business Automation</p>
+            <p>&copy; 2024 AI Greeter | Complete Business Solution</p>
         </footer>
     </div>
 </body>
