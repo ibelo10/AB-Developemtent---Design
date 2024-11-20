@@ -1,90 +1,135 @@
+# Update the HTML content to improve font size and readability
+html_content = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yellow Street Company</title>
+    <title>AI Greeter Cost Estimate</title>
     <style>
-        /* Basic Reset */
-        * {
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #f9f9f9;
+            color: #333;
         }
-
-        /* Full Page Layout */
-        body, html {
-            height: 100%;
-            font-family: Arial, sans-serif;
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
-
-        /* Moving Background */
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://via.placeholder.com/1920x1080?text=Yellow+Signs') repeat-x;
-            background-size: cover;
-            animation: moveBackground 20s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: -1000px 0;
-            }
-        }
-
-        /* Centered Content */
-        .content {
-            position: relative;
-            z-index: 1;
+        h1, h2 {
             text-align: center;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
+            color: #0056b3;
         }
-
         h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #FFD700; /* Yellow color for branding */
+            font-size: 2rem;
         }
-
-        p {
+        h2 {
             font-size: 1.5rem;
-            margin-bottom: 30px;
         }
-
-        /* Call to Action Button */
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: #fff;
-            background: #FFD700;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: transform 0.3s ease, background 0.3s ease;
+        p, li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
-
-        .cta-button:hover {
-            background: #FFC300;
-            transform: scale(1.1);
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        table th {
+            background-color: #0056b3;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .summary, .features {
+            margin: 20px 0;
+        }
+        .features ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .features ul li {
+            margin-bottom: 12px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="content">
-        <h1>Yellow Street Company</h1>
-        <p>We specialize in crafting high-quality yellow signs for all your needs.</p>
-        <a href="#contact" class="cta-button">Get a Quote</a>
+    <div class="container">
+        <h1>AI Greeter Cost Estimate</h1>
+        <div class="summary">
+            <p>The AI Greeter system provides personalized, automated greetings for your business. It uses advanced technology, including a Raspberry Pi, facial recognition, text-to-speech capabilities, and OpenAI API for conversational responses. Additionally, the system can cast any content to a screen tailored to your specific business needs, such as promotional material, personalized greetings, or instructions.</p>
+        </div>
+        <h2>Cost Breakdown</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Low-End Estimate ($)</th>
+                    <th>High-End Estimate ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+"""
+
+# Add the rows dynamically
+for _, row in df.iterrows():
+    html_content += f"""
+        <tr>
+            <td>{row['Component']}</td>
+            <td>{row['Low-End Estimate ($)']}</td>
+            <td>{row['High-End Estimate ($)']}</td>
+        </tr>
+    """
+
+# Add the explanation section
+html_content += """
+            </tbody>
+        </table>
+        <h2>Explanation of Costs</h2>
+        <div class="features">
+            <ul>
+                <li><strong>Hardware:</strong> Essential components like a Raspberry Pi, camera for facial recognition, and optional peripherals such as a display screen or external storage.</li>
+                <li><strong>Software:</strong> Includes OpenAI API usage for conversational responses, facial recognition libraries, and optional text-to-speech systems.</li>
+                <li><strong>Development:</strong> Custom development to integrate hardware, software, and create a user-friendly experience.</li>
+                <li><strong>Maintenance:</strong> Covers recurring costs for API usage, software updates, and hardware replacements.</li>
+            </ul>
+        </div>
+        <h2>Enhanced Features</h2>
+        <div class="features">
+            <p><strong>Screen Casting:</strong> The system can display personalized content or visuals on a connected screen. Use this feature for promotional material, personalized greetings, or business-specific instructions.</p>
+            <p><strong>Business Tailoring:</strong> Customization options allow the system to align with your unique branding and operational requirements.</p>
+        </div>
+        <footer>
+            &copy; 2024 AI Greeter | Designed for Smart Business Automation
+        </footer>
     </div>
 </body>
 </html>
+"""
+
+# Save the updated HTML content to a file
+html_file_path_readable = "/mnt/data/AIGreeter_Cost_Estimate_Improved.html"
+with open(html_file_path_readable, "w") as file:
+    file.write(html_content)
+
+html_file_path_readable
