@@ -1,665 +1,264 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-H16CFGEXZP');
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
-     crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tokenized Dollar System - AB Development & Design</title>
-
-    <!-- Meta Tags -->
-    <meta property="og:title" content="Tokenized Dollar System - AB Development & Design" />
-    <meta property="og:description" content="Revolutionizing currency with blockchain and cryptography" />
-    <meta property="og:image" content="assets/images/ABLogo.png" />
-    <meta property="og:url" content="https://abdevndesign.com/ZKPsAB" />
-    <meta property="og:type" content="website" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
-
-    <!-- jQuery and Ripples Plugin -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
-
-    <style>
-        :root {
-            --primary-color: #2ecc71;
-            --secondary-color: #27ae60;
-            --text-color: #333;
-            --light-bg: #f4f4f9;
-            --dark-blue: #0c1333;
-            --card-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            --max-width: 1200px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Raleway', sans-serif;
-            background: var(--light-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            background: white;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero-container {
-            background: var(--dark-blue);
-            padding: 8rem 1rem;
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .hero-container h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.95);
-            max-width: var(--max-width);
-            width: 100%;
-            text-shadow: 
-                2px 2px 4px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(255, 255, 255, 0.1);
-            background: linear-gradient(
-                180deg,
-                rgba(255, 255, 255, 0.95) 0%,
-                rgba(255, 255, 255, 0.85) 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-         .hero-container p {
-            font-size: 1.8rem;
-            font-weight: 300;
-            max-width: 800px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.7);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .hero-container h1 {
-                font-size: 3rem;
-            }
-
-            .hero-container p {
-                font-size: 1.4rem;
-            }
-        }
-        /* Content Cards */
-        .content-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin: -100px auto 2rem;
-            max-width: var(--max-width);
-            box-shadow: var(--card-shadow);
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            font-weight: 800;
-        }
-
-        /* Video Container */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            box-shadow: var(--card-shadow);
-            background: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 1rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            padding: 1rem;
-            background: #f8fafc;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-card h3 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin: 1rem 0;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            color: #666;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* ZKP Section */
-        .zkp-section {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            margin: 3rem auto;
-            max-width: var(--max-width);
-            box-shadow: var(--card-shadow);
-        }
-
-        .zkp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .zkp-card {
-            background: #f8fafc;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .zkp-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .zkp-card h3 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .zkp-card ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .zkp-card li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-            color: #555;
-        }
-
-        .zkp-card li:before {
-            content: "•";
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Chat Toast */
-        .chat-toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            padding: 1rem;
-            display: none;
-            z-index: 1000;
-        }
-
-        .chat-toast.show {
-            display: block;
-            animation: slideIn 0.3s ease;
-        }
-
-        .toast-content {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .toast-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            background: var(--primary-color);
-            width: 0;
-            transition: width 5s linear;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 0.5rem;
-            }
-
-            .nav-links {
-                margin-top: 1rem;
-                gap: 1rem;
-            }
-
-            .hero-container h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-container p {
-                font-size: 1.2rem;
-            }
-
-            .content-card {
-                margin: -50px 1rem 2rem;
-                padding: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-logo">
-            <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
-            <span>AB Development & Design</span>
-        </div>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/services">Services</a>
-            <a href="/contact">Contact</a>
-        </div>
-    </nav>
-
-    <div class="hero-container">
-        <h1>Tokenized Dollar System</h1>
-        <p>Revolutionizing currency with blockchain and cryptography</p>
-    </div>
-
-    <div class="content-card">
-        <h2 class="section-title">Featured Overview</h2>
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/1qMyXQIanT4"
-                title="Tokenized Dollar System Overview"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-
-    <div class="content-card">
-        <h2 class="section-title">Project Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">💱</div>
-                <h3>1:1 Tokenization</h3>
-                <p>Each digital dollar is securely tied to a unique physical dollar, ensuring transparency and trust.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔐</div>
-                <h3>Blockchain-Powered Security</h3>
-                <p>Built on a scalable blockchain network with advanced cryptographic techniques, including Zero-Knowledge Proofs (ZKP).</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Real-Time Transactions</h3>
-                <p>Enables instant, borderless payments with minimal fees.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏛️</div>
-                <h3>Programmable Governance</h3>
-                <p>Built-in voting mechanisms for authorities and citizens to influence policies and fund allocation.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Dynamic Fund Allocation</h3>
-                <p>Automatically directs collected fees toward public services such as healthcare, education, and infrastructure.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <h3>Full Traceability</h3>
-                <p>Every token's lifecycle is transparently recorded, eliminating fraud and counterfeiting.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Privacy First</h3>
-                <p>Transactions utilize advanced encryption to ensure user privacy while maintaining compliance.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📈</div>
-                <h3>Integrated Analytics</h3>
-                <p>Real-time dashboards provide insights into system performance, revenue collection, and economic trends.</p>
-            </div>
-        </div>
-    </div>
-
-    <section class="zkp-section">
-        <h2 class="section-title">Understanding Zero-Knowledge Proofs (ZKP)</h2>
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/e_Im2g2xsAg"
-                title="Understanding Zero-Knowledge Proofs"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-</div>
-        <div class="zkp-grid">
-            <div class="zkp-card">
-                <h3>What are Zero-Knowledge Proofs?</h3>
-                <p>Zero-Knowledge Proofs are cryptographic methods that allow one party (the prover) 
-                to prove to another party (the verifier) that a statement is true without revealing 
-                any information beyond the validity of the statement itself.</p>
-            </div>
-            
-            <div class="zkp-card">
-                <h3>ZKP in Our System</h3>
-                <ul>
-                    <li>Ensures transaction privacy while maintaining auditability</li>
-                    <li>Validates transactions without exposing sensitive financial data</li>
-                    <li>Enables compliance verification without compromising user privacy</li>
-                    <li>Supports selective disclosure for regulatory requirements</li>
-                </ul>
-            </div>
-
-            <div class="zkp-card">
-                <h3>Technical Benefits</h3>
-                <ul>
-                    <li>Reduced on-chain data storage requirements</li>
-                    <li>Improved scalability through efficient verification</li>
-                    <li>Enhanced security through mathematical proofs</li>
-                    <li>Compatibility with existing regulatory frameworks</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-<section class="content-card" style="text-align: center; background: white; padding: 4rem 2rem;">
-    <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 2rem; color: #00DC89; line-height: 1.2;">
-        New to<br>
-        Cryptocurrency?
-    </h2>
-    
-    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-        <img src="https://images.ctfassets.net/q5ulk4bp65r7/3TBS4oVkD1ghowTqVQJlqj/2dfd4ea3b623a7c0d8deb2ff445dee9e/Consumer_Wordmark.svg" 
-             alt="Coinbase" 
-             style="height: 40px; margin-bottom: 2rem; width: auto;" />
-        
-        <h3 style="color: #0052FF; font-size: 2rem; margin-bottom: 1.5rem;">
-            Get Started with Coinbase
-        </h3>
-
-        <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6; text-align: center;">
-            Begin your crypto journey with Coinbase, one of the most trusted cryptocurrency exchanges. Sign up using our referral link and we'll both receive $10 in Bitcoin!
-        </p>
-
-        <a href="https://coinbase.com/join/EPVN7PL?src=ios-share&utm_source=abdevndesign&utm_medium=website&utm_campaign=tokenized_dollar&utm_content=signup_button" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           onclick="trackCoinbaseClick()"
-           style="display: inline-block; background: #0052FF; color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; margin-bottom: 1rem;">
-            Sign Up & Get $10 in BTC
-        </a>
-
-        <p style="color: #888; font-size: 0.8rem; font-style: italic;">
-            *Promotional offer subject to Coinbase terms and conditions
-        </p>
-    </div>
-</section>
-<!-- Previous tracking script remains the same -->
-
-<!-- Previous tracking script remains the same -->
-    <!-- Chat Toast Notification -->
-    <div class="chat-toast" id="chatToast">
-        <div class="toast-content">
-            <span class="toast-icon">💬</span>
-            <p>Need help? Chat with us!</p>
-            <button class="toast-close" onclick="closeToast()">&times;</button>
-        </div>
-        <div class="toast-progress"></div>
-    </div>
-
-    <!-- Messenger Chat Integration -->
-    <div id="fb-root"></div>
-    <div id="fb-customer-chat" class="fb-customerchat"></div>
-
-    <script>
-        // Facebook Chat Widget Configuration
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "113394291657712");
-        chatbox.setAttribute("attribution", "biz_inbox");
-        chatbox.setAttribute("theme_color", "#2ecc71");
-        chatbox.setAttribute("greeting_dialog_display", "fade");
-        chatbox.setAttribute("greeting_dialog_delay", "5");
-        chatbox.setAttribute("logged_in_greeting", "Hi! 👋 How can we help you today?");
-        chatbox.setAttribute("logged_out_greeting", "Hi! 👋 Log in to chat with us.");
-
-        // Initialize Facebook SDK
-        window.fbAsyncInit = function() {
-            FB.init({
-                xfbml: true,
-                version: 'v18.0'
-            });
-
-            FB.Event.subscribe('customerchat.load', function() {
-                initializeChatToast();
-            });
-
-            FB.Event.subscribe('customerchat.show', function() {
-                hideToast();
-                trackChatOpen();
-            });
-        };
-
-        // Load Facebook SDK
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-        // Chat Toast Functions
-        function initializeChatToast() {
-            setTimeout(function() {
-                document.getElementById('chatToast').classList.add('show');
-                startToastProgress();
-            }, 3000);
-        }
-
-        function closeToast() {
-            document.getElementById('chatToast').classList.remove('show');
-        }
-
-        function hideToast() {
-            closeToast();
-        }
-
-        function startToastProgress() {
-            const progress = document.querySelector('.toast-progress');
-            progress.style.width = '100%';
-            progress.style.transition = 'width 5s linear';
-            setTimeout(() => {
-                progress.style.width = '0%';
-                setTimeout(closeToast, 300);
-            }, 5000);
-        }
-
-        function trackChatOpen() {
-            if (typeof gtag === 'function') {
-                gtag('event', 'chat_opened', {
-                    'event_category': 'Engagement',
-                    'event_label': 'Messenger Chat'
-                });
-            }
-        }
-
-        // Initialize Ripple Effect
-        $(document).ready(function() {
-            try {
-                $('.hero-container').ripples({
-                    resolution: 512,
-                    dropRadius: 20,
-                    perturbance: 0.04
-                });
-            } catch (e) {
-                console.log('Ripples effect not supported on this device');
-            }
-        });
-    </script>
-    
-    
-<script>
-// Tracking functions
-function trackCoinbaseClick() {
-    // Google Analytics Event
-    if (typeof gtag === 'function') {
-        gtag('event', 'click', {
-            'event_category': 'Affiliate',
-            'event_label': 'Coinbase Signup',
-            'value': 1
-        });
+import React, { useEffect, useState } from 'react';
+import { Menu } from 'lucide-react';
+
+const TokenizedDollarLanding = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showChatToast, setShowChatToast] = useState(false);
+
+  const features = [
+    { icon: "💱", title: "1:1 Tokenization", description: "Each digital dollar is securely tied to a unique physical dollar, ensuring transparency and trust." },
+    { icon: "🔐", title: "Blockchain-Powered Security", description: "Built on a scalable blockchain network with advanced cryptographic techniques, including Zero-Knowledge Proofs (ZKP)." },
+    { icon: "⚡", title: "Real-Time Transactions", description: "Enables instant, borderless payments with minimal fees." },
+    { icon: "🏛️", title: "Programmable Governance", description: "Built-in voting mechanisms for authorities and citizens to influence policies and fund allocation." },
+    { icon: "📊", title: "Dynamic Fund Allocation", description: "Automatically directs collected fees toward public services such as healthcare, education, and infrastructure." },
+    { icon: "🔍", title: "Full Traceability", description: "Every token's lifecycle is transparently recorded, eliminating fraud and counterfeiting." },
+    { icon: "🔒", title: "Privacy First", description: "Transactions utilize advanced encryption to ensure user privacy while maintaining compliance." },
+    { icon: "📈", title: "Integrated Analytics", description: "Real-time dashboards provide insights into system performance, revenue collection, and economic trends." }
+  ];
+
+  const zkpCards = [
+    {
+      title: "What are Zero-Knowledge Proofs?",
+      content: "Zero-Knowledge Proofs are cryptographic methods that allow one party (the prover) to prove to another party (the verifier) that a statement is true without revealing any information beyond the validity of the statement itself."
+    },
+    {
+      title: "ZKP in Our System",
+      items: [
+        "Ensures transaction privacy while maintaining auditability",
+        "Validates transactions without exposing sensitive financial data",
+        "Enables compliance verification without compromising user privacy",
+        "Supports selective disclosure for regulatory requirements"
+      ]
+    },
+    {
+      title: "Technical Benefits",
+      items: [
+        "Reduced on-chain data storage requirements",
+        "Improved scalability through efficient verification",
+        "Enhanced security through mathematical proofs",
+        "Compatibility with existing regulatory frameworks"
+      ]
     }
+  ];
 
-    // Facebook Pixel Event (if you have FB Pixel installed)
-    if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', {
-            content_name: 'Coinbase Signup',
-            content_category: 'Affiliate'
-        });
+  useEffect(() => {
+    // Show chat toast after 3 seconds
+    const timer = setTimeout(() => {
+      setShowChatToast(true);
+    }, 3000);
+
+    // Hide chat toast after 8 seconds
+    const hideTimer = setTimeout(() => {
+      setShowChatToast(false);
+    }, 8000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
+  const trackCoinbaseClick = () => {
+    // Google Analytics Event (assuming gtag is available)
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'click', {
+        'event_category': 'Affiliate',
+        'event_label': 'Coinbase Signup',
+        'value': 1
+      });
     }
-
-    // Custom conversion tracking
+    
+    // Store click timestamp
     localStorage.setItem('coinbase_click_timestamp', new Date().toISOString());
-}
+  };
 
-// Attribution tracking
-document.addEventListener('DOMContentLoaded', function() {
-    // Track referral source
-    const urlParams = new URLSearchParams(window.location.search);
-    const source = urlParams.get('ref') || 'direct';
-    
-    if (source !== 'direct') {
-        localStorage.setItem('referral_source', source);
-    }
-});
-</script>
-</body>
-</html>
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
+      <nav className="fixed top-0 w-full bg-white shadow-md z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-3">
+              <img src="/api/placeholder/40/40" alt="AB Logo" className="h-10 w-10" />
+              <span className="font-semibold text-gray-800">AB Development & Design</span>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-8">
+              {['Home', 'Portfolio', 'Services', 'Contact'].map(item => (
+                <a key={item} href="#" className="text-gray-600 hover:text-green-500 font-medium">
+                  {item}
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Menu size={24} />
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden py-3 border-t border-gray-200">
+              {['Home', 'Portfolio', 'Services', 'Contact'].map(item => (
+                <a
+                  key={item}
+                  href="#"
+                  className="block py-2 px-4 text-gray-600 hover:bg-gray-50 hover:text-green-500"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="bg-gray-900 pt-24 pb-16 px-4 sm:pt-32 sm:pb-24">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight">
+            Tokenized Dollar System
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
+            Revolutionizing currency with blockchain and cryptography
+          </p>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 -mt-12 sm:-mt-16">
+        {/* Featured Overview Card */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
+          <h2 className="text-3xl font-bold text-center text-green-500 mb-8">
+            Featured Overview
+          </h2>
+          <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-lg">
+            <iframe 
+              src="https://www.youtube.com/embed/1qMyXQIanT4"
+              className="absolute top-0 left-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
+          <h2 className="text-3xl font-bold text-center text-green-500 mb-8">
+            Project Features
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <div 
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md hover:-translate-y-1 transition-transform duration-300"
+              >
+                <div className="text-4xl mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-green-500 mb-3 text-center">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-center">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ZKP Section */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
+          <h2 className="text-3xl font-bold text-center text-green-500 mb-8">
+            Understanding Zero-Knowledge Proofs (ZKP)
+          </h2>
+          <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-lg mb-8">
+            <iframe 
+              src="https://www.youtube.com/embed/e_Im2g2xsAg"
+              className="absolute top-0 left-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {zkpCards.map((card, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold text-green-500 mb-4 text-center">
+                  {card.title}
+                </h3>
+                {card.content ? (
+                  <p className="text-gray-600">{card.content}</p>
+                ) : (
+                  <ul className="space-y-2">
+                    {card.items?.map((item, i) => (
+                      <li key={i} className="text-gray-600 pl-4 relative">
+                        <span className="absolute left-0 text-green-500">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Coinbase Section */}
+        <div className="bg-white rounded-xl shadow-lg p-8 mb-12 text-center">
+          <h2 className="text-4xl font-bold mb-8 text-green-500">
+            New to<br />Cryptocurrency?
+          </h2>
+          <div className="max-w-2xl mx-auto">
+            <img 
+              src="/api/placeholder/200/40" 
+              alt="Coinbase" 
+              className="h-10 mx-auto mb-8"
+            />
+            <h3 className="text-2xl font-semibold text-blue-600 mb-6">
+              Get Started with Coinbase
+            </h3>
+            <p className="text-gray-600 mb-8">
+              Begin your crypto journey with Coinbase, one of the most trusted cryptocurrency exchanges. 
+              Sign up using our referral link and we'll both receive $10 in Bitcoin!
+            </p>
+            <a
+              href="https://coinbase.com/join/EPVN7PL"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackCoinbaseClick}
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+            >
+              Sign Up & Get $10 in BTC
+            </a>
+            <p className="text-sm text-gray-500 mt-4 italic">
+              *Promotional offer subject to Coinbase terms and conditions
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Chat Toast */}
+      {showChatToast && (
+        <div className="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 max-w-sm animate-slideIn">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">💬</span>
+            <p className="text-gray-700">Need help? Chat with us!</p>
+            <button 
+              onClick={() => setShowChatToast(false)}
+              className="text-gray-400 hover:text-gray-600"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default TokenizedDollarLanding;
