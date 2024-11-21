@@ -91,23 +91,25 @@
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
-    <!-- Subscription Popup -->
-    <div class="subscription-popup" id="subscription-popup">
-      <div class="sub-content">
-        <div class="sub-header">
-          <h4>Stay Updated!</h4>
-          <button class="close-btn" onclick="closePopup()">&times;</button>
-        </div>
-        <p>Subscribe to receive our latest updates and news.</p>
-        <form id="subscription-form" action="https://formsubmit.co/aaron.bernard.dev@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New Website Subscription!">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="email" name="email" placeholder="Enter your email address" required>
-          <button type="submit" class="sub-btn">Subscribe</button>
-        </form>
-      </div>
+   <!-- Update the subscription form with the new secure string -->
+<div class="subscription-popup" id="subscription-popup">
+  <div class="sub-content">
+    <div class="sub-header">
+      <h4>Stay Updated!</h4>
+      <button class="close-btn" onclick="closePopup()">&times;</button>
     </div>
+    <p>Subscribe to receive our latest updates and news.</p>
+    <form id="subscription-form" 
+          action="https://formsubmit.co/18113d6ac00709dae8fee3e2c7b95f2d" 
+          method="POST">
+      <input type="hidden" name="_subject" value="New Website Subscription!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="email" name="email" placeholder="Enter your email address" required>
+      <button type="submit" class="sub-btn">Subscribe</button>
+    </form>
+  </div>
+</div>
 
     <!-- Messenger Script -->
     <script>
