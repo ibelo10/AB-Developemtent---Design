@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-H16CFGEXZP');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
+     crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tokenized Dollar System - AB Development & Design</title>
@@ -16,9 +27,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
-
-    <!-- Font Awesome for Menu Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <!-- jQuery and Ripples Plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
 
     <style>
         :root {
@@ -45,7 +58,7 @@
             overflow-x: hidden;
         }
 
-        /* Improved Navbar Styles */
+        /* Improved Navbar */
         .navbar {
             background: white;
             padding: 1rem;
@@ -54,6 +67,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
         }
 
         .navbar-container {
@@ -68,6 +82,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            z-index: 2;
         }
 
         .logo-img {
@@ -85,10 +100,13 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
+            background: rgba(46, 204, 113, 0.1);
         }
 
         .menu-toggle {
@@ -96,9 +114,10 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
+            z-index: 2;
         }
 
-        /* Hero Section Improvements */
+        /* Enhanced Hero Section */
         .hero-container {
             background: var(--dark-blue);
             padding: 8rem 1rem 6rem;
@@ -131,11 +150,15 @@
         }
 
         .hero-container h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-container p {
@@ -146,7 +169,7 @@
             margin: 0 auto;
         }
 
-        /* Enhanced Content Cards */
+        /* Improved Content Cards */
         .content-card {
             background: white;
             border-radius: 20px;
@@ -158,6 +181,15 @@
             z-index: 10;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        /* Enhanced Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -169,13 +201,14 @@
             background: white;
             padding: 2rem;
             border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease;
             text-align: center;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .feature-icon {
@@ -185,9 +218,109 @@
             padding: 1rem;
             background: var(--light-bg);
             border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive Design */
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* ZKP Section */
+        .zkp-section {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 3rem auto;
+            max-width: var(--max-width);
+            box-shadow: var(--card-shadow);
+        }
+
+        .zkp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .zkp-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .zkp-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .zkp-card h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .zkp-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .zkp-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .zkp-card li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Chat Toast */
+        .chat-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        .chat-toast.show {
+            display: block;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-color);
+            width: 0;
+            transition: width 5s linear;
+        }
+
+        /* Enhanced Responsive Design */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -195,19 +328,33 @@
 
             .nav-links {
                 display: none;
-                width: 100%;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 0;
                 left: 0;
+                right: 0;
+                bottom: 0;
                 background: white;
-                padding: 1rem;
+                padding: 5rem 2rem 2rem;
                 flex-direction: column;
-                gap: 1rem;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                align-items: center;
+                gap: 1.5rem;
+                z-index: 1;
             }
 
             .nav-links.active {
                 display: flex;
+                animation: slideIn 0.3s ease forwards;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-container {
+                padding-top: 6rem;
             }
 
             .hero-container h1 {
@@ -216,6 +363,7 @@
 
             .hero-container p {
                 font-size: 1.2rem;
+                padding: 0 1rem;
             }
 
             .content-card {
@@ -223,12 +371,21 @@
                 padding: 1.5rem;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 2rem;
             }
 
             .feature-card {
                 padding: 1.5rem;
+            }
+
+            .zkp-section {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+
+            .zkp-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -244,8 +401,88 @@
             }
         }
 
-        .slide-in {
-            animation: slideIn 0.3s ease forwards;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Coinbase Section */
+        .coinbase-section {
+            text-align: center;
+            background: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: var(--max-width);
+            box-shadow: var(--card-shadow);
+        }
+
+        .coinbase-section h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: #00DC89;
+            line-height: 1.2;
+        }
+
+        .coinbase-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .coinbase-logo {
+            height: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .signup-button {
+            display: inline-block;
+            background: #0052FF;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .signup-button:hover {
+            background: #0043cc;
+        }
+
+        .promo-text {
+            color: #888;
+            font-size: 0.8rem;
+            font-style: italic;
         }
     </style>
 </head>
