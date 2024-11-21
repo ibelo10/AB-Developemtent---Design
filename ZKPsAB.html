@@ -9,6 +9,8 @@
         gtag('js', new Date());
         gtag('config', 'G-H16CFGEXZP');
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
+     crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
+    <!-- jQuery and Ripples Plugin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
 
@@ -36,8 +38,8 @@
             --secondary-color: #27ae60;
             --text-color: #333;
             --light-bg: #f4f4f9;
-            --card-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             --dark-blue: #0a1744;
+            --card-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             --max-width: 1200px;
         }
 
@@ -52,18 +54,17 @@
             background: var(--light-bg);
             color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         /* Navbar Styles */
         .navbar {
             background: white;
             padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -100,17 +101,16 @@
         .hero-container {
             background: var(--dark-blue);
             padding: 8rem 1rem;
+            text-align: left;
+            color: white;
             min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
         }
 
         .hero-container h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1rem;
             color: rgba(255, 255, 255, 0.7);
@@ -122,7 +122,7 @@
         }
 
         .hero-container p {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: 1.8rem;
             font-weight: 300;
             max-width: 800px;
             margin-left: auto;
@@ -142,6 +142,35 @@
             position: relative;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: var(--card-shadow);
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* Features Grid */
         .features-grid {
             display: grid;
@@ -154,7 +183,7 @@
             background: white;
             padding: 2rem;
             border-radius: 16px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: var(--card-shadow);
             text-align: center;
             display: flex;
@@ -170,10 +199,24 @@
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            display: inline-block;
             padding: 1rem;
             background: #f8fafc;
             border-radius: 50%;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         /* ZKP Section */
@@ -205,25 +248,33 @@
             transform: translateY(-3px);
         }
 
-        /* Video Container */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            box-shadow: var(--card-shadow);
-            background: #000;
+        .zkp-card h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 600;
         }
 
-        .video-container iframe {
+        .zkp-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .zkp-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .zkp-card li:before {
+            content: "•";
+            color: var(--primary-color);
             position: absolute;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            font-weight: bold;
         }
 
         /* Chat Toast */
@@ -244,6 +295,22 @@
             animation: slideIn 0.3s ease;
         }
 
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-color);
+            width: 0;
+            transition: width 5s linear;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar {
@@ -256,9 +323,21 @@
                 gap: 1rem;
             }
 
+            .hero-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-container p {
+                font-size: 1.2rem;
+            }
+
             .content-card {
                 margin: -50px 1rem 2rem;
                 padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
 
             .feature-card {
@@ -292,28 +371,120 @@
         </div>
     </nav>
 
-    <main>
-        <section class="hero-container">
-            <h1>Tokenized Dollar System</h1>
-            <p>Revolutionizing currency with blockchain and cryptography</p>
-        </section>
+    <div class="hero-container">
+        <h1>Tokenized Dollar System</h1>
+        <p>Revolutionizing currency with blockchain and cryptography</p>
+    </div>
 
-        <section class="content-card">
-            <h2 class="section-title">Featured Overview</h2>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/1qMyXQIanT4"
-                    title="Tokenized Dollar System Overview"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+    <div class="content-card">
+        <h2 class="section-title">Featured Overview</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/1qMyXQIanT4"
+                title="Tokenized Dollar System Overview"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <h2 class="section-title">Project Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💱</div>
+                <h3>1:1 Tokenization</h3>
+                <p>Each digital dollar is securely tied to a unique physical dollar, ensuring transparency and trust.</p>
             </div>
-        </section>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Blockchain-Powered Security</h3>
+                <p>Built on a scalable blockchain network with advanced cryptographic techniques, including Zero-Knowledge Proofs (ZKP).</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Real-Time Transactions</h3>
+                <p>Enables instant, borderless payments with minimal fees.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏛️</div>
+                <h3>Programmable Governance</h3>
+                <p>Built-in voting mechanisms for authorities and citizens to influence policies and fund allocation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Dynamic Fund Allocation</h3>
+                <p>Automatically directs collected fees toward public services such as healthcare, education, and infrastructure.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Full Traceability</h3>
+                <p>Every token's lifecycle is transparently recorded, eliminating fraud and counterfeiting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>Transactions utilize advanced encryption to ensure user privacy while maintaining compliance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Integrated Analytics</h3>
+                <p>Real-time dashboards provide insights into system performance, revenue collection, and economic trends.</p>
+            </div>
+        </div>
+    </div>
 
-        [Previous features and ZKP sections remain unchanged...]
-    </main>
+    <section class="zkp-section">
+        <h2 class="section-title">Understanding Zero-Knowledge Proofs (ZKP)</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/e_Im2g2xsAg"
+                title="Understanding Zero-Knowledge Proofs"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+</div>
+        <div class="zkp-grid">
+            <div class="zkp-card">
+                <h3>What are Zero-Knowledge Proofs?</h3>
+                <p>Zero-Knowledge Proofs are cryptographic methods that allow one party (the prover) 
+                to prove to another party (the verifier) that a statement is true without revealing 
+                any information beyond the validity of the statement itself.</p>
+            </div>
+            
+            <div class="zkp-card">
+                <h3>ZKP in Our System</h3>
+                <ul>
+                    <li>Ensures transaction privacy while maintaining auditability</li>
+                    <li>Validates transactions without exposing sensitive financial data</li>
+                    <li>Enables compliance verification without compromising user privacy</li>
+                    <li>Supports selective disclosure for regulatory requirements</li>
+                </ul>
+            </div>
 
-    <!-- Chat Integration -->
+            <div class="zkp-card">
+                <h3>Technical Benefits</h3>
+                <ul>
+                    <li>Reduced on-chain data storage requirements</li>
+                    <li>Improved scalability through efficient verification</li>
+                    <li>Enhanced security through mathematical proofs</li>
+                    <li>Compatibility with existing regulatory frameworks</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Toast Notification -->
+    <div class="chat-toast" id="chatToast">
+        <div class="toast-content">
+            <span class="toast-icon">💬</span>
+            <p>Need help? Chat with us!</p>
+            <button class="toast-close" onclick="closeToast()">&times;</button>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- Messenger Chat Integration -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
@@ -323,12 +494,25 @@
         chatbox.setAttribute("page_id", "113394291657712");
         chatbox.setAttribute("attribution", "biz_inbox");
         chatbox.setAttribute("theme_color", "#2ecc71");
+        chatbox.setAttribute("greeting_dialog_display", "fade");
+        chatbox.setAttribute("greeting_dialog_delay", "5");
+        chatbox.setAttribute("logged_in_greeting", "Hi! 👋 How can we help you today?");
+        chatbox.setAttribute("logged_out_greeting", "Hi! 👋 Log in to chat with us.");
 
         // Initialize Facebook SDK
         window.fbAsyncInit = function() {
             FB.init({
                 xfbml: true,
                 version: 'v18.0'
+            });
+
+            FB.Event.subscribe('customerchat.load', function() {
+                initializeChatToast();
+            });
+
+            FB.Event.subscribe('customerchat.show', function() {
+                hideToast();
+                trackChatOpen();
             });
         };
 
@@ -341,6 +525,41 @@
             js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+
+        // Chat Toast Functions
+        function initializeChatToast() {
+            setTimeout(function() {
+                document.getElementById('chatToast').classList.add('show');
+                startToastProgress();
+            }, 3000);
+        }
+
+        function closeToast() {
+            document.getElementById('chatToast').classList.remove('show');
+        }
+
+        function hideToast() {
+            closeToast();
+        }
+
+        function startToastProgress() {
+            const progress = document.querySelector('.toast-progress');
+            progress.style.width = '100%';
+            progress.style.transition = 'width 5s linear';
+            setTimeout(() => {
+                progress.style.width = '0%';
+                setTimeout(closeToast, 300);
+            }, 5000);
+        }
+
+        function trackChatOpen() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'chat_opened', {
+                    'event_category': 'Engagement',
+                    'event_label': 'Messenger Chat'
+                });
+            }
+        }
 
         // Initialize Ripple Effect
         $(document).ready(function() {
