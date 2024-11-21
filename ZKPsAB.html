@@ -512,13 +512,155 @@
         </div>
     </div>
 
-    <!-- Rest of your content remains the same -->
+    <div class="content-card">
+        <h2 class="section-title">Featured Overview</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/1qMyXQIanT4"
+                title="Tokenized Dollar System Overview"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <h2 class="section-title">Project Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💱</div>
+                <h3>1:1 Tokenization</h3>
+                <p>Each digital dollar is securely tied to a unique physical dollar, ensuring transparency and trust.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Blockchain-Powered Security</h3>
+                <p>Built on a scalable blockchain network with advanced cryptographic techniques, including Zero-Knowledge Proofs (ZKP).</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Real-Time Transactions</h3>
+                <p>Enables instant, borderless payments with minimal fees.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏛️</div>
+                <h3>Programmable Governance</h3>
+                <p>Built-in voting mechanisms for authorities and citizens to influence policies and fund allocation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Dynamic Fund Allocation</h3>
+                <p>Automatically directs collected fees toward public services such as healthcare, education, and infrastructure.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Full Traceability</h3>
+                <p>Every token's lifecycle is transparently recorded, eliminating fraud and counterfeiting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>Transactions utilize advanced encryption to ensure user privacy while maintaining compliance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Integrated Analytics</h3>
+                <p>Real-time dashboards provide insights into system performance, revenue collection, and economic trends.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="zkp-section">
+        <h2 class="section-title">Understanding Zero-Knowledge Proofs (ZKP)</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/e_Im2g2xsAg"
+                title="Understanding Zero-Knowledge Proofs"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="zkp-grid">
+            <div class="zkp-card">
+                <h3>What are Zero-Knowledge Proofs?</h3>
+                <p>Zero-Knowledge Proofs are cryptographic methods that allow one party (the prover) 
+                to prove to another party (the verifier) that a statement is true without revealing 
+                any information beyond the validity of the statement itself.</p>
+            </div>
+            
+            <div class="zkp-card">
+                <h3>ZKP in Our System</h3>
+                <ul>
+                    <li>Ensures transaction privacy while maintaining auditability</li>
+                    <li>Validates transactions without exposing sensitive financial data</li>
+                    <li>Enables compliance verification without compromising user privacy</li>
+                    <li>Supports selective disclosure for regulatory requirements</li>
+                </ul>
+            </div>
+
+            <div class="zkp-card">
+                <h3>Technical Benefits</h3>
+                <ul>
+                    <li>Reduced on-chain data storage requirements</li>
+                    <li>Improved scalability through efficient verification</li>
+                    <li>Enhanced security through mathematical proofs</li>
+                    <li>Compatibility with existing regulatory frameworks</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="coinbase-section">
+        <div class="coinbase-content">
+            <h2>New to<br>Cryptocurrency?</h2>
+            <img 
+                src="https://images.ctfassets.net/q5ulk4bp65r7/3TBS4oVkD1ghowTqVQJlqj/2dfd4ea3b623a7c0d8deb2ff445dee9e/Consumer_Wordmark.svg" 
+                alt="Coinbase" 
+                class="coinbase-logo" />
+            
+            <h3 style="color: #0052FF; font-size: 2rem; margin-bottom: 1.5rem;">
+                Get Started with Coinbase
+            </h3>
+
+            <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6;">
+                Begin your crypto journey with Coinbase, one of the most trusted cryptocurrency exchanges. 
+                Sign up using our referral link and we'll both receive $10 in Bitcoin!
+            </p>
+
+            <a href="https://coinbase.com/join/EPVN7PL?src=ios-share" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               onclick="trackCoinbaseClick()"
+               class="signup-button">
+                Sign Up & Get $10 in BTC
+            </a>
+
+            <p class="promo-text">
+                *Promotional offer subject to Coinbase terms and conditions
+            </p>
+        </div>
+    </section>
+
+    <!-- Chat Toast -->
+    <div class="chat-toast" id="chatToast">
+        <div class="toast-content">
+            <span class="toast-icon">💬</span>
+            <p>Need help? Chat with us!</p>
+            <button class="toast-close" onclick="closeToast()">&times;</button>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- Messenger Chat Plugin -->
+    <div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
 
     <script>
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         });
 
         // Close menu when clicking outside
@@ -528,36 +670,58 @@
             
             if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
                 navLinks.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
-        // Handle scroll effects
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                navbar.style.background = 'white';
+        // Initialize Ripples Effect
+        $(document).ready(function() {
+            try {
+                $('.hero-container').ripples({
+                    resolution: 512,
+                    dropRadius: 20,
+                    perturbance: 0.04
+                });
+            } catch (e) {
+                console.log('Ripples effect not supported on this device');
             }
         });
 
-        // Add smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const target = document.querySelector(targetId);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu after clicking
-                    document.querySelector('.nav-links').classList.remove('active');
-                }
-            });
+        // Chat Toast Functions
+        function initializeChatToast() {
+            setTimeout(function() {
+                document.getElementById('chatToast').classList.add('show');
+                startToastProgress();
+            }, 3000);
+        }
+
+        function closeToast() {
+            document.getElementById('chatToast').classList.remove('show');
+        }
+
+        function startToastProgress() {
+            const progress = document.querySelector('.toast-progress');
+            progress.style.width = '100%';
+            setTimeout(() => {
+                progress.style.width = '0%';
+                setTimeout(closeToast, 300);
+            }, 5000);
+        }
+
+        // Tracking Function
+        function trackCoinbaseClick() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'click', {
+                    'event_category': 'Affiliate',
+                    'event_label': 'Coinbase Signup',
+                    'value': 1
+                });
+            }
+        }
+
+        // Initialize chat toast
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeChatToast();
         });
     </script>
 </body>
