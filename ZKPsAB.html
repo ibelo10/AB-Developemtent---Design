@@ -636,5 +636,42 @@
             }
         });
     </script>
+    
+    
+<script>
+// Tracking functions
+function trackCoinbaseClick() {
+    // Google Analytics Event
+    if (typeof gtag === 'function') {
+        gtag('event', 'click', {
+            'event_category': 'Affiliate',
+            'event_label': 'Coinbase Signup',
+            'value': 1
+        });
+    }
+
+    // Facebook Pixel Event (if you have FB Pixel installed)
+    if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+            content_name: 'Coinbase Signup',
+            content_category: 'Affiliate'
+        });
+    }
+
+    // Custom conversion tracking
+    localStorage.setItem('coinbase_click_timestamp', new Date().toISOString());
+}
+
+// Attribution tracking
+document.addEventListener('DOMContentLoaded', function() {
+    // Track referral source
+    const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get('ref') || 'direct';
+    
+    if (source !== 'direct') {
+        localStorage.setItem('referral_source', source);
+    }
+});
+</script>
 </body>
 </html>
