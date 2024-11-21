@@ -1,264 +1,327 @@
-import React, { useEffect, useState } from 'react';
-import { Menu } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenized Dollar System - AB Development & Design</title>
 
-const TokenizedDollarLanding = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showChatToast, setShowChatToast] = useState(false);
+    <!-- Meta Tags -->
+    <meta property="og:title" content="Tokenized Dollar System - AB Development & Design" />
+    <meta property="og:description" content="Revolutionizing currency with blockchain and cryptography" />
+    <meta property="og:image" content="assets/images/ABLogo.png" />
+    <meta property="og:url" content="https://abdevndesign.com/ZKPsAB" />
+    <meta property="og:type" content="website" />
 
-  const features = [
-    { icon: "💱", title: "1:1 Tokenization", description: "Each digital dollar is securely tied to a unique physical dollar, ensuring transparency and trust." },
-    { icon: "🔐", title: "Blockchain-Powered Security", description: "Built on a scalable blockchain network with advanced cryptographic techniques, including Zero-Knowledge Proofs (ZKP)." },
-    { icon: "⚡", title: "Real-Time Transactions", description: "Enables instant, borderless payments with minimal fees." },
-    { icon: "🏛️", title: "Programmable Governance", description: "Built-in voting mechanisms for authorities and citizens to influence policies and fund allocation." },
-    { icon: "📊", title: "Dynamic Fund Allocation", description: "Automatically directs collected fees toward public services such as healthcare, education, and infrastructure." },
-    { icon: "🔍", title: "Full Traceability", description: "Every token's lifecycle is transparently recorded, eliminating fraud and counterfeiting." },
-    { icon: "🔒", title: "Privacy First", description: "Transactions utilize advanced encryption to ensure user privacy while maintaining compliance." },
-    { icon: "📈", title: "Integrated Analytics", description: "Real-time dashboards provide insights into system performance, revenue collection, and economic trends." }
-  ];
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
-  const zkpCards = [
-    {
-      title: "What are Zero-Knowledge Proofs?",
-      content: "Zero-Knowledge Proofs are cryptographic methods that allow one party (the prover) to prove to another party (the verifier) that a statement is true without revealing any information beyond the validity of the statement itself."
-    },
-    {
-      title: "ZKP in Our System",
-      items: [
-        "Ensures transaction privacy while maintaining auditability",
-        "Validates transactions without exposing sensitive financial data",
-        "Enables compliance verification without compromising user privacy",
-        "Supports selective disclosure for regulatory requirements"
-      ]
-    },
-    {
-      title: "Technical Benefits",
-      items: [
-        "Reduced on-chain data storage requirements",
-        "Improved scalability through efficient verification",
-        "Enhanced security through mathematical proofs",
-        "Compatibility with existing regulatory frameworks"
-      ]
-    }
-  ];
+    <!-- Font Awesome for Menu Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-  useEffect(() => {
-    // Show chat toast after 3 seconds
-    const timer = setTimeout(() => {
-      setShowChatToast(true);
-    }, 3000);
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --text-color: #333;
+            --light-bg: #f4f4f9;
+            --dark-blue: #0c1333;
+            --card-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --max-width: 1200px;
+        }
 
-    // Hide chat toast after 8 seconds
-    const hideTimer = setTimeout(() => {
-      setShowChatToast(false);
-    }, 8000);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(hideTimer);
-    };
-  }, []);
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  const trackCoinbaseClick = () => {
-    // Google Analytics Event (assuming gtag is available)
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'click', {
-        'event_category': 'Affiliate',
-        'event_label': 'Coinbase Signup',
-        'value': 1
-      });
-    }
-    
-    // Store click timestamp
-    localStorage.setItem('coinbase_click_timestamp', new Date().toISOString());
-  };
+        /* Improved Navbar Styles */
+        .navbar {
+            background: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-white shadow-md z-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <img src="/api/placeholder/40/40" alt="AB Logo" className="h-10 w-10" />
-              <span className="font-semibold text-gray-800">AB Development & Design</span>
+        .navbar-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section Improvements */
+        .hero-container {
+            background: var(--dark-blue);
+            padding: 8rem 1rem 6rem;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(46, 204, 113, 0.15), rgba(12, 19, 51, 0.15));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-width);
+            width: 100%;
+        }
+
+        .hero-container h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-container p {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Content Cards */
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: -100px auto 2rem;
+            max-width: var(--max-width);
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 10;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 50%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: white;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-container p {
+                font-size: 1.2rem;
+            }
+
+            .content-card {
+                margin: -50px 1rem 2rem;
+                padding: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.3s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-logo">
+                <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+                <span>AB Development & Design</span>
             </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              {['Home', 'Portfolio', 'Services', 'Contact'].map(item => (
-                <a key={item} href="#" className="text-gray-600 hover:text-green-500 font-medium">
-                  {item}
-                </a>
-              ))}
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <Menu size={24} />
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <div className="md:hidden py-3 border-t border-gray-200">
-              {['Home', 'Portfolio', 'Services', 'Contact'].map(item => (
-                <a
-                  key={item}
-                  href="#"
-                  className="block py-2 px-4 text-gray-600 hover:bg-gray-50 hover:text-green-500"
-                >
-                  {item}
-                </a>
-              ))}
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/portfolio">Portfolio</a>
+                <a href="/services">Services</a>
+                <a href="/contact">Contact</a>
             </div>
-          )}
         </div>
-      </nav>
+    </nav>
 
-      {/* Hero Section */}
-      <div className="bg-gray-900 pt-24 pb-16 px-4 sm:pt-32 sm:pb-24">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-            Tokenized Dollar System
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
-            Revolutionizing currency with blockchain and cryptography
-          </p>
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Tokenized Dollar System</h1>
+            <p>Revolutionizing currency with blockchain and cryptography</p>
         </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 -mt-12 sm:-mt-16">
-        {/* Featured Overview Card */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
-          <h2 className="text-3xl font-bold text-center text-green-500 mb-8">
-            Featured Overview
-          </h2>
-          <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-lg">
-            <iframe 
-              src="https://www.youtube.com/embed/1qMyXQIanT4"
-              className="absolute top-0 left-0 w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-
-        {/* Features Grid */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
-          <h2 className="text-3xl font-bold text-center text-green-500 mb-8">
-            Project Features
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md hover:-translate-y-1 transition-transform duration-300"
-              >
-                <div className="text-4xl mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-green-500 mb-3 text-center">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-center">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ZKP Section */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
-          <h2 className="text-3xl font-bold text-center text-green-500 mb-8">
-            Understanding Zero-Knowledge Proofs (ZKP)
-          </h2>
-          <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-lg mb-8">
-            <iframe 
-              src="https://www.youtube.com/embed/e_Im2g2xsAg"
-              className="absolute top-0 left-0 w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {zkpCards.map((card, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold text-green-500 mb-4 text-center">
-                  {card.title}
-                </h3>
-                {card.content ? (
-                  <p className="text-gray-600">{card.content}</p>
-                ) : (
-                  <ul className="space-y-2">
-                    {card.items?.map((item, i) => (
-                      <li key={i} className="text-gray-600 pl-4 relative">
-                        <span className="absolute left-0 text-green-500">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Coinbase Section */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-12 text-center">
-          <h2 className="text-4xl font-bold mb-8 text-green-500">
-            New to<br />Cryptocurrency?
-          </h2>
-          <div className="max-w-2xl mx-auto">
-            <img 
-              src="/api/placeholder/200/40" 
-              alt="Coinbase" 
-              className="h-10 mx-auto mb-8"
-            />
-            <h3 className="text-2xl font-semibold text-blue-600 mb-6">
-              Get Started with Coinbase
-            </h3>
-            <p className="text-gray-600 mb-8">
-              Begin your crypto journey with Coinbase, one of the most trusted cryptocurrency exchanges. 
-              Sign up using our referral link and we'll both receive $10 in Bitcoin!
-            </p>
-            <a
-              href="https://coinbase.com/join/EPVN7PL"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={trackCoinbaseClick}
-              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
-            >
-              Sign Up & Get $10 in BTC
-            </a>
-            <p className="text-sm text-gray-500 mt-4 italic">
-              *Promotional offer subject to Coinbase terms and conditions
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Chat Toast */}
-      {showChatToast && (
-        <div className="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 max-w-sm animate-slideIn">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">💬</span>
-            <p className="text-gray-700">Need help? Chat with us!</p>
-            <button 
-              onClick={() => setShowChatToast(false)}
-              className="text-gray-400 hover:text-gray-600"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
     </div>
-  );
-};
 
-export default TokenizedDollarLanding;
+    <!-- Rest of your content remains the same -->
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Handle scroll effects
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.style.background = 'white';
+            }
+        });
+
+        // Add smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after clicking
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
