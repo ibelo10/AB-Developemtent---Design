@@ -27,9 +27,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400,500,600,700,800,900&display=swap" rel="stylesheet" />
 
-    <!-- jQuery and Ripples Plugin -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
+    <!-- jQuery and Ripples with error handling -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    // Check if jQuery loaded properly
+    window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.6.0.min.js"><\/script>');
+    </script>
+    <script>
+    // Safe loading of ripples plugin
+    function loadRipples() {
+      try {
+        $.getScript('https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js')
+          .fail(function(jqxhr, settings, exception) {
+            console.warn('Could not load ripples plugin:', exception);
+          });
+      } catch (error) {
+        console.warn('Error loading ripples:', error);
+      }
+    }
+    jQuery(loadRipples);
+    </script>
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -306,29 +323,28 @@
     function handleSubscribe(event) {
       event.preventDefault();
       const form = event.target;
-      const email = document.getElementById('email').value;
-      
-      // Send form data
+      const email = document.getElementById('email')?.value;
+
+      if (!email) {
+        alert('Please enter a valid email address');
+        return;
+      }
+
       fetch(form.action, {
         method: 'POST',
         body: new FormData(form)
       })
       .then(response => {
         if (response.ok) {
-          // Close modal
           document.getElementById('modal-btn').checked = false;
-          
-          // Show success message
           alert('Thank you for subscribing!');
-          
-          // Store subscription status
           localStorage.setItem('subscribed', 'true');
         } else {
-          throw new Error('Something went wrong');
+          throw new Error('Submission failed');
         }
       })
       .catch(error => {
-        console.error('Error:', error);
+        console.error('Subscription error:', error);
         alert('Sorry, there was an error. Please try again later.');
       });
     }
