@@ -6,11 +6,11 @@
     <title>Tokenized Dollar System - Overview</title>
     <style>
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #1a56db;
             --secondary-color: #1e40af;
             --text-color: #333;
             --light-bg: #f4f4f9;
-            --card-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -20,36 +20,46 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             background: var(--light-bg);
             color: var(--text-color);
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, #1a56db, #1e40af);
             color: white;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
             text-align: center;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        .video-section {
+        .card {
             background: white;
-            border-radius: 8px;
+            border-radius: 20px;
             padding: 2rem;
-            margin-bottom: 2rem;
+            margin: -100px auto 2rem;
             box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        h2 {
+            color: #1a56db;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-align: center;
         }
 
         .video-container {
@@ -57,8 +67,9 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 8px;
-            margin-top: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: var(--card-shadow);
         }
 
         .video-container iframe {
@@ -70,84 +81,101 @@
             border: none;
         }
 
-        section {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--card-shadow);
-        }
-
-        h2 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+            text-align: center;
         }
 
         .feature-card {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
             transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--card-shadow);
         }
 
         .feature-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
+        .feature-card h3 {
+            color: #1a56db;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
         .zkp-section {
-            background: #f0f7ff;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+            box-shadow: var(--card-shadow);
+            text-align: center;
         }
 
         .zkp-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .zkp-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 16px;
             box-shadow: var(--card-shadow);
+            text-align: left;
+        }
+
+        .zkp-card h3 {
+            color: #1a56db;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
         ul {
-            list-style-position: inside;
+            list-style-type: none;
             margin-top: 1rem;
+            padding-left: 0;
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            color: #1a56db;
+            position: absolute;
+            left: 0;
         }
 
         footer {
             background: #1f2937;
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem;
+            margin-top: 4rem;
         }
 
         footer a {
             color: #60a5fa;
             text-decoration: none;
+            font-weight: 500;
         }
 
         footer a:hover {
@@ -155,12 +183,20 @@
         }
 
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
             .container {
                 padding: 1rem;
             }
 
-            header h1 {
-                font-size: 2rem;
+            .card {
+                margin-top: -50px;
             }
 
             .features-grid, .zkp-grid {
@@ -176,7 +212,7 @@
     </header>
 
     <div class="container">
-        <section class="video-section">
+        <div class="card">
             <h2>Featured Overview</h2>
             <div class="video-container">
                 <iframe 
@@ -185,9 +221,9 @@
                     allowfullscreen>
                 </iframe>
             </div>
-        </section>
+        </div>
 
-        <section>
+        <div class="card">
             <h2>Project Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
@@ -231,10 +267,17 @@
                     <p>Real-time dashboards provide insights into system performance, revenue collection, and economic trends.</p>
                 </div>
             </div>
-        </section>
+        </div>
 
         <section class="zkp-section">
             <h2>Understanding Zero-Knowledge Proofs (ZKP)</h2>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/e_Im2g2xsAg"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
             <div class="zkp-grid">
                 <div class="zkp-card">
                     <h3>What are Zero-Knowledge Proofs?</h3>
