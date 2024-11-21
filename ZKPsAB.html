@@ -426,55 +426,101 @@
             line-height: 1.6;
         }
 
-        /* Coinbase Section */
+/* Updated Coinbase Section */
 .coinbase-section {
     text-align: center;
     background: white;
-    padding: 4rem 2rem;
-    border-radius: 20px;
+    padding: 3rem 1.5rem;
+    border-radius: 24px;
     margin: 2rem auto;
     max-width: var(--max-width);
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
+/* Updated Heading Styles */
 .coinbase-section h2 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 800;
     margin-bottom: 2rem;
-    color: #00DC89;
-    line-height: 1.2;
+    color: #00DC82; /* Matching the bright green from the image */
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
-.coinbase-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
+/* Updated Coinbase Logo */
 .coinbase-logo {
-    height: 40px;
+    height: 32px;
+    margin: 1.5rem auto;
+    display: block;
+}
+
+/* Updated Content Styling */
+.coinbase-content {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.coinbase-content h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 1.5rem 0;
+    color: #1652F0; /* Coinbase blue */
+}
+
+.coinbase-content p {
+    color: #5C5C5C;
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 2rem;
 }
 
+/* Updated Button Styling */
 .signup-button {
     display: inline-block;
-    background: #0052FF;
+    background: #1652F0; /* Coinbase blue */
     color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 8px;
+    padding: 1rem 2rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    margin-bottom: 1rem;
-    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
 }
 
 .signup-button:hover {
-    background: #0043cc;
+    background: #0A46E4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 82, 240, 0.2);
 }
 
+/* Updated Promo Text */
 .promo-text {
     color: #888;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     font-style: italic;
+    margin-top: 1rem;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .coinbase-section {
+        padding: 2rem 1rem;
+        margin: 1rem;
+        border-radius: 20px;
+    }
+
+    .coinbase-content {
+        padding: 0;
+    }
+
+    .signup-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
 }
 
 /* Footer Styles */
