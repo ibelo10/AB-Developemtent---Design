@@ -130,7 +130,119 @@
             transition: all 0.3s ease;
         }
 
-        /* Mobile Menu Styles */
+        .page-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 73px);
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .flip-container {
+            width: 100%;
+            height: 340px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flip-container:hover .card {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(17, 24, 39, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            background: rgba(17, 24, 39, 0.2);
+        }
+
+        .card-logo {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .card-logo-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(17, 24, 39, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .back h1 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .back p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .linktree-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .linktree-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
         @media screen and (max-width: 768px) {
             .nav-logo span {
                 font-size: 1rem;
@@ -175,136 +287,10 @@
             .navbar {
                 padding: 1rem;
             }
-        }
 
-        .page-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 73px);
-            position: relative;
-            z-index: 2;
-            padding: 1rem;
-        }
-
-        .flip-container {
-            width: 100%;
-            max-width: 600px;
-            height: 340px;
-            position: relative;
-            perspective: 1000px;
-        }
-
-        .card {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .flip-container:hover .card {
-            transform: rotateY(180deg);
-        }
-
-        .front, .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(17, 24, 39, 0.2);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .back {
-            transform: rotateY(180deg);
-            background: rgba(17, 24, 39, 0.2);
-        }
-
-        .card-logo {
-            width: 150px;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .card-logo-circle {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: rgba(17, 24, 39, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        .back h1 {
-            color: white;
-            margin-bottom: 30px;
-            font-size: 1.8em;
-            font-weight: 400;
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        .linktree-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #2ecc71;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .linktree-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-        }
-
-        .back p {
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0 0 20px 0;
-            text-align: center;
-            max-width: 80%;
-            font-size: 0.9em;
-            padding: 0 1rem;
-        }
-
-        @media screen and (max-width: 480px) {
-            .card-logo-circle {
-                width: 150px;
-                height: 150px;
-            }
-
-            .card-logo {
-                width: 100px;
-            }
-
-            .back h1 {
-                font-size: 1.5em;
-            }
-
-            .back p {
-                font-size: 0.8em;
-            }
-
-            .linktree-btn {
-                padding: 10px 20px;
-                font-size: 0.9em;
+            .card-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
             }
         }
     </style>
@@ -330,20 +316,95 @@
         </div>
     </nav>
 
-<div class="page-container">
-        <div class="flip-container">
-            <div class="card">
-                <div class="front">
-                    <div class="card-logo-circle">
-                        <img src="assets/images/ABLogo.png" alt="AB Logo" class="card-logo">
+    <div class="page-container">
+        <div class="card-grid">
+            <!-- Original Card -->
+            <div class="flip-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="card-logo-circle">
+                            <img src="assets/images/ABLogo.png" alt="AB Logo" class="card-logo">
+                        </div>
+                    </div>
+                    <div class="back">
+                        <h1>AB Development & Design</h1>
+                        <p>We build innovative solutions with passion</p>
+                        <a href="https://linktr.ee/Iaaron" target="_blank" class="linktree-btn">
+                            View Portfolio
+                        </a>
                     </div>
                 </div>
-                <div class="back">
-                    <h1>AB Development & Design</h1>
-                    <p>We build innovative solutions with passion</p>
-                    <a href="https://linktr.ee/Iaaron" target="_blank" class="linktree-btn">
-                        View Portfolio
-                    </a>
+            </div>
+
+            <!-- ZKPs Card -->
+            <div class="flip-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="card-logo-circle">
+                            <img src="assets/images/zkp-logo.png" alt="ZKPs Logo" class="card-logo">
+                        </div>
+                    </div>
+                    <div class="back">
+                        <h1>Zero Knowledge Proofs</h1>
+                        <p>Explore blockchain privacy solutions</p>
+                        <a href="https://abdevndesign.com/ZKPsAB" target="_blank" class="linktree-btn">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Namecheap Card -->
+            <div class="flip-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="card-logo-circle">
+                            <img src="assets/images/namecheap-logo.png" alt="Namecheap Logo" class="card-logo">
+                        </div>
+                    </div>
+                    <div class="back">
+                        <h1>Namecheap Project</h1>
+                        <p>Domain management solutions</p>
+                        <a href="https://abdevndesign.com/Namecheap" target="_blank" class="linktree-btn">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ariel's Pralines Card -->
+            <div class="flip-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="card-logo-circle">
+                            <img src="assets/images/pralines-logo.png" alt="Ariel's Pralines Logo" class="card-logo">
+                        </div>
+                    </div>
+                    <div class="back">
+                        <h1>Ariel's Pralines</h1>
+                        <p>Artisanal chocolate confections</p>
+                        <a href="https://www.arielspralines.com/home" target="_blank" class="linktree-btn">
+                            View Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MS Viva Las Vegas Card -->
+            <div class="flip-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="card-logo-circle">
+                            <img src="assets/images/viva-logo.png" alt="MS Viva Las Vegas Logo" class="card-logo">
+                        </div>
+                    </div>
+                    <div class="back">
+                        <h1>MS Viva Las Vegas</h1>
+                        <p>Supporting multiple sclerosis awareness</p>
+                        <a href="https://www.msvivalasvegas.org/" target="_blank" class="linktree-btn">
+                            View Website
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -368,15 +429,14 @@
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         
-        // Updated colors to match your brand
         const colors = ['#2ecc71', '#27ae60', '#145a32', '#186a3b', '#1d8348'];
 
         let w = window.innerWidth;
         let h = window.innerHeight;
         const rate = 60;
-        const arc = 50; // Reduced particle count for better performance
-        const size = 5; // Slightly smaller particles
-        const speed = 15; // Adjusted speed
+        const arc = 50;
+        const size = 5;
+        const speed = 15;
         let time = 0;
         const parts = [];
         const mouse = { x: 0, y: 0 };
@@ -386,7 +446,6 @@
             h = window.innerHeight;
             canvas.width = w;
             canvas.height = h;
-            // Recreate particles on resize
             create();
         }
 
@@ -394,15 +453,15 @@
         resizeCanvas();
 
         function create() {
-            parts.length = 0; // Clear existing particles
+            parts.length = 0;
             for(let i = 0; i < arc; i++) {
                 parts[i] = {
                     x: Math.ceil(Math.random() * w),
                     y: Math.ceil(Math.random() * h),
-                    toX: Math.random() * 3 - 1.5, // Adjusted movement range
-                    toY: Math.random() * 1.5 - 0.75, // Adjusted vertical movement
+                    toX: Math.random() * 3 - 1.5,
+                    toY: Math.random() * 1.5 - 0.75,
                     c: colors[Math.floor(Math.random() * colors.length)],
-                    size: Math.random() * size + 1 // Minimum size of 1
+                    size: Math.random() * size + 1
                 }
             }
         }
@@ -417,7 +476,6 @@
                 ctx.beginPath();
                 ctx.arc(li.x, li.y, li.size * distanceFactor * 0.75, 0, Math.PI * 2, false);
                 
-                // Create gradient for particles
                 let gradient = ctx.createRadialGradient(
                     li.x, li.y, 0,
                     li.x, li.y, li.size * distanceFactor
@@ -433,11 +491,9 @@
                     ctx.fill();
                 }
                 
-                // Smoother movement
                 li.x += li.toX * (time * 0.05);
                 li.y += li.toY * (time * 0.05);
                 
-                // Wrap around screen edges
                 if(li.x > w) li.x = 0;
                 if(li.y > h) li.y = 0;
                 if(li.x < 0) li.x = w;
@@ -472,7 +528,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
                 menuToggle.classList.remove('active');
@@ -480,7 +535,6 @@
             }
         });
 
-        // Prevent menu close when clicking inside nav
         navLinks.addEventListener('click', (e) => {
             e.stopPropagation();
         });
@@ -506,10 +560,6 @@
                 hideToast();
                 trackChatOpen();
             });
-
-            FB.Event.subscribe('customerchat.hide', function() {
-                console.log('Chat widget hidden');
-            });
         };
 
         (function(d, s, id) {
@@ -522,7 +572,6 @@
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'facebook-jssdk');
 
-        // Chat configuration
         var chatbox = document.getElementById('fb-customer-chat');
         chatbox.setAttribute('page_id', '113394291657712');
         chatbox.setAttribute('attribution', 'biz_inbox');
@@ -532,7 +581,6 @@
         chatbox.setAttribute('logged_in_greeting', 'Hi! 👋 How can we help you today?');
         chatbox.setAttribute('logged_out_greeting', 'Hi! 👋 Log in to chat with us.');
 
-        // Chat Toast Functions
         function initializeChatToast() {
             setTimeout(function() {
                 document.getElementById('chatToast').classList.add('show');
