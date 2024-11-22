@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';">
     <title>Portfolio - AB Development & Design</title>
 
     <!-- Meta Tags -->
@@ -323,7 +324,7 @@
 
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="/api/placeholder/40/40" alt="AB Logo" class="logo-img">
+            <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img">
             <span>AB Development & Design</span>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation menu">
@@ -344,7 +345,7 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="/api/placeholder/160/160" alt="AB Logo" class="card-logo">
+                            <img src="assets/images/ABLogo.png" alt="AB Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
@@ -362,7 +363,7 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="/api/placeholder/160/160" alt="ZKPs Logo" class="card-logo">
+                            <img src="assets/images/zkp-logo.png" alt="ZKPs Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
@@ -380,7 +381,7 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="/api/placeholder/160/160" alt="Namecheap Logo" class="card-logo">
+                            <img src="assets/images/namecheap-logo.png" alt="Namecheap Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
@@ -398,7 +399,7 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="/api/placeholder/160/160" alt="Ariel's Pralines Logo" class="card-logo">
+                            <img src="assets/images/pralines-logo.png" alt="Ariel's Pralines Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
@@ -416,7 +417,7 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="/api/placeholder/160/160" alt="MS Viva Las Vegas Logo" class="card-logo">
+                            <img src="assets/images/viva-logo.png" alt="MS Viva Las Vegas Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
@@ -450,119 +451,123 @@
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         
-        const colors = ['#2ecc71', '#27ae60', '#145a32', '#186a3b', '#1d8348'];
-        let w, h, particles;
-        const mouse = { x: 0, y: 0 };
+       const colors = ['#2ecc71', '#27ae60', '#145a32', '#186a3b', '#1d8348'];
+       let w, h, particles;
+       const mouse = { x: 0, y: 0 };
 
-        function initCanvas() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            particles = Array.from({ length: 50 }, createParticle);
-        }
+       function initCanvas() {
+           w = canvas.width = window.innerWidth;
+           h = canvas.height = window.innerHeight;
+           particles = Array.from({ length: 50 }, createParticle);
+       }
 
-        function createParticle() {
-            return {
-                x: Math.random() * w,
-                y: Math.random() * h,
-                vx: Math.random() * 2 - 1,
-                vy: Math.random() * 1 - 0.5,
-                size: Math.random() * 4 + 1,
-                color: colors[Math.floor(Math.random() * colors.length)]
-            };
-        }
+       function createParticle() {
+           return {
+               x: Math.random() * w,
+               y: Math.random() * h,
+               vx: Math.random() * 2 - 1,
+               vy: Math.random() * 1 - 0.5,
+               size: Math.random() * 4 + 1,
+               color: colors[Math.floor(Math.random() * colors.length)]
+           };
+       }
 
-        function animate() {
-            ctx.clearRect(0, 0, w, h);
-            
-            particles.forEach(p => {
-                const dist = Math.hypot(mouse.x - p.x, mouse.y - p.y);
-                const size = p.size * Math.max(1, 10 - dist / 50);
-                
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-                
-                const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, size);
-                gradient.addColorStop(0, p.color);
-                gradient.addColorStop(1, 'transparent');
-                
-                ctx.fillStyle = gradient;
-                ctx.fill();
-                
-                p.x += p.vx;
-                p.y += p.vy;
-                
-                if (p.x < 0) p.x = w;
-                if (p.x > w) p.x = 0;
-                if (p.y < 0) p.y = h;
-                if (p.y > h) p.y = 0;
-            });
-            
-            requestAnimationFrame(animate);
-        }
+       function animate() {
+           ctx.clearRect(0, 0, w, h);
+           
+           particles.forEach(p => {
+               const dist = Math.hypot(mouse.x - p.x, mouse.y - p.y);
+               const size = p.size * Math.max(1, 10 - dist / 50);
+               
+               ctx.beginPath();
+               ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+               
+               const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, size);
+               gradient.addColorStop(0, p.color);
+               gradient.addColorStop(1, 'transparent');
+               
+               ctx.fillStyle = gradient;
+               ctx.fill();
+               
+               p.x += p.vx;
+               p.y += p.vy;
+               
+               if (p.x < 0) p.x = w;
+               if (p.x > w) p.x = 0;
+               if (p.y < 0) p.y = h;
+               if (p.y > h) p.y = 0;
+           });
+           
+           requestAnimationFrame(animate);
+       }
 
-        // Mobile Menu
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+       // Mobile Menu
+       const menuToggle = document.querySelector('.menu-toggle');
+       const navLinks = document.querySelector('.nav-links');
 
-        menuToggle?.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+       menuToggle?.addEventListener('click', () => {
+           menuToggle.classList.toggle('active');
+           navLinks.classList.toggle('active');
+       });
 
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
+       document.addEventListener('click', (e) => {
+           if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
+               menuToggle.classList.remove('active');
+               navLinks.classList.remove('active');
+           }
+       });
 
-        // Facebook Messenger Chat
-        window.fbAsyncInit = function() {
-            FB.init({
-                xfbml: true,
-                version: 'v18.0'
-            });
-        };
+       // Facebook Messenger Chat
+       window.fbAsyncInit = function() {
+           try {
+               FB.init({
+                   xfbml: true,
+                   version: 'v18.0'
+               });
+           } catch (error) {
+               console.warn('Facebook chat initialization failed:', error);
+           }
+       };
 
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            js.crossOrigin = 'anonymous';
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, 'script', 'facebook-jssdk');
+       (function(d, s, id) {
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) return;
+           js = d.createElement(s);
+           js.id = id;
+           js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+           js.crossOrigin = 'anonymous';
+           fjs.parentNode.insertBefore(js, fjs);
+       })(document, 'script', 'facebook-jssdk');
 
-        // Chat Widget Configuration
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute('page_id', '113394291657712');
-        chatbox.setAttribute('attribution', 'biz_inbox');
-        chatbox.setAttribute('theme_color', '#2ecc71');
+       // Chat Widget Configuration
+       var chatbox = document.getElementById('fb-customer-chat');
+       chatbox.setAttribute('page_id', '113394291657712');
+       chatbox.setAttribute('attribution', 'biz_inbox');
+       chatbox.setAttribute('theme_color', '#2ecc71');
 
-        // Toast Notifications
-        function initializeChatToast() {
-            setTimeout(() => {
-                document.getElementById('chatToast').classList.add('show');
-            }, 3000);
-        }
+       // Toast Notifications
+       function initializeChatToast() {
+           setTimeout(() => {
+               document.getElementById('chatToast').classList.add('show');
+           }, 3000);
+       }
 
-        function closeToast() {
-            document.getElementById('chatToast').classList.remove('show');
-        }
+       function closeToast() {
+           document.getElementById('chatToast').classList.remove('show');
+       }
 
-        // Event Listeners
-        window.addEventListener('resize', initCanvas);
-        canvas.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        });
+       // Event Listeners
+       window.addEventListener('resize', initCanvas);
+       canvas.addEventListener('mousemove', (e) => {
+           const rect = canvas.getBoundingClientRect();
+           mouse.x = e.clientX - rect.left;
+           mouse.y = e.clientY - rect.top;
+       });
 
-        // Initialize
-        initCanvas();
-        animate();
-        initializeChatToast();
-    </script>
+       // Initialize
+       initCanvas();
+       animate();
+       initializeChatToast();
+   </script>
 </body>
 </html>
