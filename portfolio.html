@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - AB Development & Design</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:title" content="AB Development & Design">
+    <meta property="og:description" content="We build innovative solutions with passion">
+    <meta property="og:image" content="assets/images/ABLogo.png">
+    <meta property="og:url" content="https://abdevndesign.com">
+    <meta property="og:type" content="website">
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,34 +21,26 @@
         gtag('config', 'G-H16CFGEXZP');
     </script>
     
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965" crossorigin="anonymous"></script>
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - AB Development & Design</title>
-
-    <!-- Facebook Meta Tags -->
-    <meta property="og:title" content="AB Development & Design" />
-    <meta property="og:description" content="We build innovative solutions with passion" />
-    <meta property="og:image" content="assets/images/ABLogo.png" />
-    <meta property="og:url" content="https://abdevndesign.com" />
-    <meta property="og:type" content="website" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
-    <!-- jQuery and Ripples Plugin -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" defer></script>
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/messenger.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
+        :root {
+            --primary-color: #2ecc71;
+            --bg-dark: #0a0c10;
+            --bg-card: rgba(17, 24, 39, 0.2);
+            --nav-bg: rgba(15, 19, 23, 0.95);
+            --text-light: rgba(255, 255, 255, 0.7);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --border-light: rgba(255, 255, 255, 0.05);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -46,23 +49,20 @@
 
         body {
             font-family: 'Raleway', sans-serif;
-            overflow-x: hidden;
             min-height: 100vh;
-            background: transparent;
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            color: white;
         }
 
         #particle-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: 0;
-            background: #0a0c10;
         }
 
         .navbar {
-            background: rgba(15, 19, 23, 0.95);
+            background: var(--nav-bg);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -70,7 +70,6 @@
             position: relative;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .nav-logo {
@@ -86,8 +85,7 @@
         }
 
         .nav-logo span {
-            color: white;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
         }
 
         .nav-links {
@@ -102,38 +100,18 @@
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: #2ecc71;
-        }
-
+        .nav-links a:hover,
         .nav-links a.active {
-            color: #2ecc71;
+            color: var(--primary-color);
         }
 
         .menu-toggle {
             display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 0;
-        }
-
-        .menu-toggle span {
-            width: 100%;
-            height: 3px;
-            background: white;
-            transition: all 0.3s ease;
         }
 
         .page-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: grid;
+            place-items: center;
             min-height: calc(100vh - 73px);
             position: relative;
             z-index: 2;
@@ -151,12 +129,10 @@
         .flip-container {
             width: 100%;
             height: 340px;
-            position: relative;
             perspective: 1000px;
         }
 
         .card {
-            width: 100%;
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
@@ -167,80 +143,63 @@
             transform: rotateY(180deg);
         }
 
-        /* Hover effects */
-.flip-container:hover .card-logo {
-    transform: scale(1.05);
-    filter: brightness(1) contrast(1.2);
-}
-        .front, .back {
+        .front,
+        .back {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             backface-visibility: hidden;
             border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(17, 24, 39, 0.2);
+            display: grid;
+            place-items: center;
+            background: var(--bg-card);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
             padding: 1.5rem;
         }
 
         .back {
             transform: rotateY(180deg);
-            background: rgba(17, 24, 39, 0.2);
+            text-align: center;
+        }
+
+        .card-logo-circle {
+            width: 160px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(10, 12, 16, 0.9);
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(46, 204, 113, 0.1);
+            padding: 20px;
         }
 
         .card-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Maintain aspect ratio */
-    filter: brightness(0.95) contrast(1.1); /* Subtle image enhancement */
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-        .front {
-    background: rgba(10, 12, 16, 0.95); /* Darker front face */
-}
-.back {
-    background: rgba(10, 12, 16, 0.95); /* Darker back face */
-}
-       .card-logo-circle {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: rgba(10, 12, 16, 0.9); /* Darker background to match site theme */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgba(46, 204, 113, 0.1); /* Subtle green border */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 20px; /* Add padding for logo containment */
-}
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .flip-container:hover .card-logo {
+            transform: scale(1.05);
+        }
 
         .back h1 {
-            color: white;
-            margin-bottom: 15px;
             font-size: 1.5em;
             font-weight: 400;
-            text-align: center;
+            margin-bottom: 15px;
         }
 
         .back p {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-light);
             margin-bottom: 20px;
-            text-align: center;
             font-size: 0.9em;
         }
 
         .linktree-btn {
-            display: inline-block;
             padding: 12px 24px;
-            background: #2ecc71;
+            background: var(--primary-color);
             color: white;
             text-decoration: none;
             border-radius: 6px;
@@ -248,6 +207,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: inline-block;
         }
 
         .linktree-btn:hover {
@@ -255,33 +215,71 @@
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
         }
 
-        @media screen and (max-width: 768px) {
-            .nav-logo span {
-                font-size: 1rem;
+        .chat-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chat-toast.show {
+            transform: translateY(0);
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-color);
+            animation: progress 3s linear;
+        }
+
+        @keyframes progress {
+            from { width: 100%; }
+            to { width: 0%; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
             }
 
             .menu-toggle {
                 display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: rgba(15, 19, 23, 0.98);
                 flex-direction: column;
-                padding: 80px 40px;
-                gap: 2rem;
-                transition: right 0.3s ease;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
+                gap: 6px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                z-index: 1001;
             }
 
-            .nav-links.active {
-                right: 0;
+            .menu-toggle span {
+                width: 30px;
+                height: 3px;
+                background: white;
+                transition: 0.3s ease;
             }
 
             .menu-toggle.active span:nth-child(1) {
@@ -296,8 +294,21 @@
                 transform: rotate(-45deg) translate(7px, -7px);
             }
 
-            .navbar {
-                padding: 1rem;
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: min(70%, 300px);
+                background: var(--nav-bg);
+                flex-direction: column;
+                padding: 80px 40px;
+                transition: right 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                right: 0;
             }
 
             .card-grid {
@@ -312,13 +323,11 @@
 
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+            <img src="/api/placeholder/40/40" alt="AB Logo" class="logo-img">
             <span>AB Development & Design</span>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
         <div class="nav-links">
             <a href="/">Home</a>
@@ -330,18 +339,18 @@
 
     <div class="page-container">
         <div class="card-grid">
-            <!-- Original Card -->
+            <!-- AB Development Card -->
             <div class="flip-container">
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="assets/images/ABLogo.png" alt="AB Logo" class="card-logo">
+                            <img src="/api/placeholder/160/160" alt="AB Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
                         <h1>AB Development & Design</h1>
                         <p>We build innovative solutions with passion</p>
-                        <a href="https://linktr.ee/Iaaron" target="_blank" class="linktree-btn">
+                        <a href="https://linktr.ee/Iaaron" target="_blank" rel="noopener" class="linktree-btn">
                             View Portfolio
                         </a>
                     </div>
@@ -353,13 +362,13 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="assets/images/zkp-logo.png" alt="ZKPs Logo" class="card-logo">
+                            <img src="/api/placeholder/160/160" alt="ZKPs Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
                         <h1>Zero Knowledge Proofs</h1>
                         <p>Explore blockchain privacy solutions</p>
-                        <a href="https://abdevndesign.com/ZKPsAB" target="_blank" class="linktree-btn">
+                        <a href="https://abdevndesign.com/ZKPsAB" target="_blank" rel="noopener" class="linktree-btn">
                             View Project
                         </a>
                     </div>
@@ -371,13 +380,13 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="assets/images/namecheap-logo.png" alt="Namecheap Logo" class="card-logo">
+                            <img src="/api/placeholder/160/160" alt="Namecheap Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
                         <h1>Namecheap Project</h1>
                         <p>Domain management solutions</p>
-                        <a href="https://abdevndesign.com/Namecheap" target="_blank" class="linktree-btn">
+                        <a href="https://abdevndesign.com/Namecheap" target="_blank" rel="noopener" class="linktree-btn">
                             View Project
                         </a>
                     </div>
@@ -389,13 +398,13 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="assets/images/pralines-logo.png" alt="Ariel's Pralines Logo" class="card-logo">
+                            <img src="/api/placeholder/160/160" alt="Ariel's Pralines Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
                         <h1>Ariel's Pralines</h1>
                         <p>Artisanal chocolate confections</p>
-                        <a href="https://www.arielspralines.com/home" target="_blank" class="linktree-btn">
+                        <a href="https://www.arielspralines.com/home" target="_blank" rel="noopener" class="linktree-btn">
                             View Website
                         </a>
                     </div>
@@ -407,13 +416,13 @@
                 <div class="card">
                     <div class="front">
                         <div class="card-logo-circle">
-                            <img src="assets/images/viva-logo.png" alt="MS Viva Las Vegas Logo" class="card-logo">
+                            <img src="/api/placeholder/160/160" alt="MS Viva Las Vegas Logo" class="card-logo">
                         </div>
                     </div>
                     <div class="back">
                         <h1>MS Viva Las Vegas</h1>
                         <p>Supporting multiple sclerosis awareness</p>
-                        <a href="https://www.msvivalasvegas.org/" target="_blank" class="linktree-btn">
+                        <a href="https://www.msvivalasvegas.org/" target="_blank" rel="noopener" class="linktree-btn">
                             View Website
                         </a>
                     </div>
@@ -422,7 +431,7 @@
         </div>
     </div>
 
-    <!-- Chat Toast Notification -->
+    <!-- Chat Toast -->
     <div class="chat-toast" id="chatToast">
         <div class="toast-content">
             <span class="toast-icon">💬</span>
@@ -437,105 +446,65 @@
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
     <script>
-        // Particle Animation Configuration
+        // Particle Animation
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         
         const colors = ['#2ecc71', '#27ae60', '#145a32', '#186a3b', '#1d8348'];
-
-        let w = window.innerWidth;
-        let h = window.innerHeight;
-        const rate = 60;
-        const arc = 50;
-        const size = 5;
-        const speed = 15;
-        let time = 0;
-        const parts = [];
+        let w, h, particles;
         const mouse = { x: 0, y: 0 };
 
-        function resizeCanvas() {
-            w = window.innerWidth;
-            h = window.innerHeight;
-            canvas.width = w;
-            canvas.height = h;
-            create();
+        function initCanvas() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            particles = Array.from({ length: 50 }, createParticle);
         }
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        function create() {
-            parts.length = 0;
-            for(let i = 0; i < arc; i++) {
-                parts[i] = {
-                    x: Math.ceil(Math.random() * w),
-                    y: Math.ceil(Math.random() * h),
-                    toX: Math.random() * 3 - 1.5,
-                    toY: Math.random() * 1.5 - 0.75,
-                    c: colors[Math.floor(Math.random() * colors.length)],
-                    size: Math.random() * size + 1
-                }
-            }
+        function createParticle() {
+            return {
+                x: Math.random() * w,
+                y: Math.random() * h,
+                vx: Math.random() * 2 - 1,
+                vy: Math.random() * 1 - 0.5,
+                size: Math.random() * 4 + 1,
+                color: colors[Math.floor(Math.random() * colors.length)]
+            };
         }
 
-        function particles() {
+        function animate() {
             ctx.clearRect(0, 0, w, h);
-            for(let i = 0; i < arc; i++) {
-                let li = parts[i];
-                let distanceFactor = DistanceBetween(mouse, parts[i]);
-                distanceFactor = Math.max(Math.min(15 - (distanceFactor / 10), 10), 1);
+            
+            particles.forEach(p => {
+                const dist = Math.hypot(mouse.x - p.x, mouse.y - p.y);
+                const size = p.size * Math.max(1, 10 - dist / 50);
                 
                 ctx.beginPath();
-                ctx.arc(li.x, li.y, li.size * distanceFactor * 0.75, 0, Math.PI * 2, false);
+                ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
                 
-                let gradient = ctx.createRadialGradient(
-                    li.x, li.y, 0,
-                    li.x, li.y, li.size * distanceFactor
-                );
-                gradient.addColorStop(0, li.c);
+                const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, size);
+                gradient.addColorStop(0, p.color);
                 gradient.addColorStop(1, 'transparent');
                 
-                if(i % 2 == 0) {
-                    ctx.strokeStyle = li.c;
-                    ctx.stroke();
-                } else {
-                    ctx.fillStyle = gradient;
-                    ctx.fill();
-                }
+                ctx.fillStyle = gradient;
+                ctx.fill();
                 
-                li.x += li.toX * (time * 0.05);
-                li.y += li.toY * (time * 0.05);
+                p.x += p.vx;
+                p.y += p.vy;
                 
-                if(li.x > w) li.x = 0;
-                if(li.y > h) li.y = 0;
-                if(li.x < 0) li.x = w;
-                if(li.y < 0) li.y = h;
-            }
+                if (p.x < 0) p.x = w;
+                if (p.x > w) p.x = 0;
+                if (p.y < 0) p.y = h;
+                if (p.y > h) p.y = 0;
+            });
             
-            if(time < speed) {
-                time++;
-            }
-            requestAnimationFrame(particles);
+            requestAnimationFrame(animate);
         }
 
-        function MouseMove(e) {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        }
-
-        function DistanceBetween(p1, p2) {
-            const dx = p2.x - p1.x;
-            const dy = p2.y - p1.y;
-            return Math.sqrt(dx * dx + dy * dy);
-        }
-
-        // Mobile Menu Toggle
+        // Mobile Menu
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
+        menuToggle?.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
@@ -547,30 +516,11 @@
             }
         });
 
-        navLinks.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        // Initialize particle animation
-        canvas.addEventListener('mousemove', MouseMove, false);
-        create();
-        particles();
-
-        // Messenger Chat Configuration
+        // Facebook Messenger Chat
         window.fbAsyncInit = function() {
             FB.init({
                 xfbml: true,
                 version: 'v18.0'
-            });
-
-            FB.Event.subscribe('customerchat.load', function() {
-                console.log('Chat widget loaded successfully');
-                initializeChatToast();
-            });
-
-            FB.Event.subscribe('customerchat.show', function() {
-                hideToast();
-                trackChatOpen();
             });
         };
 
@@ -584,37 +534,35 @@
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'facebook-jssdk');
 
+        // Chat Widget Configuration
         var chatbox = document.getElementById('fb-customer-chat');
         chatbox.setAttribute('page_id', '113394291657712');
         chatbox.setAttribute('attribution', 'biz_inbox');
         chatbox.setAttribute('theme_color', '#2ecc71');
-        chatbox.setAttribute('greeting_dialog_display', 'fade');
-        chatbox.setAttribute('greeting_dialog_delay', '5');
-        chatbox.setAttribute('logged_in_greeting', 'Hi! 👋 How can we help you today?');
-        chatbox.setAttribute('logged_out_greeting', 'Hi! 👋 Log in to chat with us.');
 
+        // Toast Notifications
         function initializeChatToast() {
-            setTimeout(function() {
+            setTimeout(() => {
                 document.getElementById('chatToast').classList.add('show');
             }, 3000);
         }
 
-        function hideToast() {
+        function closeToast() {
             document.getElementById('chatToast').classList.remove('show');
         }
 
-        function closeToast() {
-            hideToast();
-        }
+        // Event Listeners
+        window.addEventListener('resize', initCanvas);
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
 
-        function trackChatOpen() {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'chat_opened', {
-                    'event_category': 'Chat',
-                    'event_label': 'Messenger Chat Opened'
-                });
-            }
-        }
+        // Initialize
+        initCanvas();
+        animate();
+        initializeChatToast();
     </script>
 </body>
 </html>
