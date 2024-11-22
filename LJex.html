@@ -15,8 +15,6 @@
         --olive-dark: #556b2f;
         --cream: #f8f7f1;
         --dark-bg: #1a1f16;
-        --size: 350px;
-        --layer: 20;
       }
 
       * {
@@ -31,79 +29,7 @@
         font-family: "Poppins", sans-serif;
         color: var(--cream);
         line-height: 1.6;
-        perspective: 1000px;
         overflow-x: hidden;
-      }
-
-      /* Background Animation */
-      .bg-animation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .olive-bg-pattern {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-          var(--olive-light) 1px,
-          transparent 1px
-        );
-        background-size: 50px 50px;
-        opacity: 0.05;
-      }
-
-      /* Modern Image Modal */
-      .image-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(26, 31, 22, 0.95);
-        z-index: 1000;
-        cursor: zoom-out;
-        backdrop-filter: blur(10px);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .image-modal.active {
-        opacity: 1;
-      }
-
-      .modal-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.9);
-        max-width: 90vw;
-        max-height: 90vh;
-        transition: transform 0.3s ease;
-      }
-
-      .modal-content.active {
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      .modal-content img {
-        max-width: 100%;
-        max-height: 90vh;
-        object-fit: contain;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      }
-
-      /* Main Content Styles */
-      .main-content {
-        position: relative;
-        z-index: 2;
       }
 
       /* Hero Section */
@@ -115,39 +41,23 @@
         justify-content: center;
         text-align: center;
         padding: 2rem;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         background: linear-gradient(
-          135deg,
           rgba(26, 31, 22, 0.95),
           rgba(26, 31, 22, 0.98)
         );
-        z-index: 1;
       }
 
       .hero-content {
-        position: relative;
-        z-index: 2;
         max-width: 800px;
         width: 90%;
         padding: 3rem;
-        background: rgba(26, 31, 22, 0.5);
+        background: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(10px);
         border-radius: 30px;
         border: 1px solid rgba(152, 167, 85, 0.1);
-        animation: fadeIn 1s ease-out;
       }
 
       .logo-container {
-        position: relative;
         width: 180px;
         height: 180px;
         margin: 0 auto 2rem;
@@ -155,7 +65,6 @@
       }
 
       .logo-mask {
-        position: relative;
         width: 100%;
         height: 100%;
         border-radius: 50%;
@@ -172,117 +81,8 @@
         transition: transform 0.3s ease;
       }
 
-      .logo-container:hover .main-logo {
-        transform: scale(1.1);
-      }
-
-      .hero-subtitle {
-        color: var(--olive-light);
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        animation: fadeInUp 1s ease forwards;
-        opacity: 0;
-        animation-delay: 0.5s;
-      }
-
-      .hero-title {
-        font-size: 4.5rem;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(45deg, var(--cream), var(--olive-light));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: fadeInUp 1s ease forwards;
-        opacity: 0;
-        animation-delay: 0.7s;
-      }
-
-      .hero-description {
-        font-size: 1.2rem;
-        max-width: 600px;
-        margin: 0 auto 2rem;
-        color: var(--cream);
-        animation: fadeInUp 1s ease forwards;
-        opacity: 0;
-        animation-delay: 0.9s;
-      }
-
-      /* Button Container */
-      .btn-container {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        max-width: 400px;
-        margin: 2rem auto 0;
-        animation: fadeInUp 1s ease forwards;
-        opacity: 0;
-        animation-delay: 1.1s;
-      }
-
-      .btn {
-        background: linear-gradient(
-          135deg,
-          var(--olive-light),
-          var(--olive-medium)
-        );
-        color: var(--cream);
-        border: none;
-        border-radius: 50px;
-        padding: 1.2rem 2.5rem;
-        font-family: "Poppins", sans-serif;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          45deg,
-          transparent 0%,
-          rgba(255, 255, 255, 0.2) 50%,
-          transparent 100%
-        );
-        transform: translateX(-100%);
-        transition: transform 0.6s ease;
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(152, 167, 85, 0.3);
-      }
-
-      .btn:hover::before {
-        transform: translateX(100%);
-      }
-
-      .btn-outline {
-        background: transparent;
-        border: 2px solid var(--olive-light);
-        color: var(--olive-light);
-      }
-
-      .btn-outline:hover {
-        background: rgba(152, 167, 85, 0.1);
-        transform: translateY(-2px);
-      }
-
       /* Gallery Section */
       .gallery {
-        position: relative;
         padding: 5rem 2rem;
         background: rgba(26, 31, 22, 0.8);
         backdrop-filter: blur(10px);
@@ -294,22 +94,15 @@
         gap: 2rem;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem;
       }
 
       .gallery-item {
         position: relative;
-        overflow: hidden;
         border-radius: 20px;
+        overflow: hidden;
+        aspect-ratio: 16/9;
         cursor: pointer;
-        height: 300px;
-        transform-origin: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .gallery-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(152, 167, 85, 0.2);
+        transition: transform 0.3s ease;
       }
 
       .gallery-item img {
@@ -319,75 +112,121 @@
         transition: transform 0.5s ease;
       }
 
+      .gallery-item:hover {
+        transform: translateY(-10px);
+      }
+
       .gallery-item:hover img {
         transform: scale(1.1);
       }
 
-      .gallery-item::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(26, 31, 22, 0.4) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
+      /* Form Styling */
+      .contact-form-section {
+        background: rgba(26, 31, 22, 0.9);
+        padding: 4rem 2rem;
       }
 
-      .gallery-item:hover::after {
-        opacity: 1;
+      .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(152, 167, 85, 0.1);
       }
 
-      /* Section Title Styling */
-      .section-title {
-        font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
+      .form-title {
         color: var(--olive-light);
-        position: relative;
-        display: inline-block;
-        left: 50%;
-        transform: translateX(-50%);
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
       }
 
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        color: var(--cream);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(152, 167, 85, 0.2);
+        border-radius: 10px;
+        color: var(--cream);
+        font-family: "Poppins", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 1.2rem;
+        background: linear-gradient(
+          135deg,
+          var(--olive-light),
+          var(--olive-medium)
+        );
+        border: none;
+        border-radius: 50px;
+        color: var(--cream);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(152, 167, 85, 0.2);
+      }
+
+      /* Modal Styling */
+      .image-modal {
+        display: none;
+        position: fixed;
+        top: 0;
         left: 0;
         width: 100%;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          var(--olive-medium) 50%,
-          transparent 100%
-        );
+        height: 100%;
+        background: rgba(26, 31, 22, 0.95);
+        z-index: 1000;
+        cursor: zoom-out;
+      }
+
+      .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .modal-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       }
 
       /* Animations */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
       @keyframes floatAnimation {
         0%,
         100% {
@@ -398,57 +237,30 @@
         }
       }
 
-      /* Responsive Design */
+      /* Media Queries */
       @media (max-width: 768px) {
-        .hero-title {
-          font-size: 3rem;
+        .hero-content {
+          padding: 2rem;
         }
 
-        .hero-subtitle {
-          font-size: 1rem;
-        }
-
-        .hero-description {
-          font-size: 1rem;
-        }
-
-        .btn {
-          padding: 1rem 2rem;
-          font-size: 1rem;
+        .logo-container {
+          width: 150px;
+          height: 150px;
         }
 
         .gallery-grid {
           grid-template-columns: 1fr;
         }
 
-        .section-title {
-          font-size: 2rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero-content {
+        .form-container {
           padding: 1.5rem;
-        }
-
-        .logo-container {
-          width: 120px;
-          height: 120px;
-        }
-
-        .hero-title {
-          font-size: 2.5rem;
         }
       }
     </style>
   </head>
 
+  ```html
   <body>
-    <!-- Background Pattern -->
-    <div class="bg-animation">
-      <div class="olive-bg-pattern"></div>
-    </div>
-
     <!-- Image Modal -->
     <div class="image-modal" id="imageModal" onclick="closeModal()">
       <div class="modal-content">
@@ -456,121 +268,249 @@
       </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-      <!-- Hero Section -->
-      <section class="hero">
-        <div class="hero-content">
-          <div class="logo-container">
-            <div class="logo-mask">
-              <img
-                src="assets/images/logo.png"
-                alt="OLIV Construction Logo"
-                class="main-logo"
-              />
-            </div>
-          </div>
-          <p class="hero-subtitle">Where Nature Meets Architecture</p>
-          <h1 class="hero-title">OLIV Construction</h1>
-          <p class="hero-description">
-            Cultivating spaces with the precision of nature and the warmth of
-            olive groves. Let's grow your vision together.
-          </p>
-          <div class="btn-container">
-            <button class="btn" onclick="togglePopup()">
-              Plant Your Ideas
-            </button>
-            <button class="btn btn-outline" onclick="callNow()">
-              Branch Out to Us
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gallery Section -->
-      <section class="gallery">
-        <h2 class="section-title">Our Flourishing Projects</h2>
-        <div class="gallery-grid">
-          <div
-            class="gallery-item"
-            onclick="openModal('assets/images/bathroom.png', 'Luxurious Bathroom Design')"
-          >
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="logo-container">
+          <div class="logo-mask">
             <img
-              src="assets/images/bathroom.png"
-              alt="Luxurious Bathroom Design"
-            />
-          </div>
-          <div
-            class="gallery-item"
-            onclick="openModal('assets/images/diningroom.png', 'Modern Dining Room')"
-          >
-            <img src="assets/images/diningroom.png" alt="Modern Dining Room" />
-          </div>
-          <div
-            class="gallery-item"
-            onclick="openModal('assets/images/kitchenset.png', 'Custom Kitchen Design')"
-          >
-            <img
-              src="assets/images/kitchenset.png"
-              alt="Custom Kitchen Design"
+              src="assets/images/logo.png"
+              alt="OLIV Construction Logo"
+              class="main-logo"
             />
           </div>
         </div>
-      </section>
-
-      <!-- Benefits Section -->
-      <section class="benefits">
-        <h2 class="section-title">Why Choose OLIV?</h2>
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <h3>Rooted in Excellence</h3>
-            <p>
-              Like an olive tree's deep roots, our commitment to quality runs
-              deep. Every project is handled with care and precision.
-            </p>
-          </div>
-          <div class="benefit-card">
-            <h3>Natural Growth</h3>
-            <p>
-              We nurture your ideas from seed to fruition, ensuring each project
-              develops organically and beautifully.
-            </p>
-          </div>
-          <div class="benefit-card">
-            <h3>Sustainable Beauty</h3>
-            <p>
-              Creating spaces that stand the test of time, just like the ancient
-              olive groves that inspire us.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer>
-        <p>
-          © 2024 OLIV Construction | Cultivating Excellence in Every Project
+        <h1
+          style="
+            font-size: 3.5rem;
+            color: var(--olive-light);
+            margin-bottom: 1rem;
+          "
+        >
+          OLIV Construction
+        </h1>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem">
+          Cultivating excellence in every project, rooted in quality
+          craftsmanship
         </p>
-        <p><a href="tel:+15128099968">Call Us: (512) 809-9968</a></p>
-      </footer>
-    </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+          "
+        >
+          <button class="btn" onclick="togglePopup()">Plant Your Ideas</button>
+          <button
+            class="btn"
+            style="
+              background: transparent;
+              border: 2px solid var(--olive-light);
+            "
+            onclick="callNow()"
+          >
+            Branch Out to Us
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <!-- Popup Form -->
-    <div class="overlay" id="overlay" onclick="togglePopup()"></div>
-    <div class="popup" id="popup">
-      <h2>Plant Your Project Ideas</h2>
-      <form id="quoteForm" onsubmit="submitForm(event)">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <input type="tel" placeholder="Your Phone Number" required />
-        <textarea
-          placeholder="Tell us about your vision"
-          rows="4"
-          required
-        ></textarea>
-        <button type="submit" class="btn">Submit Request</button>
-      </form>
-    </div>
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <h2
+        style="
+          text-align: center;
+          color: var(--olive-light);
+          margin-bottom: 3rem;
+        "
+      >
+        Our Flourishing Projects
+      </h2>
+      <div class="gallery-grid">
+        <div
+          class="gallery-item"
+          onclick="openModal('assets/images/bathroom.png', 'Modern Bathroom Design')"
+        >
+          <img src="assets/images/bathroom.png" alt="Modern Bathroom Design" />
+        </div>
+        <div
+          class="gallery-item"
+          onclick="openModal('assets/images/diningroom.png', 'Contemporary Dining Space')"
+        >
+          <img
+            src="assets/images/diningroom.png"
+            alt="Contemporary Dining Space"
+          />
+        </div>
+        <div
+          class="gallery-item"
+          onclick="openModal('assets/images/kitchenset.png', 'Luxury Kitchen Design')"
+        >
+          <img src="assets/images/kitchenset.png" alt="Luxury Kitchen Design" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+      <div class="form-container">
+        <h2 class="form-title">Plant Your Project Ideas</h2>
+        <form id="projectForm" onsubmit="submitProjectForm(event)">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              class="form-input"
+              required
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vision">Your Vision</label>
+            <textarea
+              id="vision"
+              class="form-textarea"
+              required
+              placeholder="Tell us about your project ideas..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Submit Request</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section style="padding: 5rem 2rem; background: rgba(26, 31, 22, 0.9)">
+      <h2
+        style="
+          text-align: center;
+          color: var(--olive-light);
+          margin-bottom: 3rem;
+        "
+      >
+        Why Choose OLIV?
+      </h2>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
+        "
+      >
+        <div
+          style="
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+          "
+        >
+          <h3 style="color: var(--olive-light); margin-bottom: 1rem">
+            Rooted in Excellence
+          </h3>
+          <p>
+            Like an olive tree's deep roots, our commitment to quality runs
+            deep. Every project is handled with care and precision.
+          </p>
+        </div>
+        <div
+          style="
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+          "
+        >
+          <h3 style="color: var(--olive-light); margin-bottom: 1rem">
+            Natural Growth
+          </h3>
+          <p>
+            We nurture your ideas from seed to fruition, ensuring each project
+            develops organically and beautifully.
+          </p>
+        </div>
+        <div
+          style="
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+          "
+        >
+          <h3 style="color: var(--olive-light); margin-bottom: 1rem">
+            Sustainable Beauty
+          </h3>
+          <p>
+            Creating spaces that stand the test of time, just like the ancient
+            olive groves that inspire us.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer
+      style="background: var(--dark-bg); padding: 3rem 2rem; text-align: center"
+    >
+      <div style="max-width: 1200px; margin: 0 auto">
+        <p
+          style="
+            color: var(--olive-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+          "
+        >
+          OLIV Construction
+        </p>
+        <p style="margin-bottom: 1rem">
+          Cultivating Excellence in Every Project
+        </p>
+        <a
+          href="tel:+15128099968"
+          style="
+            color: var(--olive-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+          "
+        >
+          Call Us: (512) 809-9968
+        </a>
+        <p
+          style="
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+          "
+        >
+          © 2024 OLIV Construction | All rights reserved
+        </p>
+      </div>
+    </footer>
 
     <script>
       // Image Modal Functions
@@ -580,55 +520,36 @@
         modal.style.display = "block";
         modalImg.src = imageSrc;
         modalImg.alt = altText;
-
-        // Force reflow before adding active class for animation
-        void modal.offsetWidth;
-
-        setTimeout(() => {
-          modal.classList.add("active");
-          modalImg.parentElement.classList.add("active");
-        }, 10);
         document.body.style.overflow = "hidden";
+
+        // Add animation
+        setTimeout(() => {
+          modal.style.opacity = "1";
+          modalImg.style.transform = "scale(1)";
+        }, 10);
       }
 
       function closeModal() {
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
-        modal.classList.remove("active");
-        modalImg.parentElement.classList.remove("active");
+
+        modal.style.opacity = "0";
+        modalImg.style.transform = "scale(0.9)";
+
         setTimeout(() => {
           modal.style.display = "none";
           document.body.style.overflow = "";
         }, 300);
       }
 
-      function togglePopup() {
-        const popup = document.getElementById("popup");
-        const overlay = document.getElementById("overlay");
-        popup.style.display =
-          popup.style.display === "block" ? "none" : "block";
-        overlay.style.display =
-          overlay.style.display === "block" ? "none" : "block";
-
-        if (popup.style.display === "none") {
-          document.getElementById("quoteForm").reset();
-          document.body.style.overflow = "";
-        } else {
-          document.body.style.overflow = "hidden";
-        }
-      }
-
-      function callNow() {
-        window.location.href = "tel:+15128099968";
-      }
-
-      function submitForm(event) {
+      // Form Submission
+      function submitProjectForm(event) {
         event.preventDefault();
 
-        const form = document.getElementById("quoteForm");
+        const form = document.getElementById("projectForm");
         const formData = new FormData(form);
 
-        // Basic validation
+        // Validation
         let isValid = true;
         form.querySelectorAll("input, textarea").forEach((field) => {
           if (!field.value.trim()) {
@@ -649,28 +570,62 @@
           "Thank you for planting your ideas with us! We'll nurture your project together."
         );
 
+        // Reset form
         form.reset();
-        togglePopup();
       }
+
+      function callNow() {
+        window.location.href = "tel:+15128099968";
+      }
+
+      // Enhanced Form Interaction
+      document
+        .querySelectorAll(".form-input, .form-textarea")
+        .forEach((element) => {
+          // Add focus effects
+          element.addEventListener("focus", function () {
+            this.style.borderColor = "var(--olive-light)";
+            this.style.boxShadow = "0 0 0 2px rgba(152, 167, 85, 0.1)";
+          });
+
+          element.addEventListener("blur", function () {
+            if (!this.value) {
+              this.style.borderColor = "rgba(152, 167, 85, 0.2)";
+              this.style.boxShadow = "none";
+            }
+          });
+
+          // Add floating label effect
+          element.addEventListener("input", function () {
+            const label = this.previousElementSibling;
+            if (label && label.classList.contains("form-label")) {
+              if (this.value) {
+                label.style.transform = "translateY(-20px) scale(0.85)";
+              } else {
+                label.style.transform = "none";
+              }
+            }
+          });
+        });
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
 
       // Close modal with escape key
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
-          if (document.getElementById("imageModal").style.display === "block") {
-            closeModal();
-          }
-          if (document.getElementById("popup").style.display === "block") {
-            togglePopup();
-          }
+          closeModal();
         }
       });
 
-      // Prevent background scrolling when modal/popup is open
-      function toggleBodyScroll(disable) {
-        document.body.style.overflow = disable ? "hidden" : "";
-      }
-
-      // Touch event handlers for mobile devices
+      // Add touch events for mobile
       let touchStartY = 0;
       document.addEventListener(
         "touchstart",
@@ -683,18 +638,16 @@
       document.addEventListener(
         "touchmove",
         function (e) {
-          const popup = document.getElementById("popup");
           const modal = document.getElementById("imageModal");
-
-          if (
-            popup.style.display === "block" ||
-            modal.style.display === "block"
-          ) {
+          if (modal.style.display === "block") {
             const touchY = e.touches[0].clientY;
             const deltaY = touchY - touchStartY;
 
             if (Math.abs(deltaY) > 10) {
               e.preventDefault();
+              if (deltaY > 50) {
+                closeModal();
+              }
             }
           }
         },
