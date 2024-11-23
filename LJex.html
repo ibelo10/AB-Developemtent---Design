@@ -34,6 +34,128 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
+      /* Animated Background */
+      .olive-tree {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .tree-trunk {
+        position: absolute;
+        bottom: -10%;
+        left: 50%;
+        width: 40px;
+        height: 60%;
+        background: linear-gradient(
+          to top,
+          var(--olive-dark),
+          var(--olive-medium)
+        );
+        transform: translateX(-50%);
+        animation: trunkSway 8s ease-in-out infinite;
+        transform-origin: bottom;
+      }
+
+      .tree-trunk::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 80px;
+        height: 30px;
+        background: var(--olive-dark);
+        transform: translateX(-50%) perspective(100px) rotateX(30deg);
+        border-radius: 50%;
+        filter: blur(5px);
+      }
+
+      .branches-container {
+        position: absolute;
+        bottom: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 60%;
+      }
+
+      .branch {
+        position: absolute;
+        width: 140px;
+        height: 6px;
+        background: var(--olive-medium);
+        transform-origin: left center;
+      }
+
+      .branch::after {
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: 0;
+        width: 140px;
+        height: 70px;
+        background: radial-gradient(
+          circle at 30% 50%,
+          var(--olive-light) 0%,
+          var(--olive-medium) 40%,
+          transparent 70%
+        );
+        border-radius: 50% 50% 0 0;
+        opacity: 0.7;
+        animation: leavesRustle 4s ease-in-out infinite;
+      }
+
+      .branch:nth-child(1) {
+        transform: rotate(-50deg);
+        left: -20px;
+        top: 30%;
+      }
+
+      .branch:nth-child(2) {
+        transform: rotate(-20deg);
+        left: -10px;
+        top: 45%;
+      }
+
+      .branch:nth-child(3) {
+        transform: rotate(20deg);
+        left: -10px;
+        top: 60%;
+      }
+
+      .branch:nth-child(4) {
+        transform: rotate(50deg);
+        left: -20px;
+        top: 75%;
+      }
+
+      .branch:nth-child(5) {
+        transform: rotate(-35deg);
+        left: -15px;
+        top: 15%;
+      }
+
+      .branch:nth-child(6) {
+        transform: rotate(35deg);
+        left: -15px;
+        top: 90%;
+      }
+
+      .falling-leaf {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: var(--olive-light);
+        border-radius: 50%;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
       /* Hero Section */
       .hero {
         position: relative;
@@ -172,7 +294,7 @@
         border-radius: 10px;
         color: var(--cream);
         font-family: "Poppins", sans-serif;
-        font-size: 16px; /* Prevents iOS zoom on focus */
+        font-size: 16px;
       }
 
       .btn-container {
@@ -226,6 +348,11 @@
         background: rgba(255, 255, 255, 0.05);
         border-radius: 20px;
         backdrop-filter: blur(10px);
+      }
+
+      .benefit-title {
+        color: var(--olive-light);
+        margin-bottom: 1rem;
       }
 
       .section-title {
@@ -318,7 +445,8 @@
 
       /* Animations */
       @keyframes floatAnimation {
-        0%, 100% {
+        0%,
+        100% {
           transform: translateY(0);
         }
         50% {
@@ -326,8 +454,42 @@
         }
       }
 
+      @keyframes trunkSway {
+        0%,
+        100% {
+          transform: translateX(-50%) rotate(0deg);
+        }
+        50% {
+          transform: translateX(-50%) rotate(1deg);
+        }
+      }
+
+      @keyframes leavesRustle {
+        0%,
+        100% {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(2deg) scale(1.05);
+        }
+      }
+
+      @keyframes fallingLeaves {
+        0% {
+          transform: translate(0, -100%) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.4;
+        }
+        100% {
+          transform: translate(100px, 1000px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
       /* Safe Area Handling */
-      @supports(padding: max(0px)) {
+      @supports (padding: max(0px)) {
         body {
           padding-left: env(safe-area-inset-left);
           padding-right: env(safe-area-inset-right);
@@ -336,300 +498,334 @@
       }
     </style>
   </head>
-
-<body>
-  <!-- Image Modal -->
-  <div class="image-modal" id="imageModal" onclick="closeModal()">
-    <div class="modal-content">
-      <img src="" alt="" id="modalImage" />
+  <body>
+    <!-- Animated Olive Tree -->
+    <div class="olive-tree">
+      <div class="tree-trunk">
+        <div class="branches-container">
+          <div class="branch"></div>
+          <div class="branch"></div>
+          <div class="branch"></div>
+          <div class="branch"></div>
+          <div class="branch"></div>
+          <div class="branch"></div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="logo-container">
-        <div class="logo-mask">
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeModal()">
+      <div class="modal-content">
+        <img src="" alt="" id="modalImage" />
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="logo-container">
+          <div class="logo-mask">
+            <img
+              src="assets/images/logo.png"
+              alt="OLIV Construction Logo"
+              class="main-logo"
+            />
+          </div>
+        </div>
+        <h1 class="hero-title">OLIV Construction</h1>
+        <p class="hero-subtitle">
+          Cultivating excellence in every project, rooted in quality
+          craftsmanship
+        </p>
+        <div class="btn-container">
+          <button class="btn" onclick="togglePopup()">Plant Your Ideas</button>
+          <button class="btn btn-outline" onclick="callNow()">
+            Branch Out to Us
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <h2 class="section-title">Our Flourishing Projects</h2>
+      <div class="gallery-grid">
+        <div
+          class="gallery-item"
+          onclick="openModal('assets/images/bathroom.png', 'Modern Bathroom Design')"
+        >
+          <img src="assets/images/bathroom.png" alt="Modern Bathroom Design" />
+        </div>
+        <div
+          class="gallery-item"
+          onclick="openModal('assets/images/diningroom.png', 'Contemporary Dining Space')"
+        >
           <img
-            src="assets/images/logo.png"
-            alt="OLIV Construction Logo"
-            class="main-logo"
+            src="assets/images/diningroom.png"
+            alt="Contemporary Dining Space"
           />
         </div>
+        <div
+          class="gallery-item"
+          onclick="openModal('assets/images/kitchenset.png', 'Luxury Kitchen Design')"
+        >
+          <img src="assets/images/kitchenset.png" alt="Luxury Kitchen Design" />
+        </div>
       </div>
-      <h1 class="hero-title">OLIV Construction</h1>
-      <p class="hero-subtitle">
-        Cultivating excellence in every project, rooted in quality craftsmanship
-      </p>
-      <div class="btn-container">
-        <button class="btn" onclick="togglePopup()">Plant Your Ideas</button>
-        <button class="btn btn-outline" onclick="callNow()">
-          Branch Out to Us
-        </button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Gallery Section -->
-  <section class="gallery">
-    <h2 class="section-title">Our Flourishing Projects</h2>
-    <div class="gallery-grid">
-      <div
-        class="gallery-item"
-        onclick="openModal('assets/images/bathroom.png', 'Modern Bathroom Design')"
-      >
-        <img src="assets/images/bathroom.png" alt="Modern Bathroom Design" />
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+      <div class="form-container">
+        <h2 class="form-title">Plant Your Project Ideas</h2>
+        <form id="projectForm" onsubmit="submitProjectForm(event)">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              class="form-input"
+              required
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vision">Your Vision</label>
+            <textarea
+              id="vision"
+              class="form-textarea"
+              required
+              placeholder="Tell us about your project ideas..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Submit Request</button>
+        </form>
       </div>
-      <div
-        class="gallery-item"
-        onclick="openModal('assets/images/diningroom.png', 'Contemporary Dining Space')"
-      >
-        <img
-          src="assets/images/diningroom.png"
-          alt="Contemporary Dining Space"
-        />
-      </div>
-      <div
-        class="gallery-item"
-        onclick="openModal('assets/images/kitchenset.png', 'Luxury Kitchen Design')"
-      >
-        <img src="assets/images/kitchenset.png" alt="Luxury Kitchen Design" />
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Form Section -->
-  <section class="contact-form-section">
-    <div class="form-container">
-      <h2 class="form-title">Plant Your Project Ideas</h2>
-      <form id="projectForm" onsubmit="submitProjectForm(event)">
-        <div class="form-group">
-          <label class="form-label" for="name">Your Name</label>
-          <input
-            type="text"
-            id="name"
-            class="form-input"
-            required
-            placeholder="Enter your name"
-          />
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <h2 class="section-title">Why Choose OLIV?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3 class="benefit-title">Rooted in Excellence</h3>
+          <p>
+            Like an olive tree's deep roots, our commitment to quality runs
+            deep. Every project is handled with care and precision.
+          </p>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            class="form-input"
-            required
-            placeholder="Enter your email"
-          />
+        <div class="benefit-card">
+          <h3 class="benefit-title">Natural Growth</h3>
+          <p>
+            We nurture your ideas from seed to fruition, ensuring each project
+            develops organically and beautifully.
+          </p>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            class="form-input"
-            required
-            placeholder="Enter your phone number"
-          />
+        <div class="benefit-card">
+          <h3 class="benefit-title">Sustainable Beauty</h3>
+          <p>
+            Creating spaces that stand the test of time, just like the ancient
+            olive groves that inspire us.
+          </p>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="vision">Your Vision</label>
-          <textarea
-            id="vision"
-            class="form-textarea"
-            required
-            placeholder="Tell us about your project ideas..."
-          ></textarea>
-        </div>
-        <button type="submit" class="btn">Submit Request</button>
-      </form>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- Benefits Section -->
-  <section class="benefits-section">
-    <h2 class="section-title">Why Choose OLIV?</h2>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <h3 class="benefit-title">Rooted in Excellence</h3>
-        <p>
-          Like an olive tree's deep roots, our commitment to quality runs deep.
-          Every project is handled with care and precision.
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-title">OLIV Construction</p>
+        <p>Cultivating Excellence in Every Project</p>
+        <a href="tel:+15128099968" class="footer-phone">
+          Call Us: (512) 809-9968
+        </a>
+        <p class="footer-copyright">
+          © 2024 OLIV Construction | All rights reserved
         </p>
       </div>
-      <div class="benefit-card">
-        <h3 class="benefit-title">Natural Growth</h3>
-        <p>
-          We nurture your ideas from seed to fruition, ensuring each project
-          develops organically and beautifully.
-        </p>
-      </div>
-      <div class="benefit-card">
-        <h3 class="benefit-title">Sustainable Beauty</h3>
-        <p>
-          Creating spaces that stand the test of time, just like the ancient
-          olive groves that inspire us.
-        </p>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Footer Section -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p class="footer-title">OLIV Construction</p>
-      <p>Cultivating Excellence in Every Project</p>
-      <a href="tel:+15128099968" class="footer-phone">
-        Call Us: (512) 809-9968
-      </a>
-      <p class="footer-copyright">
-        © 2024 OLIV Construction | All rights reserved
-      </p>
-    </div>
-  </footer>
+    <script>
+      // Image Modal Functions
+      function openModal(imageSrc, altText) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+        modalImg.alt = altText;
+        document.body.style.overflow = "hidden";
 
-  <script>
-    // Image Modal Functions
-    function openModal(imageSrc, altText) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImage");
-      modal.style.display = "block";
-      modalImg.src = imageSrc;
-      modalImg.alt = altText;
-      document.body.style.overflow = "hidden";
+        setTimeout(() => {
+          modal.style.opacity = "1";
+          modalImg.style.transform = "scale(1)";
+        }, 10);
+      }
 
-      // Add animation
-      setTimeout(() => {
-        modal.style.opacity = "1";
-        modalImg.style.transform = "scale(1)";
-      }, 10);
-    }
+      function closeModal() {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
 
-    function closeModal() {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImage");
+        modal.style.opacity = "0";
+        modalImg.style.transform = "scale(0.9)";
 
-      modal.style.opacity = "0";
-      modalImg.style.transform = "scale(0.9)";
+        setTimeout(() => {
+          modal.style.display = "none";
+          document.body.style.overflow = "";
+        }, 300);
+      }
 
-      setTimeout(() => {
-        modal.style.display = "none";
-        document.body.style.overflow = "";
-      }, 300);
-    }
+      // Form Submission
+      function submitProjectForm(event) {
+        event.preventDefault();
 
-    // Form Submission
-    function submitProjectForm(event) {
-      event.preventDefault();
+        const form = document.getElementById("projectForm");
+        const formData = new FormData(form);
 
-      const form = document.getElementById("projectForm");
-      const formData = new FormData(form);
+        let isValid = true;
+        form.querySelectorAll("input, textarea").forEach((field) => {
+          if (!field.value.trim()) {
+            isValid = false;
+            field.style.borderColor = "rgba(255, 68, 68, 0.8)";
+          } else {
+            field.style.borderColor = "rgba(152, 167, 85, 0.2)";
+          }
+        });
 
-      // Validation
-      let isValid = true;
-      form.querySelectorAll("input, textarea").forEach((field) => {
-        if (!field.value.trim()) {
-          isValid = false;
-          field.style.borderColor = "rgba(255, 68, 68, 0.8)";
-        } else {
-          field.style.borderColor = "rgba(152, 167, 85, 0.2)";
+        if (!isValid) {
+          alert("Please fill in all fields to help your project grow.");
+          return;
+        }
+
+        alert(
+          "Thank you for planting your ideas with us! We'll nurture your project together."
+        );
+
+        form.reset();
+      }
+
+      function callNow() {
+        window.location.href = "tel:+15128099968";
+      }
+
+      // Falling Leaves Animation
+      function createFallingLeaf() {
+        const leaf = document.createElement("div");
+        leaf.className = "falling-leaf";
+
+        const startPosition = Math.random() * window.innerWidth;
+        leaf.style.left = `${startPosition}px`;
+
+        const duration = 10 + Math.random() * 5;
+        leaf.style.animation = `fallingLeaves ${duration}s linear`;
+
+        document.querySelector(".olive-tree").appendChild(leaf);
+
+        setTimeout(() => {
+          leaf.remove();
+        }, duration * 1000);
+      }
+
+      // Create new leaves periodically
+      setInterval(createFallingLeaf, 3000);
+
+      // Create initial leaves
+      for (let i = 0; i < 5; i++) {
+        setTimeout(createFallingLeaf, i * 1000);
+      }
+
+      // Enhanced Form Interaction
+      document
+        .querySelectorAll(".form-input, .form-textarea")
+        .forEach((element) => {
+          element.addEventListener("focus", function () {
+            this.style.borderColor = "var(--olive-light)";
+            this.style.boxShadow = "0 0 0 2px rgba(152, 167, 85, 0.1)";
+          });
+
+          element.addEventListener("blur", function () {
+            if (!this.value) {
+              this.style.borderColor = "rgba(152, 167, 85, 0.2)";
+              this.style.boxShadow = "none";
+            }
+          });
+
+          element.addEventListener("input", function () {
+            const label = this.previousElementSibling;
+            if (label && label.classList.contains("form-label")) {
+              if (this.value) {
+                label.style.transform = "translateY(-20px) scale(0.85)";
+              } else {
+                label.style.transform = "none";
+              }
+            }
+          });
+        });
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Close modal with escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
         }
       });
 
-      if (!isValid) {
-        alert("Please fill in all fields to help your project grow.");
-        return;
-      }
-
-      // Success message
-      alert(
-        "Thank you for planting your ideas with us! We'll nurture your project together."
+      // Add touch events for mobile
+      let touchStartY = 0;
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          touchStartY = e.touches[0].clientY;
+        },
+        false
       );
 
-      // Reset form
-      form.reset();
-    }
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          const modal = document.getElementById("imageModal");
+          if (modal.style.display === "block") {
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchY - touchStartY;
 
-    function callNow() {
-      window.location.href = "tel:+15128099968";
-    }
-
-    // Enhanced Form Interaction
-    document
-      .querySelectorAll(".form-input, .form-textarea")
-      .forEach((element) => {
-        // Add focus effects
-        element.addEventListener("focus", function () {
-          this.style.borderColor = "var(--olive-light)";
-          this.style.boxShadow = "0 0 0 2px rgba(152, 167, 85, 0.1)";
-        });
-
-        element.addEventListener("blur", function () {
-          if (!this.value) {
-            this.style.borderColor = "rgba(152, 167, 85, 0.2)";
-            this.style.boxShadow = "none";
-          }
-        });
-
-        // Add floating label effect
-        element.addEventListener("input", function () {
-          const label = this.previousElementSibling;
-          if (label && label.classList.contains("form-label")) {
-            if (this.value) {
-              label.style.transform = "translateY(-20px) scale(0.85)";
-            } else {
-              label.style.transform = "none";
+            if (Math.abs(deltaY) > 10) {
+              e.preventDefault();
+              if (deltaY > 50) {
+                closeModal();
+              }
             }
           }
-        });
-      });
-
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth",
-        });
-      });
-    });
-
-    // Close modal with escape key
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    });
-
-    // Add touch events for mobile
-    let touchStartY = 0;
-    document.addEventListener(
-      "touchstart",
-      function (e) {
-        touchStartY = e.touches[0].clientY;
-      },
-      false
-    );
-
-    document.addEventListener(
-      "touchmove",
-      function (e) {
-        const modal = document.getElementById("imageModal");
-        if (modal.style.display === "block") {
-          const touchY = e.touches[0].clientY;
-          const deltaY = touchY - touchStartY;
-
-          if (Math.abs(deltaY) > 10) {
-            e.preventDefault();
-            if (deltaY > 50) {
-              closeModal();
-            }
-          }
-        }
-      },
-      { passive: false }
-    );
-  </script>
-</body>
+        },
+        { passive: false }
+      );
+    </script>
+  </body>
 </html>
