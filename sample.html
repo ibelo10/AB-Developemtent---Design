@@ -1,1 +1,164 @@
-Doctype HtML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyata - Playful World of Toys</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', sans-serif;
+            background: linear-gradient(to bottom, #ffa726, #ffcc80);
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        h1, p {
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px #ff7043;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .cta-button {
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: #ff7043;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #d84315;
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/150/toy-background') repeat;
+            opacity: 0.3;
+            animation: moveToys 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveToys {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* Toy Cards */
+        .toy-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .toy-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        .toy-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .toy-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .toy-card p {
+            font-size: 1rem;
+            color: #ff5722;
+        }
+
+        .buy-button {
+            margin-top: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: #ff7043;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background: #d84315;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Toyata</h1>
+        <p>Bringing joy to every child!</p>
+        <button class="cta-button">Shop Now</button>
+    </header>
+
+    <main>
+        <section class="toy-cards">
+            <div class="toy-card">
+                <img src="https://via.placeholder.com/150/toy1" alt="Toy 1">
+                <h3>Teddy Bear</h3>
+                <p>$19.99</p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="toy-card">
+                <img src="https://via.placeholder.com/150/toy2" alt="Toy 2">
+                <h3>Race Car</h3>
+                <p>$14.99</p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="toy-card">
+                <img src="https://via.placeholder.com/150/toy3" alt="Toy 3">
+                <h3>Doll House</h3>
+                <p>$39.99</p>
+                <button class="buy-button">Buy Now</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
