@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resilient Negroar Marketing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2E8B57 100%);
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button {
+            background: linear-gradient(90deg, #2E8B57, #1a5f7a);
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-gray-800">RN Marketing</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-600 hover:text-green-600">Services</a>
+                    <a href="#kitchen" class="text-gray-600 hover:text-green-600">Commissary Kitchen</a>
+                    <a href="#contact" class="text-gray-600 hover:text-green-600">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-gradient pt-32 pb-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                Resilient Negroar Marketing
+            </h1>
+            <p class="text-xl text-gray-100 mb-8">
+                Your Trusted Partner for Business Growth in Baton Rouge
+            </p>
+            <a href="#contact" class="cta-button inline-block px-8 py-4 text-white rounded-full font-semibold shadow-lg">
+                Start Your Growth Journey
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Who We Are</h2>
+            <div class="max-w-3xl mx-auto text-gray-600 text-lg leading-relaxed">
+                <p>At Resilient Negroar Marketing, we're more than just a marketing agency. We're your dedicated partner in business growth, specializing in creating impactful strategies that resonate with your target audience in Baton Rouge and beyond.</p>
+            </div>
+        </section>
+
+        <section id="services" class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="service-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">📈</div>
+                    <h3 class="text-xl font-semibold mb-3">Marketing Campaigns</h3>
+                    <p class="text-gray-600">Data-driven campaigns that deliver measurable results for your business</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">💭</div>
+                    <h3 class="text-xl font-semibold mb-3">Social Media Management</h3>
+                    <p class="text-gray-600">Engaging content that builds meaningful connections with your audience</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-3">Brand Development</h3>
+                    <p class="text-gray-600">Strategic brand building that sets you apart from competitors</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-semibold mb-3">Advertising Strategy</h3>
+                    <p class="text-gray-600">Targeted advertising that reaches your ideal customers</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kitchen" class="mb-20 bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Commissary Kitchen</h2>
+            <div class="text-gray-600 leading-relaxed">
+                <p class="mb-4">Our state-of-the-art commissary kitchen provides local food entrepreneurs with the perfect space to grow their culinary business. Equipped with professional-grade equipment and ample workspace, we're here to support your food business journey.</p>
+                <p>Whether you're a startup candy company or an established food brand, our kitchen facilities are designed to meet your production needs while complying with all health and safety regulations.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Ready to Get Started?</h2>
+            <a href="#" class="cta-button inline-block px-8 py-4 text-white rounded-full font-semibold shadow-lg">
+                Contact Us Today
+            </a>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-2">Resilient Negroar Marketing</h3>
+                    <p class="text-gray-400">Your Baton Rouge Partner in Business Growth</p>
+                </div>
+                <div class="text-gray-400">
+                    &copy; 2024 Resilient Negroar Marketing. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
