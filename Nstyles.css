@@ -22,6 +22,7 @@ body {
     background: var(--gray-50);
 }
 
+/* Navigation Styles */
 .navbar {
     background: rgba(255, 255, 255, 0.95);
     padding: 1rem 2rem;
@@ -82,12 +83,14 @@ body {
     width: 100%;
 }
 
+/* Main Container */
 .blog-container {
     max-width: 1000px;
     margin: 6rem auto 3rem;
     padding: 2rem;
 }
 
+/* Hero Section */
 .hero-section {
     text-align: center;
     margin-bottom: 4rem;
@@ -117,11 +120,24 @@ body {
     border-radius: 12px;
 }
 
+/* Typography */
 h1 {
     font-size: 3rem;
     color: var(--gray-800);
     margin-bottom: 1rem;
     line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    color: var(--gray-800);
+    margin-bottom: 1rem;
 }
 
 .subtitle {
@@ -130,118 +146,182 @@ h1 {
     margin-bottom: 2rem;
 }
 
-.price-tag {
+/* Buttons and CTAs */
+.price-tag, .affiliate-link {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary-light), var(--primary));
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
     font-weight: 600;
     color: white;
+    text-decoration: none;
     margin-bottom: 2rem;
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.price-tag:hover {
+.price-tag:hover, .affiliate-link:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
 }
 
-.benefits-grid {
+/* Cards and Grids */
+.benefits-grid, .tips-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin: 3rem 0;
 }
 
-.benefit-card {
+.benefit-card, .tip-card {
     background: white;
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
-    cursor: pointer;
 }
 
-.benefit-card:hover {
+.benefit-card:hover, .tip-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.benefit-card i {
+.benefit-card i, .tip-card i {
     font-size: 2rem;
     color: var(--primary);
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
 
-.benefit-card:hover i {
-    transform: scale(1.1);
-}
-
-.benefit-card h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--gray-800);
-}
-
-.additional-benefits {
-    margin-top: 3rem;
+/* Comparison Table */
+.comparison-section {
+    background: white;
     padding: 2rem;
-    background: white;
     border-radius: 20px;
+    margin: 3rem 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.feature-list {
-    list-style: none;
-    margin-top: 1.5rem;
+.comparison-table {
+    overflow-x: auto;
+    margin: 2rem 0;
 }
 
-.feature-list li {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-    transition: transform 0.2s ease;
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.feature-list li:hover {
-    transform: translateX(5px);
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-200);
 }
 
-.feature-list li::before {
-    content: "→";
-    color: var(--primary);
-    position: absolute;
-    left: 0;
-    transition: transform 0.2s ease;
-}
-
-.cta-section {
-    text-align: center;
-    margin: 4rem 0;
-    padding: 3rem;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.affiliate-link {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 12px;
+.comparison-table th {
+    background: var(--gray-50);
     font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
 }
 
-.affiliate-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+/* Success Stories */
+.story-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
+.story-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.quote {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author img {
+    border-radius: 50%;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: column;
+}
+
+/* FAQ Section */
+.faq-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    margin: 3rem 0;
+}
+
+.faq-item {
+    background: var(--gray-50);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.faq-item summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.faq-item p {
+    padding: 1rem;
+}
+
+/* Domain Checker */
+.domain-checker {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.checker-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.checker-form input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.check-button {
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.check-button:hover {
+    background: var(--primary-dark);
+}
+
+/* Footer */
 .footer-content {
     max-width: 1000px;
     margin: 0 auto;
@@ -249,6 +329,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top: 1px solid var(--gray-200);
 }
 
 .footer-content nav a {
@@ -262,6 +343,7 @@ h1 {
     color: var(--primary);
 }
 
+/* Responsive Design */
 @media screen and (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
@@ -283,18 +365,18 @@ h1 {
     .nav-links.active {
         display: flex;
     }
-    
-    .blog-container {
-        padding: 1rem;
-        margin-top: 5rem;
-    }
 
     h1 {
         font-size: 2rem;
     }
 
-    .benefit-card {
-        padding: 1.5rem;
+    .blog-container {
+        padding: 1rem;
+        margin-top: 5rem;
+    }
+
+    .checker-form {
+        flex-direction: column;
     }
 
     .footer-content {
