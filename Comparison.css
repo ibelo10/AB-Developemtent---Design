@@ -191,3 +191,257 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Insights Section */
+.insights-section {
+    padding: 6rem 2rem;
+    background: white;
+    text-align: center;
+}
+
+.insights-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3.5rem;
+    color: var(--text-color);
+    position: relative;
+}
+
+.insights-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.insight-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.insight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.insight-card:hover::before {
+    transform: scaleX(1);
+}
+
+.insight-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.insight-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Value Proposition Section */
+.value-section {
+    padding: 6rem 2rem;
+    background: var(--light-gray);
+    text-align: center;
+}
+
+.value-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+}
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.value-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all var(--transition-speed) ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.value-card i {
+    font-size: 1.25rem;
+    background: var(--light-gray);
+    padding: 0.75rem;
+    border-radius: 50%;
+    transition: all var(--transition-speed) ease;
+}
+
+.value-card:hover i {
+    background: var(--primary-color);
+    color: white;
+    transform: rotate(360deg);
+}
+
+.value-list {
+    list-style: none;
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+
+.value-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.value-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    transition: transform var(--transition-speed) ease;
+}
+
+.value-card:hover .value-list li::before {
+    transform: translateX(3px);
+}
+
+/* Cost Analysis Section */
+.cost-section {
+    padding: 6rem 2rem;
+    background: white;
+    text-align: center;
+}
+
+.cost-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.cost-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+}
+
+.cost-card.platform {
+    border: 1px solid var(--border-color);
+}
+
+.cost-card.custom {
+    border: 2px solid var(--primary-color);
+}
+
+.cost-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.cost-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.year-costs, .recurring-costs {
+    margin-bottom: 2rem;
+}
+
+.year-costs h4, .recurring-costs h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.cost-details ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.cost-details ul li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    color: #666;
+}
+
+.total-cost {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.total-cost h4 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.cost-savings {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--light-gray);
+    border-radius: 12px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
