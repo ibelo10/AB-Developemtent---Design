@@ -526,3 +526,255 @@
             *Promotional offer subject to Coinbase terms and conditions
         </p>
     </section>
+
+    <!-- Risk Disclosure Section -->
+    <section class="disclosure-section">
+        <div class="container">
+            <div class="disclosure-content">
+                <h2>Understanding the Risks</h2>
+                <ul>
+                    <li>Cryptocurrency investments carry significant volatility</li>
+                    <li>Past performance does not guarantee future results</li>
+                    <li>Only invest what you can afford to lose</li>
+                    <li>Consider consulting with financial advisors</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <address itemscope itemtype="https://schema.org/Organization">
+                    <div itemprop="name">AB Development & Design</div>
+                    <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                        <span itemprop="addressLocality">Henderson</span>,
+                        <span itemprop="addressRegion">NV</span>
+                        <span itemprop="postalCode">89074</span>
+                    </div>
+                    <div>
+                        Email: <a href="mailto:aaron.bernard.dev@gmail.com" itemprop="email">aaron.bernard.dev@gmail.com</a>
+                    </div>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Calculator Functions
+        document.addEventListener('DOMContentLoaded', function() {
+            function calculateGrowth() {
+                // Get input values
+                const initial = parseFloat(document.getElementById('initial').value) || 0;
+                const contribution = parseFloat(document.getElementById('contribution').value) || 0;
+                const frequency = document.getElementById('frequency').value;
+                const stakingRate = (parseFloat(document.getElementById('stakingRate').value) || 0) / 100;
+                const growthRate = (parseFloat(document.getElementById('growthRate').value) || 0) / 100;
+                const years = parseInt(document.getElementById('years').value) || 1;
+
+                // Calculate daily staking rate
+                const dailyRate = Math.pow(1 + stakingRate, 1/365) - 1;
+                let data = [];
+                let balance = initial;
+                let totalContributed = initial;
+                let previousBalance = balance;
+
+                // Calculate growth year by year
+                for (let year = 0; year <= years; year++) {
+                    if (frequency === 'yearly' && year > 0) {
+                        totalContributed += contribution;
+                        balance = (balance + contribution) * (1 + growthRate);
+                        // Apply daily compounding
+                        for (let day = 0; day < 365; day++) {
+                            balance *= (1 + dailyRate);
+                        }
+                    } else if (frequency === 'monthly') {
+                        for (let month = 0; month < 12; month++) {
+                            if (year > 0 || month > 0) {
+                                totalContributed += contribution;
+                                balance = (balance + contribution) * (1 + (growthRate/12));
+                            }
+                            // Apply daily compounding
+                            for (let day = 0; day < 30; day++) {
+                                balance *= (1 + dailyRate);
+                            }
+                        }
+                    }
+
+                    // Calculate yearly return percentage
+                    const yearlyReturn = year > 0 ? 
+                        ((balance - previousBalance) / previousBalance * 100).toFixed(2) : 0;
+                    previousBalance = balance;
+
+                    // Store data for this year
+                    data.push({
+                        year,
+                        balance: Math.round(balance),
+                        contributed: Math.round(totalContributed),
+                        yearlyReturn
+                    });
+                }
+
+                updateResults(data);
+                updateGrowthTable(data);
+            }
+
+            function updateResults(data) {
+                const final = data[data.length - 1];
+                const returns = final.balance - final.contributed;
+
+                // Update summary values
+                if (document.getElementById('totalInvested')) {
+                    document.getElementById('totalInvested').textContent = 
+                        `$${final.contributed.toLocaleString()}`;
+                }
+                if (document.getElementById('totalReturns')) {
+                    document.getElementById('totalReturns').textContent = 
+                        `$${Math.round(returns).toLocaleString()}`;
+                }
+                if (document.getElementById('finalBalance')) {
+                    document.getElementById('finalBalance').textContent = 
+                        `$${final.balance.toLocaleString()}`;
+                }
+            }
+
+            function updateGrowthTable(data) {
+                const tableBody = document.getElementById('growthTableBody');
+                if (!tableBody) return;
+
+                // Clear existing table rows
+                tableBody.innerHTML = '';
+
+                // Add new rows
+                data.forEach(({year, contributed, balance, yearlyReturn}) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>Year ${year}</td>
+                        <td>$${contributed.toLocaleString()}</td>
+                        <td>$${balance.toLocaleString()}</td>
+                        <td>${yearlyReturn}%</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            // Initialize calculator
+            const calculateBtn = document.getElementById('calculateBtn');
+            if (calculateBtn) {
+                calculateBtn.addEventListener('click', calculateGrowth);
+                calculateGrowth(); // Initial calculation
+            }
+
+            // Add event listeners for real-time updates
+            const inputs = ['initial', 'contribution', 'frequency', 'stakingRate', 'growthRate', 'years'];
+            inputs.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('input', function() {
+                        clearTimeout(this.timeout);
+                        this.timeout = setTimeout(calculateGrowth, 500);
+                    });
+                }
+            });
+
+            // Mobile menu functionality
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    document.body.style.overflow = 
+                        navLinks.classList.contains('active') ? 'hidden' : '';
+                });
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (navLinks && !event.target.closest('.nav-links') && 
+                    !event.target.closest('.menu-toggle')) {
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Coinbase click tracking
+            const coinbaseLink = document.querySelector('a[href*="coinbase.com"]');
+            if (coinbaseLink) {
+                coinbaseLink.addEventListener('click', function() {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'click', {
+                            'event_category': 'Affiliate',
+                            'event_label': 'Coinbase Signup',
+                            'value': 1
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Chat Toast -->
+    <div class="chat-toast" id="chatToast">
+        <div class="toast-content">
+            <span class="toast-icon">💬</span>
+            <p>Need help getting started? Chat with us!</p>
+            <button class="toast-close" onclick="closeToast()">&times;</button>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- Messenger Chat Plugin -->
+    <div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+
+    <!-- Additional Scripts -->
+    <script>
+        // Chat Toast Functions
+        function initializeChatToast() {
+            setTimeout(function() {
+                const chatToast = document.getElementById('chatToast');
+                if (chatToast) {
+                    chatToast.classList.add('show');
+                    startToastProgress();
+                }
+            }, 3000);
+        }
+
+        function closeToast() {
+            const chatToast = document.getElementById('chatToast');
+            if (chatToast) {
+                chatToast.classList.remove('show');
+            }
+        }
+
+        function startToastProgress() {
+            const progress = document.querySelector('.toast-progress');
+            if (progress) {
+                progress.style.width = '100%';
+                setTimeout(() => {
+                    progress.style.width = '0%';
+                    setTimeout(closeToast, 300);
+                }, 5000);
+            }
+        }
+
+        // Initialize toast on page load
+        document.addEventListener('DOMContentLoaded', initializeChatToast);
+    </script>
+
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
+</body>
+</html>
