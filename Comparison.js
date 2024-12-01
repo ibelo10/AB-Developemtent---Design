@@ -1,7 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS
     AOS.init({
-        duration: 800,
         once: true,
         offset: 50,
         easing: 'ease-in-out'
@@ -51,4 +50,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-}); // Closing DOMContentLoaded event listener
+}); // End of DOMContentLoaded
