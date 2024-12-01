@@ -671,51 +671,154 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.1.9/Recharts.js"></script>
 <script>
     // Calculator Functions
-    function calculateCompoundInterest() {
+    function calculateInvestment() {
         const initial = parseFloat(document.getElementById('initial').value);
+        const contribution = parseFloat(document.getElementById('contribution').value);
         const frequency = document.getElementById('frequency').value;
+        const stakingRate = parseFloat(document.getElementById('stakingRate').value) / 100;
+        const growthRate = parseFloat(document.getElementById('growthRate').value) / 100;
         const years = parseInt(document.getElementById('years').value);
-        const dailyRate = Math.pow(1.12, 1/365) - 1;
-        const priceGrowthRate = 0.10;
         
+        const dailyRate = Math.pow(1 + stakingRate, 1/365) - 1;
         let data = [];
         let balance = initial;
         let totalContributed = initial;
+        let previousBalance = initial;
+        let yearlyGrowth = [];
 
         for (let year = 0; year <= years; year++) {
-            if (frequency === 'yearly') {
-                if (year > 0) {
-                    totalContributed += initial;
-                    balance = (balance + initial) * (1 + priceGrowthRate);
-                }
+            if (frequency === 'yearly' && year > 0) {
+                totalContributed += contribution;
+                balance = (balance + contribution) * (1 + growthRate);
                 for (let day = 0; day < 365; day++) {
                     balance *= (1 + dailyRate);
                 }
-            } else {
+            } else if (frequency === 'monthly') {
                 for (let month = 0; month < 12; month++) {
-                    totalContributed += initial;
-                    balance = (balance + initial) * (1 + (priceGrowthRate/12));
+                    if (year > 0 || month > 0) {
+                        totalContributed += contribution;
+                        balance = (balance + contribution) * (1 + (growthRate/12));
+                    }
                     for (let day = 0; day < 30; day++) {
                         balance *= (1 + dailyRate);
                     }
                 }
             }
             
+            const yearlyReturn = year > 0 ? ((balance - previousBalance) / previousBalance * 100).toFixed(2) : 0;
+            yearlyGrowth.push(yearlyReturn);
+            previousBalance = balance;
+
             data.push({
                 year,
                 balance: Math.round(balance),
-                contributed: Math.round(totalContributed)
+                contributed: Math.round(totalContributed),
+                yearlyReturn: yearlyReturn
             });
         }
 
+        updateResults(data);
         updateChart(data);
+        updateGrowthTable(data);
     }
 
-    // Mobile Menu Toggle
-    document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    function updateResults(data) {
+        const finalData = data[data.length - 1];
+        const totalReturns = finalData.balance - finalData.contributed;
+        
+        document.getElementById('totalInvested').textContent = 
+            `$${finalData.contributed.toLocaleString()}`;
+        document.getElementById('totalReturns').textContent = 
+            `$${Math.round(totalReturns).toLocaleString()}`;
+        document.getElementById('finalBalance').textContent = 
+            `$${finalData.balance.toLocaleString()}`;
+        
+        // Calculate and display APY
+        const years = data.length - 1;
+        const effectiveAPY = (Math.pow(finalData.balance / data[0].contributed, 1/years) - 1) * 100;
+        document.getElementById('effectiveAPY').textContent = 
+            `${effectiveAPY.toFixed(2)}%`;
+    }
+
+    function updateChart(data) {
+        const chartContainer = document.getElementById('result-chart');
+        chartContainer.innerHTML = ''; // Clear previous chart
+
+        // Create chart using Recharts
+        const chart = new Recharts.LineChart({
+            width: chartContainer.offsetWidth,
+            height: 400,
+            data: data,
+            margin: { top: 20, right: 30, left: 50, bottom: 30 }
+        });
+
+        // Add lines for balance and contributions
+        chart.addLine({
+            dataKey: 'balance',
+            stroke: '#0052FF',
+            strokeWidth: 2,
+            name: 'Total Value'
+        });
+
+        chart.addLine({
+            dataKey: 'contributed',
+            stroke: '#00DC82',
+            strokeWidth: 2,
+            name: 'Total Invested'
+        });
+
+        // Add axes and tooltip
+        chart.addXAxis({ dataKey: 'year', label: 'Years' });
+        chart.addYAxis({ label: 'Value ($)' });
+        chart.addTooltip();
+        chart.addLegend();
+
+        chartContainer.appendChild(chart.render());
+    }
+
+    function updateGrowthTable(data) {
+        const tableBody = document.getElementById('growthTableBody');
+        tableBody.innerHTML = '';
+
+        data.forEach((year, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index}</td>
+                <td>$${year.contributed.toLocaleString()}</td>
+                <td>$${year.balance.toLocaleString()}</td>
+                <td>${year.yearlyReturn}%</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Initialize calculator and add event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize with default values
+        calculateInvestment();
+        
+        // Add event listener to calculate button
+        document.getElementById('calculateBtn').addEventListener('click', calculateInvestment);
+        
+        // Add event listeners for real-time updates
+        const inputs = ['initial', 'contribution', 'frequency', 'stakingRate', 'growthRate', 'years'];
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', function() {
+                // Add debounce for better performance
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(calculateInvestment, 500);
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Initialize chat toast
+        initializeChatToast();
     });
 
     // Chat Toast Functions
@@ -749,20 +852,6 @@
             });
         }
     }
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize calculator
-        calculateCompoundInterest();
-        
-        // Add event listeners to calculator inputs
-        document.getElementById('initial').addEventListener('change', calculateCompoundInterest);
-        document.getElementById('frequency').addEventListener('change', calculateCompoundInterest);
-        document.getElementById('years').addEventListener('change', calculateCompoundInterest);
-        
-        // Initialize chat toast
-        initializeChatToast();
-    });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
