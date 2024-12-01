@@ -6,86 +6,70 @@
     --text-color: #333333;
     --light-gray: #f5f5f5;
     --border-color: #e0e0e0;
-    --gradient-start: #e0f7ff;
-    --gradient-end: #ffffff;
+    --font-primary: 'Inter', sans-serif;
+    --max-width: 1200px;
+    --hero-gradient: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
 }
 
-/* Animated Background */
-.animated-background {
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background: #ffffff;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Enhanced Header/Navigation */
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
-    opacity: 0.7;
-}
-
-.animated-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-                rgba(0, 102, 204, 0.1) 0%,
-                transparent 50%);
-    transition: all 0.3s ease;
-}
-
-/* Interactive Elements Animation */
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(0, 102, 204, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
-}
-
-@keyframes floatAnimation {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-/* Base Styles */
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-/* Navigation */
-.navbar {
-    background: rgba(255, 255, 255, 0.95);
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
+    -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    transition: transform 0.3s ease;
+    gap: 1rem;
 }
 
-.nav-logo:hover {
-    transform: scale(1.05);
+.nav-logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
@@ -99,7 +83,7 @@ body {
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     width: 0;
     height: 2px;
@@ -111,13 +95,14 @@ body {
     width: 100%;
 }
 
-/* Hero Section */
+/* Enhanced Hero Section */
 .hero-section {
-    text-align: center;
+    margin-top: 80px; /* Account for fixed navbar */
     padding: 6rem 2rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: var(--hero-gradient);
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .hero-section::before {
@@ -125,18 +110,62 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%230066cc" stroke-width="0.5"/></svg>') 0 0/50px 50px;
-    opacity: 0.1;
-    animation: floatAnimation 20s infinite linear;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230066cc' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: heroPattern 30s linear infinite;
+}
+
+@keyframes heroPattern {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-section h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1.2;
-    position: relative;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: titleFade 1s ease-out;
+}
+
+@keyframes titleFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-section .subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: #666;
+    margin-bottom: 2rem;
+    animation: subtitleFade 1s ease-out 0.3s both;
+}
+
+@keyframes subtitleFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-cta {
@@ -144,153 +173,128 @@ body {
     gap: 1rem;
     justify-content: center;
     margin-top: 2rem;
+    animation: ctaFade 1s ease-out 0.6s both;
 }
 
-/* Interactive Cards */
-.insight-card, .value-card, .benefit-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.insight-card:hover, .value-card:hover, .benefit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.insight-card::before, .value-card::before, .benefit-card::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: radial-gradient(circle at center, 
-                rgba(0, 102, 204, 0.1) 0%,
-                transparent 50%);
-    transition: all 0.5s ease;
-}
-
-.insight-card:hover::before, .value-card:hover::before, .benefit-card:hover::before {
-    top: -50%;
-    left: -50%;
-}
-
-/* Cost Comparison Section */
-.cost-section {
+/* Market Insights Section */
+.insights-section {
     padding: 4rem 2rem;
     background: white;
 }
 
-.cost-grid {
+.insights-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin: 2rem 0;
+    margin-top: 3rem;
 }
 
-.cost-card {
-    border-radius: 12px;
-    padding: 2rem;
+.insight-card {
     background: white;
+    padding: 2rem;
+    border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid var(--border-color);
 }
 
-.cost-card:hover {
-    transform: scale(1.02);
+.insight-card:hover {
+    transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* CTA Buttons */
-.primary-button, .secondary-button {
+.insight-stat {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Buttons and CTAs */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
     padding: 1rem 2rem;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-.primary-button {
+.primary-cta {
     background: var(--primary-color);
     color: white;
+    box-shadow: 0 4px 6px rgba(0, 102, 204, 0.2);
 }
 
-.primary-button:hover {
+.primary-cta:hover {
     background: var(--secondary-color);
-    animation: pulseGlow 2s infinite;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 102, 204, 0.3);
 }
 
-.secondary-button {
-    background: transparent;
+.secondary-cta {
+    background: white;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
 }
 
-.secondary-button:hover {
+.secondary-cta:hover {
     background: var(--primary-color);
     color: white;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
+    .hero-section {
+        padding: 4rem 1rem;
     }
 
     .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 1rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero-cta {
         flex-direction: column;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        align-items: center;
     }
 
-    .nav-links.active {
-        display: flex;
-    }
-
-    /* Touch Animation for Mobile */
-    .insight-card:active::before, 
-    .value-card:active::before, 
-    .benefit-card:active::before {
-        top: -50%;
-        left: -50%;
-        background: radial-gradient(circle at center, 
-                    rgba(0, 102, 204, 0.2) 0%,
-                    transparent 70%);
-    }
-
-    .animated-background::before {
-        background: radial-gradient(circle at var(--touch-x, 50%) var(--touch-y, 50%), 
-                    rgba(0, 102, 204, 0.15) 0%,
-                    transparent 70%);
+    .cta-button {
+        width: 100%;
+        justify-content: center;
     }
 }
 
-/* Animation Handlers (Add via JavaScript) */
-.touch-animate {
-    animation: touchRipple 0.6s ease-out;
+/* Animation Classes */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease-out forwards;
 }
 
-@keyframes touchRipple {
-    0% {
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
         transform: scale(1);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(2);
-        opacity: 0;
     }
 }
