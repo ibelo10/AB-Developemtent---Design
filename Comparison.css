@@ -618,27 +618,26 @@ body {
     color: #666;
 }
 
-/* CTA Section */
+/* CTA Section Styles */
 .cta-section {
-    padding: 6rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 4rem 2rem;
+    background: #0066cc;
     color: white;
     text-align: center;
-    position: relative;
-    overflow: hidden;
 }
 
-.cta-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.1;
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
+.cta-section p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+}
+
+/* Benefits list styling */
 .cta-benefits {
     display: flex;
     justify-content: center;
@@ -657,11 +656,89 @@ body {
     color: #4CAF50;
 }
 
+/* Button container */
 .cta-buttons {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
+}
+
+/* Button styles */
+.cta-buttons a {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-align: center;
+}
+
+/* Primary button (Start Your Project) */
+.cta-buttons a:first-child {
+    background: white;
+    color: #0066cc;
+}
+
+.cta-buttons a:first-child:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* Secondary button (View Our Work) */
+.cta-buttons a:last-child {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-buttons a:last-child:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .cta-buttons a {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .cta-benefits {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .cta-section p {
+        font-size: 1rem;
+    }
+
+    .cta-buttons a {
+        padding: 0.875rem 1.5rem;
+    }
 }
 
 .primary-button, .secondary-button {
