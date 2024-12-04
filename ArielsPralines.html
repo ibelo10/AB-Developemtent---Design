@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariel's Pralines - Wholesale Portal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-amber-50">
+    <!-- Top Banner with Logo -->
+    <div class="bg-amber-900 text-white py-2 text-center text-sm">
+        🏆 Proudly Serving Quality Pralines to Retailers Since 2020
+    </div>
+    
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-24 h-24 relative">
+                        <!-- Replace with your actual logo -->
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <circle cx="50" cy="50" r="45" fill="#8B4513"/>
+                            <text x="50" y="55" text-anchor="middle" fill="white" font-size="24">AP</text>
+                            <path d="M50,20 Q70,50 50,80 Q30,50 50,20" fill="#D2691E"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-brown-900">Ariel's Pralines</h1>
+                        <p class="text-sm text-brown-600">Wholesale Portal</p>
+                    </div>
+                </div>
+                <!-- Navigation -->
+                <div class="flex space-x-6">
+                    <a href="https://www.arielspralines.com" class="text-brown-900 hover:text-amber-600">Home</a>
+                    <a href="#existing-vendors" class="text-brown-900 hover:text-amber-600">Existing Vendors</a>
+                    <a href="#new-vendors" class="text-brown-900 hover:text-amber-600">New Vendors</a>
+                    <a href="#contact" class="text-brown-900 hover:text-amber-600">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Quick Reorder Section for Existing Vendors -->
+        <section id="existing-vendors" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold mb-6">Quick Reorder</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl mb-4">Existing Vendors</h3>
+                        <p class="mb-4">Welcome back! Place your reorder quickly using your vendor ID.</p>
+                        <div class="space-y-4">
+                            <input type="text" placeholder="Vendor ID" class="w-full p-2 border rounded">
+                            <button class="bg-amber-600 text-white px-6 py-2 rounded hover:bg-amber-700">
+                                Access Your Custom Portal
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-l pl-8">
+                        <h3 class="text-xl mb-4">Recent Orders</h3>
+                        <div id="recent-orders-square-widget">
+                            <!-- Square integration for order history -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Vendor Section -->
+        <section id="new-vendors" class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold mb-6">New Vendors</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl mb-4">Become a Vendor</h3>
+                        <div class="space-y-2 mb-6">
+                            <p>✓ Minimum order: 50 pieces per item</p>
+                            <p>✓ Wholesale pricing available</p>
+                            <p>✓ Fresh, made-to-order products</p>
+                            <p>✓ Local pickup and shipping options</p>
+                        </div>
+                        <button class="bg-amber-600 text-white px-6 py-2 rounded hover:bg-amber-700">
+                            Apply for Wholesale Account
+                        </button>
+                    </div>
+                    <div class="border-l pl-8">
+                        <h3 class="text-xl mb-4">Required Documents</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Business License</li>
+                            <li>Resale Certificate</li>
+                            <li>Tax ID Number</li>
+                            <li>Proof of Business Insurance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Catalog -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Our Wholesale Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product cards with Square integration -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <img src="/api/placeholder/300/200" alt="Original Pralines" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Original Pralines</h3>
+                    <p class="text-gray-600 mb-4">50 pieces minimum</p>
+                    <div id="original-pralines-square"></div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <img src="/api/placeholder/300/200" alt="Chocolate Covered Pralines" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Chocolate Covered Pralines</h3>
+                    <p class="text-gray-600 mb-4">50 pieces minimum</p>
+                    <div id="chocolate-pralines-square"></div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <img src="/api/placeholder/300/200" alt="Gift Boxes" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Gift Boxes</h3>
+                    <p class="text-gray-600 mb-4">10 boxes minimum</p>
+                    <div id="gift-boxes-square"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white rounded-lg shadow-lg p-8">
+            <h2 class="text-2xl font-bold mb-6">Contact Our Wholesale Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl mb-4">Get in Touch</h3>
+                    <div class="space-y-3">
+                        <p>📧 Email: [Your Email]</p>
+                        <p>📞 Phone: [Your Phone]</p>
+                        <p>⏰ Business Hours: [Your Hours]</p>
+                        <p>📍 Location: [Your Address]</p>
+                    </div>
+                </div>
+                <div class="border-l pl-8">
+                    <h3 class="text-xl mb-4">Quick Question</h3>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Business Name" class="w-full p-2 border rounded">
+                        <input type="email" placeholder="Email" class="w-full p-2 border rounded">
+                        <textarea placeholder="Message" class="w-full p-2 border rounded h-32"></textarea>
+                        <button class="bg-amber-600 text-white px-6 py-2 rounded hover:bg-amber-700">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-amber-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2024 Ariel's Pralines - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Square Web Payments SDK -->
+    <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    <script>
+        window.addEventListener('load', async function () {
+            const payments = Square.payments('YOUR_SQUARE_APPLICATION_ID', 'YOUR_LOCATION_ID');
+        });
+    </script>
+</body>
+</html>
