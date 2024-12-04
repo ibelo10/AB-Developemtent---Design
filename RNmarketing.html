@@ -58,12 +58,8 @@
         }
 
         @keyframes rotateGradient {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .service-card {
@@ -108,6 +104,38 @@
             position: relative;
             z-index: 1;
         }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+            z-index: 20;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #4B5563;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #F3F4F6;
+            color: #2E8B57;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -120,151 +148,17 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#services" class="text-gray-600 hover:text-green-600">Services</a>
                     <a href="#youtube" class="text-gray-600 hover:text-green-600">YouTube</a>
-                    <a href="#kitchen" class="text-gray-600 hover:text-green-600">Commissary Kitchen</a>
+                    <div class="dropdown">
+                        <a href="#" class="text-gray-600 hover:text-green-600">Kitchen Services ▾</a>
+                        <div class="dropdown-content">
+                            <a href="#kitchen" class="dropdown-item">Overview</a>
+                            <a href="RNCommissary.html" class="dropdown-item">Registration & Pricing</a>
+                            <a href="RNCommissary.html#facilities" class="dropdown-item">Facilities</a>
+                            <a href="RNCommissary.html#requirements" class="dropdown-item">Requirements</a>
+                        </div>
+                    </div>
                     <a href="#contact" class="text-gray-600 hover:text-green-600">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
-
-    <header class="hero-gradient pt-32 pb-20">
-        <div class="container mx-auto px-6 text-center content-wrapper">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
-                Resilient Negroar Marketing
-            </h1>
-            <p class="text-xl text-gray-100 mb-8">
-                Your Trusted Partner for Business Growth in Baton Rouge
-            </p>
-            <a href="#contact" class="cta-button inline-block px-8 py-4 text-white rounded-full font-semibold shadow-lg">
-                Start Your Growth Journey
-            </a>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-6 py-16 content-wrapper">
-        <section class="mb-20">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Who We Are</h2>
-            <div class="max-w-3xl mx-auto text-gray-600 text-lg leading-relaxed bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg p-6 rounded-lg">
-                <p>At Resilient Negroar Marketing, we're more than just a marketing agency. We're your dedicated partner in business growth, specializing in creating impactful strategies that resonate with your target audience in Baton Rouge and beyond.</p>
-            </div>
-        </section>
-
-        <section id="services" class="mb-20">
-            <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">Our Services</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="service-card p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-4xl mb-4">📈</div>
-                    <h3 class="text-xl font-semibold mb-3">Marketing Campaigns</h3>
-                    <p class="text-gray-600">Data-driven campaigns that deliver measurable results for your business</p>
-                </div>
-                <div class="service-card p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-4xl mb-4">💭</div>
-                    <h3 class="text-xl font-semibold mb-3">Social Media Management</h3>
-                    <p class="text-gray-600">Engaging content that builds meaningful connections with your audience</p>
-                </div>
-                <div class="service-card p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-4xl mb-4">🎨</div>
-                    <h3 class="text-xl font-semibold mb-3">Brand Development</h3>
-                    <p class="text-gray-600">Strategic brand building that sets you apart from competitors</p>
-                </div>
-                <div class="service-card p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-4xl mb-4">🎯</div>
-                    <h3 class="text-xl font-semibold mb-3">Advertising Strategy</h3>
-                    <p class="text-gray-600">Targeted advertising that reaches your ideal customers</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="youtube" class="mb-20 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-lg p-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Our YouTube Channel</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="aspect-w-16 aspect-h-9 mb-8">
-                    <iframe 
-                        class="w-full h-[450px] rounded-xl shadow-lg"
-                        src="https://www.youtube.com/embed/25D7cFX4b4c"
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow">
-                        <div class="aspect-w-16 aspect-h-9 mb-3">
-                            <iframe 
-                                class="w-full h-full rounded-md"
-                                src="https://www.youtube.com/embed/LFN7tGGSmbQ"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800">Custom Data Table in React</h3>
-                        <p class="text-gray-600 text-sm">Building a reusable data table component</p>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow">
-                        <div class="aspect-w-16 aspect-h-9 mb-3">
-                            <iframe 
-                                class="w-full h-full rounded-md"
-                                src="https://www.youtube.com/embed/4OQtkNECy_U"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800">NextJS 13 CRUD App</h3>
-                        <p class="text-gray-600 text-sm">Building a full-stack application</p>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow">
-                        <div class="aspect-w-16 aspect-h-9 mb-3">
-                            <iframe 
-                                class="w-full h-full rounded-md"
-                                src="https://www.youtube.com/embed/XeVZUbB2F9M"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800">React Streaming Data</h3>
-                        <p class="text-gray-600 text-sm">Handling real-time data in React</p>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <a href="https://www.youtube.com/@ABDevNDesign" target="_blank" class="cta-button inline-block px-6 py-3 text-white rounded-full font-semibold shadow-lg">
-                        Visit Our Channel
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-
-        <section id="kitchen" class="mb-20 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-lg p-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Commissary Kitchen</h2>
-            <div class="text-gray-600 leading-relaxed">
-                <p class="mb-4">Our state-of-the-art commissary kitchen provides local food entrepreneurs with the perfect space to grow their culinary business. Equipped with professional-grade equipment and ample workspace, we're here to support your food business journey.</p>
-                <p>Whether you're a startup candy company or an established food brand, our kitchen facilities are designed to meet your production needs while complying with all health and safety regulations.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Ready to Get Started?</h2>
-            <a href="#" class="cta-button inline-block px-8 py-4 text-white rounded-full font-semibold shadow-lg">
-                Contact Us Today
-            </a>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 bg-opacity-95 backdrop-filter backdrop-blur-lg text-white py-12 relative z-10">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h3 class="text-xl font-semibold mb-2">Resilient Negroar Marketing</h3>
-                    <p class="text-gray-400">Your Baton Rouge Partner in Business Growth</p>
-                </div>
-                <div class="text-gray-400">
-                    &copy; 2024 Resilient Negroar Marketing. All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
