@@ -6,69 +6,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ariel's Pralines - Wholesale Portal</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mardi-purple: #582f6c;
+            --mardi-gold: #f7b538;
+            --mardi-green: #2c5530;
+            --cafe-brown: #54382e;
+            --beignet-cream: #f8e5c9;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--beignet-cream);
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23582f6c' fill-opacity='0.03'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fleur-de-lis {
+            position: relative;
+        }
+
+        .fleur-de-lis::before {
+            content: "⚜";
+            position: absolute;
+            left: -1.5rem;
+            color: var(--mardi-gold);
+        }
+
+        .btn-primary {
+            background-color: var(--mardi-purple);
+            color: var(--mardi-gold);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--mardi-gold);
+            color: var(--mardi-purple);
+            transform: translateY(-2px);
+        }
+
+        .card-decoration {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-decoration::after {
+            content: "⚜";
+            position: absolute;
+            right: -0.5rem;
+            bottom: -0.5rem;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: var(--mardi-purple);
+        }
+    </style>
 </head>
-<body class="bg-amber-50 min-h-screen flex flex-col">
+<body>
     <!-- Top Banner -->
-    <div class="bg-amber-900 text-white py-2 text-center text-sm animate__animated animate__fadeIn">
-        🏆 Proudly Serving Quality Pralines to Retailers Since 2020
+    <div class="bg-gradient-to-r from-purple-900 to-purple-700 text-yellow-300 py-3 text-center text-sm font-semibold tracking-wide">
+        🎭 Bringing New Orleans Flavor to Your Business Since 2020 ⚜
     </div>
     
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="bg-white shadow-lg border-b-4 border-yellow-500">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-4">
-                    <img src="assets/images/pralines-logo.png" alt="Ariel's Pralines Logo" class="w-24 h-24 object-contain">
+                    <div class="w-24 h-24">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <circle cx="50" cy="50" r="45" fill="#582f6c"/>
+                            <text x="50" y="55" text-anchor="middle" fill="#f7b538" font-size="24" font-family="Playfair Display">AP</text>
+                            <path d="M50,20 Q70,50 50,80 Q30,50 50,20" fill="#f7b538"/>
+                        </svg>
+                    </div>
                     <div>
-                        <h1 class="text-2xl font-bold text-amber-900">Ariel's Pralines</h1>
-                        <p class="text-sm text-amber-700">Wholesale Portal</p>
+                        <h1 class="text-3xl font-bold text-purple-900">Ariel's Pralines</h1>
+                        <p class="text-sm text-yellow-600 italic">Wholesale Confections</p>
                     </div>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="#" onclick="showLogin()" class="nav-link">Vendor Login</a>
-                    <a href="#new-vendors" class="nav-link">New Vendors</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                <div class="flex space-x-8">
+                    <a href="index.html" class="text-purple-900 hover:text-yellow-600 transition-colors duration-200">Home</a>
+                    <a href="#" onclick="showLogin()" class="text-purple-900 hover:text-yellow-600 transition-colors duration-200">Vendor Login</a>
+                    <a href="#new-vendors" class="text-purple-900 hover:text-yellow-600 transition-colors duration-200">New Vendors</a>
+                    <a href="#contact" class="text-purple-900 hover:text-yellow-600 transition-colors duration-200">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8 flex-grow">
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-purple-900">Welcome to Our Wholesale Portal</h2>
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto">Experience the authentic taste of New Orleans with our handcrafted pralines.</p>
+        </section>
+
         <!-- Quick Login Section -->
-        <section class="mb-12 animate__animated animate__fadeIn">
-            <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <h2 class="text-2xl font-bold mb-6 text-amber-900">Quick Vendor Access</h2>
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-xl p-8 card-decoration border-t-4 border-yellow-500">
+                <h2 class="text-2xl font-bold mb-6 text-purple-900 fleur-de-lis">Vendor Access</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <h3 class="text-xl mb-4 text-amber-800">Existing Vendors</h3>
-                        <p class="mb-4 text-gray-600">Access your portal to view orders and place quick reorders.</p>
-                        <button onclick="showLogin()" class="btn-primary w-full">
+                        <h3 class="text-xl mb-4 text-purple-800">Existing Vendors</h3>
+                        <p class="mb-4 text-gray-600">Access your portal to manage orders and inventory.</p>
+                        <button onclick="showLogin()" class="btn-primary w-full py-3 px-6 rounded-lg font-semibold">
                             Access Vendor Portal
                         </button>
                     </div>
                     <div class="border-l pl-8">
-                        <h3 class="text-xl mb-4 text-amber-800">Features</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                                </svg>
-                                View Order History
+                        <h3 class="text-xl mb-4 text-purple-800">Portal Features</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-gray-700">
+                                <span class="text-yellow-500 mr-2">⚜</span>
+                                Quick Reordering System
                             </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                                </svg>
-                                Quick Reorder
+                            <li class="flex items-center text-gray-700">
+                                <span class="text-yellow-500 mr-2">⚜</span>
+                                Order History & Tracking
                             </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                                </svg>
-                                Track Deliveries
+                            <li class="flex items-center text-gray-700">
+                                <span class="text-yellow-500 mr-2">⚜</span>
+                                Special Wholesale Pricing
                             </li>
                         </ul>
                     </div>
@@ -77,75 +139,141 @@
         </section>
 
         <!-- Products Preview -->
-        <section class="mb-12 animate__animated animate__fadeIn animate__delay-1s">
-            <h2 class="text-2xl font-bold mb-6 text-amber-900">Featured Products</h2>
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-purple-900 fleur-de-lis">Featured Products</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="product-card">
-                    <img src="/api/placeholder/300/200" alt="Original Pralines" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2 text-amber-900">Original Pralines</h3>
-                        <p class="text-gray-600 mb-4">Minimum Order: 50 pieces</p>
-                        <button onclick="showLogin()" class="btn-secondary w-full">
+                <!-- Original Pralines -->
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden card-decoration border-t-4 border-yellow-500">
+                    <img src="https://placehold.co/600x400/582f6c/f7b538/png?text=Original+Pralines" 
+                         alt="Original Pralines" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-purple-900">Original Pralines</h3>
+                        <p class="text-gray-600 mb-4">Our signature pralines made with Louisiana pecans</p>
+                        <button onclick="showLogin()" class="btn-primary w-full py-2 px-4 rounded-lg">
                             Order Now
                         </button>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <img src="/api/placeholder/300/200" alt="Chocolate Covered Pralines" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2 text-amber-900">Chocolate Covered</h3>
-                        <p class="text-gray-600 mb-4">Minimum Order: 50 pieces</p>
-                        <button onclick="showLogin()" class="btn-secondary w-full">
+                <!-- Chocolate Covered -->
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden card-decoration border-t-4 border-yellow-500">
+                    <img src="https://placehold.co/600x400/582f6c/f7b538/png?text=Chocolate+Covered" 
+                         alt="Chocolate Covered Pralines" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-purple-900">Chocolate Covered</h3>
+                        <p class="text-gray-600 mb-4">Classic pralines dipped in rich chocolate</p>
+                        <button onclick="showLogin()" class="btn-primary w-full py-2 px-4 rounded-lg">
                             Order Now
                         </button>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <img src="/api/placeholder/300/200" alt="Gift Boxes" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2 text-amber-900">Gift Boxes</h3>
-                        <p class="text-gray-600 mb-4">Minimum Order: 10 boxes</p>
-                        <button onclick="showLogin()" class="btn-secondary w-full">
+                <!-- Gift Boxes -->
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden card-decoration border-t-4 border-yellow-500">
+                    <img src="https://placehold.co/600x400/582f6c/f7b538/png?text=Gift+Boxes" 
+                         alt="Gift Boxes" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-purple-900">Gift Boxes</h3>
+                        <p class="text-gray-600 mb-4">Elegant assortments perfect for gifting</p>
+                        <button onclick="showLogin()" class="btn-primary w-full py-2 px-4 rounded-lg">
                             Order Now
                         </button>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white rounded-lg shadow-xl p-8 card-decoration border-t-4 border-yellow-500">
+            <h2 class="text-2xl font-bold mb-6 text-purple-900 fleur-de-lis">Contact Our Wholesale Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl mb-4 text-purple-800">Get in Touch</h3>
+                    <div class="space-y-3 text-gray-700">
+                        <p class="flex items-center">
+                            <span class="text-yellow-500 mr-2">⚜</span>
+                            Email: wholesale@arielspralines.com
+                        </p>
+                        <p class="flex items-center">
+                            <span class="text-yellow-500 mr-2">⚜</span>
+                            Phone: (504) 555-0123
+                        </p>
+                        <p class="flex items-center">
+                            <span class="text-yellow-500 mr-2">⚜</span>
+                            Hours: Mon-Fri, 9am-5pm CST
+                        </p>
+                    </div>
+                </div>
+                <div class="border-l pl-8">
+                    <h3 class="text-xl mb-4 text-purple-800">Send a Message</h3>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Business Name" 
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <input type="email" placeholder="Email" 
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <textarea placeholder="Message" 
+                                  class="w-full p-3 border border-gray-300 rounded-lg h-32 focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                        <button class="btn-primary w-full py-3 px-6 rounded-lg font-semibold">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-amber-900 text-white py-8 mt-auto">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2024 Ariel's Pralines - All Rights Reserved</p>
-        </div>
-    </footer>
-
     <!-- Login Modal -->
-    <div id="loginModal" class="modal hidden">
-        <div class="modal-content animate__animated animate__fadeInDown">
-            <h2 class="text-2xl font-bold mb-6 text-amber-900">Vendor Login</h2>
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 card-decoration border-t-4 border-yellow-500">
+            <h2 class="text-2xl font-bold mb-6 text-purple-900">Vendor Login</h2>
             <form id="loginForm" class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Vendor ID</label>
-                    <input type="text" id="vendorId" class="form-input" required>
+                    <input type="text" id="vendorId" 
+                           class="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                           required>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="password" class="form-input" required>
+                    <input type="password" id="password" 
+                           class="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                           required>
                 </div>
-                <button type="submit" class="btn-primary w-full">
+                <button type="submit" class="btn-primary w-full py-3 px-6 rounded-lg font-semibold">
                     Login
                 </button>
             </form>
-            <p class="mt-4 text-sm text-gray-600 text-center">
-                Need help? <a href="#contact" class="text-amber-600 hover:text-amber-700">Contact Support</a>
-            </p>
         </div>
     </div>
 
+   <footer class="bg-purple-900 text-yellow-300 py-8 mt-12 border-t-4 border-yellow-500">
+        <div class="container mx-auto px-4 text-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Location</h3>
+                    <p>French Quarter</p>
+                    <p>New Orleans, LA 70116</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hours</h3>
+                    <p>Monday - Friday: 9am - 5pm</p>
+                    <p>Saturday: By Appointment</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <p>wholesale@arielspralines.com</p>
+                    <p>(504) 555-0123</p>
+                </div>
+            </div>
+            <div class="text-sm">
+                <p>© 2024 Ariel's Pralines - Bringing the Sweet Taste of New Orleans to You</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="js/auth.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
