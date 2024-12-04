@@ -1,0 +1,59 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard - Ariel's Pralines</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</head>
+<body class="bg-amber-50">
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="assets/images/pralines-logo.png" alt="Ariel's Pralines Logo" class="w-24 h-24 object-contain">
+                    <div>
+                        <h1 class="text-2xl font-bold text-amber-900">Vendor Dashboard</h1>
+                        <p class="text-sm text-amber-700" id="vendorName"></p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="btn-primary">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Quick Actions -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-bold text-amber-900 mb-2">Last Order</h3>
+                <p id="lastOrderInfo" class="text-gray-600"></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-bold text-amber-900 mb-2">Total Orders</h3>
+                <p id="totalOrders" class="text-gray-600"></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-bold text-amber-900 mb-2">Quick Reorder</h3>
+                <select id="previousOrders" class="form-input mb-2">
+                    <option value="">Select previous order</option>
+                </select>
+                <button onclick="reorder()" class="btn-primary w-full">
+                    Reorder
+                </button>
+            </div>
+        </section>
+
+        <!-- Order History -->
+        <section class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-6 text-amber-900">Order History</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead class="bg-amber-50">
+                        <tr>
+                            <th class="px
