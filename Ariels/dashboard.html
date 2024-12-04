@@ -6,21 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendor Dashboard - Ariel's Pralines</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Same CSS as index.html -->
+    <style>
+        :root {
+            --mardi-purple: #582f6c;
+            --mardi-gold: #f7b538;
+            --mardi-green: #2c5530;
+            --cafe-brown: #54382e;
+            --beignet-cream: #f8e5c9;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--beignet-cream);
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23582f6c' fill-opacity='0.03'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fleur-de-lis {
+            position: relative;
+        }
+
+        .fleur-de-lis::before {
+            content: "⚜";
+            position: absolute;
+            left: -1.5rem;
+            color: var(--mardi-gold);
+        }
+
+        .btn-primary {
+            background-color: var(--mardi-purple);
+            color: var(--mardi-gold);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--mardi-gold);
+            color: var(--mardi-purple);
+            transform: translateY(-2px);
+        }
+
+        .card-decoration {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-decoration::after {
+            content: "⚜";
+            position: absolute;
+            right: -0.5rem;
+            bottom: -0.5rem;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: var(--mardi-purple);
+        }
+    </style>
 </head>
-<body class="bg-amber-50">
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+<body>
+    <!-- Top Banner -->
+    <div class="bg-gradient-to-r from-purple-900 to-purple-700 text-yellow-300 py-3 text-center text-sm font-semibold tracking-wide">
+        Welcome Back to Your Wholesale Portal ⚜
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b-4 border-yellow-500">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-4">
-                    <img src="assets/images/pralines-logo.png" alt="Ariel's Pralines Logo" class="w-24 h-24 object-contain">
+                    <div class="w-24 h-24">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <circle cx="50" cy="50" r="45" fill="#582f6c"/>
+                            <text x="50" y="55" text-anchor="middle" fill="#f7b538" font-size="24" font-family="Playfair Display">AP</text>
+                            <path d="M50,20 Q70,50 50,80 Q30,50 50,20" fill="#f7b538"/>
+                        </svg>
+                    </div>
                     <div>
-                        <h1 class="text-2xl font-bold text-amber-900">Vendor Dashboard</h1>
-                        <p class="text-sm text-amber-700" id="vendorName"></p>
+                        <h1 class="text-3xl font-bold text-purple-900">Vendor Dashboard</h1>
+                        <p id="vendorName" class="text-sm text-yellow-600 italic"></p>
                     </div>
                 </div>
-                <button onclick="logout()" class="btn-primary">
+                <button onclick="logout()" class="btn-primary py-2 px-6 rounded-lg font-semibold">
                     Logout
                 </button>
             </div>
@@ -28,101 +97,121 @@
     </nav>
 
     <main class="container mx-auto px-4 py-8">
-        <!-- Quick Actions -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-lg font-bold text-amber-900 mb-2">Last Order</h3>
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-xl card-decoration border-t-4 border-yellow-500">
+                <h3 class="text-lg font-bold text-purple-900 mb-2">Last Order</h3>
                 <p id="lastOrderInfo" class="text-gray-600"></p>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-lg font-bold text-amber-900 mb-2">Total Orders</h3>
+            <div class="bg-white p-6 rounded-lg shadow-xl card-decoration border-t-4 border-yellow-500">
+                <h3 class="text-lg font-bold text-purple-900 mb-2">Total Orders</h3>
                 <p id="totalOrders" class="text-gray-600"></p>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-lg font-bold text-amber-900 mb-2">Quick Reorder</h3>
-                <select id="previousOrders" class="form-input mb-2">
+            <div class="bg-white p-6 rounded-lg shadow-xl card-decoration border-t-4 border-yellow-500">
+                <h3 class="text-lg font-bold text-purple-900 mb-2">Quick Reorder</h3>
+                <select id="previousOrders" class="w-full p-3 border border-gray-300 rounded-lg mb-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                     <option value="">Select previous order</option>
                 </select>
-                <button onclick="reorder()" class="btn-primary w-full">
+                <button onclick="reorder()" class="btn-primary w-full py-2 px-4 rounded-lg">
                     Reorder
                 </button>
             </div>
-        </section>
+        </div>
 
         <!-- Order History -->
-        <section class="bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-bold mb-6 text-amber-900">Order History</h2>
+        <section class="bg-white rounded-lg shadow-xl p-6 mb-8 card-decoration border-t-4 border-yellow-500">
+            <h2 class="text-2xl font-bold mb-6 text-purple-900 fleur-de-lis">Order History</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full">
-                    <thead class="bg-amber-50">
+                    <thead class="bg-purple-50">
                         <tr>
-                                                      <th class="px-6 py-3 text-left text-xs font-medium text-amber-900 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-purple-900 uppercase tracking-wider">
                                 Order ID
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-amber-900 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-purple-900 uppercase tracking-wider">
                                 Date
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-amber-900 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-purple-900 uppercase tracking-wider">
                                 Items
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-amber-900 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-purple-900 uppercase tracking-wider">
                                 Total
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-amber-900 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-purple-900 uppercase tracking-wider">
                                 Status
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-amber-900 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-purple-900 uppercase tracking-wider">
                                 Actions
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="orderHistory" class="bg-white divide-y divide-amber-100">
-                        <!-- Order history will be populated here -->
+                    <tbody id="orderHistory" class="divide-y divide-purple-100">
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- New Order Section -->
-        <section class="mt-8 bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-bold mb-6 text-amber-900">Place New Order</h2>
+        <!-- New Order -->
+        <section class="bg-white rounded-lg shadow-xl p-6 card-decoration border-t-4 border-yellow-500">
+            <h2 class="text-2xl font-bold mb-6 text-purple-900 fleur-de-lis">Place New Order</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="product-card">
-                    <img src="/api/placeholder/300/200" alt="Original Pralines" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2 text-amber-900">Original Pralines</h3>
+                <!-- Original Pralines -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-decoration">
+                    <img src="https://placehold.co/600x400/582f6c/f7b538/png?text=Original+Pralines" 
+                         alt="Original Pralines" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-purple-900">Original Pralines</h3>
                         <p class="text-gray-600 mb-4">Minimum: 50 pieces</p>
-                        <input type="number" min="50" step="10" class="form-input mb-2" placeholder="Quantity">
-                        <button class="btn-primary w-full">Add to Cart</button>
+                        <input type="number" min="50" step="10" 
+                               class="w-full p-3 border border-gray-300 rounded-lg mb-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                               placeholder="Quantity">
+                        <button class="btn-primary w-full py-2 px-4 rounded-lg">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <img src="/api/placeholder/300/200" alt="Chocolate Covered Pralines" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2 text-amber-900">Chocolate Covered</h3>
+                <!-- Chocolate Covered -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-decoration">
+                    <img src="https://placehold.co/600x400/582f6c/f7b538/png?text=Chocolate+Covered" 
+                         alt="Chocolate Covered Pralines" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-purple-900">Chocolate Covered</h3>
                         <p class="text-gray-600 mb-4">Minimum: 50 pieces</p>
-                        <input type="number" min="50" step="10" class="form-input mb-2" placeholder="Quantity">
-                        <button class="btn-primary w-full">Add to Cart</button>
+                        <input type="number" min="50" step="10" 
+                               class="w-full p-3 border border-gray-300 rounded-lg mb-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                               placeholder="Quantity">
+                        <button class="btn-primary w-full py-2 px-4 rounded-lg">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <img src="/api/placeholder/300/200" alt="Gift Boxes" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold mb-2 text-amber-900">Gift Boxes</h3>
+                <!-- Gift Boxes -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-decoration">
+                    <img src="https://placehold.co/600x400/582f6c/f7b538/png?text=Gift+Boxes" 
+                         alt="Gift Boxes" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-purple-900">Gift Boxes</h3>
                         <p class="text-gray-600 mb-4">Minimum: 10 boxes</p>
-                        <input type="number" min="10" step="5" class="form-input mb-2" placeholder="Quantity">
-                        <button class="btn-primary w-full">Add to Cart</button>
+                        <input type="number" min="10" step="5" 
+                               class="w-full p-3 border border-gray-300 rounded-lg mb-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                               placeholder="Quantity">
+                        <button class="btn-primary w-full py-2 px-4 rounded-lg">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-amber-900 text-white py-8 mt-8">
+    <footer class="bg-purple-900 text-yellow-300 py-8 mt-12 border-t-4 border-yellow-500">
         <div class="container mx-auto px-4 text-center">
-            <p>© 2024 Ariel's Pralines - All Rights Reserved</p>
+            <p>© 2024 Ariel's Pralines - Wholesale Portal</p>
         </div>
     </footer>
 
