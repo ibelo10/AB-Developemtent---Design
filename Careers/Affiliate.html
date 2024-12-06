@@ -21,13 +21,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
             background: var(--light);
             color: var(--secondary);
+            line-height: 1.6;
         }
 
         .container {
@@ -39,80 +39,85 @@
         .header {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
-            padding: 4rem 0;
+            padding: 6rem 0;
             margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+                        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%);
+            background-size: 60px 60px;
+            animation: headerBg 15s linear infinite;
+        }
+
+        @keyframes headerBg {
+            from { background-position: 0 0; }
+            to { background-position: 60px 60px; }
         }
 
         .header h1 {
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            line-height: 1.2;
+            animation: slideInDown 1s ease-out;
         }
 
         .header p {
             font-size: 1.25rem;
             opacity: 0.9;
-        }
-
-        .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
+            animation: slideInUp 1s ease-out;
         }
 
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            margin: 2rem 0;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-dark);
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease-out;
         }
 
-        h3 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        h3 i {
-            color: var(--primary);
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .calculator {
             background: white;
             border-radius: 1rem;
             padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         select, input {
             width: 100%;
             padding: 1rem;
+            margin: 0.5rem 0;
             border: 1px solid var(--border);
             border-radius: 0.5rem;
-            margin-bottom: 1rem;
             font-size: 1rem;
-            appearance: none;
-            background: var(--light);
+            transition: all 0.3s ease;
         }
 
-        select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232D3AF6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1.5rem;
-            padding-right: 2.5rem;
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(45,58,246,0.1);
         }
 
         .commission-display {
@@ -120,50 +125,29 @@
             color: white;
             padding: 2rem;
             border-radius: 0.75rem;
-            margin-top: 2rem;
-        }
-
-        .commission-display h4 {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            animation: pulse 2s infinite;
         }
 
         .commission-amount {
             font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
+            font-weight: 700;
+            margin: 0.5rem 0;
         }
 
         .feature-list li {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             padding: 1rem;
             background: var(--light);
             border-radius: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            transition: transform 0.3s ease;
         }
 
-        .feature-list li::before {
-            content: none;
+        .feature-list li:hover {
+            transform: translateX(10px);
         }
 
         .feature-list i {
@@ -171,22 +155,50 @@
             font-size: 1.25rem;
         }
 
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45,58,246,0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .header {
-                padding: 2rem 0;
-            }
-
-            .header h1 {
-                font-size: 2.5rem;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
+            .container { padding: 1rem; }
+            .header { padding: 3rem 0; }
+            .header h1 { font-size: 2.5rem; }
+            .card-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -201,75 +213,49 @@
     <div class="container">
         <div class="card-grid">
             <div class="card">
-                <h3><i class="fas fa-star"></i>Program Benefits</h3>
+                <h3><i class="fas fa-star"></i> Program Benefits</h3>
                 <div class="feature-list">
-                    <li><i class="fas fa-percentage"></i>10% commission on all services and subscriptions</li>
-                    <li><i class="fas fa-money-bill-wave"></i>Fast payouts within 48 hours</li>
+                    <li><i class="fas fa-percentage"></i>10% commission on all services</li>
+                    <li><i class="fas fa-money-bill-wave"></i>48-hour payout guarantee</li>
                     <li><i class="fas fa-link"></i>Custom tracking links</li>
-                    <li><i class="fas fa-chart-line"></i>Real-time performance dashboard</li>
+                    <li><i class="fas fa-chart-line"></i>Real-time dashboard</li>
                     <li><i class="fas fa-tools"></i>Marketing resources provided</li>
-                    <li><i class="fas fa-headset"></i>Dedicated partner support</li>
+                    <li><i class="fas fa-headset"></i>Dedicated support</li>
                 </div>
-
-                <h3><i class="fas fa-wallet"></i>Payment Details</h3>
-                <ul>
-                    <li>Commissions processed within 48 hours of verified payment</li>
-                    <li>Choose between direct deposit or Cash App</li>
-                    <li>Automated payment tracking system</li>
-                </ul>
             </div>
 
             <div class="calculator">
-                <h3><i class="fas fa-calculator"></i>Commission Calculator</h3>
-                
-                <h4>One-Time Services</h4>
+                <h3><i class="fas fa-calculator"></i> Commission Calculator</h3>
                 <select id="serviceSelect">
                     <option value="3000">Website Development ($3,000)</option>
+                    <option value="5000">E-Commerce Website ($5,000)</option>
+                    <option value="8000">Custom Web Application ($8,000)</option>
                     <option value="2500">Brand Identity ($2,500)</option>
+                    <option value="4000">UI/UX Design ($4,000)</option>
                     <option value="1500">Marketing Materials ($1,500)</option>
-                    <option value="5000">Custom Development ($5,000)</option>
                 </select>
-
-                <h4>Monthly Subscriptions</h4>
-                <select id="planSelect">
-                    <option value="199">Basic Plan ($199/mo)</option>
-                    <option value="399">Premium Plan ($399/mo)</option>
-                    <option value="799">Enterprise Plan ($799/mo)</option>
-                </select>
-                
-                <input type="number" id="clientCount" min="1" value="1" placeholder="Number of Clients">
 
                 <div class="commission-display">
-                    <h4>One-Time Commission</h4>
-                    <div class="commission-amount" id="oneTimeCommission">$300.00</div>
-                    <h4>Monthly Recurring Commission</h4>
-                    <div class="commission-amount" id="monthlyCommission">$19.90</div>
-                    <h4>Yearly Recurring Commission</h4>
-                    <div class="commission-amount" id="yearlyCommission">$238.80</div>
+                    <h4>Your Commission</h4>
+                    <div class="commission-amount" id="commissionAmount">$300.00</div>
+                    <p>Paid within 48 hours via direct deposit or Cash App</p>
                 </div>
             </div>
         </div>
+
+        <a href="commission.html" class="nav-button">
+            <i class="fas fa-list"></i> View All Services
+        </a>
     </div>
 
     <script>
         function calculateCommission() {
             const servicePrice = parseFloat(document.getElementById('serviceSelect').value);
-            const planPrice = parseFloat(document.getElementById('planSelect').value);
-            const clientCount = parseInt(document.getElementById('clientCount').value);
-            
-            const oneTimeCommission = servicePrice * 0.10;
-            const monthlyCommission = planPrice * 0.10 * clientCount;
-            const yearlyCommission = monthlyCommission * 12;
-            
-            document.getElementById('oneTimeCommission').textContent = `$${oneTimeCommission.toFixed(2)}`;
-            document.getElementById('monthlyCommission').textContent = `$${monthlyCommission.toFixed(2)}`;
-            document.getElementById('yearlyCommission').textContent = `$${yearlyCommission.toFixed(2)}`;
+            const commission = servicePrice * 0.10;
+            document.getElementById('commissionAmount').textContent = `$${commission.toFixed(2)}`;
         }
 
         document.getElementById('serviceSelect').addEventListener('change', calculateCommission);
-        document.getElementById('planSelect').addEventListener('change', calculateCommission);
-        document.getElementById('clientCount').addEventListener('input', calculateCommission);
-
         calculateCommission();
     </script>
 </body>
