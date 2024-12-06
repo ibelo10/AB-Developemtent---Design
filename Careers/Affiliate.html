@@ -3,335 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Greeter Business Setup & Cost Analysis</title>
+    <title>AB Dev Affiliate Program</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Root Variables */
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --text-color: #1f2937;
-            --light-gray: #f3f4f6;
-            --border-color: #e5e7eb;
-            --highlight-bg: #dbeafe;
-            --success-color: #059669;
+            --primary: #2D3AF6;
+            --primary-dark: #1c28d4;
+            --secondary: #1E1E24;
+            --accent: #6366F1;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --success: #22C55E;
+            --border: #E2E8F0;
         }
 
-        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-gray);
-            color: var(--text-color);
+            background: var(--light);
+            color: var(--secondary);
         }
 
         .container {
-            max-width: 1100px;
-            margin: 2rem auto;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 2rem;
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        /* Header Styles */
         .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin: 0 0 1rem 0;
-            font-weight: 800;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: var(--secondary-color);
-            margin: 2.5rem 0 1.5rem 0;
-            font-weight: 700;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        h3 {
-            color: var(--primary-color);
-            margin: 1.5rem 0 1rem 0;
-            font-size: 1.25rem;
-        }
-
-        /* Table Styles */
-        .cost-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 1.5rem 0;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .cost-table th, .cost-table td {
-            padding: 1rem;
-            text-align: left;
-            border: 1px solid var(--border-color);
-        }
-
-        .cost-table th {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.875rem;
-            letter-spacing: 0.05em;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
         }
 
-        .cost-table tr:nth-child(even) {
-            background-color: var(--light-gray);
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        /* Card Grid Styles */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
         }
 
         .card {
             background: white;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
         }
 
-        /* Timeline Styles */
-        .timeline {
-            margin: 2rem 0;
-            padding: 1rem;
-            background: var(--light-gray);
-            border-radius: 0.75rem;
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
-        .timeline-item {
-            display: flex;
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
             margin-bottom: 1.5rem;
-            padding-left: 2rem;
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: var(--primary-color);
+        h3 i {
+            color: var(--primary);
         }
 
-        .timeline-item::after {
-            content: "";
-            position: absolute;
-            left: -4px;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-        }
-
-        /* Calculator Styles */
         .calculator {
             background: white;
+            border-radius: 1rem;
             padding: 2rem;
-            border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin: 2rem 0;
         }
 
-        .calculator select, .calculator input {
+        select, input {
             width: 100%;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
-            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border: 1px solid var(--border);
             border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            appearance: none;
+            background: var(--light);
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232D3AF6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5rem;
+            padding-right: 2.5rem;
         }
 
         .commission-display {
-            background: var(--highlight-bg);
-            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem;
             border-radius: 0.75rem;
-            margin: 1rem 0;
-            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .commission-display h4 {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
         }
 
         .commission-amount {
-            font-size: 2rem;
-            color: var(--success-color);
-            font-weight: bold;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
         }
 
-        /* Responsive Styles */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list li::before {
+            content: none;
+        }
+
+        .feature-list i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
         @media (max-width: 768px) {
             .container {
-                margin: 1rem;
                 padding: 1rem;
             }
 
-            h1 {
-                font-size: 2rem;
+            .header {
+                padding: 2rem 0;
             }
 
-            h2 {
-                font-size: 1.5rem;
+            .header h1 {
+                font-size: 2.5rem;
             }
 
-            .cost-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
+            .card-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="container">
+            <h1>AB Dev Affiliate Program</h1>
+            <p>Turn your influence into income with our high-commission affiliate program</p>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- Header Section -->
-        <div class="header">
-            <h1>AI Greeter Business Setup & Cost Analysis</h1>
-            <p>Comprehensive business establishment and operational plan for your AI Greeter venture</p>
-        </div>
-
-        <!-- Business Formation Section -->
-        <h2>Initial Business Formation</h2>
         <div class="card-grid">
             <div class="card">
-                <h3>Legal Setup</h3>
-                <table class="cost-table">
-                    <tr>
-                        <td>LLC Formation</td>
-                        <td>$500 - $1,000</td>
-                    </tr>
-                    <tr>
-                        <td>Business Licenses</td>
-                        <td>$200 - $500</td>
-                    </tr>
-                    <tr>
-                        <td>Legal Consultation</td>
-                        <td>$500 - $1,500</td>
-                    </tr>
-                    <tr>
-                        <td>Insurance Setup</td>
-                        <td>$1,000 - $2,500</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="card">
-                <h3>Brand Development</h3>
-                <table class="cost-table">
-                    <tr>
-                        <td>Logo & Brand Identity</td>
-                        <td>$1,000 - $2,500</td>
-                    </tr>
-                    <tr>
-                        <td>Website Development</td>
-                        <td>$3,000 - $7,000</td>
-                    </tr>
-                    <tr>
-                        <td>Marketing Materials</td>
-                        <td>$1,500 - $3,000</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+                <h3><i class="fas fa-star"></i>Program Benefits</h3>
+                <div class="feature-list">
+                    <li><i class="fas fa-percentage"></i>10% commission on all services and subscriptions</li>
+                    <li><i class="fas fa-money-bill-wave"></i>Fast payouts within 48 hours</li>
+                    <li><i class="fas fa-link"></i>Custom tracking links</li>
+                    <li><i class="fas fa-chart-line"></i>Real-time performance dashboard</li>
+                    <li><i class="fas fa-tools"></i>Marketing resources provided</li>
+                    <li><i class="fas fa-headset"></i>Dedicated partner support</li>
+                </div>
 
-        <!-- Core Product Development Section -->
-        <h2>Core Product Development</h2>
-        <table class="cost-table">
-            <thead>
-                <tr>
-                    <th>Component</th>
-                    <th>Initial Cost ($)</th>
-                    <th>Monthly Cost ($)</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Hardware Setup</td>
-                    <td>400 - 1,000</td>
-                    <td>50 - 100</td>
-                    <td>Includes Raspberry Pi, camera, display, storage</td>
-                </tr>
-                <tr>
-                    <td>Software Development</td>
-                    <td>2,500 - 5,000</td>
-                    <td>300 - 800</td>
-                    <td>Custom development, API integration</td>
-                </tr>
-                <tr>
-                    <td>Cloud Infrastructure</td>
-                    <td>500 - 1,000</td>
-                    <td>100 - 300</td>
-                    <td>Hosting, storage, backups</td>
-                </tr>
-                <tr>
-                    <td>Testing & Quality Assurance</td>
-                    <td>1,000 - 2,000</td>
-                    <td>200 - 400</td>
-                    <td>Continuous testing and improvements</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Marketing Section -->
-        <h2>Marketing & Business Development</h2>
-        <div class="card-grid">
-            <div class="card">
-                <h3>Digital Marketing</h3>
+                <h3><i class="fas fa-wallet"></i>Payment Details</h3>
                 <ul>
-                    <li>SEO Optimization: $500 - $1,000/month</li>
-                    <li>Content Marketing: $1,000 - $2,000/month</li>
-                    <li>Social Media Management: $800 - $1,500/month</li>
-                    <li>Email Marketing: $300 - $800/month</li>
+                    <li>Commissions processed within 48 hours of verified payment</li>
+                    <li>Choose between direct deposit or Cash App</li>
+                    <li>Automated payment tracking system</li>
                 </ul>
             </div>
-            <div class="card">
-                <h3>Traditional Marketing</h3>
-                <ul>
-                    <li>Trade Show Participation: $5,000 - $10,000/event</li>
-                    <li>Print Materials: $1,000 - $2,000/quarter</li>
-                    <li>Local Business Networking: $500 - $1,000/month</li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- Influencer Program Section -->
-        <h2>Influencer Program</h2>
-        <div class="card-grid">
-            <div class="card">
-                <h3>Program Benefits</h3>
-                <ul>
-                    <li>10% commission on all referred clients</li>
-                    <li>Monthly payments via direct deposit</li>
-                    <li>Custom referral tracking links</li>
-                    <li>Real-time performance dashboard</li>
-                    <li>Marketing materials and resources provided</li>
-                    <li>Dedicated partner support</li>
-                    <li>Early access to new features</li>
-                    <li>Exclusive influencer community</li>
-                </ul>
-            </div>
-            
             <div class="calculator">
-                <h3>Commission Calculator</h3>
+                <h3><i class="fas fa-calculator"></i>Commission Calculator</h3>
+                
+                <h4>One-Time Services</h4>
+                <select id="serviceSelect">
+                    <option value="3000">Website Development ($3,000)</option>
+                    <option value="2500">Brand Identity ($2,500)</option>
+                    <option value="1500">Marketing Materials ($1,500)</option>
+                    <option value="5000">Custom Development ($5,000)</option>
+                </select>
+
+                <h4>Monthly Subscriptions</h4>
                 <select id="planSelect">
                     <option value="199">Basic Plan ($199/mo)</option>
                     <option value="399">Premium Plan ($399/mo)</option>
@@ -339,74 +238,39 @@
                 </select>
                 
                 <input type="number" id="clientCount" min="1" value="1" placeholder="Number of Clients">
-                
+
                 <div class="commission-display">
-                    <h4>Monthly Commission</h4>
+                    <h4>One-Time Commission</h4>
+                    <div class="commission-amount" id="oneTimeCommission">$300.00</div>
+                    <h4>Monthly Recurring Commission</h4>
                     <div class="commission-amount" id="monthlyCommission">$19.90</div>
-                    <h4>Yearly Commission</h4>
+                    <h4>Yearly Recurring Commission</h4>
                     <div class="commission-amount" id="yearlyCommission">$238.80</div>
                 </div>
             </div>
         </div>
-
-        <!-- Timeline Section -->
-        <h2>Implementation Timeline</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div>
-                    <h3>Phase 1: Business Formation (1-2 months)</h3>
-                    <p>LLC setup, licensing, insurance, initial branding</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div>
-                    <h3>Phase 2: Product Development (2-3 months)</h3>
-                    <p>Core product development, testing, initial deployment</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div>
-                    <h3>Phase 3: Marketing Launch (1-2 months)</h3>
-                    <p>Website launch, marketing campaigns, business development</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div>
-                    <h3>Phase 4: Scale & Optimize (Ongoing)</h3>
-                    <p>Business growth, product refinement, market expansion</p>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>&copy; 2024 AI Greeter | Complete Business Solution</p>
-        </footer>
     </div>
 
-    <!-- JavaScript for Calculator -->
     <script>
-        // Initialize calculator
         function calculateCommission() {
+            const servicePrice = parseFloat(document.getElementById('serviceSelect').value);
             const planPrice = parseFloat(document.getElementById('planSelect').value);
             const clientCount = parseInt(document.getElementById('clientCount').value);
-            const commissionRate = 0.10; // 10% commission
-
-            // Calculate monthly and yearly commissions
-            const monthlyCommission = planPrice * commissionRate * clientCount;
+            
+            const oneTimeCommission = servicePrice * 0.10;
+            const monthlyCommission = planPrice * 0.10 * clientCount;
             const yearlyCommission = monthlyCommission * 12;
-
-            // Update display with formatted numbers
+            
+            document.getElementById('oneTimeCommission').textContent = `$${oneTimeCommission.toFixed(2)}`;
             document.getElementById('monthlyCommission').textContent = `$${monthlyCommission.toFixed(2)}`;
             document.getElementById('yearlyCommission').textContent = `$${yearlyCommission.toFixed(2)}`;
         }
 
-        // Add event listeners
+        document.getElementById('serviceSelect').addEventListener('change', calculateCommission);
         document.getElementById('planSelect').addEventListener('change', calculateCommission);
         document.getElementById('clientCount').addEventListener('input', calculateCommission);
 
-        // Calculate initial values
         calculateCommission();
     </script>
 </body>
-
 </html>
