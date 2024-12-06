@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AB Dev Affiliate Program</title>
@@ -174,6 +173,36 @@
             box-shadow: 0 4px 12px rgba(45,58,246,0.3);
         }
 
+        .signup-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--success);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 2rem auto;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
@@ -234,6 +263,11 @@
                     <option value="2500">Brand Identity ($2,500)</option>
                     <option value="4000">UI/UX Design ($4,000)</option>
                     <option value="1500">Marketing Materials ($1,500)</option>
+                    <option value="6000">Smart Contract Development ($6,000)</option>
+                    <option value="12000">DeFi Application ($12,000)</option>
+                    <option value="15000">NFT Marketplace ($15,000)</option>
+                    <option value="10000">iOS Application ($10,000)</option>
+                    <option value="12000">Cross-Platform App ($12,000)</option>
                 </select>
 
                 <div class="commission-display">
@@ -242,6 +276,14 @@
                     <p>Paid within 48 hours via direct deposit or Cash App</p>
                 </div>
             </div>
+        </div>
+
+        <div class="cta-container">
+            <h2>Ready to Start Earning?</h2>
+            <p>Join our affiliate program today and start earning commissions on every successful referral.</p>
+            <a href="AffiliateSignup.html" class="signup-button">
+                <i class="fas fa-user-plus"></i> Sign Up Now
+            </a>
         </div>
 
         <a href="Commission.html" class="nav-button">
