@@ -10,40 +10,69 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
             color: #333;
+            overflow-x: hidden;
+            background: #ffefba; /* Fallback for gradient animation */
+            background: linear-gradient(270deg, #ffefba, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            position: relative;
         }
 
         h1 {
             text-align: center;
             color: #ff6347;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 10px rgba(255, 99, 71, 0.6);
+            animation: fadeInDown 1.5s ease-in;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .highlight {
             color: #ff4500;
             font-weight: bold;
+            text-decoration: underline;
         }
 
         p {
-            line-height: 1.6;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         .tik-tok-embed {
             margin: 20px 0;
             text-align: center;
-            background: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            border: 2px dashed #ccc;
+            background: rgba(255, 99, 71, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px dashed #ff4500;
+            box-shadow: 0 3px 8px rgba(255, 99, 71, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 3px 8px rgba(255, 99, 71, 0.2); }
+            50% { box-shadow: 0 5px 15px rgba(255, 99, 71, 0.5); }
+            100% { box-shadow: 0 3px 8px rgba(255, 99, 71, 0.2); }
         }
 
         .tik-tok-embed p {
@@ -53,18 +82,20 @@
 
         .animated-button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 25px;
             margin: 20px 0;
-            background: #ff4500;
+            background: linear-gradient(90deg, #ff4500, #ff6347);
             color: #fff;
             text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
 
         .animated-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .review-section {
@@ -73,30 +104,48 @@
 
         .review-section h2 {
             color: #ff6347;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 5px rgba(255, 99, 71, 0.6);
         }
 
         .footer {
             text-align: center;
             margin-top: 50px;
             color: #555;
+            font-size: 0.9rem;
         }
 
-        /* Optional Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .food-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
         }
 
-        .container {
-            animation: fadeIn 1s ease-in;
+        .food-icons img {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.8;
+            animation: floatIcons 10s infinite;
+        }
+
+        @keyframes floatIcons {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(800px); }
         }
     </style>
 </head>
 <body>
+    <div class="food-icons">
+        <img src="https://img.icons8.com/color/48/000000/pizza.png" style="left: 10%; animation-duration: 8s;">
+        <img src="https://img.icons8.com/color/48/000000/burger.png" style="left: 30%; animation-duration: 10s;">
+        <img src="https://img.icons8.com/color/48/000000/salad.png" style="left: 50%; animation-duration: 12s;">
+        <img src="https://img.icons8.com/color/48/000000/cupcake.png" style="left: 70%; animation-duration: 9s;">
+        <img src="https://img.icons8.com/color/48/000000/soda.png" style="left: 90%; animation-duration: 11s;">
+    </div>
     <div class="container">
         <h1>Golden Corral: A Las Vegas Experience</h1>
         <p>Saturday night at Golden Corral in Las Vegas was bustling with activity. The <span class="highlight">food quality</span> was decent, with a variety of options to satisfy different tastes. Despite the crowd, the atmosphere was lively and inviting.</p>
@@ -117,12 +166,5 @@
     <div class="footer">
         <p>&copy; 2024 Your Blog Name. All rights reserved.</p>
     </div>
-
-    <script>
-        // Add any interactive JavaScript effects here
-        document.querySelector('.animated-button').addEventListener('click', function () {
-            alert('Stay tuned for more reviews coming soon!');
-        });
-    </script>
 </body>
 </html>
