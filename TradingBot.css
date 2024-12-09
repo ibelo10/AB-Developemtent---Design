@@ -6,28 +6,34 @@
     --white: #ffffff;
     --dark: #24292e;
     --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --hover-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    margin: 0;
     color: var(--text-color);
-}
-
-h1, h2, h3 {
-    margin-top: 0;
 }
 
 /* Navigation */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     background: var(--white);
     padding: 1rem 2rem;
     box-shadow: var(--shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1000;
 }
 
 .nav-logo {
@@ -36,89 +42,175 @@ h1, h2, h3 {
     gap: 1rem;
 }
 
+.nav-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    margin-left: 2rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
 }
 
 /* Hero Section */
 .hero-section {
+    padding: 8rem 2rem 4rem;
     text-align: center;
-    padding: 4rem 2rem;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--white);
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
 /* Benefits Grid */
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 .benefit-card {
-    padding: 2rem;
     background: var(--white);
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: var(--shadow);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .benefit-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
 }
 
-/* Section Styles */
-.automated-trading-benefits,
-.features,
-.pricing {
+.benefit-card i {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+    margin-bottom: 1rem;
+}
+
+/* Fork Guide */
+.fork-guide {
+    background: var(--light-bg);
     padding: 4rem 2rem;
 }
 
-.automated-trading-benefits {
-    background: var(--light-bg);
+.code-example {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: var(--dark);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.code-example pre {
+    margin: 0;
+    overflow-x: auto;
+}
+
+.code-example code {
+    color: var(--white);
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 /* Coinbase Section */
 .get-started-coinbase {
-    padding: 4rem 2rem;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 4rem 2rem;
     color: var(--white);
 }
 
 .coinbase-promo {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
+    padding: 2rem;
 }
 
 .coinbase-benefits {
     list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 .coinbase-benefits li {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Pricing Section */
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+.feature-list {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.feature-list li {
     margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.premium {
+    border: 2px solid var(--primary-color);
 }
 
 /* Buttons */
 .github-button,
 .premium-button,
-.coinbase-button {
+.coinbase-button,
+.learn-button {
     display: inline-block;
     padding: 1rem 2rem;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
-    margin: 1rem;
-    transition: transform 0.2s;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
 .github-button {
@@ -136,31 +228,26 @@ h1, h2, h3 {
     color: var(--primary-color);
 }
 
-/* Pricing */
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-}
-
-.price {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 1rem 0;
+.learn-button {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
 }
 
 /* Contact Section */
 .contact-section {
-    background: var(--light-bg);
     padding: 4rem 2rem;
+    background: var(--light-bg);
 }
 
 .contact-container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
+    text-align: center;
     background: var(--white);
     border-radius: 12px;
     padding: 2rem;
+    box-shadow: var(--shadow);
 }
 
 /* Footer */
@@ -176,25 +263,30 @@ footer {
     text-align: center;
 }
 
-.footer-links a {
-    color: var(--white);
-    margin: 0 1rem;
-    text-decoration: none;
+.footer-links {
+    margin-top: 1rem;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .benefits-grid {
-        grid-template-columns: 1fr;
-    }
+.footer-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
 
-    .nav-links {
-        display: none;
-    }
+.footer-links a:hover {
+    opacity: 1;
+}
 
-    .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+/* Animations */
+[data-aos] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
 }
