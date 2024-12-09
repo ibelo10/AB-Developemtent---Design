@@ -1,26 +1,65 @@
-function scrollToContact() {
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K N KJ Inc - Junk Removal Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <header>
+        <h1>K N KJ Inc</h1>
+        <p class="tagline">Professional Junk Removal Services in Baton Rouge, LA</p>
+    </header>
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    const formObject = Object.fromEntries(formData.entries());
-    
-    // Send email using a backend service
-    // For now, log the form data
-    console.log('Form submitted:', formObject);
-    
-    // Email would be sent to: kourneymarshall79@gmail.com
-    
-    alert('Thank you! We will contact you shortly.');
-    this.reset();
-});
+    <main>
+        <section class="services">
+            <h2>We Remove:</h2>
+            <div class="service-items">
+                <div class="service-item">
+                    <i class="fas fa-couch"></i>
+                    <span>Furniture</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-car"></i>
+                    <span>Cars</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-blender"></i>
+                    <span>Appliances</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-trash"></i>
+                    <span>General Junk</span>
+                </div>
+            </div>
+        </section>
 
-// Add parallax effect to animated background
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    document.querySelector('.animated-bg').style.transform = 
-        `translateY(${scrolled * 0.5}px)`;
-});
+        <section class="cta">
+            <h2>Schedule a Pickup Today!</h2>
+            <button onclick="scrollToContact()">Get Started</button>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Name" required>
+                <input type="tel" placeholder="Phone" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Tell us what you need removed" required></textarea>
+                <button type="submit">Submit Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 K N KJ Inc</p>
+        <p>Serving Baton Rouge and surrounding areas</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-kit-code.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
