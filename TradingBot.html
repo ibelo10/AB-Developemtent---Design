@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Grid Trading Bot Starter Kit | Open Source Trading Solution | AB Development</title>
+    <meta name="description" content="Professional-grade grid trading bot template. Open source, extensible, and secure. Start building your automated trading solution today.">
+    <meta name="keywords" content="trading bot, cryptocurrency, grid trading, open source, python, automated trading">
+    
+    <meta property="og:title" content="Grid Trading Bot Starter Kit | AB Development">
+    <meta property="og:description" content="Professional-grade grid trading bot template. Start building your automated trading solution today.">
+    <meta property="og:image" content="https://github.com/Iaarondev/Trading-Bot-Starter/raw/main/assets/bot-preview.png">
+    <meta property="og:type" content="product">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Core styles */
+        :root {
+            --primary-color: #1652f0;
+            --secondary-color: #0e41c9;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .automated-trading-benefits {
+            padding: 4rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .get-started-coinbase {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .coinbase-promo {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .github-button, .premium-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .github-button {
+            background: #24292e;
+            color: white;
+        }
+
+        .premium-button {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .comparison-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .coinbase-promo {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img src="assets/images/ABLogo.png" alt="AB Development Logo" width="40" height="40">
+                <span>AB Development</span>
+            </div>
+            <div class="nav-links">
+                <a href="https://github.com/Iaarondev/Trading-Bot-Starter/tree/main" target="_blank">GitHub</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1>Grid Trading Bot Starter Kit</h1>
+            <p>Professional-grade, open-source trading bot for automated cryptocurrency trading</p>
+            <a href="https://github.com/Iaarondev/Trading-Bot-Starter/tree/main" class="github-button">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </section>
+
+        <section class="automated-trading-benefits">
+            <h2>Why Automated Trading?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-clock fa-2x"></i>
+                    <h3>24/7 Market Operation</h3>
+                    <p>Never miss trading opportunities with round-the-clock automated trading based on your strategy.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-robot fa-2x"></i>
+                    <h3>Emotion-Free Trading</h3>
+                    <p>Execute trades based on pure strategy and market conditions, removing emotional bias.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-bolt fa-2x"></i>
+                    <h3>Lightning-Fast Execution</h3>
+                    <p>React instantly to market changes with millisecond-level trade execution.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line fa-2x"></i>
+                    <h3>Data-Driven Decisions</h3>
+                    <p>Leverage real-time market data and technical analysis for optimal trading decisions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <h2>Core Features</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-exchange-alt fa-2x"></i>
+                    <h3>Multi-Exchange Support</h3>
+                    <p>Pre-built integrations with Coinbase and Binance, easily extensible for other exchanges.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt fa-2x"></i>
+                    <h3>Built-in Safety</h3>
+                    <p>Comprehensive risk management and position tracking to protect your investments.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-code fa-2x"></i>
+                    <h3>Open Source</h3>
+                    <p>MIT licensed core with optional premium features for commercial use.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-docker fa-2x"></i>
+                    <h3>Docker Ready</h3>
+                    <p>Easy deployment with Docker and docker-compose support.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="get-started-coinbase">
+            <h2>Start Trading on Coinbase</h2>
+            <div class="coinbase-promo">
+                <div class="promo-content">
+                    <h3>Join the Leading Cryptocurrency Exchange</h3>
+                    <ul class="coinbase-benefits">
+                        <li><i class="fas fa-check"></i> User-friendly platform for beginners</li>
+                        <li><i class="fas fa-check"></i> Industry-leading security</li>
+                        <li><i class="fas fa-check"></i> Perfect for automated trading</li>
+                        <li><i class="fas fa-check"></i> API access for bot integration</li>
+                    </ul>
+                    <a href="https://coinbase.com/join/EPVN7PL?src=ios-share" 
+                       class="github-button" 
+                       target="_blank" 
+                       style="background: white; color: var(--primary-color);">
+                        Start Trading on Coinbase
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <h2>Pricing Plans</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Open Source</h3>
+                    <p class="price">Free</p>
+                    <ul>
+                        <li>Core Trading Features</li>
+                        <li>Basic Grid Strategy</li>
+                        <li>Community Support</li>
+                        <li>MIT License</li>
+                    </ul>
+                    <a href="https://github.com/Iaarondev/Trading-Bot-Starter/tree/main" class="github-button">Get Started</a>
+                </div>
+                <div class="benefit-card">
+                    <h3>Premium</h3>
+                    <p class="price">Contact Us</p>
+                    <ul>
+                        <li>Everything in Open Source</li>
+                        <li>Advanced Strategies</li>
+                        <li>Priority Support</li>
+                        <li>Commercial License</li>
+                    </ul>
+                    <a href="#contact" class="premium-button">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="get-started-coinbase" style="background: var(--light-bg); color: var(--text-color);">
+            <h2>Get In Touch</h2>
+            <div class="coinbase-promo" style="background: white;">
+                <div class="contact-content">
+                    <h3>Questions? Let's Talk</h3>
+                    <p>Reach out for premium features, custom development, or support</p>
+                    <a href="mailto:your@email.com" class="premium-button">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #24292e; color: white; padding: 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p>&copy; 2024 AB Development. All rights reserved.</p>
+            <div>
+                <a href="https://github.com/Iaarondev/Trading-Bot-Starter/tree/main" style="color: white; margin: 0 1rem;">GitHub</a>
+                <a href="#" style="color: white; margin: 0 1rem;">Terms</a>
+                <a href="#" style="color: white; margin: 0 1rem;">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
