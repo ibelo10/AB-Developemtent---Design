@@ -5,22 +5,19 @@ exports.handler = async (event, context) => {
     const LOCATION_ID = process.env.SQUARE_LOCATION_ID;
     const BASE_URL = 'https://connect.squareup.com/v2';
     
-    // Get today's date in UTC
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    const beginTime = today.toISOString();
-
-    console.log('Environment check:', {
-        hasToken: !!ACCESS_TOKEN,
-        hasLocation: !!LOCATION_ID,
-        beginTime
-    });
+    // Format today's date properly for Square API
+    const now = new Date();
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const beginTime = startOfDay.toISOString();
 
     if (!ACCESS_TOKEN || !LOCATION_ID) {
         return {
             statusCode: 500,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
             },
             body: JSON.stringify({
                 error: "Configuration Error",
@@ -30,7 +27,14 @@ exports.handler = async (event, context) => {
     }
 
     try {
-        const response = await fetch(`${BASE_URL}/payments?location_id=${LOCATION_ID}&begin_time=${beginTime}`, {
+        // Query parameters must be properly encoded
+        const queryParams = new URLSearchParams({
+            location_id: LOCATION_ID,
+            begin_time: beginTime
+        }).toString();
+
+        const response = await fetch(`${BASE_URL}/payments?${queryParams}`, {
+            method: 'GET',
             headers: {
                 'Square-Version': '2024-01-17',
                 'Authorization': `Bearer ${ACCESS_TOKEN}`,
@@ -38,21 +42,27 @@ exports.handler = async (event, context) => {
             }
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-            const errorData = await response.json();
-            console.error('Square API Error:', errorData);
-            throw new Error(JSON.stringify(errorData));
+            console.error('Square API Error:', data);
+            throw new Error(`Square API error: ${data.errors ? JSON.stringify(data.errors) : response.statusText}`);
         }
 
-        const data = await response.json();
         const totalSales = data.payments?.reduce((sum, payment) => {
-            return sum + (payment.amount_money?.amount || 0);
+            if (payment.status === 'COMPLETED') {
+                return sum + (payment.amount_money?.amount || 0);
+            }
+            return sum;
         }, 0) || 0;
 
         return {
             statusCode: 200,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
             },
             body: JSON.stringify({
                 total_sales: totalSales,
@@ -65,10 +75,13 @@ exports.handler = async (event, context) => {
         return {
             statusCode: 500,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
             },
             body: JSON.stringify({
-                error: "API Error",
+                error: "Failed to fetch sales data",
                 message: error.message
             })
         };
