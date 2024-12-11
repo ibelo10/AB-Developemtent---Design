@@ -1,18 +1,45 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+        *.googleapis.com 
+        *.google-analytics.com 
+        *.googletagmanager.com 
+        *.facebook.com 
+        *.fbcdn.net 
+        *.facebook.net 
+        connect.facebook.net 
+        code.jquery.com 
+        cdnjs.cloudflare.com;
+      style-src 'self' 'unsafe-inline' 
+        *.googleapis.com 
+        fonts.googleapis.com 
+        cdnjs.cloudflare.com 
+        *.facebook.com 
+        *.fbcdn.net;
+      font-src 'self' fonts.gstatic.com data:;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' 
+        *.facebook.com 
+        *.fbcdn.net 
+        *.facebook.net 
+        *.google-analytics.com;
+      frame-src 'self' 
+        *.facebook.com 
+        *.doubleclick.net;
+    """
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+
 [build]
-  publish = "."
-  functions = "netlify/functions"
+  publish = "/"
 
 [[redirects]]
-  from = "/RN/*"
-  to = "/projects/RN/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/projects/*"
-  to = "/projects/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/src/*"
-  to = "/src/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200

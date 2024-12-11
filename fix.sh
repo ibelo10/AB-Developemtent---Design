@@ -1,69 +1,27 @@
 #!/bin/bash
 
-# Create main directories if they don't exist
-mkdir -p {blog,services,portfolio,store,legal,careers,projects,assets/{css,js,images}}
+# Create necessary directories
+mkdir -p assets/{css,js,images}
+mkdir -p {blog,services,portfolio,contact}
 
-# Move main pages to root
-echo "Moving main pages..."
-mv -f blog.html blog/index.html 2>/dev/null
-mv -f services.html services/index.html 2>/dev/null
-mv -f portfolio.html portfolio/index.html 2>/dev/null
-mv -f contact.html contact/index.html 2>/dev/null
-mv -f store.html store/index.html 2>/dev/null
+# Download and save external resources locally
+# jQuery
+curl -o assets/js/jquery.min.js https://code.jquery.com/jquery-3.6.0.min.js
+# Ripples effect
+curl -o assets/js/jquery.ripples.min.js https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js
+# Font Awesome
+curl -o assets/css/all.min.css https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
 
-# Move legal documents
-echo "Moving legal documents..."
-mkdir -p legal
-mv -f privacy-policy.html terms.html NDA.html legal/ 2>/dev/null
+# Create index files for routes
+for dir in blog services portfolio contact; do
+  echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/"></head></html>' > $dir/index.html
+done
 
-# Move career related files
-echo "Moving career related files..."
-mv -f Careers/* careers/ 2>/dev/null
-mv -f CareersExample.html careers/ 2>/dev/null
+# Set proper permissions
+chmod -R 755 assets
+chmod +x setup.sh
 
-# Move all CSS files to assets/css
-echo "Moving CSS files..."
-mv -f *.css assets/css/ 2>/dev/null
-mv -f src/assets/css/* assets/css/ 2>/dev/null 
-
-# Move all JS files to assets/js
-echo "Moving JavaScript files..."
-mv -f *.js assets/js/ 2>/dev/null
-mv -f src/assets/js/* assets/js/ 2>/dev/null
-
-# Move all images to assets/images
-echo "Moving images..."
-mv -f src/assets/images/* assets/images/ 2>/dev/null
-
-# Create projects directory structure
-echo "Organizing project files..."
-mv -f ArielsPralines.html projects/ariels/ 2>/dev/null
-mv -f ZKPsAB.html projects/zkp/ 2>/dev/null
-
-# Clean up empty directories
-echo "Cleaning up..."
-find . -type d -empty -delete
-
-# Create a backup of the original structure
-echo "Creating backup..."
-tar -czf site_backup_$(date +%Y%m%d).tar.gz *
-
-echo "Reorganization complete! New structure:"
-tree -I 'node_modules|.env|.git|.netlify|.vs' -a --dirsfirst
-
-# Print completion message
-echo "
-Site structure has been reorganized. New structure:
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── blog/
-├── careers/
-├── contact/
-├── legal/
-├── portfolio/
-├── projects/
-├── services/
-└── store/
-"
+echo "Setup complete! Please ensure you have:"
+echo "1. Moved your ABLogo.png to assets/images/"
+echo "2. Updated your CSS and JS files to use local paths"
+echo "3. Deployed with 'netlify deploy --prod'"

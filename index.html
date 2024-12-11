@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
-    <script>
+    <!-- Google tag (gtag.js) with CSP nonce -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP" nonce="analytics-tag"></script>
+    <script nonce="analytics-inline">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-H16CFGEXZP');
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
-     crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AB Development & Design</title>
@@ -18,87 +17,29 @@
     <!-- Facebook Meta Tags -->
     <meta property="og:title" content="AB Development & Design" />
     <meta property="og:description" content="We build innovative solutions with passion" />
-    <meta property="og:image" content="assets/images/ABLogo.png" />
+    <meta property="og:image" content="/assets/images/ABLogo.png" />
     <meta property="og:url" content="https://abdevndesign.com" />
     <meta property="og:type" content="website" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- Google Fonts - preloaded -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400,500,600,700,800,900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400,500,600,700,800,900&display=swap" 
+          rel="stylesheet" 
+          crossorigin="anonymous" />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
-    <!-- jQuery with fallback -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    if (!window.jQuery) {
-        const fallbackScript = document.createElement('script');
-        fallbackScript.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
-        document.head.appendChild(fallbackScript);
-    }
-    </script>
-
-    <!-- Ripples Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/messenger.css" />
-
-    <style>
-      /* Additional styles for GitHub button */
-      .github-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: #24292e;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        margin-top: 1rem;
-      }
-
-      .github-btn:hover {
-        background: #2c3338;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .github-btn i {
-        font-size: 1.2rem;
-      }
-
-      .hero-social {
-        margin-top: 2rem;
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-      }
-
-      @media (max-width: 768px) {
-        .hero-social {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .github-btn {
-          width: 100%;
-          max-width: 300px;
-          justify-content: center;
-        }
-      }
-    </style>
+    <!-- Local Resources -->
+    <script defer src="/assets/js/jquery.min.js"></script>
+    <script defer src="/assets/js/jquery.ripples.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/messenger.css" />
   </head>
 
   <body>
     <nav class="navbar">
       <div class="nav-logo">
-        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+        <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
         <span>AB Development & Design</span>
       </div>
       <div class="nav-links">
@@ -107,13 +48,13 @@
         <a href="/services/">Services</a>
         <a href="/blog/">Blog</a>
         <a href="/contact/">Contact</a>
-        <a href="https://github.com/Iaarondev/" target="_blank">GitHub</a>
+        <a href="https://github.com/Iaarondev/" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
 
     <div class="hero-container">
       <div class="logo-large">
-        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img-large" />
+        <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img-large" />
       </div>
       <div class="content-wrapper">
         <h1>AB Development & Design</h1>
@@ -129,7 +70,10 @@
             <a href="/portfolio/" class="cta-button">VIEW PORTFOLIO</a>
             <a href="/services/" class="cta-button cta-button--secondary">OUR SERVICES</a>
           </div>
-          <a href="https://github.com/Iaarondev/" target="_blank" class="github-btn">
+          <a href="https://github.com/Iaarondev/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="github-btn">
             <i class="fab fa-github"></i>
             <span>View on GitHub</span>
           </a>
@@ -171,6 +115,10 @@
         </form>
       </div>
     </div>
+
+    <!-- Main Scripts -->
+    <script src="/assets/js/main.js" type="module"></script>
+    <script src="/assets/js/messenger.js" type="module"></script>
 
     <!-- Messenger Script -->
     <script>
@@ -266,9 +214,5 @@
         });
     })();
     </script>
-
-    <!-- Custom Scripts -->
-    <script src="assets/js/main.js" type="module"></script>
-    <script src="assets/js/messenger.js" type="module"></script>
   </body>
 </html>
