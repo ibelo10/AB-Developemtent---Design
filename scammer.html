@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Verification System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 8px solid #3498db;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Secure Verification System</h1>
+  <p id="message">Please wait while we verify your identity...</p>
+  <div class="loader" id="loader"></div>
+  <button id="startCaptcha" class="hidden">Start CAPTCHA</button>
+  <div id="captchaSection" class="hidden">
+    <p id="captchaQuestion"></p>
+    <input type="text" id="captchaInput" placeholder="Your Answer">
+    <button onclick="verifyCaptcha()">Submit</button>
+    <p id="captchaResponse"></p>
+  </div>
+  <script>
+    let steps = [
+      "Connecting to server...",
+      "Initializing secure connection...",
+      "Validating user credentials...",
+      "Checking database integrity...",
+      "Syncing with remote servers..."
+    ];
+    let currentStep = 0;
+
+    // Simulate the verification process
+    function runVerification() {
+      if (currentStep < steps.length) {
+        document.getElementById("message").textContent = steps[currentStep];
+        currentStep++;
+        setTimeout(runVerification, 2000);
+      } else {
+        document.getElementById("message").textContent = "Verification failed.";
+        document.getElementById("loader").classList.add("hidden");
+        document.getElementById("startCaptcha").classList.remove("hidden");
+      }
+    }
+
+    // Generate a fake CAPTCHA
+    let a, b;
+    function startCaptcha() {
+      document.getElementById("startCaptcha").classList.add("hidden");
+      document.getElementById("captchaSection").classList.remove("hidden");
+      generateCaptcha();
+    }
+
+    function generateCaptcha() {
+      a = Math.floor(Math.random() * 100) + 1;
+      b = Math.floor(Math.random() * 100) + 1;
+      document.getElementById("captchaQuestion").textContent = `What is ${a} + ${b}?`;
+    }
+
+    function verifyCaptcha() {
+      let userAnswer = document.getElementById("captchaInput").value;
+      if (parseInt(userAnswer) === a + b) {
+        document.getElementById("captchaResponse").textContent = "Incorrect! Please try again.";
+      } else {
+        document.getElementById("captchaResponse").textContent = "Incorrect! Please try again.";
+      }
+      document.getElementById("captchaInput").value = "";
+      setTimeout(generateCaptcha, 2000);
+    }
+
+    // Start the process when the page loads
+    window.onload = () => {
+      setTimeout(runVerification, 2000);
+      document.getElementById("startCaptcha").onclick = startCaptcha;
+    };
+  </script>
+</body>
+</html>
