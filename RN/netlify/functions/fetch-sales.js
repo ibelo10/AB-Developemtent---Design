@@ -1,9 +1,16 @@
 const fetch = require('node-fetch');
 
 exports.handler = async () => {
-    const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
-    const LOCATION_ID = process.env.SQUARE_LOCATION_ID;
+    const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN; // Access token from environment variables
+    const LOCATION_ID = process.env.SQUARE_LOCATION_ID;   // Location ID from environment variables
     const BASE_URL = 'https://connect.squareup.com/v2';
+
+    if (!ACCESS_TOKEN || !LOCATION_ID) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: "Environment variables not set" }),
+        };
+    }
 
     try {
         const response = await fetch(`${BASE_URL}/payments?location_id=${LOCATION_ID}`, {
