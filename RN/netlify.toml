@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+[dev]
+  # Optional: Configure local development settings
+  functions = "netlify/functions"
+  publish = "."
