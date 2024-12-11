@@ -1,44 +1,24 @@
 const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
-    const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
-    const LOCATION_ID = process.env.SQUARE_LOCATION_ID;
+    // Using the same credentials from your Python script
+    const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN || 'EAAAl-h3evzXiERJMwK0uirGJlq_Pe-KTUgy-7j_buUEFkeUVTNXSkPbrBtpOgsd';
+    const LOCATION_ID = process.env.SQUARE_LOCATION_ID || 'L1B1NDVKJX5K0';
     const BASE_URL = 'https://connect.squareup.com/v2';
-    
-    // Format today's date properly for Square API
-    const now = new Date();
-    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const beginTime = startOfDay.toISOString();
 
-    if (!ACCESS_TOKEN || !LOCATION_ID) {
-        return {
-            statusCode: 500,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-            },
-            body: JSON.stringify({
-                error: "Configuration Error",
-                message: "Missing API credentials"
-            })
-        };
-    }
+    // Using the same date range as Python script
+    const params = new URLSearchParams({
+        location_id: LOCATION_ID,
+        begin_time: '2024-01-01T00:00:00Z',
+        end_time: '2024-12-31T23:59:59Z'
+    });
 
     try {
-        // Query parameters must be properly encoded
-        const queryParams = new URLSearchParams({
-            location_id: LOCATION_ID,
-            begin_time: beginTime
-        }).toString();
-
-        const response = await fetch(`${BASE_URL}/payments?${queryParams}`, {
-            method: 'GET',
+        const response = await fetch(`${BASE_URL}/payments?${params.toString()}`, {
             headers: {
-                'Square-Version': '2024-01-17',
                 'Authorization': `Bearer ${ACCESS_TOKEN}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Square-Version': '2024-01-17'
             }
         });
 
@@ -46,26 +26,26 @@ exports.handler = async (event, context) => {
 
         if (!response.ok) {
             console.error('Square API Error:', data);
-            throw new Error(`Square API error: ${data.errors ? JSON.stringify(data.errors) : response.statusText}`);
+            throw new Error(`Square API error: ${JSON.stringify(data.errors)}`);
         }
 
-        const totalSales = data.payments?.reduce((sum, payment) => {
-            if (payment.status === 'COMPLETED') {
-                return sum + (payment.amount_money?.amount || 0);
-            }
-            return sum;
-        }, 0) || 0;
+        const payments = data.payments || [];
+        console.log(`Fetched ${payments.length} transactions`);
+
+        // Calculate total sales from payments
+        const totalSales = payments.reduce((sum, payment) => {
+            return sum + (payment.amount_money?.amount || 0);
+        }, 0);
 
         return {
             statusCode: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+                'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
                 total_sales: totalSales,
+                transaction_count: payments.length,
                 timestamp: new Date().toISOString()
             })
         };
@@ -76,9 +56,7 @@ exports.handler = async (event, context) => {
             statusCode: 500,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+                'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
                 error: "Failed to fetch sales data",
