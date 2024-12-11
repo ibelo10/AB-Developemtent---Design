@@ -1,14 +1,14 @@
 [build]
-  base = "RN"
+  base = "."
   functions = "netlify/functions"
-  publish = "public"
+  publish = "."
 
 [[redirects]]
   from = "/RN/*"
   to = "/:splat"
   status = 200
 
-[[headers]]
-  for = "/RN/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
+[[redirects]]
+  from = "/RN"
+  to = "/"
+  status = 200
