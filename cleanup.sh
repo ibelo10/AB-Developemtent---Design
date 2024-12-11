@@ -1,19 +1,26 @@
 #!/bin/bash
 
-echo "Cleaning npm cache and node_modules..."
+# Clean up existing files
+echo "Cleaning up..."
 rm -rf node_modules
 rm -rf projects/transaction-ticker/node_modules
 rm -rf projects/transaction-ticker/build
 rm -f package-lock.json
 rm -f projects/transaction-ticker/package-lock.json
-npm cache clean --force
 
+# Ensure correct Node version
+echo "Setting up Node version..."
+if command -v nvm &> /dev/null; then
+    nvm install 18.19.0
+    nvm use 18.19.0
+fi
+
+# Install dependencies
 echo "Installing dependencies..."
 cd projects/transaction-ticker
-npm install --legacy-peer-deps
+npm install
 
-echo "Verifying installation..."
-npm ls
-
-echo "Running build test..."
+echo "Build test..."
 npm run build
+
+echo "Setup complete!"
