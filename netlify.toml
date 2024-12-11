@@ -1,0 +1,18 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/RN/*"
+  to = "/projects/RN/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/projects/*"
+  to = "/projects/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/src/*"
+  to = "/src/:splat"
+  status = 200
