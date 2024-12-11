@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: transparent;
 }
 
 .ticker-container {
@@ -14,12 +15,14 @@ body {
     color: white;
     overflow: hidden;
     height: 48px;
+    z-index: 1000;
 }
 
 .ticker-content {
     white-space: nowrap;
     display: inline-block;
     animation: ticker 30s linear infinite;
+    padding: 14px 0;
 }
 
 @keyframes ticker {
@@ -31,7 +34,6 @@ body {
     display: inline-block;
     margin-right: 32px;
     font-size: 18px;
-    line-height: 48px;
 }
 
 .header-text {
