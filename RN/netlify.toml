@@ -1,8 +1,8 @@
 [build]
-  functions = "netlify/functions"
-  publish = "."
+  functions = "RN/netlify/functions"
+  publish = "RN/public"
 
 [dev]
-  # Optional: Configure local development settings
-  functions = "netlify/functions"
-  publish = "."
+  # Optional: Local development settings
+  functions = "RN/netlify/functions"
+  publish = "RN/public"
