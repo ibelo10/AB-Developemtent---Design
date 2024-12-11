@@ -1,3 +1,16 @@
+[build]
+  command = "cd projects/transaction-ticker && npm install && npm run build"
+  publish = "projects/transaction-ticker/build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[[redirects]]
+  from = "/projects/transaction-ticker/*"
+  to = "/projects/transaction-ticker/index.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -8,12 +21,3 @@
       img-src 'self' data: https:;
       connect-src 'self' connect.squareup.com;
     """
-
-[build]
-  command = "cd projects/transaction-ticker && npm install && npm run build"
-  publish = "projects/transaction-ticker/build"
-
-[[redirects]]
-  from = "/projects/transaction-ticker/*"
-  to = "/projects/transaction-ticker/index.html"
-  status = 200
