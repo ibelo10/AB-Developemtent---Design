@@ -7,14 +7,10 @@ async function fetchSalesTotal() {
             throw new Error(data.message || `API error: ${response.statusText}`);
         }
 
-        if (data.error) {
-            throw new Error(data.message || 'Unknown error occurred');
-        }
-
         const totalSales = `$${(data.total_sales / 100).toFixed(2)}`;
         document.getElementById('sales-total').textContent = totalSales;
         document.getElementById('update-time').textContent = 
-            `Last updated: ${new Date().toLocaleTimeString()}`;
+            `Last updated: ${new Date().toLocaleTimeString()} | ${data.transaction_count} transactions`;
         
         document.getElementById('sales-total').style.color = '#00ff7f';
         
@@ -27,5 +23,8 @@ async function fetchSalesTotal() {
     }
 }
 
+// Initial fetch
 fetchSalesTotal();
+
+// Update every minute
 setInterval(fetchSalesTotal, 60000);
