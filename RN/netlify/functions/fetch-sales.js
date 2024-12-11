@@ -1,8 +1,7 @@
 const fetch = require('node-fetch');
 
-
 exports.handler = async () => {
-    const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN; // Use environment variables
+    const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
     const LOCATION_ID = process.env.SQUARE_LOCATION_ID;
     const BASE_URL = 'https://connect.squareup.com/v2';
 
