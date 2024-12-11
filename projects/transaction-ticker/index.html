@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,74 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction Ticker</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Load React. -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: transparent;
+        }
+        .ticker-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            overflow: hidden;
+            height: 48px;
+        }
+        .ticker-content {
+            white-space: nowrap;
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+            padding: 14px 0;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .transaction-item {
+            display: inline-block;
+            margin-right: 32px;
+            font-size: 18px;
+        }
+        .header-text {
+            color: #FCD34D;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
     <script>
-        // Global state for transactions
-        window.transactions = [];
-        
-        // Function to fetch transactions
-        async function fetchTransactions() {
-            try {
-                const response = await fetch('https://connect.squareup.com/v2/payments', {
-                    headers: {
-                        'Authorization': `Bearer ${process.env.SQUARE_ACCESS_TOKEN}`,
-                        'Content-Type': 'application/json'
+        'use strict';
+
+        // Create the ticker component
+        function TransactionTicker() {
+            const [transactions, setTransactions] = React.useState([]);
+
+            React.useEffect(() => {
+                const fetchTransactions = async () => {
+                    try {
+                        // Sample data for testing
+                        const sampleData = [
+                            { id: 1, amount: 150.00, created_at: new Date().toISOString() },
+                            { id: 2, amount: 75.50, created_at: new Date().toISOString() },
+                            { id: 3, amount: 200.00, created_at: new Date().toISOString() }
+                        ];
+                        setTransactions(sampleData);
+
+                        // Uncomment below for real API integration
+                        /*
+                        const response = await fetch('https://connect.squareup.com/v2/payments', {
+                            headers: {
+                                'Authorization': `Bearer ${process.env.SQUARE_ACCESS_TOKEN}`,
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        const data = await response.json();
+                        setTransactions(data.payments || []);
+                        */
+                    } catch (error) {
+                        console.error('Error fetching transactions:', error);
                     }
-                });
-                const data = await response.json();
-                window.transactions = data.payments || [];
-                updateDisplay();
-            } catch (error) {
-                console.error('Error fetching transactions:', error);
-                // Fallback data
-                window.transactions = [
-                    { id: 1, amount_money: { amount: 15000, currency: 'USD' }, created_at: new Date().toISOString() }
-                ];
-                updateDisplay();
-            }
+                };
+
+                fetchTransactions();
+                const interval = setInterval(fetchTransactions, 300000); // Refresh every 5 minutes
+                return () => clearInterval(interval);
+            }, []);
+
+            const formatTransaction = (transaction) => {
+                const amount = transaction.amount.toFixed(2);
+                const date = new Date(transaction.created_at).toLocaleTimeString();
+                return `💰 $${amount} at ${date}`;
+            };
+
+            return React.createElement(
+                'div',
+                { className: 'ticker-container' },
+                React.createElement(
+                    'div',
+                    { className: 'ticker-content' },
+                    React.createElement(
+                        'span',
+                        { className: 'transaction-item header-text' },
+                        'LATEST TRANSACTIONS:'
+                    ),
+                    transactions.map(transaction =>
+                        React.createElement(
+                            'span',
+                            {
+                                key: transaction.id,
+                                className: 'transaction-item'
+                            },
+                            formatTransaction(transaction)
+                        )
+                    )
+                )
+            );
         }
 
-        // Function to format transaction
-        function formatTransaction(transaction) {
-            const amount = (transaction.amount_money.amount / 100).toFixed(2);
-            const date = new Date(transaction.created_at).toLocaleTimeString();
-            return `💰 $${amount} at ${date}`;
-        }
-
-        // Function to update display
-        function updateDisplay() {
-            const ticker = document.createElement('div');
-            ticker.className = 'ticker-container';
-            
-            const content = document.createElement('div');
-            content.className = 'ticker-content';
-            
-            const header = document.createElement('span');
-            header.className = 'transaction-item header-text';
-            header.textContent = 'LATEST TRANSACTIONS:';
-            content.appendChild(header);
-
-            window.transactions.forEach(transaction => {
-                const item = document.createElement('span');
-                item.className = 'transaction-item';
-                item.textContent = formatTransaction(transaction);
-                content.appendChild(item);
-            });
-
-            ticker.appendChild(content);
-            const root = document.getElementById('root');
-            root.innerHTML = '';
-            root.appendChild(ticker);
-        }
-
-        // Initial load and refresh every 5 minutes
-        fetchTransactions();
-        setInterval(fetchTransactions, 300000);
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(TransactionTicker));
     </script>
 </body>
 </html>
