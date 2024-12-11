@@ -1,6 +1,6 @@
 async function fetchSalesTotal() {
     try {
-        const response = await fetch('/.netlify/functions/fetch-sales');
+        const response = await fetch('/RN/.netlify/functions/fetch-sales');
         const data = await response.json();
 
         if (!response.ok) {
@@ -10,7 +10,7 @@ async function fetchSalesTotal() {
         const totalSales = `$${(data.total_sales / 100).toFixed(2)}`;
         document.getElementById('sales-total').textContent = totalSales;
         document.getElementById('update-time').textContent = 
-            `Last updated: ${new Date().toLocaleTimeString()} | ${data.transaction_count} transactions`;
+            `Last updated: ${new Date().toLocaleTimeString()}`;
         
         document.getElementById('sales-total').style.color = '#00ff7f';
         
@@ -23,8 +23,5 @@ async function fetchSalesTotal() {
     }
 }
 
-// Initial fetch
 fetchSalesTotal();
-
-// Update every minute
 setInterval(fetchSalesTotal, 60000);
