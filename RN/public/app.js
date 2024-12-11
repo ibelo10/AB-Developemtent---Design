@@ -23,5 +23,6 @@ async function fetchSalesTotal() {
     }
 }
 
+
 fetchSalesTotal();
 setInterval(fetchSalesTotal, 60000);
