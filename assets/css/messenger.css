@@ -1,0 +1,28 @@
+.chat-toast {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999;
+  display: none;
+}
+
+.toast-content {
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast-progress {
+  height: 3px;
+  background: #2ecc71;
+  width: 100%;
+}
+
+.fb_dialog,
+.fb-customerchat iframe {
+  z-index: 1000 !important;
+}
