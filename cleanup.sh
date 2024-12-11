@@ -10,12 +10,10 @@ npm cache clean --force
 
 echo "Installing dependencies..."
 cd projects/transaction-ticker
-npm install
+npm install --legacy-peer-deps
 
 echo "Verifying installation..."
 npm ls
 
 echo "Running build test..."
 npm run build
-
-echo "Installation complete. Check above for any remaining warnings."
