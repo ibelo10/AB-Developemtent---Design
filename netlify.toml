@@ -12,16 +12,20 @@
         *.facebook.com 
         *.fbcdn.net 
         *.facebook.net 
-        connect.facebook.net;
+        connect.facebook.net
+        cdnjs.cloudflare.com
+        connect.squareup.com;
       style-src 'self' 'unsafe-inline' 
         *.googleapis.com 
-        fonts.googleapis.com;
+        fonts.googleapis.com
+        cdn.jsdelivr.net;
       font-src 'self' fonts.gstatic.com;
       img-src 'self' data: https: blob:;
       connect-src 'self' 
         *.google-analytics.com 
         *.facebook.com 
-        *.fbcdn.net;
+        *.fbcdn.net
+        connect.squareup.com;
       frame-src 'self' 
         *.facebook.com 
         *.doubleclick.net;
@@ -29,8 +33,12 @@
 
 [build]
   publish = "/"
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[build.environment]
+  NODE_VERSION = "18.x"
