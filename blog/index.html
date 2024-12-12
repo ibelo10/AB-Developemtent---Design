@@ -5,38 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog - AB Development & Design</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-H16CFGEXZP");
-    </script>
-
-    <!-- Google AdSense -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Meta Tags -->
-    <meta property="og:title" content="AB Development & Design - Blog" />
-    <meta
-      property="og:description"
-      content="Latest insights and updates from AB Development & Design"
-    />
-    <meta property="og:image" content="/assets/images/ABLogo.png" />
-    <meta property="og:url" content="https://abdevndesign.com/blog" />
-    <meta property="og:type" content="website" />
-
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,30 +13,149 @@
       rel="stylesheet"
     />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/css/styles.css" />
     <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        min-height: 100vh;
+      }
+
+      /* Animated Background */
+      .background-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .bubble {
+        position: absolute;
+        background: linear-gradient(
+          45deg,
+          rgba(46, 204, 113, 0.1),
+          rgba(52, 152, 219, 0.1)
+        );
+        border-radius: 50%;
+        animation: float 20s infinite;
+        opacity: 0.6;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0.8);
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-100vh) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      /* Navigation */
+      .navbar {
+        background: white;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-img {
+        height: 40px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #2ecc71;
+      }
+
+      .nav-links a.active {
+        color: #2ecc71;
+      }
+
+      /* Blog Container */
       .blog-container {
         max-width: 1200px;
         margin: 2rem auto;
         padding: 0 1rem;
+        position: relative;
+        z-index: 1;
       }
+
       .blog-header {
         text-align: center;
         margin-bottom: 3rem;
         padding: 2rem 0;
       }
+
       .blog-header h1 {
         font-size: 2.5rem;
         color: #333;
         margin-bottom: 1rem;
       }
+
+      /* Search and Filter */
+      .search-container {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .search-input {
+        padding: 0.75rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 400px;
+        font-size: 1rem;
+      }
+
+      .filter-dropdown {
+        padding: 0.75rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background: white;
+        font-size: 1rem;
+      }
+
+      /* Blog Grid */
       .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 2rem;
         padding-bottom: 2rem;
       }
+
       .blog-card {
         background: white;
         border-radius: 8px;
@@ -75,24 +163,29 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
+
       .blog-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
       }
+
       .blog-card-image {
         width: 100%;
         height: 200px;
         object-fit: cover;
       }
+
       .blog-card-content {
         padding: 1.5rem;
       }
+
       .blog-card h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
         color: #333;
         line-height: 1.3;
       }
+
       .blog-card-meta {
         font-size: 0.9rem;
         color: #666;
@@ -101,11 +194,17 @@
         align-items: center;
         gap: 0.5rem;
       }
-      .blog-card p {
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
+
+      .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: #f0f0f0;
+        color: #666;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
       }
+
       .read-more {
         display: inline-block;
         padding: 0.75rem 1.5rem;
@@ -116,50 +215,30 @@
         transition: all 0.3s ease;
         font-weight: 500;
       }
+
       .read-more:hover {
         background: #27ae60;
         transform: translateY(-2px);
       }
-      .category-tag {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        background: #f0f0f0;
-        color: #666;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
-      }
-      .search-container {
-        margin-bottom: 2rem;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-      }
-      .search-input {
-        padding: 0.75rem 1rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        width: 100%;
-        max-width: 400px;
-        font-size: 1rem;
-      }
-      .filter-dropdown {
-        padding: 0.75rem 1rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        background: white;
-        font-size: 1rem;
-      }
+
+      /* Responsive Design */
       @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
         .blog-grid {
           grid-template-columns: 1fr;
         }
+
         .blog-header h1 {
           font-size: 2rem;
         }
+
         .search-container {
           flex-direction: column;
         }
+
         .search-input,
         .filter-dropdown {
           max-width: 100%;
@@ -168,6 +247,10 @@
     </style>
   </head>
   <body>
+    <!-- Animated Background -->
+    <div class="background-animation" id="background-animation"></div>
+
+    <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-logo">
         <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
@@ -183,6 +266,7 @@
       </div>
     </nav>
 
+    <!-- Main Content -->
     <main class="blog-container">
       <div class="blog-header">
         <h1>Our Blog</h1>
@@ -194,8 +278,9 @@
           type="text"
           placeholder="Search articles..."
           class="search-input"
+          id="searchInput"
         />
-        <select class="filter-dropdown">
+        <select class="filter-dropdown" id="categoryFilter">
           <option value="all">All Categories</option>
           <option value="development">Development</option>
           <option value="design">Design</option>
@@ -204,170 +289,128 @@
         </select>
       </div>
 
-      <div class="blog-grid">
-        <article class="blog-card">
-          <img
-            src="/api/placeholder/400/200"
-            alt="Web Development"
-            class="blog-card-image"
-          />
-          <div class="blog-card-content">
-            <span class="category-tag">Development</span>
-            <h2>Getting Started with Web Development</h2>
-            <div class="blog-card-meta">
-              <span>December 10, 2024</span> • <span>5 min read</span>
-            </div>
-            <p>
-              Learn the fundamental concepts and tools needed to begin your
-              journey in web development. We'll cover HTML, CSS, and JavaScript
-              basics.
-            </p>
-            <a href="/blog/getting-started-web-development" class="read-more"
-              >Read More</a
-            >
-          </div>
-        </article>
-
-        <article class="blog-card">
-          <img
-            src="/api/placeholder/400/200"
-            alt="Design Trends"
-            class="blog-card-image"
-          />
-          <div class="blog-card-content">
-            <span class="category-tag">Design</span>
-            <h2>Modern Design Trends 2024</h2>
-            <div class="blog-card-meta">
-              <span>December 8, 2024</span> • <span>4 min read</span>
-            </div>
-            <p>
-              Explore the latest design trends that are shaping the digital
-              landscape in 2024. From minimalism to bold typography.
-            </p>
-            <a href="/blog/design-trends-2024" class="read-more">Read More</a>
-          </div>
-        </article>
-
-        <article class="blog-card">
-          <img
-            src="/api/placeholder/400/200"
-            alt="Performance Optimization"
-            class="blog-card-image"
-          />
-          <div class="blog-card-content">
-            <span class="category-tag">Technology</span>
-            <h2>Optimizing Website Performance</h2>
-            <div class="blog-card-meta">
-              <span>December 5, 2024</span> • <span>6 min read</span>
-            </div>
-            <p>
-              Learn essential techniques to improve your website's loading speed
-              and performance. Best practices and tools explained.
-            </p>
-            <a href="/blog/website-performance-optimization" class="read-more"
-              >Read More</a
-            >
-          </div>
-        </article>
-
-        <article class="blog-card">
-          <img
-            src="/api/placeholder/400/200"
-            alt="Business Growth"
-            class="blog-card-image"
-          />
-          <div class="blog-card-content">
-            <span class="category-tag">Business</span>
-            <h2>Growing Your Online Presence</h2>
-            <div class="blog-card-meta">
-              <span>December 3, 2024</span> • <span>7 min read</span>
-            </div>
-            <p>
-              Strategic tips and insights for expanding your business's digital
-              footprint and reaching more customers online.
-            </p>
-            <a href="/blog/growing-online-presence" class="read-more"
-              >Read More</a
-            >
-          </div>
-        </article>
-
-        <article class="blog-card">
-          <img
-            src="/api/placeholder/400/200"
-            alt="React Development"
-            class="blog-card-image"
-          />
-          <div class="blog-card-content">
-            <span class="category-tag">Development</span>
-            <h2>Advanced React Techniques</h2>
-            <div class="blog-card-meta">
-              <span>November 30, 2024</span> • <span>8 min read</span>
-            </div>
-            <p>
-              Deep dive into advanced React concepts including hooks, context,
-              and performance optimization strategies.
-            </p>
-            <a href="/blog/advanced-react-techniques" class="read-more"
-              >Read More</a
-            >
-          </div>
-        </article>
-
-        <article class="blog-card">
-          <img
-            src="/api/placeholder/400/200"
-            alt="UI Design"
-            class="blog-card-image"
-          />
-          <div class="blog-card-content">
-            <span class="category-tag">Design</span>
-            <h2>Creating Intuitive User Interfaces</h2>
-            <div class="blog-card-meta">
-              <span>November 28, 2024</span> • <span>6 min read</span>
-            </div>
-            <p>
-              Learn the principles of designing user-friendly interfaces that
-              enhance user experience and engagement.
-            </p>
-            <a href="/blog/intuitive-ui-design" class="read-more">Read More</a>
-          </div>
-        </article>
+      <div class="blog-grid" id="blogGrid">
+        <!-- Blog posts will be dynamically inserted here -->
       </div>
     </main>
 
-    <script src="/assets/js/main.js" type="module"></script>
     <script>
-      // Search and filter functionality
-      const searchInput = document.querySelector(".search-input");
-      const filterDropdown = document.querySelector(".filter-dropdown");
-      const blogCards = document.querySelectorAll(".blog-card");
+      // Create animated background bubbles
+      function createBubbles() {
+        const container = document.getElementById("background-animation");
+        const bubbleCount = 15;
 
-      function filterBlogs() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const selectedCategory = filterDropdown.value;
+        for (let i = 0; i < bubbleCount; i++) {
+          const bubble = document.createElement("div");
+          bubble.className = "bubble";
 
-        blogCards.forEach((card) => {
-          const title = card.querySelector("h2").textContent.toLowerCase();
-          const category = card
-            .querySelector(".category-tag")
-            .textContent.toLowerCase();
-          const description = card.querySelector("p").textContent.toLowerCase();
+          const size = Math.random() * 100 + 50;
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+          bubble.style.left = `${Math.random() * 100}%`;
+          bubble.style.animationDuration = `${Math.random() * 10 + 15}s`;
+          bubble.style.animationDelay = `${Math.random() * 10}s`;
 
-          const matchesSearch =
-            title.includes(searchTerm) || description.includes(searchTerm);
-          const matchesCategory =
-            selectedCategory === "all" ||
-            category === selectedCategory.toLowerCase();
-
-          card.style.display =
-            matchesSearch && matchesCategory ? "block" : "none";
-        });
+          container.appendChild(bubble);
+        }
       }
 
-      searchInput.addEventListener("input", filterBlogs);
-      filterDropdown.addEventListener("change", filterBlogs);
+      // Fetch and parse blog posts
+      async function fetchBlogPosts() {
+        try {
+          const response = await fetch("/site-index.html");
+          const text = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, "text/html");
+          const links = doc.querySelectorAll("li a");
+
+          const blogGrid = document.getElementById("blogGrid");
+          blogGrid.innerHTML = "";
+
+          links.forEach((link) => {
+            const href = link.getAttribute("href");
+            const title = link.textContent;
+
+            if (href.endsWith(".html")) {
+              const category = determineCategory(title);
+              const blogCard = `
+                            <article class="blog-card" data-category="${category.toLowerCase()}">
+                                <img src="/api/placeholder/400/200" alt="${title}" class="blog-card-image">
+                                <div class="blog-card-content">
+                                    <span class="category-tag">${category}</span>
+                                    <h2>${title.replace(".html", "")}</h2>
+                                    <div class="blog-card-meta">
+                                        <span>Updated Recently</span>
+                                    </div>
+                                    <a href="${href}" class="read-more">Read More</a>
+                                </div>
+                            </article>
+                        `;
+              blogGrid.innerHTML += blogCard;
+            }
+          });
+
+          // Initialize search and filter functionality
+          setupSearchAndFilter();
+        } catch (error) {
+          console.error("Error fetching blog posts:", error);
+        }
+      }
+
+      // Determine category based on title (you can customize this logic)
+      function determineCategory(title) {
+        title = title.toLowerCase();
+        if (
+          title.includes("development") ||
+          title.includes("coding") ||
+          title.includes("programming")
+        ) {
+          return "Development";
+        } else if (
+          title.includes("design") ||
+          title.includes("ui") ||
+          title.includes("ux")
+        ) {
+          return "Design";
+        } else if (title.includes("business") || title.includes("investing")) {
+          return "Business";
+        } else {
+          return "Technology";
+        }
+      }
+
+      // Setup search and filter functionality
+      function setupSearchAndFilter() {
+        const searchInput = document.getElementById("searchInput");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const blogCards = document.querySelectorAll(".blog-card");
+
+        function filterPosts() {
+          const searchTerm = searchInput.value.toLowerCase();
+          const selectedCategory = categoryFilter.value.toLowerCase();
+
+          blogCards.forEach((card) => {
+            const title = card.querySelector("h2").textContent.toLowerCase();
+            const category = card.dataset.category;
+
+            const matchesSearch = title.includes(searchTerm);
+            const matchesCategory =
+              selectedCategory === "all" || category === selectedCategory;
+
+            card.style.display =
+              matchesSearch && matchesCategory ? "block" : "none";
+          });
+        }
+
+        searchInput.addEventListener("input", filterPosts);
+        categoryFilter.addEventListener("change", filterPosts);
+      }
+
+      // Initialize everything when the page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        createBubbles();
+        fetchBlogPosts();
+      });
     </script>
   </body>
 </html>
-
