@@ -1,75 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-<!-- Main Pages -->
-<url>
-    <loc>https://abdevndesign.com/</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.00</priority>
-</url>
-
-<!-- Primary Navigation Pages -->
-<url>
-    <loc>https://abdevndesign.com/portfolio</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-</url>
-
-<url>
-    <loc>https://abdevndesign.com/services</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-</url>
-
-<url>
-    <loc>https://abdevndesign.com/contact</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-</url>
-
-<!-- Secondary Pages -->
-<url>
-    <loc>https://abdevndesign.com/ZKPsAB</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.64</priority>
-</url>
-
-<url>
-    <loc>https://abdevndesign.com/Namecheap</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.64</priority>
-</url>
-
-<!-- Example Portfolio Item with Image -->
-<url>
-    <loc>https://abdevndesign.com/portfolio/project-1</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-    <image:image>
-        <image:loc>https://abdevndesign.com/images/project-1-thumbnail.jpg</image:loc>
-        <image:title>Project 1 Portfolio Item</image:title>
-        <image:caption>Description of project 1</image:caption>
-    </image:image>
-</url>
-
-<!-- Blog Section Example -->
-<url>
-    <loc>https://abdevndesign.com/blog</loc>
-    <lastmod>2024-11-29T13:28:42+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://abdevndesign.com/AIstore.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/ArielsPralines.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/Comparison.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/Golden.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/Investing.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/LJex.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/Namecheap.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/TradingBot.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/ZKPsAB.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/amber.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/blog/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/careers/Affiliate.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/careers/AffiliateSignup.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/careers/CareersExample.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/careers/Commission.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/contact.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/contact/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/erica.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/kidscode.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/legal/NDA.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/legal/privacy-policy.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/legal/terms.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/portfolio/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/projects/Ariels/Index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/projects/Ariels/dashboard.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/projects/KNK/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/projects/RNL/RNCommissary.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/projects/RNL/RNmarketing.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/projects/RNL/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/projects/transaction-ticker/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/sample.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/samplejo.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/scammer.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/services/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
+  <url>
+    <loc>https://abdevndesign.com/store/index.html</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>
 </urlset>
