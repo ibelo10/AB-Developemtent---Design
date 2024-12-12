@@ -1,151 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Essentials Store | AB Development</title>
-    <meta
-      name="description"
-      content="Discover curated tech products - from development tools to office essentials. Find the best deals on quality products."
-    />
-
-    <!-- Styles -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
+    <meta name="description" content="Discover curated tech products - from development tools to office essentials. Find the best deals on quality products." />
+    
+    <!-- Self-hosted fonts -->
+    <link rel="stylesheet" href="assets/fonts/inter.css" />
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
     <nav class="navbar">
-      <div class="nav-logo">
-        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
-        <span>AB Development & Design</span>
-      </div>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/portfolio/">Portfolio</a>
-        <a href="/services/">Services</a>
-        <a href="/blog/">Blog</a>
-        <a href="/store/" class="active">Store</a>
-        <a href="/contact/">Contact</a>
-        <a
-          href="https://github.com/Iaarondev/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >GitHub</a
-        >
-      </div>
+        <div class="nav-logo">
+            <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+            <span>AB Development & Design</span>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../portfolio/">Portfolio</a>
+            <a href="../services/">Services</a>
+            <a href="../blog/">Blog</a>
+            <a href="../store/" class="active">Store</a>
+            <a href="../contact/">Contact</a>
+            <a href="https://github.com/Iaarondev/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
     </nav>
 
     <main class="store-container">
-      <!-- Store Header -->
-      <header class="store-header">
-        <div class="category-nav">
-          <button class="active">All Products</button>
-          <button>Development Tools</button>
-          <button>Monitors & Displays</button>
-          <button>Ergonomic Gear</button>
-          <button>Accessories</button>
-          <button>Productivity Tools</button>
-        </div>
-      </header>
-
-      <!-- Filters Section -->
-      <section class="filters">
-        <div class="filter-grid">
-          <div class="filter-group">
-            <label for="category">Category</label>
-            <select id="category">
-              <option value="all">All Categories</option>
-              <option value="development">Development Tools</option>
-              <option value="monitors">Monitors & Displays</option>
-              <option value="ergonomic">Ergonomic Gear</option>
-              <option value="accessories">Accessories</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label for="priceRange">Price Range</label>
-            <div class="price-range">
-              <input type="number" id="minPrice" placeholder="Min" min="0" />
-              <span>to</span>
-              <input type="number" id="maxPrice" placeholder="Max" />
+        <!-- Store Header -->
+        <header class="store-header">
+            <div class="category-nav">
+                <button class="active">All Products</button>
+                <button>Development Tools</button>
+                <button>Monitors & Displays</button>
+                <button>Ergonomic Gear</button>
+                <button>Accessories</button>
             </div>
-          </div>
+        </header>
 
-          <div class="filter-group">
-            <label for="sort">Sort By</label>
-            <select id="sort">
-              <option value="featured">Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
-            </select>
-          </div>
-        </div>
-      </section>
+        <!-- Filters Section -->
+        <section class="filters">
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="all">All Categories</option>
+                        <option value="development">Development Tools</option>
+                        <option value="monitors">Monitors & Displays</option>
+                        <option value="ergonomic">Ergonomic Gear</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                </div>
 
-      <!-- Products Grid -->
-      <section id="products-grid" class="products-section">
-        <!-- Products will be dynamically inserted here -->
-      </section>
+                <div class="filter-group">
+                    <label for="priceRange">Price Range</label>
+                    <div class="price-range">
+                        <input type="number" id="minPrice" placeholder="Min" min="0" />
+                        <span>to</span>
+                        <input type="number" id="maxPrice" placeholder="Max" />
+                    </div>
+                </div>
 
-      <!-- Category Sections -->
-      <section class="category-section">
-        <div class="category-header">
-          <h2 class="category-title">Development Tools</h2>
-          <a href="#" class="view-all"
-            >View All <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-        <div class="product-grid">
-          <!-- Products will be dynamically inserted here -->
-        </div>
-      </section>
+                <div class="filter-group">
+                    <label for="sort">Sort By</label>
+                    <select id="sort">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+            </div>
+        </section>
 
-      <!-- Comparison Section -->
-      <section class="comparison-section">
-        <h2>Product Comparisons</h2>
-        <div class="comparison-table-wrapper">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>Entry Level</th>
-                <th>Professional</th>
-                <th>Premium</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Comparison data will be dynamically inserted here -->
-            </tbody>
-          </table>
-        </div>
-      </section>
+        <!-- Products Grid -->
+        <section id="products-grid" class="products-section">
+            <!-- Products will be dynamically inserted here -->
+        </section>
     </main>
 
-    <!-- Product Comparison Modal -->
-    <div class="modal" id="compareModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Compare Products</h2>
-          <button class="close-modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <table class="comparison-table" id="compareTable">
-            <!-- Comparison content will be dynamically added -->
-          </table>
-        </div>
-      </div>
-    </div>
-
     <!-- Scripts -->
-    <script src="/assets/js/tech-store-products.js"></script>
-    <script src="/assets/js/tech-store-main.js"></script>
-  </body>
+    <script src="assets/js/tech-store-products.js"></script>
+    <script src="assets/js/tech-store-main.js"></script>
+</body>
 </html>
