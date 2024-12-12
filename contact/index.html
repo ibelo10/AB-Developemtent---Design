@@ -1,2 +1,279 @@
-<!DOCTYPE html><html><head><title>AB Development & Design - Contact</title></head><body><h1>Contact</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
+      gtag("config", "G-H16CFGEXZP");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - AB Development & Design</title>
+
+    <!-- Meta tags for better SEO -->
+    <meta
+      name="description"
+      content="Get in touch with AB Development & Design. Let's bring your ideas to life with innovative web solutions and creative designs."
+    />
+    <meta property="og:title" content="Contact - AB Development & Design" />
+    <meta
+      property="og:description"
+      content="Get in touch with AB Development & Design for innovative web solutions and creative designs."
+    />
+    <meta property="og:image" content="assets/images/ABLogo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/messenger.css" />
+    <link rel="stylesheet" href="assets/css/contact.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+        <span>AB Development & Design</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/services">Services</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="https://github.com/Iaarondev/" target="_blank">GitHub</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container contact-container">
+      <div class="page-content">
+        <div class="glass-panel">
+          <main class="contact-container">
+            <!-- Header -->
+            <header class="contact-header">
+              <h1>Get in Touch</h1>
+              <p>Let's bring your ideas to life</p>
+            </header>
+
+            <!-- Contact Content -->
+            <div class="contact-content">
+              <!-- Contact Info -->
+              <div class="contact-info">
+                <div class="info-section">
+                  <h3>Get in Touch</h3>
+                  <p>
+                    Ready to start your next project? Send us a message and
+                    we'll get back to you as soon as possible.
+                  </p>
+                </div>
+
+                <div class="info-section">
+                  <h3>Location</h3>
+                  <p>Las Vegas, Nevada</p>
+                </div>
+
+                <div class="info-section">
+                  <h3>Email</h3>
+                  <p>
+                    <a href="mailto:aaron.bernard.dev@gmail.com"
+                      >aaron.bernard.dev@gmail.com</a
+                    >
+                  </p>
+                </div>
+
+                <div class="info-section">
+                  <h3>Follow Us</h3>
+                  <div class="social-links">
+                    <a
+                      href="https://www.facebook.com/ABdevndesign"
+                      class="social-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Facebook</a
+                    >
+                    <a
+                      href="https://github.com/ibelo10"
+                      class="social-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.tiktok.com/@iaa_ron"
+                      class="social-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Tik-Tok</a
+                    >
+                    <a
+                      href="https://www.instagram.com/abdevndesign/"
+                      class="social-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Instagram</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="custom-form-container">
+                <form
+                  action="https://formspree.io/f/mvgorgna"
+                  method="POST"
+                  class="contact-form"
+                  id="contactForm"
+                >
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Your email</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Your message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="6"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="submit-button">
+                    <span class="button-text">Send Message</span>
+                    <span class="button-loader"></span>
+                  </button>
+                </form>
+
+                <div class="form-message" id="formMessage"></div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Messenger Chat Plugin -->
+    <div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+
+    <!-- Scripts -->
+    <script type="module">
+      import { initializeBackgroundEffects } from "./assets/js/components/background-effects.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeBackgroundEffects("contact");
+      });
+    </script>
+
+    <!-- Messenger Chat Configuration -->
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          xfbml: true,
+          version: "v18.0",
+        });
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+
+      var chatbox = document.getElementById("fb-customer-chat");
+      chatbox.setAttribute("page_id", "113394291657712");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Contact Form Handler -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contactForm");
+        const submitButton = form.querySelector(".submit-button");
+        const buttonText = submitButton.querySelector(".button-text");
+        const buttonLoader = submitButton.querySelector(".button-loader");
+        const formMessage = document.getElementById("formMessage");
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Show loading state
+          submitButton.disabled = true;
+          buttonText.style.opacity = "0";
+          buttonLoader.style.display = "block";
+          formMessage.style.display = "none";
+
+          try {
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: new FormData(form),
+              headers: {
+                Accept: "application/json",
+              },
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              // Show success message
+              formMessage.textContent =
+                "Thank you for your message! We'll get back to you soon.";
+              formMessage.className = "form-message success";
+              form.reset();
+            } else {
+              throw new Error(
+                data.error || "Something went wrong. Please try again."
+              );
+            }
+          } catch (error) {
+            // Show error message
+            formMessage.textContent = error.message;
+            formMessage.className = "form-message error";
+          } finally {
+            // Reset button state
+            submitButton.disabled = false;
+            buttonText.style.opacity = "1";
+            buttonLoader.style.display = "none";
+            formMessage.style.display = "block";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
