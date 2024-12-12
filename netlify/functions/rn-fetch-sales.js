@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async function(event, context) {
+export async function handler(event, context) {
   try {
     const response = await fetch('https://connect.squareup.com/v2/payments', {
       headers: {
@@ -14,14 +14,16 @@ exports.handler = async function(event, context) {
     return {
       statusCode: 200,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify(data)
     };
   } catch (error) {
+    console.error('Function error:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed fetching data' })
+      body: JSON.stringify({ error: 'Failed fetching data', details: error.message })
     };
   }
-};
+}

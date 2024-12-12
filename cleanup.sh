@@ -9,31 +9,22 @@ rm -rf projects/transaction-ticker/node_modules
 rm -rf projects/transaction-ticker/build
 rm -f package-lock.json
 rm -f projects/transaction-ticker/package-lock.json
-npm cache clean --force
 
-# Create necessary configuration files
+# Create project structure
+echo "Creating project structure..."
+mkdir -p projects/transaction-ticker/src
+mkdir -p projects/transaction-ticker/public
+
+# Create necessary files
 echo "Creating configuration files..."
-
-# Create .nvmrc
 echo "18.19.0" > .nvmrc
 
-# Create .npmrc
-cat > .npmrc << EOL
-save-exact=true
-legacy-peer-deps=true
-engine-strict=true
-EOL
-
-# Install root dependencies first
-echo "Installing root dependencies..."
-npm install
-
 # Navigate to project directory and install
-echo "Installing project dependencies..."
+echo "Installing dependencies..."
 cd projects/transaction-ticker
 npm install --legacy-peer-deps
 
-echo "Running build test..."
+echo "Testing build..."
 npm run build
 
 echo "Cleanup process complete!"
