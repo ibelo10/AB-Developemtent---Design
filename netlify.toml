@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && cd projects/transaction-ticker && npm install && npm run build"
+  command = "npm install && npm run build"
   publish = "projects/transaction-ticker/build"
   functions = "netlify/functions"
 
