@@ -24,8 +24,12 @@ legacy-peer-deps=true
 engine-strict=true
 EOL
 
+# Install root dependencies first
+echo "Installing root dependencies..."
+npm install
+
 # Navigate to project directory and install
-echo "Installing dependencies..."
+echo "Installing project dependencies..."
 cd projects/transaction-ticker
 npm install --legacy-peer-deps
 
