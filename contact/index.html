@@ -1,7 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Contact AB Development & Design | Web Development Services</title>
+    <meta
+      name="description"
+      content="Get in touch with AB Development & Design for professional web development, design, and blockchain solutions. Based in Las Vegas, serving clients worldwide."
+    />
+    <meta
+      name="keywords"
+      content="web development, contact, Las Vegas developer, web design, blockchain development"
+    />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Contact AB Development & Design" />
+    <meta
+      property="og:description"
+      content="Transform your digital presence with our professional web development and design services. Get in touch today!"
+    />
+    <meta property="og:image" content="assets/images/ABLogo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://abdevndesign.com/contact" />
+
+    <!-- Analytics and Ads -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
@@ -12,7 +36,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-H16CFGEXZP");
     </script>
     <script
@@ -20,260 +43,740 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
       crossorigin="anonymous"
     ></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact - AB Development & Design</title>
 
-    <!-- Meta tags for better SEO -->
-    <meta
-      name="description"
-      content="Get in touch with AB Development & Design. Let's bring your ideas to life with innovative web solutions and creative designs."
-    />
-    <meta property="og:title" content="Contact - AB Development & Design" />
-    <meta
-      property="og:description"
-      content="Get in touch with AB Development & Design for innovative web solutions and creative designs."
-    />
-    <meta property="og:image" content="assets/images/ABLogo.png" />
-
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
 
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/messenger.css" />
-    <link rel="stylesheet" href="assets/css/contact.css" />
+    <style>
+      :root {
+        --primary-color: #2ecc71;
+        --primary-dark: #27ae60;
+        --bg-dark: #0a0c10;
+        --bg-card: rgba(17, 24, 39, 0.2);
+        --text-light: rgba(255, 255, 255, 0.7);
+        --border-light: rgba(255, 255, 255, 0.05);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Raleway", sans-serif;
+      }
+
+      body {
+        background: var(--bg-dark);
+        color: white;
+        line-height: 1.6;
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: calc(100vh - 73px);
+      }
+
+      .contact-hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(
+            rgba(10, 12, 16, 0.8),
+            rgba(10, 12, 16, 0.8)
+          ),
+          url("assets/images/contact-bg.jpg") center/cover;
+        border-radius: 15px;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(46, 204, 113, 0.1),
+          rgba(39, 174, 96, 0.1)
+        );
+        z-index: 1;
+      }
+
+      .contact-hero h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-hero p {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .contact-info {
+        background: var(--bg-card);
+        padding: 2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-light);
+        height: fit-content;
+      }
+
+      .info-section {
+        margin-bottom: 2rem;
+      }
+
+      .info-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-section h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .info-section p {
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+      }
+
+      .info-section a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .info-section a:hover {
+        color: var(--primary-color);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border-light);
+        border-radius: 25px;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .social-link:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .contact-form {
+        background: var(--bg-card);
+        padding: 2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-light);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-light);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .submit-button:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .submit-button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .button-loader {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid white;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      .form-message {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+
+      .form-message.success {
+        background: rgba(46, 204, 113, 0.1);
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+      }
+
+      .form-message.error {
+        background: rgba(231, 76, 60, 0.1);
+        color: #e74c3c;
+        border: 1px solid #e74c3c;
+      }
+
+      .contact-map {
+        margin-top: 3rem;
+        border-radius: 15px;
+        overflow: hidden;
+        height: 400px;
+      }
+
+      @media (max-width: 768px) {
+        .contact-container {
+          padding: 1rem;
+        }
+
+        .contact-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .contact-hero {
+          padding: 3rem 1rem;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
-        <span>AB Development & Design</span>
-      </div>
-      <div class="nav-links">
-        <a href="/" class="active">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/services">Services</a>
-        <a href="/blog">Blog</a>
-        <a href="/contact">Contact</a>
-        <a href="https://github.com/Iaarondev/" target="_blank">GitHub</a>
-      </div>
-    </nav>
+    <div class="contact-container">
+      <section class="contact-hero">
+        <h1>Let's Work Together</h1>
+        <p>
+          Have a project in mind? We'd love to hear about it. Send us a message
+          and let's create something amazing together.
+        </p>
+      </section>
 
-    <!-- Main Content -->
-    <div class="page-container contact-container">
-      <div class="page-content">
-        <div class="glass-panel">
-          <main class="contact-container">
-            <!-- Header -->
-            <header class="contact-header">
-              <h1>Get in Touch</h1>
-              <p>Let's bring your ideas to life</p>
-            </header>
+      <div class="contact-content">
+        <aside class="contact-info">
+          <div class="info-section">
+            <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+            <p>Las Vegas, Nevada</p>
+          </div>
 
-            <!-- Contact Content -->
-            <div class="contact-content">
-              <!-- Contact Info -->
-              <div class="contact-info">
-                <div class="info-section">
-                  <h3>Get in Touch</h3>
-                  <p>
-                    Ready to start your next project? Send us a message and
-                    we'll get back to you as soon as possible.
-                  </p>
-                </div>
+          <div class="info-section">
+            <h3><i class="fas fa-envelope"></i> Email</h3>
+            <p>
+              <a href="mailto:aaron.bernard.dev@gmail.com"
+                >aaron.bernard.dev@gmail.com</a
+              >
+            </p>
+          </div>
 
-                <div class="info-section">
-                  <h3>Location</h3>
-                  <p>Las Vegas, Nevada</p>
-                </div>
+          <div class="info-section">
+            <h3><i class="fas fa-clock"></i> Availability</h3>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM PST</p>
+            <p>Weekend: By appointment</p>
+          </div>
 
-                <div class="info-section">
-                  <h3>Email</h3>
-                  <p>
-                    <a href="mailto:aaron.bernard.dev@gmail.com"
-                      >aaron.bernard.dev@gmail.com</a
-                    >
-                  </p>
-                </div>
-
-                <div class="info-section">
-                  <h3>Follow Us</h3>
-                  <div class="social-links">
-                    <a
-                      href="https://www.facebook.com/ABdevndesign"
-                      class="social-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Facebook</a
-                    >
-                    <a
-                      href="https://github.com/ibelo10"
-                      class="social-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >GitHub</a
-                    >
-                    <a
-                      href="https://www.tiktok.com/@iaa_ron"
-                      class="social-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Tik-Tok</a
-                    >
-                    <a
-                      href="https://www.instagram.com/abdevndesign/"
-                      class="social-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Instagram</a
-                    >
-                  </div>
-                </div>
-              </div>
-
-              <!-- Contact Form -->
-              <div class="custom-form-container">
-                <form
-                  action="https://formspree.io/f/mvgorgna"
-                  method="POST"
-                  class="contact-form"
-                  id="contactForm"
-                >
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="email">Your email</label>
-                    <input type="email" id="email" name="email" required />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="message">Your message</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="6"
-                      required
-                    ></textarea>
-                  </div>
-
-                  <button type="submit" class="submit-button">
-                    <span class="button-text">Send Message</span>
-                    <span class="button-loader"></span>
-                  </button>
-                </form>
-
-                <div class="form-message" id="formMessage"></div>
-              </div>
+          <div class="info-section">
+            <h3><i class="fas fa-share-alt"></i> Connect With Us</h3>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/ABdevndesign"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+              >
+                <i class="fab fa-facebook"></i> Facebook
+              </a>
+              <a
+                href="https://github.com/ibelo10"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+              >
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a
+                href="https://www.tiktok.com/@iaa_ron"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+              >
+                <i class="fab fa-tiktok"></i> TikTok
+              </a>
+              <a
+                href="https://www.instagram.com/abdevndesign/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+              >
+                <i class="fab fa-instagram"></i> Instagram
+              </a>
             </div>
-          </main>
-        </div>
+          </div>
+        </aside>
+
+        <main class="contact-form-section">
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/mvgorgna"
+            method="POST"
+            class="contact-form"
+          >
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Enter your full name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your email address"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interest</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="web-development">Web Development</option>
+                <option value="mobile-development">Mobile Development</option>
+                <option value="blockchain">Blockchain Development</option>
+                <option value="ui-ux">UI/UX Design</option>
+                <option value="consulting">Technical Consulting</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="Tell us about your project, goals, and timeline"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">
+              <span class="button-text">Send Message</span>
+              <span class="button-loader"></span>
+            </button>
+          </form>
+
+          <div id="formMessage" class="form-message"></div>
+        </main>
       </div>
     </div>
 
-    <!-- Messenger Chat Plugin -->
-    <div id="fb-root"></div>
-    <div id="fb-customer-chat" class="fb-customerchat"></div>
-
-    <!-- Scripts -->
-    <script type="module">
-      import { initializeBackgroundEffects } from "./assets/js/components/background-effects.js";
-      document.addEventListener("DOMContentLoaded", () => {
-        initializeBackgroundEffects("contact");
-      });
-    </script>
-
-    <!-- Messenger Chat Configuration -->
-    <script>
-      window.fbAsyncInit = function () {
-        FB.init({
-          xfbml: true,
-          version: "v18.0",
-        });
-      };
-
-      (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "facebook-jssdk");
-
-      var chatbox = document.getElementById("fb-customer-chat");
-      chatbox.setAttribute("page_id", "113394291657712");
-      chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
-
     <!-- Contact Form Handler -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("contactForm");
-        const submitButton = form.querySelector(".submit-button");
-        const buttonText = submitButton.querySelector(".button-text");
-        const buttonLoader = submitButton.querySelector(".button-loader");
-        const formMessage = document.getElementById("formMessage");
+                  class ContactForm {
+                constructor() {
+                    this.form = document.getElementById('contactForm');
+                    this.submitButton = this.form.querySelector('.submit-button');
+                    this.buttonText = this.submitButton.querySelector('.button-text');
+                    this.buttonLoader = this.submitButton.querySelector('.button-loader');
+                    this.formMessage = document.getElementById('formMessage');
 
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
+                    // Form state
+                    this.isSubmitting = false;
+                    this.formData = new Map();
+                    this.validationTimeouts = new Map();
 
-          // Show loading state
-          submitButton.disabled = true;
-          buttonText.style.opacity = "0";
-          buttonLoader.style.display = "block";
-          formMessage.style.display = "none";
+                    // Initialize
+                    this.initialize();
+                }
 
-          try {
-            const response = await fetch(form.action, {
-              method: "POST",
-              body: new FormData(form),
-              headers: {
-                Accept: "application/json",
-              },
-            });
+                initialize() {
+                    this.form.addEventListener('submit', this.handleSubmit.bind(this));
+                    this.setupFormValidation();
+                    this.setupAutoSave();
+                    this.loadSavedData();
+                }
 
-            const data = await response.json();
+                async handleSubmit(e) {
+                    e.preventDefault();
 
-            if (response.ok) {
-              // Show success message
-              formMessage.textContent =
-                "Thank you for your message! We'll get back to you soon.";
-              formMessage.className = "form-message success";
-              form.reset();
-            } else {
-              throw new Error(
-                data.error || "Something went wrong. Please try again."
-              );
-            }
-          } catch (error) {
-            // Show error message
-            formMessage.textContent = error.message;
-            formMessage.className = "form-message error";
-          } finally {
-            // Reset button state
-            submitButton.disabled = false;
-            buttonText.style.opacity = "1";
-            buttonLoader.style.display = "none";
-            formMessage.style.display = "block";
+                    if (this.isSubmitting) return;
+
+                    // Validate all fields before submission
+                    const isValid = Array.from(this.form.elements)
+                        .filter(el => el.tagName !== 'BUTTON')
+                        .every(field => this.validateField(field));
+
+                    if (!isValid) {
+                        this.showMessage('Please fix the errors before submitting.', 'error');
+                        return;
+                    }
+
+                    this.isSubmitting = true;
+                    this.setLoadingState(true);
+
+                    try {
+                        const formData = new FormData(this.form);
+                        // Add timestamp and user's timezone
+                        formData.append('submitted_at', new Date().toISOString());
+                        formData.append('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+
+                        const response = await fetch(this.form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            this.handleSuccessfulSubmission();
+                        } else {
+                            throw new Error(data.error || 'Something went wrong. Please try again.');
+                        }
+                    } catch (error) {
+                        this.handleFailedSubmission(error);
+                    } finally {
+                        this.isSubmitting = false;
+                        this.setLoadingState(false);
+                    }
+                }
+
+                handleSuccessfulSubmission() {
+          // Show success message with proper feedback
+          this.showMessage('Thank you for your message! We'll get back to you soon.', 'success');
+
+          // Track the successful submission
+          this.trackFormSubmission('success');
+
+          // Clear saved form data
+          this.clearSavedData();
+
+          // Reset the form
+          this.form.reset();
+
+          // Scroll to success message
+          this.formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          // Optionally trigger Facebook Messenger after a delay
+          if (window.FB) {
+              setTimeout(() => {
+                  FB.CustomerChat.show();
+                  FB.CustomerChat.showDialog();
+              }, 2000);
           }
-        });
-      });
+      }
+
+                handleFailedSubmission(error) {
+                    this.showMessage(error.message, 'error');
+                    this.trackFormSubmission('error');
+
+                    // Log error for debugging
+                    console.error('Form submission error:', error);
+                }
+
+                setLoadingState(isLoading) {
+                    this.submitButton.disabled = isLoading;
+                    this.buttonText.style.opacity = isLoading ? '0' : '1';
+                    this.buttonLoader.style.display = isLoading ? 'block' : 'none';
+
+                    // Disable all form fields during submission
+                    Array.from(this.form.elements).forEach(el => {
+                        if (el.tagName !== 'BUTTON') el.disabled = isLoading;
+                    });
+                }
+
+                showMessage(message, type) {
+                    // Clear any existing message timeout
+                    if (this.messageTimeout) {
+                        clearTimeout(this.messageTimeout);
+                    }
+
+                    this.formMessage.textContent = message;
+                    this.formMessage.className = `form-message ${type}`;
+                    this.formMessage.style.display = 'block';
+
+                    // Add icon based on message type
+                    const icon = type === 'success' ? '✓' : '⚠';
+                    this.formMessage.textContent = `${icon} ${message}`;
+
+                    // Auto-hide messages after delay
+                    const delay = type === 'success' ? 5000 : 8000;
+                    this.messageTimeout = setTimeout(() => {
+                        this.formMessage.style.opacity = '0';
+                        setTimeout(() => {
+                            this.formMessage.style.display = 'none';
+                            this.formMessage.style.opacity = '1';
+                        }, 300);
+                    }, delay);
+                }
+
+                setupFormValidation() {
+                    const inputs = this.form.querySelectorAll('input, textarea, select');
+
+                    inputs.forEach(input => {
+                        // Real-time validation with debounce
+                        input.addEventListener('input', () => {
+                            if (this.validationTimeouts.has(input.name)) {
+                                clearTimeout(this.validationTimeouts.get(input.name));
+                            }
+
+                            const timeout = setTimeout(() => {
+                                this.validateField(input);
+                            }, 500);
+
+                            this.validationTimeouts.set(input.name, timeout);
+                        });
+
+                        // Validate on blur
+                        input.addEventListener('blur', () => {
+                            this.validateField(input);
+                        });
+                    });
+                }
+
+                validateField(field) {
+                    const errorClass = 'field-error';
+                    const successClass = 'field-success';
+                    let isValid = true;
+                    let errorMessage = '';
+
+                    // Remove existing messages
+                    const existingMessage = field.parentElement.querySelector('.field-message');
+                    if (existingMessage) {
+                        existingMessage.remove();
+                    }
+
+                    // Required field validation
+                    if (field.required && !field.value.trim()) {
+                        isValid = false;
+                        errorMessage = 'This field is required';
+                    }
+                    // Specific validation rules
+                    else if (field.value.trim()) {
+                        switch(field.type) {
+                            case 'email':
+                                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                                if (!emailPattern.test(field.value)) {
+                                    isValid = false;
+                                    errorMessage = 'Please enter a valid email address';
+                                }
+                                break;
+
+                            case 'text':
+                                if (field.name === 'name') {
+                                    if (field.value.length < 2) {
+                                        isValid = false;
+                                        errorMessage = 'Name must be at least 2 characters long';
+                                    } else if (!/^[a-zA-Z\s-']+$/.test(field.value)) {
+                                        isValid = false;
+                                        errorMessage = 'Name can only contain letters, spaces, hyphens, and apostrophes';
+                                    }
+                                }
+                                break;
+
+                            case 'textarea':
+                                const minLength = 10;
+                                if (field.value.length < minLength) {
+                                    isValid = false;
+                                    errorMessage = `Please provide at least ${minLength} characters`;
+                                }
+                                break;
+
+                            case 'select-one':
+                                if (!field.value) {
+                                    isValid = false;
+                                    errorMessage = 'Please select an option';
+                                }
+                                break;
+                        }
+                    }
+
+                    // Update field styling and show message
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `field-message ${isValid ? 'success' : 'error'}`;
+
+                    if (!isValid) {
+                        field.classList.remove(successClass);
+                        field.classList.add(errorClass);
+                        messageDiv.textContent = errorMessage;
+                        field.parentElement.appendChild(messageDiv);
+                    } else {
+                        field.classList.remove(errorClass);
+                        field.classList.add(successClass);
+                    }
+
+                    return isValid;
+                }
+
+                setupAutoSave() {
+                    const inputs = this.form.querySelectorAll('input, textarea, select');
+                    inputs.forEach(input => {
+                        input.addEventListener('input', () => {
+                            this.saveFormData();
+                        });
+                    });
+                }
+
+                saveFormData() {
+                    const formData = new FormData(this.form);
+                    const data = {};
+                    formData.forEach((value, key) => {
+                        data[key] = value;
+                    });
+                    localStorage.setItem('contactFormData', JSON.stringify(data));
+                }
+
+                loadSavedData() {
+                    const savedData = localStorage.getItem('contactFormData');
+                    if (savedData) {
+                        const data = JSON.parse(savedData);
+                        Object.entries(data).forEach(([key, value]) => {
+                            const field = this.form.elements[key];
+                            if (field) field.value = value;
+                        });
+                    }
+                }
+
+                clearSavedData() {
+                    localStorage.removeItem('contactFormData');
+                }
+
+                trackFormSubmission(status) {
+                    if (window.gtag) {
+                        gtag('event', 'form_submission', {
+                            'event_category': 'Contact',
+                            'event_label': status,
+                            'value': 1
+                        });
+                    }
+                }
+            }
+
+            // Initialize Contact Form and Messenger
+            document.addEventListener('DOMContentLoaded', () => {
+                new ContactForm();
+
+                // Initialize Messenger Chat
+                const chatbox = document.getElementById('fb-customer-chat');
+                if (chatbox) {
+                    chatbox.setAttribute("page_id", "113394291657712");
+                    chatbox.setAttribute("attribution", "biz_inbox");
+                    chatbox.setAttribute("theme_color", "#2ecc71");
+                }
+
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        xfbml: true,
+                        version: 'v18.0'
+                    });
+                };
+
+                // Load Facebook SDK
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                })(document, 'script', 'facebook-jssdk');
+            });
     </script>
   </body>
 </html>
