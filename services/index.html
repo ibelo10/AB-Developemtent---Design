@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -14,286 +11,511 @@
       gtag("js", new Date());
       gtag("config", "G-H16CFGEXZP");
     </script>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
-      crossorigin="anonymous"
-    ></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965" crossorigin="anonymous"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';"
+    />
     <title>Services - AB Development & Design</title>
-    <!-- Meta tags for better SEO -->
-    <meta
-      name="description"
-      content="Professional web development and design services offered by AB Development & Design."
-    />
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Professional web development and design services offered by AB Development & Design." />
     <meta property="og:title" content="Services - AB Development & Design" />
-    <meta
-      property="og:description"
-      content="Professional web development and design services to bring your digital vision to life."
-    />
-    <meta property="og:image" content="../assets/images/ABLogo.png" />
-    <!-- Google Fonts -->
+    <meta property="og:description" content="Professional web development and design services to bring your digital vision to life." />
+    <meta property="og:image" content="/assets/images/ABLogo.png" />
+    <meta property="og:url" content="https://abdevndesign.com/services" />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="messenger.css" />
-    <link rel="stylesheet" href="services.css" />
-    <link rel="stylesheet" href="scrollbar.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/messenger.css" />
+    <link rel="stylesheet" href="/assets/css/services.css" />
+    <link rel="stylesheet" href="/assets/css/scrollbar.css" />
+
+    <style>
+      :root {
+        --primary-color: #2ecc71;
+        --bg-dark: #0a0c10;
+        --bg-card: rgba(17, 24, 39, 0.2);
+        --nav-bg: rgba(15, 19, 23, 0.95);
+        --text-light: rgba(255, 255, 255, 0.7);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        --border-light: rgba(255, 255, 255, 0.05);
+      }
+
+      .page-container {
+        min-height: calc(100vh - 73px);
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .services-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .glass-panel {
+        background: var(--bg-card);
+        backdrop-filter: blur(8px);
+        border-radius: 15px;
+        border: 1px solid var(--border-light);
+        padding: 2rem;
+      }
+
+      .services-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: white;
+      }
+
+      .services-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-categories {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .category-btn {
+        padding: 0.75rem 1.5rem;
+        background: transparent;
+        border: 1px solid var(--border-light);
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .category-btn:hover,
+      .category-btn.active {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-light);
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--primary-color);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-card h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card p {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .service-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+        color: var(--text-light);
+      }
+
+      .service-features li {
+        margin-bottom: 0.5rem;
+      }
+
+      .service-features li:before {
+        content: "✓";
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+      }
+
+      .service-price {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      .inquiry-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .inquiry-btn:hover {
+        background: #27ae60;
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        .page-container {
+          padding: 1rem;
+        }
+
+        .services-header h1 {
+          font-size: 2rem;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .service-categories {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .category-btn {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-logo">
-        <img src="../assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+        <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
         <span>AB Development & Design</span>
       </div>
       <div class="nav-links">
-        <a href="/" class="active">Home</a>
+        <a href="/">Home</a>
         <a href="/portfolio">Portfolio</a>
-        <a href="/services">Services</a>
+        <a href="/services" class="active">Services</a>
         <a href="/blog">Blog</a>
         <a href="/contact">Contact</a>
         <a href="https://github.com/Iaarondev/" target="_blank">GitHub</a>
       </div>
     </nav>
-    <!-- Main Content -->
+
     <div class="page-container services-container">
-      <div class="page-content">
-        <div class="glass-panel">
-          <main class="services-content">
-            <!-- Header -->
-            <header class="services-header">
-              <h1>Our Services</h1>
-              <p>Comprehensive digital solutions for your business needs</p>
-            </header>
-            <!-- Service Categories -->
-            <div class="service-categories">
-              <button class="category-btn active" data-category="all">
-                All Services
-              </button>
-              <button class="category-btn" data-category="development">
-                Development
-              </button>
-              <button class="category-btn" data-category="design">
-                Design
-              </button>
-              <button class="category-btn" data-category="maintenance">
-                Maintenance
-              </button>
-              <button class="category-btn" data-category="consulting">
-                Consulting
-              </button>
+      <div class="glass-panel">
+        <main class="services-content">
+          <header class="services-header">
+            <h1>Our Services</h1>
+            <p>Comprehensive digital solutions for your business needs</p>
+          </header>
+
+          <div class="service-categories">
+            <button class="category-btn active" data-category="all">All Services</button>
+            <button class="category-btn" data-category="development">Development</button>
+            <button class="category-btn" data-category="design">Design</button>
+            <button class="category-btn" data-category="maintenance">Maintenance</button>
+            <button class="category-btn" data-category="consulting">Consulting</button>
+          </div>
+
+          <div class="services-grid">
+            <!-- Web Development -->
+            <div class="service-card" data-category="development">
+              <div class="service-icon">💻</div>
+              <h3>Custom Website Development</h3>
+              <p>Fully custom-built websites tailored to your specific needs and brand.</p>
+              <ul class="service-features">
+                <li>Responsive Design</li>
+                <li>SEO Optimization</li>
+                <li>Custom Functionality</li>
+                <li>Performance Optimized</li>
+              </ul>
+              <div class="service-price">Starting at $2,500</div>
+              <button class="inquiry-btn">Request Quote</button>
             </div>
-            <!-- Services Grid -->
-            <div class="services-grid">
-              <!-- Web Development -->
-              <div class="service-card" data-category="development">
-                <div class="service-icon">💻</div>
-                <h3>Custom Website Development</h3>
-                <p>
-                  Fully custom-built websites tailored to your specific needs
-                  and brand.
-                </p>
-                <ul class="service-features">
-                  <li>Responsive Design</li>
-                  <li>SEO Optimization</li>
-                  <li>Custom Functionality</li>
-                  <li>Performance Optimized</li>
-                </ul>
-                <div class="service-price">Starting at $2,500</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
 
-              <!-- E-commerce Solutions -->
-              <div class="service-card" data-category="development">
-                <div class="service-icon">🛍️</div>
-                <h3>E-commerce Solutions</h3>
-                <p>Complete online store development with advanced features.</p>
-                <ul class="service-features">
-                  <li>Product Management</li>
-                  <li>Secure Checkout</li>
-                  <li>Inventory System</li>
-                  <li>Order Management</li>
-                </ul>
-                <div class="service-price">Starting at $3,000</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- UI/UX Design -->
-              <div class="service-card" data-category="design">
-                <div class="service-icon">🎨</div>
-                <h3>UI/UX Design</h3>
-                <p>
-                  Beautiful, intuitive designs that enhance user experience.
-                </p>
-                <ul class="service-features">
-                  <li>User Research</li>
-                  <li>Wireframing</li>
-                  <li>Visual Design</li>
-                  <li>Prototyping</li>
-                </ul>
-                <div class="service-price">Starting at $1,500</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- Website Maintenance -->
-              <div class="service-card" data-category="maintenance">
-                <div class="service-icon">🔧</div>
-                <h3>Website Maintenance</h3>
-                <p>Keep your website running smoothly with regular updates.</p>
-                <ul class="service-features">
-                  <li>Regular Updates</li>
-                  <li>Security Monitoring</li>
-                  <li>Performance Optimization</li>
-                  <li>Content Updates</li>
-                </ul>
-                <div class="service-price">Starting at $200/month</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- Mobile App Development -->
-              <div class="service-card" data-category="development">
-                <div class="service-icon">📱</div>
-                <h3>Mobile App Development</h3>
-                <p>Native and cross-platform mobile applications.</p>
-                <ul class="service-features">
-                  <li>iOS & Android Apps</li>
-                  <li>React Native</li>
-                  <li>App Store Submission</li>
-                  <li>App Maintenance</li>
-                </ul>
-                <div class="service-price">Starting at $5,000</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- Blockchain Development -->
-              <div class="service-card" data-category="development">
-                <div class="service-icon">⛓️</div>
-                <h3>Blockchain Solutions</h3>
-                <p>Custom blockchain development and smart contracts.</p>
-                <ul class="service-features">
-                  <li>Smart Contracts</li>
-                  <li>DApp Development</li>
-                  <li>Token Creation</li>
-                  <li>Blockchain Integration</li>
-                </ul>
-                <div class="service-price">Starting at $4,000</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- Brand Identity -->
-              <div class="service-card" data-category="design">
-                <div class="service-icon">🎯</div>
-                <h3>Brand Identity Design</h3>
-                <p>Complete brand identity development and guidelines.</p>
-                <ul class="service-features">
-                  <li>Logo Design</li>
-                  <li>Brand Guidelines</li>
-                  <li>Marketing Materials</li>
-                  <li>Social Media Assets</li>
-                </ul>
-                <div class="service-price">Starting at $2,000</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- SEO Services -->
-              <div class="service-card" data-category="maintenance">
-                <div class="service-icon">📈</div>
-                <h3>SEO Services</h3>
-                <p>Improve your website's search engine rankings.</p>
-                <ul class="service-features">
-                  <li>Keyword Research</li>
-                  <li>On-Page SEO</li>
-                  <li>Technical SEO</li>
-                  <li>Monthly Reports</li>
-                </ul>
-                <div class="service-price">Starting at $500/month</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- Technical Consulting -->
-              <div class="service-card" data-category="consulting">
-                <div class="service-icon">📋</div>
-                <h3>Technical Consulting</h3>
-                <p>Expert guidance on technical decisions and architecture.</p>
-                <ul class="service-features">
-                  <li>Architecture Review</li>
-                  <li>Technology Selection</li>
-                  <li>Security Assessment</li>
-                  <li>Performance Audit</li>
-                </ul>
-                <div class="service-price">Starting at $150/hour</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- API Development -->
-              <div class="service-card" data-category="development">
-                <div class="service-icon">🔌</div>
-                <h3>API Development</h3>
-                <p>Custom API development and integration services.</p>
-                <ul class="service-features">
-                  <li>RESTful APIs</li>
-                  <li>GraphQL APIs</li>
-                  <li>API Integration</li>
-                  <li>Documentation</li>
-                </ul>
-                <div class="service-price">Starting at $2,000</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- DevOps Services -->
-              <div class="service-card" data-category="maintenance">
-                <div class="service-icon">🚀</div>
-                <h3>DevOps Services</h3>
-                <p>Streamline your development and deployment processes.</p>
-                <ul class="service-features">
-                  <li>CI/CD Pipeline</li>
-                  <li>Cloud Infrastructure</li>
-                  <li>Monitoring Setup</li>
-                  <li>Automation</li>
-                </ul>
-                <div class="service-price">Starting at $1,500</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-
-              <!-- Security Audit -->
-              <div class="service-card" data-category="consulting">
-                <div class="service-icon">🔒</div>
-                <h3>Security Audit</h3>
-                <p>Comprehensive security assessment and recommendations.</p>
-                <ul class="service-features">
-                  <li>Vulnerability Scanning</li>
-                  <li>Code Review</li>
-                  <li>Security Testing</li>
-                  <li>Compliance Check</li>
-                </ul>
-                <div class="service-price">Starting at $2,500</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
+            <!-- E-commerce -->
+            <div class="service-card" data-category="development">
+              <div class="service-icon">🛍️</div>
+              <h3>E-commerce Solutions</h3>
+              <p>Complete online store development with advanced features.</p>
+              <ul class="service-features">
+                <li>Product Management</li>
+                <li>Secure Checkout</li>
+                <li>Inventory System</li>
+                <li>Order Management</li>
+              </ul>
+              <div class="service-price">Starting at $3,000</div>
+              <button class="inquiry-btn">Request Quote</button>
             </div>
-          </main>
-        </div>
+
+            <!-- UI/UX Design -->
+            <div class="service-card" data-category="design">
+              <div class="service-icon">🎨</div>
+              <h3>UI/UX Design</h3>
+              <p>Beautiful, intuitive designs that enhance user experience.</p>
+              <ul class="service-features">
+                <li>User Research</li>
+                <li>Wireframing</li>
+                <li>Visual Design</li>
+                <li>Prototyping</li>
+              </ul>
+              <div class="service-price">Starting at $1,500</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- Mobile Development -->
+            <div class="service-card" data-category="development">
+              <div class="service-icon">📱</div>
+              <h3>Mobile App Development</h3>
+              <p>Native and cross-platform mobile applications.</p>
+              <ul class="service-features">
+                <li>iOS & Android Apps</li>
+                <li>React Native</li>
+                <li>App Store Submission</li>
+                <li>App Maintenance</li>
+              </ul>
+              <div class="service-price">Starting at $5,000</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- Blockchain Development -->
+            <div class="service-card" data-category="development">
+              <div class="service-icon">⛓️</div>
+              <h3>Blockchain Solutions</h3>
+              <p>Custom blockchain development and smart contracts.</p>
+              <ul class="service-features">
+                <li>Smart Contracts</li>
+                <li>DApp Development</li>
+                <li>Token Creation</li>
+                <li>Blockchain Integration</li>
+              </ul>
+              <div class="service-price">Starting at $4,000</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- Brand Identity -->
+            <div class="service-card" data-category="design">
+              <div class="service-icon">🎯</div>
+              <h3>Brand Identity Design</h3>
+              <p>Complete brand identity development and guidelines.</p>
+              <ul class="service-features">
+                <li>Logo Design</li>
+                <li>Brand Guidelines</li>
+                <li>Marketing Materials</li>
+                <li>Social Media Assets</li>
+              </ul>
+              <div class="service-price">Starting at $2,000</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- SEO Services -->
+            <div class="service-card" data-category="maintenance">
+              <div class="service-icon">📈</div>
+              <h3>SEO Services</h3>
+              <p>Improve your website's search engine rankings.</p>
+              <ul class="service-features">
+                <li>Keyword Research</li>
+                <li>On-Page SEO</li>
+                <li>Technical SEO</li>
+                <li>Monthly Reports</li>
+              </ul>
+              <div class="service-price">Starting at $500/month</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- Technical Consulting -->
+            <div class="service-card" data-category="consulting">
+              <div class="service-icon">📋</div>
+              <h3>Technical Consulting</h3>
+              <p>Expert guidance on technical decisions and architecture.</p>
+              <ul class="service-features">
+                <li>Architecture Review</li>
+                <li>Technology Selection</li>
+                <li>Security Assessment</li>
+                <li>Performance Audit</li>
+              </ul>
+              <div class="service-price">Starting at $150/hour</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- API Development -->
+            <div class="service-card" data-category="development">
+              <div class="service-icon">🔌</div>
+              <h3>API Development</h3>
+              <p>Custom API development and integration services.</p>
+              <ul class="service-features">
+                <li>RESTful APIs</li>
+                <li>GraphQL APIs</li>
+                <li>API Integration</li>
+                <li>Documentation</li>
+              </ul>
+              <div class="service-price">Starting at $2,000</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- DevOps Services -->
+            <div class="service-card" data-category="maintenance">
+              <div class="service-icon">🚀</div>
+              <h3>DevOps Services</h3>
+              <p>Streamline your development and deployment processes.</p>
+              <ul class="service-features">
+                <li>CI/CD Pipeline</li>
+                <li>Cloud Infrastructure</li>
+                <li>Monitoring Setup</li>
+                <li>Automation</li>
+              </ul>
+              <div class="service-price">Starting at $1,500</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- Security Audit -->
+            <div class="service-card" data-
+            <!-- Security Audit -->
+            <div class="service-card" data-category="consulting">
+              <div class="service-icon">🔒</div>
+              <h3>Security Audit</h3>
+              <p>Comprehensive security assessment and recommendations.</p>
+              <ul class="service-features">
+                <li>Vulnerability Scanning</li>
+                <li>Code Review</li>
+                <li>Security Testing</li>
+                <li>Compliance Check</li>
+              </ul>
+              <div class="service-price">Starting at $2,500</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+
+            <!-- Website Maintenance -->
+            <div class="service-card" data-category="maintenance">
+              <div class="service-icon">🔧</div>
+              <h3>Website Maintenance</h3>
+              <p>Keep your website running smoothly with regular updates.</p>
+              <ul class="service-features">
+                <li>Regular Updates</li>
+                <li>Security Monitoring</li>
+                <li>Performance Optimization</li>
+                <li>Content Updates</li>
+              </ul>
+              <div class="service-price">Starting at $200/month</div>
+              <button class="inquiry-btn">Request Quote</button>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
+
     <!-- Messenger Chat Plugin -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
     <div id="special-offer-popup"></div>
+
     <!-- Scripts -->
-    <script src="special-offer.js"></script>
+    <script src="/assets/js/special-offer.js"></script>
     <script type="module">
-      import { initializeBackgroundEffects } from "./components/background-effects.js";
+      import { initializeBackgroundEffects } from "/assets/js/components/background-effects.js";
+      
       document.addEventListener("DOMContentLoaded", () => {
+        // Initialize background effects
         initializeBackgroundEffects("services");
+
+        // Category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        categoryButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            const category = button.dataset.category;
+
+            // Show/hide cards based on category
+            serviceCards.forEach(card => {
+              if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+                }, 10);
+              } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                  card.style.display = 'none';
+                }, 300);
+              }
+            });
+          });
+        });
+
+        // Initialize inquiry buttons
+        const inquiryButtons = document.querySelectorAll('.inquiry-btn');
+        inquiryButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const service = button.closest('.service-card').querySelector('h3').textContent;
+            // Open Facebook Messenger with pre-filled message
+            if (window.FB) {
+              FB.CustomerChat.show();
+              FB.CustomerChat.showDialog();
+            }
+            // You can also add custom handling here
+          });
+        });
       });
     </script>
-    <script src="services.js"></script>
-    <script src="messenger.js"></script>
+
+    <!-- Facebook Messenger Chat Script -->
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "113394291657712");
+      chatbox.setAttribute("attribution", "biz_inbox");
+      chatbox.setAttribute("theme_color", "#2ecc71");
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml: true,
+          version: 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script src="/assets/js/services.js"></script>
+    <script src="/assets/js/messenger.js"></script>
   </body>
 </html>
