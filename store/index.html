@@ -43,6 +43,18 @@
     </nav>
 
     <main class="store-container">
+      <!-- Store Header -->
+      <header class="store-header">
+        <div class="category-nav">
+          <button class="active">All Products</button>
+          <button>Development Tools</button>
+          <button>Monitors & Displays</button>
+          <button>Ergonomic Gear</button>
+          <button>Accessories</button>
+          <button>Productivity Tools</button>
+        </div>
+      </header>
+
       <!-- Filters Section -->
       <section class="filters">
         <div class="filter-grid">
@@ -82,9 +94,58 @@
       <section id="products-grid" class="products-section">
         <!-- Products will be dynamically inserted here -->
       </section>
+
+      <!-- Category Sections -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Development Tools</h2>
+          <a href="#" class="view-all"
+            >View All <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="product-grid">
+          <!-- Products will be dynamically inserted here -->
+        </div>
+      </section>
+
+      <!-- Comparison Section -->
+      <section class="comparison-section">
+        <h2>Product Comparisons</h2>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Entry Level</th>
+                <th>Professional</th>
+                <th>Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Comparison data will be dynamically inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
-    <script src="/assets/js/tech-store-main.js"></script>
+    <!-- Product Comparison Modal -->
+    <div class="modal" id="compareModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Compare Products</h2>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <table class="comparison-table" id="compareTable">
+            <!-- Comparison content will be dynamically added -->
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="/assets/js/tech-store-products.js"></script>
+    <script src="/assets/js/tech-store-main.js"></script>
   </body>
 </html>
