@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog - AB Development & Design</title>
 
-    <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,13 +13,6 @@
     />
 
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
       :root {
         --primary-color: #2ecc71;
         --primary-hover: #27ae60;
@@ -30,6 +22,13 @@
         --card-shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.15);
       }
 
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
       body {
         background: linear-gradient(
           to bottom,
@@ -37,6 +36,7 @@
           var(--background-end)
         );
         min-height: 100vh;
+        color: #333;
       }
 
       .background-animation {
@@ -90,8 +90,12 @@
 
       .blog-header h1 {
         font-size: clamp(2rem, 5vw, 2.5rem);
-        color: #333;
         margin-bottom: 1rem;
+      }
+
+      .blog-header p {
+        color: #666;
+        font-size: 1.1rem;
       }
 
       .search-container {
@@ -108,7 +112,7 @@
         border: 1px solid #ddd;
         border-radius: 4px;
         font-size: 1rem;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: all 0.3s ease;
       }
 
       .search-input {
@@ -135,7 +139,7 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: var(--card-shadow);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: all 0.3s ease;
         opacity: 0;
         animation: fadeIn 0.5s ease forwards;
       }
@@ -178,14 +182,9 @@
         transition: background-color 0.3s ease;
       }
 
-      .blog-card:hover .category-tag {
-        background: #e0e0e0;
-      }
-
       .blog-card h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
-        color: #333;
         line-height: 1.3;
       }
 
@@ -262,6 +261,13 @@
         display: none;
       }
 
+      .no-results {
+        text-align: center;
+        padding: 2rem;
+        color: #666;
+        grid-column: 1 / -1;
+      }
+
       @media (max-width: 768px) {
         .blog-container {
           margin: 1rem auto;
@@ -275,13 +281,10 @@
         .filter-dropdown {
           max-width: 100%;
         }
-      }
 
-      .no-results {
-        text-align: center;
-        padding: 2rem;
-        color: #666;
-        grid-column: 1 / -1;
+        .blog-header h1 {
+          font-size: 2rem;
+        }
       }
     </style>
   </head>
@@ -291,7 +294,7 @@
     <main class="blog-container">
       <div class="blog-header">
         <h1>Our Blog</h1>
-        <p>Insights, tutorials, and updates from our team</p>
+        <p>Insights, tutorials, and updates from AB Development & Design</p>
       </div>
 
       <div class="search-container">
@@ -330,6 +333,36 @@
           this.categoryFilter = document.getElementById("categoryFilter");
           this.posts = [];
           this.debounceTimeout = null;
+
+          // Define known blog posts
+          this.blogPaths = [
+            "AIstore.html",
+            "ArielsPralines.html",
+            "Comparison.html",
+            "Golden.html",
+            "Investing.html",
+            "LJex.html",
+            "TradingBot.html",
+            "ZKPsAB.html",
+            "amber.html",
+            "kidscode.html",
+            "scammer.html",
+          ];
+
+          // Define paths to exclude
+          this.excludePaths = [
+            "/legal/",
+            "/careers/",
+            "/projects/",
+            "/services/",
+            "/store/",
+            "/portfolio/",
+            "/contact/",
+            "index.html",
+            "privacy-policy.html",
+            "terms.html",
+            "NDA.html",
+          ];
         }
 
         async initialize() {
@@ -369,10 +402,18 @@
           container.appendChild(fragment);
         }
 
+        isBlogPost(url) {
+          const path = url.split("/").pop();
+          return (
+            this.blogPaths.includes(path) ||
+            (!this.excludePaths.some((exclude) => url.includes(exclude)) &&
+              url.endsWith(".html"))
+          );
+        }
+
         async loadPosts() {
           this.showLoading();
           try {
-            // Try loading from sitemap.xml first
             const sitemapResponse = await fetch("/sitemap.xml");
             if (sitemapResponse.ok) {
               const sitemapText = await sitemapResponse.text();
@@ -380,33 +421,49 @@
               const xmlDoc = parser.parseFromString(sitemapText, "text/xml");
               const urls = xmlDoc.querySelectorAll("url > loc");
 
+              let processedCount = 0;
               for (const url of urls) {
-                if (url.textContent.endsWith(".html")) {
-                  await this.processPost(url.textContent);
+                const fullUrl = url.textContent;
+                if (this.isBlogPost(fullUrl)) {
+                  await this.processPost(fullUrl);
+                  processedCount++;
                 }
               }
+
+              if (processedCount === 0) {
+                this.showError("No blog posts found. Please check back later.");
+              }
             } else {
-              // Fallback to site-index.html
+              throw new Error("Sitemap not available");
+            }
+          } catch (error) {
+            console.error("Error loading posts:", error);
+            try {
               const indexResponse = await fetch("/site-index.html");
               if (!indexResponse.ok)
                 throw new Error("Failed to load blog index");
 
               const text = await indexResponse.text();
-              const doc = parser.parseFromString(text, "text/html");
+              const doc = new DOMParser().parseFromString(text, "text/html");
               const links = doc.querySelectorAll("li a");
 
+              let processedCount = 0;
               for (const link of links) {
                 const href = link.getAttribute("href");
-                if (href.endsWith(".html")) {
+                if (this.isBlogPost(href)) {
                   await this.processPost(href);
+                  processedCount++;
                 }
               }
+
+              if (processedCount === 0) {
+                this.showError("No blog posts found. Please check back later.");
+              }
+            } catch (secondError) {
+              this.showError(
+                "Failed to load blog posts. Please try again later."
+              );
             }
-          } catch (error) {
-            console.error("Error loading posts:", error);
-            this.showError(
-              "Failed to load blog posts. Please try again later."
-            );
           } finally {
             this.hideLoading();
           }
@@ -463,10 +520,16 @@
         determineCategory(title) {
           const lowerTitle = title.toLowerCase();
           const categories = {
-            development: ["development", "coding", "programming", "software"],
-            design: ["design", "ui", "ux", "interface"],
-            business: ["business", "startup", "entrepreneur"],
-            technology: ["tech", "technology", "innovation"],
+            development: ["ai", "store", "code", "bot", "zkp", "development"],
+            design: ["design", "ui", "ux", "pralines", "golden"],
+            business: [
+              "investing",
+              "trading",
+              "business",
+              "comparison",
+              "ljex",
+            ],
+            technology: ["tech", "technology", "innovation", "amber"],
           };
 
           for (const [category, keywords] of Object.entries(categories)) {
