@@ -3,11 +3,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
-/* Body Styles */
 body {
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
   min-height: 100vh;
   background: #f5f5f5;
@@ -71,6 +70,8 @@ body {
   padding: 2rem;
   text-align: center;
   background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .logo-large {
@@ -95,11 +96,74 @@ body {
   color: #333;
 }
 
+/* Tagline Container */
+.tagline-container {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scrolling-text {
+  position: relative;
+  height: 1.5em;
+  overflow: hidden;
+}
+
+.scrolling-text__item {
+  color: #2ecc71;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* CTA Buttons */
+.cta-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:first-child {
+  background: #2ecc71;
+  color: white;
+}
+
+.cta-button--secondary {
+  background: white;
+  color: #2ecc71;
+  border: 2px solid #2ecc71;
+}
+
 /* Animations */
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Responsive Design */
@@ -114,5 +178,25 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+  }
+
+  .content-wrapper h1 {
+    font-size: 2rem;
+  }
+
+  .tagline-container {
+    font-size: 1.2rem;
+    flex-direction: column;
+  }
+
+  .cta-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
   }
 }
