@@ -14,7 +14,6 @@
     />
 
     <style>
-      /* Reset and base styles */
       * {
         margin: 0;
         padding: 0;
@@ -27,7 +26,6 @@
         min-height: 100vh;
       }
 
-      /* Animated Background */
       .background-animation {
         position: fixed;
         top: 0;
@@ -62,47 +60,6 @@
         }
       }
 
-      /* Navigation */
-      .navbar {
-        background: white;
-        padding: 1rem 2rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .nav-logo {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .logo-img {
-        height: 40px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .nav-links a:hover {
-        color: #2ecc71;
-      }
-
-      .nav-links a.active {
-        color: #2ecc71;
-      }
-
-      /* Blog Container */
       .blog-container {
         max-width: 1200px;
         margin: 2rem auto;
@@ -123,7 +80,6 @@
         margin-bottom: 1rem;
       }
 
-      /* Search and Filter */
       .search-container {
         margin-bottom: 2rem;
         display: flex;
@@ -148,7 +104,6 @@
         font-size: 1rem;
       }
 
-      /* Blog Grid */
       .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -179,6 +134,16 @@
         padding: 1.5rem;
       }
 
+      .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: #f0f0f0;
+        color: #666;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
       .blog-card h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
@@ -190,19 +155,17 @@
         font-size: 0.9rem;
         color: #666;
         margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
       }
 
-      .category-tag {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        background: #f0f0f0;
+      .blog-excerpt {
         color: #666;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
       .read-more {
@@ -221,18 +184,9 @@
         transform: translateY(-2px);
       }
 
-      /* Responsive Design */
       @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
         .blog-grid {
           grid-template-columns: 1fr;
-        }
-
-        .blog-header h1 {
-          font-size: 2rem;
         }
 
         .search-container {
@@ -243,30 +197,16 @@
         .filter-dropdown {
           max-width: 100%;
         }
+
+        .blog-header h1 {
+          font-size: 2rem;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- Animated Background -->
     <div class="background-animation" id="background-animation"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
-        <span>AB Development & Design</span>
-      </div>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/services">Services</a>
-        <a href="/blog" class="active">Blog</a>
-        <a href="/contact">Contact</a>
-        <a href="https://github.com/Iaarondev/" target="_blank">GitHub</a>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
     <main class="blog-container">
       <div class="blog-header">
         <h1>Our Blog</h1>
@@ -284,8 +224,8 @@
           <option value="all">All Categories</option>
           <option value="development">Development</option>
           <option value="design">Design</option>
-          <option value="technology">Technology</option>
           <option value="business">Business</option>
+          <option value="technology">Technology</option>
         </select>
       </div>
 
@@ -315,7 +255,7 @@
         }
       }
 
-      // Function to fetch and parse content from a blog post
+      // Fetch and parse blog post content
       async function fetchBlogExcerpt(url) {
         try {
           const response = await fetch(url);
@@ -323,10 +263,8 @@
           const parser = new DOMParser();
           const doc = parser.parseFromString(text, "text/html");
 
-          // Look for the first paragraph or content
           const content = doc.querySelector("p, article, .content");
           if (content) {
-            // Get first 150 characters as excerpt
             return content.textContent.trim().substring(0, 150) + "...";
           }
           return "Click to read more...";
@@ -336,15 +274,13 @@
         }
       }
 
-      // Generate a themed image based on the title
+      // Generate themed image
       function generateThematicImage(title) {
-        // Create a canvas element
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
         canvas.width = 400;
         canvas.height = 200;
 
-        // Set gradient background based on category
         const gradient = ctx.createLinearGradient(0, 0, 400, 200);
 
         if (title.toLowerCase().includes("development")) {
@@ -361,21 +297,67 @@
           gradient.addColorStop(1, "#2196F3");
         }
 
-        // Fill background
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 400, 200);
 
-        // Add title text
         ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
         ctx.font = "bold 24px Poppins";
         ctx.textAlign = "center";
         ctx.fillText(title.substring(0, 25), 200, 100);
 
-        // Return data URL
         return canvas.toDataURL();
       }
 
-      // Updated fetchBlogPosts function
+      // Determine category
+      function determineCategory(title) {
+        title = title.toLowerCase();
+        if (
+          title.includes("development") ||
+          title.includes("coding") ||
+          title.includes("programming")
+        ) {
+          return "Development";
+        } else if (
+          title.includes("design") ||
+          title.includes("ui") ||
+          title.includes("ux")
+        ) {
+          return "Design";
+        } else if (title.includes("business") || title.includes("investing")) {
+          return "Business";
+        } else {
+          return "Technology";
+        }
+      }
+
+      // Setup search and filter
+      function setupSearchAndFilter() {
+        const searchInput = document.getElementById("searchInput");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const blogCards = document.querySelectorAll(".blog-card");
+
+        function filterPosts() {
+          const searchTerm = searchInput.value.toLowerCase();
+          const selectedCategory = categoryFilter.value.toLowerCase();
+
+          blogCards.forEach((card) => {
+            const title = card.querySelector("h2").textContent.toLowerCase();
+            const category = card.dataset.category;
+
+            const matchesSearch = title.includes(searchTerm);
+            const matchesCategory =
+              selectedCategory === "all" || category === selectedCategory;
+
+            card.style.display =
+              matchesSearch && matchesCategory ? "block" : "none";
+          });
+        }
+
+        searchInput.addEventListener("input", filterPosts);
+        categoryFilter.addEventListener("change", filterPosts);
+      }
+
+      // Fetch blog posts
       async function fetchBlogPosts() {
         try {
           const response = await fetch("/site-index.html");
@@ -392,52 +374,35 @@
             const title = link.textContent.replace(".html", "");
 
             if (href.endsWith(".html")) {
-              // Get excerpt from the actual blog post
               const excerpt = await fetchBlogExcerpt(href);
               const category = determineCategory(title);
               const imageUrl = generateThematicImage(title);
 
               const blogCard = `
-                        <article class="blog-card" data-category="${category.toLowerCase()}">
-                            <img src="${imageUrl}" alt="${title}" class="blog-card-image">
-                            <div class="blog-card-content">
-                                <span class="category-tag">${category}</span>
-                                <h2>${title}</h2>
-                                <div class="blog-card-meta">
-                                    <span>Updated Recently</span>
+                            <article class="blog-card" data-category="${category.toLowerCase()}">
+                                <img src="${imageUrl}" alt="${title}" class="blog-card-image">
+                                <div class="blog-card-content">
+                                    <span class="category-tag">${category}</span>
+                                    <h2>${title}</h2>
+                                    <div class="blog-card-meta">
+                                        <span>Updated Recently</span>
+                                    </div>
+                                    <p class="blog-excerpt">${excerpt}</p>
+                                    <a href="${href}" class="read-more">Read More</a>
                                 </div>
-                                <p class="blog-excerpt">${excerpt}</p>
-                                <a href="${href}" class="read-more">Read More</a>
-                            </div>
-                        </article>
-                    `;
+                            </article>
+                        `;
               blogGrid.innerHTML += blogCard;
             }
           }
 
-          // Initialize search and filter functionality
           setupSearchAndFilter();
         } catch (error) {
           console.error("Error fetching blog posts:", error);
         }
       }
 
-      // Add new style for excerpt
-      const style = document.createElement("style");
-      style.textContent = `
-        .blog-excerpt {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    `;
-      document.head.appendChild(style);
-      // Initialize everything when the page loads
+      // Initialize everything
       document.addEventListener("DOMContentLoaded", () => {
         createBubbles();
         fetchBlogPosts();
