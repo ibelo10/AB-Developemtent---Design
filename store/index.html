@@ -194,131 +194,424 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="/assets/css/navbar.css" />
   </head>
   <body>
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+        <span>AB Development & Design</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/services/">Services</a>
+        <a href="/blog/">Blog</a>
+        <a href="/store/">Store</a>
+        <a href="/contact/">Contact</a>
+        <a
+          href="https://github.com/Iaarondev/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+      </div>
+    </nav>
     <main class="store-container">
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <h1>Tech Essentials Store</h1>
-        <p>Discover hand-picked products for developers and tech enthusiasts</p>
-      </section>
+      <!-- Store Header -->
+      <header class="store-header">
+        <div class="category-nav">
+          <button class="active">All Products</button>
+          <button>Development Tools</button>
+          <button>Monitors & Displays</button>
+          <button>Ergonomic Gear</button>
+          <button>Accessories</button>
+          <button>Productivity Tools</button>
+        </div>
+      </header>
 
-      <!-- Search Section -->
-      <section class="search-section">
-        <div class="search-bar">
-          <input
-            type="text"
-            placeholder="Search for products..."
-            id="searchInput"
-          />
-          <button onclick="searchProducts()">Search</button>
+      <!-- Filters Section -->
+      <section class="filters">
+        <div class="filter-grid">
+          <div class="filter-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="all">All Categories</option>
+              <option value="development">Development Tools</option>
+              <option value="monitors">Monitors & Displays</option>
+              <option value="ergonomic">Ergonomic Gear</option>
+              <option value="accessories">Accessories</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="priceRange">Price Range</label>
+            <div class="price-range">
+              <div class="price-inputs">
+                <input type="number" id="minPrice" placeholder="Min" min="0" />
+                <span>to</span>
+                <input type="number" id="maxPrice" placeholder="Max" />
+              </div>
+              <input
+                type="range"
+                id="priceRange"
+                min="0"
+                max="1000"
+                step="50"
+              />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label for="rating">Rating</label>
+            <select id="rating">
+              <option value="all">All Ratings</option>
+              <option value="4.5">4.5+ Stars</option>
+              <option value="4">4+ Stars</option>
+              <option value="3.5">3.5+ Stars</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sort">Sort By</label>
+            <select id="sort">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
         </div>
       </section>
 
-      <!-- Categories -->
-      <section class="categories">
-        <a
-          href="#"
-          class="category-card"
-          onclick="searchCategory('development tools')"
-        >
-          <i class="fas fa-code"></i>
-          <h2>Development Tools</h2>
-        </a>
-        <a
-          href="#"
-          class="category-card"
-          onclick="searchCategory('programming books')"
-        >
-          <i class="fas fa-book"></i>
-          <h2>Programming Books</h2>
-        </a>
-        <a
-          href="#"
-          class="category-card"
-          onclick="searchCategory('office equipment')"
-        >
-          <i class="fas fa-desktop"></i>
-          <h2>Office Equipment</h2>
-        </a>
-        <a
-          href="#"
-          class="category-card"
-          onclick="searchCategory('computer accessories')"
-        >
-          <i class="fas fa-keyboard"></i>
-          <h2>Computer Accessories</h2>
-        </a>
-      </section>
+      <!-- Development Tools Section -->
+      <section class="category-section">
+        <div class="category-header">
+          <h2 class="category-title">Development Tools</h2>
+          <a href="#" class="view-all"
+            >View All <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
 
-      <!-- Featured Products -->
-      <section class="featured-products">
-        <h2>Featured Products</h2>
-        <div class="product-grid" id="productGrid">
-          <!-- Products will be dynamically added here -->
+        <div class="product-grid">
+          <!-- Mechanical Keyboard -->
+          <div class="product-card">
+            <span class="product-badge">Best Seller</span>
+            <div class="product-image">
+              <img src="/api/placeholder/280/200" alt="Mechanical Keyboard" />
+            </div>
+            <div class="product-details">
+              <span class="product-category">Keyboards</span>
+              <h3 class="product-title">Professional Mechanical Keyboard</h3>
+              <span class="price-badge">$149.99</span>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>(4.5/5)</span>
+              </div>
+              <ul class="product-features">
+                <li>Cherry MX Brown switches</li>
+                <li>Full RGB backlight</li>
+                <li>Programmable keys</li>
+                <li>USB-C connection</li>
+              </ul>
+              <div class="action-buttons">
+                <a
+                  href="https://www.amazon.com/dp/B08TM27G42?tag=abdevndesign-20"
+                  class="view-button"
+                  target="_blank"
+                  rel="noopener"
+                  >View on Amazon</a
+                >
+                <button class="compare-button" data-product-id="1">
+                  Compare
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monitor -->
+          <div class="product-card">
+            <span class="product-badge">Top Rated</span>
+            <div class="product-image">
+              <img src="/api/placeholder/280/200" alt="4K Monitor" />
+            </div>
+            <div class="product-details">
+              <span class="product-category">Monitors</span>
+              <h3 class="product-title">32" 4K Development Monitor</h3>
+              <span class="price-badge">$399.99</span>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>(5/5)</span>
+              </div>
+              <ul class="product-features">
+                <li>4K UHD Resolution</li>
+                <li>HDR Support</li>
+                <li>USB-C with Power Delivery</li>
+                <li>Height Adjustable Stand</li>
+              </ul>
+              <div class="action-buttons">
+                <a
+                  href="https://www.amazon.com/dp/B07WLXZNG3?tag=abdevndesign-20"
+                  class="view-button"
+                  target="_blank"
+                  rel="noopener"
+                  >View on Amazon</a
+                >
+                <button class="compare-button" data-product-id="2">
+                  Compare
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ergonomic Chair -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/280/200" alt="Ergonomic Chair" />
+            </div>
+            <div class="product-details">
+              <span class="product-category">Ergonomic</span>
+              <h3 class="product-title">Developer Ergonomic Chair</h3>
+              <span class="price-badge">$299.99</span>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <span>(4.0/5)</span>
+              </div>
+              <ul class="product-features">
+                <li>Adjustable lumbar support</li>
+                <li>Breathable mesh back</li>
+                <li>Multiple recline positions</li>
+                <li>12-year warranty</li>
+              </ul>
+              <div class="action-buttons">
+                <a
+                  href="https://www.amazon.com/dp/B0B5HD3D8Y?tag=abdevndesign-20"
+                  class="view-button"
+                  target="_blank"
+                  rel="noopener"
+                  >View on Amazon</a
+                >
+                <button class="compare-button" data-product-id="3">
+                  Compare
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      <!-- Comparison Section -->
+      <section class="comparison-section">
+        <h2>Product Comparisons</h2>
+
+        <!-- Keyboard Comparison -->
+        <h3>Mechanical Keyboards</h3>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Entry Level</th>
+                <th>Professional</th>
+                <th>Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Switch Type</td>
+                <td>Membrane</td>
+                <td>Cherry MX Brown</td>
+                <td>Cherry MX Blue</td>
+              </tr>
+              <tr>
+                <td>Backlight</td>
+                <td>Single Color</td>
+                <td>RGB</td>
+                <td>Per-key RGB</td>
+              </tr>
+              <tr>
+                <td>Extra Features</td>
+                <td>Basic</td>
+                <td>Programmable Keys</td>
+                <td>Macro Recording</td>
+              </tr>
+              <tr>
+                <td>Price Range</td>
+                <td>$30-50</td>
+                <td>$100-150</td>
+                <td>$150-200+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Monitor Comparison -->
+        <h3>Development Monitors</h3>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Budget</th>
+                <th>Mid-Range</th>
+                <th>Professional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Resolution</td>
+                <td>1080p</td>
+                <td>1440p</td>
+                <td>4K</td>
+              </tr>
+              <tr>
+                <td>Size</td>
+                <td>24"</td>
+                <td>27"</td>
+                <td>32"</td>
+              </tr>
+              <tr>
+                <td>Panel Type</td>
+                <td>TN</td>
+                <td>IPS</td>
+                <td>IPS</td>
+              </tr>
+              <tr>
+                <td>Price Range</td>
+                <td>$150-200</td>
+                <td>$300-400</td>
+                <td>$500+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Product Comparison Modal -->
+      <div class="modal" id="compareModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Compare Products</h2>
+            <button class="close-modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <table class="comparison-table" id="compareTable">
+              <!-- Comparison content will be dynamically added -->
+            </table>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script>
-      const AFFILIATE_ID = "abdevndesign-20";
-
-      function generateAffiliateUrl(searchTerm) {
-        const baseUrl = "https://www.amazon.com/s";
-        const params = new URLSearchParams({
-          k: searchTerm,
-          tag: AFFILIATE_ID,
-          linkCode: "ll2",
-          language: "en_US",
-          ref_: "as_li_ss_tl",
+      // Initialize store functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Category navigation
+        const categoryButtons = document.querySelectorAll(
+          ".category-nav button"
+        );
+        categoryButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            categoryButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+            // Filter products by category (to be implemented with API)
+          });
         });
-        return `${baseUrl}?${params.toString()}`;
-      }
 
-      function searchProducts() {
-        const searchTerm = document.getElementById("searchInput").value;
-        if (searchTerm) {
-          window.open(generateAffiliateUrl(searchTerm), "_blank");
-        }
-      }
+        // Price range slider
+        const priceRange = document.getElementById("priceRange");
+        const minPrice = document.getElementById("minPrice");
+        const maxPrice = document.getElementById("maxPrice");
 
-      function searchCategory(category) {
-        window.open(generateAffiliateUrl(category), "_blank");
-      }
+        priceRange.addEventListener("input", function () {
+          maxPrice.value = this.value;
+          // Filter products by price (to be implemented with API)
+        });
 
-      // Add sample featured products
-      const featuredProducts = [
-        {
-          name: "Professional Developer Bundle",
-          price: "$99.99",
-          search: "developer software bundle",
-        },
-        {
-          name: "Programming Desk Setup",
-          price: "$299.99",
-          search: "programming desk setup",
-        },
-        {
-          name: "Mechanical Keyboard",
-          price: "$129.99",
-          search: "mechanical keyboard programmers",
-        },
-      ];
+        // Compare functionality
+        const compareButtons = document.querySelectorAll(".compare-button");
+        const compareModal = document.getElementById("compareModal");
+        const closeModal = document.querySelector(".close-modal");
 
-      const productGrid = document.getElementById("productGrid");
-      featuredProducts.forEach((product) => {
-        const productCard = document.createElement("div");
-        productCard.className = "product-card";
-        productCard.innerHTML = `
-                <img src="/api/placeholder/200/200" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p class="price">${product.price}</p>
-                <a href="${generateAffiliateUrl(
-                  product.search
-                )}" class="buy-button" target="_blank">View on Amazon</a>
-            `;
-        productGrid.appendChild(productCard);
+        compareButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const productId = this.dataset.productId;
+            compareModal.style.display = "flex";
+            // Load comparison data (to be implemented with API)
+          });
+        });
+
+        closeModal.addEventListener("click", function () {
+          compareModal.style.display = "none";
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener("click", function (event) {
+          if (event.target === compareModal) {
+            compareModal.style.display = "none";
+          }
+        });
+
+        // Filter functionality
+        const filterSelects = document.querySelectorAll(".filter-group select");
+        filterSelects.forEach((select) => {
+          select.addEventListener("change", function () {
+            // Apply filters (to be implemented with API)
+            console.log("Filter changed:", this.id, this.value);
+          });
+        });
       });
+
+      // Product data structure for future API integration
+      const productData = {
+        categories: [
+          "Development Tools",
+          "Monitors",
+          "Ergonomic Gear",
+          "Accessories",
+        ],
+        sortOptions: ["featured", "price-low", "price-high", "rating"],
+        products: [
+          {
+            id: 1,
+            category: "Development Tools",
+            name: "Professional Mechanical Keyboard",
+            price: 149.99,
+            rating: 4.5,
+            features: [
+              "Cherry MX Brown switches",
+              "Full RGB backlight",
+              "Programmable keys",
+              "USB-C connection",
+            ],
+            amazonUrl:
+              "https://www.amazon.com/dp/B08TM27G42?tag=abdevndesign-20",
+          },
+          // More products to be added
+        ],
+      };
+
+      // Function to generate product cards (for future API integration)
+      function createProductCard(product) {
+        // Product card generation logic
+      }
+
+      // Function to update product display (for future API integration)
+      function updateProducts(filters) {
+        // Product filtering and display logic
+      }
     </script>
   </body>
 </html>
