@@ -1,22 +1,34 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chef 24/7 Kitchen Drip | Authentic New Orleans Cuisine</title>
+    <meta name="description" content="Chef 24/7 Kitchen Drip - Authentic New Orleans cuisine, private chef services, and catering in Fort Worth. Experience genuine Creole and Cajun flavors.">
+    <meta name="keywords" content="New Orleans chef, Fort Worth catering, private chef, Creole food, Cajun cuisine, Louisiana cooking">
+    <meta name="author" content="Chef 24/7 Kitchen Drip">
+    <meta property="og:title" content="Chef 24/7 Kitchen Drip | Authentic New Orleans Cuisine">
+    <meta property="og:description" content="Experience authentic New Orleans cuisine with our private chef services, catering, and cooking classes in Fort Worth.">
+    <meta property="og:image" content="path-to-your-logo.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <title>Chef 24/7 Kitchen Drip | Authentic New Orleans Private Chef & Catering</title>
+    
     <style>
         :root {
             --deep-brown: #2C1810;
             --gold: #FFD700;
             --burgundy: #800020;
             --cream: #FFFDD0;
+            --mardi-purple: #58427C;
+            --dark-overlay: rgba(0, 0, 0, 0.7);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
@@ -24,8 +36,49 @@
             line-height: 1.6;
             background: var(--deep-brown);
             color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-brown) 0%, var(--mardi-purple) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        /* Floating Icons */
         #floating-icons {
             position: fixed;
             width: 100%;
@@ -42,108 +95,6 @@
             color: var(--gold);
             opacity: 0.3;
             z-index: 1;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .btn {
-            background: var(--gold);
-            color: black;
-            border: none;
-            border-radius: 50px;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            width: 100%;
-            max-width: 400px;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 3;
-        }
-
-        /* Modal Styles */
-        .booking-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--deep-brown);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            width: 100%;
-            min-height: 100%;
-            padding: 2rem;
-            color: white;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .form-header {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: white;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid white;
-            border-radius: 5px;
-            background: white;
-            font-size: 1rem;
-        }
-
-        .social-btn {
-            background: var(--gold);
-            color: black;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin: 1rem 0;
-            width: 100%;
-            max-width: 400px;
-            justify-content: center;
-            position: relative;
-            z-index: 3;
         }
 
         @keyframes float {
@@ -163,70 +114,426 @@
             }
         }
 
+        /* Services Section */
+        .services {
+            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, var(--mardi-purple) 0%, var(--burgundy) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.2);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: var(--deep-brown);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            z-index: 3;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            background: #FFE44D;
+        }
+
+        /* Social Media Section */
+        .social-showcase {
+            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, var(--burgundy) 0%, var(--deep-brown) 100%);
+            text-align: center;
+        }
+
+        .social-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-card {
+            background: rgba(0,0,0,0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .social-btn {
+            background: var(--gold);
+            color: var(--deep-brown);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 400px;
+            justify-content: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Modal Styles */
+        .booking-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-brown);
+            z-index: 1000;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-content {
+            width: 100%;
+            min-height: 100%;
+            padding: 2rem 1rem;
+            color: white;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .form-header {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--cream);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Video Section */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
             .modal-content {
                 padding: 1rem;
             }
 
             .form-header {
-                font-size: 2rem;
-                margin-top: 2rem;
+                margin-top: 3rem;
+            }
+
+            .close-modal {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px; /* Prevent zoom on iOS */
+                padding: 0.8rem;
+            }
+
+            .btn, .social-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .video-wrapper {
+                margin: 0 -1rem;
+                border-radius: 0;
+            }
+        }
+
+        /* Accessibility and Focus Styles */
+        .btn:focus,
+        .social-btn:focus,
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* Print Styles */
+        @media print {
+            .booking-modal {
+                position: static;
+                display: block;
+            }
+
+            .close-modal,
+            .btn:not([type="submit"]),
+            #floating-icons {
+                display: none;
             }
         }
     </style>
 </head>
-
 <body>
     <div id="floating-icons"></div>
 
-    <div class="container">
-        <!-- Social Media Section -->
-        <div class="social-section" style="text-align: center; padding: 2rem;">
-            <a href="https://www.facebook.com/chefskitchendrip" class="social-btn">
-                <span style="font-size: 1.5rem;">📱</span>
-                FOLLOW ON FACEBOOK
-            </a>
-        </div>
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero" aria-label="main banner">
+            <h1>Chef 24/7<br>Kitchen Drip</h1>
+            <p>Taste the Soul of New Orleans</p>
+            <button class="btn" onclick="openBookingModal()" aria-label="Open booking form">
+                REQUEST DA CHEF
+            </button>
+        </section>
 
-        <!-- Request Form -->
-        <div class="booking-modal" id="bookingModal">
-            <button class="close-modal" onclick="closeBookingModal()">✕</button>
+        <!-- Services Section -->
+        <section class="services" aria-label="our services">
+            <div class="services-grid">
+                <article class="service-card">
+                    <h3>Private Chef Experience</h3>
+                    <p>Authentic New Orleans cuisine prepared in your home</p>
+                </article>
+                <article class="service-card">
+                    <h3>Event Catering</h3>
+                    <p>Bring the flavor of the French Quarter to your event</p>
+                </article>
+                <article class="service-card">
+                    <h3>Creole Cuisine Classes</h3>
+                    <p>Learn the secrets of Louisiana cooking</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-showcase" aria-label="social media">
+            <div class="social-container">
+                <h2>Follow Our Culinary Journey</h2>
+                <div class="social-grid">
+                    <div class="social-card">
+                        <h3>Latest Videos</h3>
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/RqOkHrbKTuY" 
+                                title="Chef's Kitchen Demo"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <a href="https://www.youtube.com/@infomuxmedia" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="social-btn"
+                           aria-label="Subscribe to our YouTube channel">
+                            <span aria-hidden="true">📺</span>
+                            Subscribe on YouTube
+                        </a>
+                    </div>
+
+                    <div class="social-card">
+                        <h3>Connect With Us</h3>
+                        <p>Follow us for daily updates, behind-the-scenes content, and special offers!</p>
+                        <a href="https://www.facebook.com/chefskitchendrip" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="social-btn"
+                           aria-label="Follow us on Facebook">
+                            <span aria-hidden="true">📱</span>
+                            Follow on Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Booking Modal -->
+        <div class="booking-modal" id="bookingModal" aria-label="booking form">
+            <button class="close-modal" onclick="closeBookingModal()" aria-label="Close booking form">✕</button>
             <div class="modal-content">
                 <h2 class="form-header">Request Da Chef</h2>
-                <form id="bookingForm" onsubmit="submitBookingForm(event)">
+                <form id="bookingForm" onsubmit="submitBookingForm(event)" novalidate>
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            aria-required="true"
+                            placeholder="Your full name">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            aria-required="true"
+                            placeholder="your@email.com">
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            required 
+                            aria-required="true"
+                            placeholder="(817) 806-6854">
                     </div>
                     
                     <div class="form-group">
                         <label for="date">Requested Date *</label>
-                        <input type="date" id="date" name="date" required>
+                        <input 
+                            type="date" 
+                            id="date" 
+                            name="date" 
+                            required 
+                            aria-required="true">
                     </div>
                     
                     <div class="form-group">
                         <label for="time">Preferred Time *</label>
-                        <input type="time" id="time" name="time" required>
+                        <input 
+                            type="time" 
+                            id="time" 
+                            name="time" 
+                            required 
+                            aria-required="true">
                     </div>
                     
                     <div class="form-group">
                         <label for="guests">Number of Guests *</label>
-                        <input type="number" id="guests" name="guests" min="1" required>
+                        <input 
+                            type="number" 
+                            id="guests" 
+                            name="guests" 
+                            min="1" 
+                            required 
+                            aria-required="true"
+                            placeholder="Number of guests">
                     </div>
                     
                     <div class="form-group">
                         <label for="serviceType">Type of Service *</label>
-                        <select id="serviceType" name="serviceType" required>
+                        <select 
+                            id="serviceType" 
+                            name="serviceType" 
+                            required 
+                            aria-required="true">
                             <option value="">Select a service</option>
                             <option value="private-chef">Private Chef Experience</option>
                             <option value="catering">Catering Service</option>
@@ -237,65 +544,92 @@
                     
                     <div class="form-group">
                         <label for="dietary">Dietary Restrictions</label>
-                        <textarea id="dietary" name="dietary" rows="3"></textarea>
+                        <textarea 
+                            id="dietary" 
+                            name="dietary" 
+                            rows="3"
+                            placeholder="Any dietary restrictions or allergies?"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="notes">Additional Notes</label>
-                        <textarea id="notes" name="notes" rows="3"></textarea>
+                        <textarea 
+                            id="notes" 
+                            name="notes" 
+                            rows="3"
+                            placeholder="Any special requests or additional information?"></textarea>
                     </div>
                     
                     <button type="submit" class="btn">SUBMIT REQUEST</button>
                 </form>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
-        function createFloatingIcon() {
-            const icons = [
-                '🌶️', '🍳', '🥘', '♪', '♫', '🎵', '🎶',
-                '🍽️', '👨‍🍳', '🥄', '🍴', '🥂', '🍷'
-            ];
+        // Form Validation and Submission
+        function validateForm(formData) {
+            const errors = [];
             
-            const icon = document.createElement('div');
-            icon.className = 'floating-icon';
+            if (!formData.get('name').trim()) {
+                errors.push('Name is required');
+            }
             
-            // Random icon and size
-            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
-            icon.style.fontSize = Math.random() * (32 - 20) + 20 + 'px';
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.get('email'))) {
+                errors.push('Valid email is required');
+            }
             
-            // Random position and duration
-            icon.style.left = Math.random() * window.innerWidth + 'px';
-            icon.style.animationDuration = Math.random() * (6 - 3) + 3 + 's';
+            const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if (!phoneRegex.test(formData.get('phone').replace(/\D/g, ''))) {
+                errors.push('Valid phone number is required');
+            }
             
-            document.getElementById('floating-icons').appendChild(icon);
+            if (!formData.get('date')) {
+                errors.push('Date is required');
+            }
             
-            // Remove after animation
-            icon.addEventListener('animationend', () => icon.remove());
+            if (!formData.get('time')) {
+                errors.push('Time is required');
+            }
+            
+            if (!formData.get('guests') || formData.get('guests') < 1) {
+                errors.push('Number of guests is required');
+            }
+            
+            if (!formData.get('serviceType')) {
+                errors.push('Service type is required');
+            }
+            
+            return errors;
         }
 
-        // Create icons every second
-        setInterval(createFloatingIcon, 1000);
-
-        function openBookingModal() {
-            const modal = document.getElementById('bookingModal');
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            
-            // Reset form when opening
-            document.getElementById('bookingForm').reset();
+        function formatPhoneNumber(input) {
+            const cleaned = input.replace(/\D/g, '');
+            const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+            if (match) {
+                return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+            }
+            return input;
         }
 
-        function closeBookingModal() {
-            document.getElementById('bookingModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            const input = e.target;
+            input.value = formatPhoneNumber(input.value);
+        });
 
         function submitBookingForm(event) {
             event.preventDefault();
             
             const formData = new FormData(event.target);
+            const errors = validateForm(formData);
+            
+            if (errors.length > 0) {
+                alert('Please correct the following:\n\n' + errors.join('\n'));
+                return;
+            }
+            
             const formProps = Object.fromEntries(formData);
             
             const emailBody = `
@@ -327,33 +661,59 @@ ${formProps.notes || 'None provided'}
             
             window.location.href = mailtoLink;
             
-            // Reset form and close modal
             event.target.reset();
             closeBookingModal();
         }
 
-        // Set minimum date to today
-        const dateInput = document.getElementById('date');
-        if (dateInput) {
-            const today = new Date().toISOString().split('T')[0];
-            dateInput.min = today;
+        // Floating Icons Animation
+        function createFloatingIcon() {
+            const icons = [
+                '🌶️', '🍳', '🥘', '♪', '♫', '🎵', '🎶',
+                '🍽️', '👨‍🍳', '🥄', '🍴', '🥂', '🍷'
+            ];
+            
+            const icon = document.createElement('div');
+            icon.className = 'floating-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            
+            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.fontSize = Math.random() * (32 - 20) + 20 + 'px';
+            icon.style.left = Math.random() * window.innerWidth + 'px';
+            icon.style.animationDuration = Math.random() * (6 - 3) + 3 + 's';
+            
+            document.getElementById('floating-icons').appendChild(icon);
+            
+            icon.addEventListener('animationend', () => icon.remove());
         }
 
-        // Initialize form display
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Show form by default on page load
+            // Set minimum date to today
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+            }
+
+            // Start floating icons
+            setInterval(createFloatingIcon, 1000);
+
+            // Show form initially
             document.getElementById('bookingModal').style.display = 'block';
         });
 
-        // Prevent form submission on enter key
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                return false;
-            }
-        });
+        // Modal Controls
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
 
-        // Add touch event handling for mobile
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Mobile optimizations
         if ('ontouchstart' in window) {
             document.querySelector('.modal-content').addEventListener('touchmove', function(e) {
                 e.stopPropagation();
