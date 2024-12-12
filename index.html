@@ -2,21 +2,30 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) with CSP nonce -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP" nonce="analytics-tag"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
+      nonce="analytics-tag"
+    ></script>
     <script nonce="analytics-inline">
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-H16CFGEXZP');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-H16CFGEXZP");
     </script>
-    
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AB Development & Design</title>
 
     <!-- Facebook Meta Tags -->
     <meta property="og:title" content="AB Development & Design" />
-    <meta property="og:description" content="We build innovative solutions with passion" />
+    <meta
+      property="og:description"
+      content="We build innovative solutions with passion"
+    />
     <meta property="og:image" content="/assets/images/ABLogo.png" />
     <meta property="og:url" content="https://abdevndesign.com" />
     <meta property="og:type" content="website" />
@@ -24,9 +33,11 @@
     <!-- Google Fonts - preloaded -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400,500,600,700,800,900&display=swap" 
-          rel="stylesheet" 
-          crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400,500,600,700,800,900&display=swap"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
 
     <!-- Local Resources -->
     <script defer src="/assets/js/jquery.min.js"></script>
@@ -44,17 +55,26 @@
       </div>
       <div class="nav-links">
         <a href="/" class="active">Home</a>
-        <a href="/portfolio/">Portfolio</a>
-        <a href="/services/">Services</a>
-        <a href="/blog/">Blog</a>
+        <a href="portfolio\index.html">Portfolio</a>
+        <a href="services\index.html">Services</a>
+        <a href="blog\index.html">Blog</a>
         <a href="/contact/">Contact</a>
-        <a href="https://github.com/Iaarondev/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a
+          href="https://github.com/Iaarondev/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
       </div>
     </nav>
 
     <div class="hero-container">
       <div class="logo-large">
-        <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img-large" />
+        <img
+          src="/assets/images/ABLogo.png"
+          alt="AB Logo"
+          class="logo-img-large"
+        />
       </div>
       <div class="content-wrapper">
         <h1>AB Development & Design</h1>
@@ -68,12 +88,16 @@
         <div class="hero-social">
           <div class="cta-container">
             <a href="/portfolio/" class="cta-button">VIEW PORTFOLIO</a>
-            <a href="/services/" class="cta-button cta-button--secondary">OUR SERVICES</a>
+            <a href="/services/" class="cta-button cta-button--secondary"
+              >OUR SERVICES</a
+            >
           </div>
-          <a href="https://github.com/Iaarondev/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="github-btn">
+          <a
+            href="https://github.com/Iaarondev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="github-btn"
+          >
             <i class="fab fa-github"></i>
             <span>View on GitHub</span>
           </a>
@@ -103,14 +127,25 @@
           <button class="close-btn" onclick="closePopup()">&times;</button>
         </div>
         <p>Subscribe to receive our latest updates and news.</p>
-        <form id="subscription-form" 
-              action="https://formsubmit.co/18113d6ac00709dae8fee3e2c7b95f2d" 
-              method="POST">
-          <input type="hidden" name="_subject" value="New Website Subscription!">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://abdevndesign.com">
-          <input type="email" name="email" placeholder="Enter your email address" required>
+        <form
+          id="subscription-form"
+          action="https://formsubmit.co/18113d6ac00709dae8fee3e2c7b95f2d"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Website Subscription!"
+          />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://abdevndesign.com" />
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
           <button type="submit" class="sub-btn">Subscribe</button>
         </form>
       </div>
@@ -171,48 +206,51 @@
 
     <!-- Subscription Popup Script -->
     <script>
-    (function() {
+      (function () {
         function showPopup() {
-            if (!localStorage.getItem('subscribed') && !localStorage.getItem('hasVisited')) {
-                setTimeout(() => {
-                    const popup = document.getElementById('subscription-popup');
-                    if (popup) popup.style.display = 'block';
-                }, 2000);
-                localStorage.setItem('hasVisited', 'true');
-            }
+          if (
+            !localStorage.getItem("subscribed") &&
+            !localStorage.getItem("hasVisited")
+          ) {
+            setTimeout(() => {
+              const popup = document.getElementById("subscription-popup");
+              if (popup) popup.style.display = "block";
+            }, 2000);
+            localStorage.setItem("hasVisited", "true");
+          }
         }
 
-        window.closePopup = function() {
-            const popup = document.getElementById('subscription-popup');
-            if (popup) popup.style.display = 'none';
-        }
+        window.closePopup = function () {
+          const popup = document.getElementById("subscription-popup");
+          if (popup) popup.style.display = "none";
+        };
 
         function handleSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            form.submit();
-            localStorage.setItem('subscribed', 'true');
-            closePopup();
-            setTimeout(() => {
-                alert('Thank you for subscribing!');
-            }, 500);
+          event.preventDefault();
+          const form = event.target;
+          form.submit();
+          localStorage.setItem("subscribed", "true");
+          closePopup();
+          setTimeout(() => {
+            alert("Thank you for subscribing!");
+          }, 500);
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            showPopup();
-            const form = document.getElementById('subscription-form');
-            if (form) {
-                form.addEventListener('submit', handleSubmit);
+        document.addEventListener("DOMContentLoaded", function () {
+          showPopup();
+          const form = document.getElementById("subscription-form");
+          if (form) {
+            form.addEventListener("submit", handleSubmit);
+          }
+
+          document.addEventListener("click", function (event) {
+            const popup = document.getElementById("subscription-popup");
+            if (popup && event.target.closest(".subscription-popup") === null) {
+              closePopup();
             }
-            
-            document.addEventListener('click', function(event) {
-                const popup = document.getElementById('subscription-popup');
-                if (popup && event.target.closest('.subscription-popup') === null) {
-                    closePopup();
-                }
-            });
+          });
         });
-    })();
+      })();
     </script>
   </body>
 </html>
