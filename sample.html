@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chef 24/7 Kitchen Drip - Authentic New Orleans cuisine, catering services, and private chef experiences in Fort Worth. Specializing in traditional and vegan Creole dishes.">
-    <meta name="keywords" content="New Orleans cuisine, Fort Worth catering, private chef, vegan Creole food, authentic Cajun cooking">
-    <title>Chef 24/7 Kitchen Drip | Authentic New Orleans Cuisine & Catering</title>
+    <meta name="description" content="Chef 24/7 Kitchen Drip - Authentic New Orleans cuisine, private chef services, and catering in Fort Worth. Experience the true taste of Louisiana.">
+    <meta name="keywords" content="New Orleans cuisine, Fort Worth catering, private chef, Louisiana food, Creole cooking, Cajun food">
+    <title>Chef 24/7 Kitchen Drip | Authentic New Orleans Cuisine</title>
     <style>
         :root {
             --purple: #522D80;
-            --green: #2D8042;
+            --deep-purple: #2C1810;
             --gold: #FFD700;
             --burgundy: #800020;
             --olive: #4a4a40;
             --cream: #FFFDD0;
+            --mardi-purple: #58427C;
         }
 
         * {
@@ -27,46 +28,47 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            background: var(--deep-purple);
         }
 
-        .jazz-note {
-            position: absolute;
-            font-size: 24px;
-            color: var(--gold);
+        #floating-icons {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
             pointer-events: none;
-            animation: jazzNotes 3s linear infinite;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .floating-icon {
+            position: absolute;
+            animation: float 4s linear infinite;
+            pointer-events: none;
+            color: var(--gold);
             opacity: 0;
-            z-index: 1000;
-        }
-
-        @keyframes jazzNotes {
-            0% { transform: translateY(0) rotate(0); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 1;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes swing {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg) scale(1.5);
+                opacity: 0;
+            }
         }
 
         .hero {
-            background: linear-gradient(to bottom, var(--olive) 0%, var(--purple) 100%);
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--mardi-purple) 100%);
             min-height: 100vh;
             color: white;
             text-align: center;
@@ -75,339 +77,296 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden;
             padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
         }
 
         .hero h1 {
             font-size: 4.5rem;
+            font-weight: bold;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: swing 3s infinite ease-in-out;
-            z-index: 1;
+            line-height: 1.2;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
         }
 
         .hero p {
             font-size: 1.8rem;
             margin-bottom: 2rem;
             font-style: italic;
-            animation: float 3s infinite ease-in-out;
-            z-index: 1;
+            color: var(--cream);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
         }
 
         .btn {
+            position: relative;
             display: inline-block;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.1rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            cursor: pointer;
-        }
-
-        .btn-primary {
+            color: var(--deep-purple);
             background: var(--gold);
-            color: black;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .btn-secondary {
-            background: var(--green);
-            color: white;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #FFE44D;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
         }
 
         .services {
-            background: linear-gradient(to bottom, var(--purple) 0%, var(--burgundy) 100%);
-            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, var(--mardi-purple) 0%, var(--burgundy) 100%);
+            padding: 6rem 2rem;
             color: white;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .content-card {
-            background: linear-gradient(135deg, var(--purple), var(--burgundy));
+        .service-card {
+            background: rgba(255,255,255,0.1);
             padding: 2rem;
             border-radius: 15px;
-            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.2);
+            transition: all 0.3s ease;
             text-align: center;
-            transition: transform 0.3s ease;
-            border: 2px solid var(--gold);
         }
 
-        .content-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .social-showcase {
-            background: linear-gradient(to bottom, var(--burgundy) 0%, var(--purple) 100%);
-            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, var(--burgundy) 0%, var(--deep-purple) 100%);
+            padding: 6rem 2rem;
             color: white;
+            position: relative;
         }
 
         .social-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 1rem;
         }
 
         .social-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-header h2 {
+            font-size: 3rem;
             color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
         }
 
         .youtube-container {
             background: rgba(0,0,0,0.3);
             border-radius: 15px;
-            padding: 1rem;
+            padding: 2rem;
             text-align: center;
         }
 
-        .youtube-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .youtube-card {
-            background: var(--purple);
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin-bottom: 1.5rem;
             border-radius: 10px;
-            padding: 1rem;
-            transition: transform 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .youtube-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .facebook-container {
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            padding: 1rem;
-            text-align: center;
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .social-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
             padding: 1rem 2rem;
-            border-radius: 50px;
             background: var(--gold);
-            color: black;
+            color: var(--deep-purple);
             text-decoration: none;
+            border-radius: 50px;
             font-weight: bold;
-            transition: transform 0.3s ease;
-            margin: 1rem 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .social-btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
 
         .social-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        .booking-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 1rem;
-            overflow-y: auto;
-        }
-
-        .booking-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-            margin: 2rem auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
             font-size: 1.5rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: #333;
+        }
+
+        .facebook-container {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .facebook-content {
+            margin-bottom: 1.5rem;
         }
 
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero p {
                 font-size: 1.2rem;
             }
 
-            .booking-modal {
-                padding: 0;
+            .social-header h2 {
+                font-size: 2rem;
             }
 
-            .booking-form {
-                margin: 0;
-                min-height: 100%;
+            .social-grid {
+                gap: 2rem;
+            }
+
+            .video-wrapper {
+                margin: 0 -1rem;
                 border-radius: 0;
-                width: 100%;
-                padding: 1rem;
-            }
-
-            .close-modal {
-                position: fixed;
-                top: 1rem;
-                right: 1rem;
-                background: var(--gold);
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: black;
-                z-index: 1001;
-            }
-
-            .social-container {
-                grid-template-columns: 1fr;
-            }
-
-            .youtube-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group input,
-            .form-group textarea,
-            .form-group select {
-                padding: 0.5rem;
             }
         }
     </style>
 </head>
+
 <body>
+    <div id="floating-icons"></div>
+
     <div class="hero">
-        <div class="musical-notes" aria-hidden="true">
-            <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <pattern id="notes" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <text x="0" y="15" fill="currentColor">♪</text>
-                    <text x="10" y="5" fill="currentColor">♫</text>
-                </pattern>
-                <rect width="100%" height="100%" fill="url(#notes)" />
-            </svg>
-        </div>
-        <h1>Chef 24/7 Kitchen Drip</h1>
+        <h1>Chef 24/7<br>Kitchen Drip</h1>
         <p>Taste the Soul of New Orleans</p>
-        <button class="btn btn-primary" onclick="openBookingModal()">Request Da Chef</button>
+        <button class="btn" onclick="openBookingModal()">REQUEST DA CHEF</button>
     </div>
 
     <section class="services">
         <div class="services-grid">
-            <div class="content-card">
-                <div class="content-icon">🍳</div>
-                <h3>Private Chef Service</h3>
-                <p>Exclusive in-home dining experience with personalized menu creation</p>
+            <div class="service-card">
+                <h3>Private Chef Experience</h3>
+                <p>Authentic New Orleans cuisine prepared in your home</p>
             </div>
-            <div class="content-card">
-                <div class="content-icon">🎉</div>
+            <div class="service-card">
                 <h3>Event Catering</h3>
-                <p>Professional catering for events with authentic New Orleans cuisine</p>
+                <p>Bring the flavor of the French Quarter to your event</p>
             </div>
-            <div class="content-card">
-                <div class="content-icon">🌱</div>
-                <h3>Vegan Menu</h3>
-                <p>Plant-based alternatives to classic New Orleans dishes</p>
+            <div class="service-card">
+                <h3>Creole Cuisine Classes</h3>
+                <p>Learn the secrets of Louisiana cooking</p>
             </div>
         </div>
     </section>
 
     <section class="social-showcase">
-        <h2 class="social-header">Follow Our Culinary Journey</h2>
         <div class="social-container">
-            <div class="youtube-container">
-                <h3>Latest Videos</h3>
-                <div class="youtube-grid">
-                    <div class="youtube-card">
-                        <h4>Cooking Demonstrations</h4>
-                        <p>Watch our latest New Orleans recipes come to life</p>
-                        <a href="https://www.youtube.com/@infomuxmedia" target="_blank" class="social-btn">
-                            <svg class="social-icon" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M23.8 7.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1-3.4-.2-8.4-.2-8.4-.2s-5 0-8.4.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S0 9.1 0 11.1v1.8c0 1.9.2 3.9.2 3.9s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8.2.2 8.2.2s5 0 8.4-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.9V11c0-1.9-.2-3.8-.2-3.8z"/>
-                            </svg>
-                            Subscribe on YouTube
-                        </a>
-                    </div>
-                </div>
+            <div class="social-header">
+                <h2>Follow Our Culinary Journey</h2>
             </div>
+            
+            <div class="social-grid">
+                <div class="youtube-container">
+                    <h3>Latest Videos</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/RqOkHrbKTuY" 
+                            title="Chef's Kitchen Demo"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a href="https://www.youtube.com/@infomuxmedia" target="_blank" class="social-btn">
+                        <span class="social-icon">📺</span>
+                        Subscribe on YouTube
+                    </a>
+                </div>
 
-            <div class="facebook-container">
-                <h3>Connect With Us</h3>
-                <p>Follow us on Facebook for daily updates, behind-the-scenes content, and special offers</p>
-                <a href="https://www.facebook.com/chefskitchendrip" target="_blank" class="social-btn">
-                    <svg class="social-icon" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
-                    </svg>
-                    Follow on Facebook
-                </a>
+                <div class="facebook-container">
+                    <h3>Connect With Us</h3>
+                    <div class="facebook-content">
+                        <p>Follow us for daily updates, behind-the-scenes content, and special offers!</p>
+                    </div>
+                    <a href="https://www.facebook.com/chefskitchendrip" target="_blank" class="social-btn">
+                        <span class="social-icon">📱</span>
+                        Follow on Facebook
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Booking Modal -->
     <div class="booking-modal" id="bookingModal">
-        <div class="booking-form">
+        <div class="modal-content">
             <button class="close-modal" onclick="closeBookingModal()">×</button>
             <h2>Request Da Chef</h2>
-            <form id="chefRequestForm" onsubmit="submitBookingForm(event)">
+            <form id="bookingForm" onsubmit="submitBookingForm(event)">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -450,20 +409,46 @@
                     <label for="notes">Additional Notes</label>
                     <textarea id="notes" name="notes" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit Request</button>
+                <button type="submit" class="btn">Submit Request</button>
             </form>
         </div>
     </div>
 
     <script>
+        function createFloatingIcon() {
+            const icons = [
+                '♪', '♫', '🎭', '🎺', '🎷', '⚜️', '🎪', '🪗',
+                '🌶️', '🍜', '🥘', '🎵', '🎹', '🎼'
+            ];
+            
+            const icon = document.createElement('div');
+            icon.className = 'floating-icon';
+            
+            // Randomly select icon and size
+            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.fontSize = Math.random() * (32 - 20) + 20 + 'px';
+            
+            // Random starting position and animation duration
+            icon.style.left = Math.random() * window.innerWidth + 'px';
+            icon.style.animationDuration = Math.random() * (6 - 3) + 3 + 's';
+            
+            document.getElementById('floating-icons').appendChild(icon);
+            
+            // Remove icon after animation
+            icon.addEventListener('animationend', () => icon.remove());
+        }
+
+        // Create icons periodically
+        setInterval(createFloatingIcon, 1000);
+
         function openBookingModal() {
-            document.getElementById('bookingModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.getElementById('bookingModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
         function closeBookingModal() {
             document.getElementById('bookingModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto';
         }
 
         function submitBookingForm(event) {
@@ -472,7 +457,6 @@
             const formData = new FormData(event.target);
             const formProps = Object.fromEntries(formData);
             
-            // Create email body with better formatting
             const emailBody = `
 New Chef Request
 
@@ -498,51 +482,22 @@ Additional Notes:
 ${formProps.notes || 'None provided'}
             `;
 
-            // Create mailto link with formatted body
             const mailtoLink = `mailto:724chef@gmail.com?subject=Chef Request - ${formProps.name} for ${formProps.date}&body=${encodeURIComponent(emailBody)}`;
             
-            // Open email client
             window.location.href = mailtoLink;
             
-            // Close modal and reset form
             event.target.reset();
             closeBookingModal();
         }
 
-        // Create floating jazz notes
-        function createJazzNote() {
-            const notes = ['♪', '♫', '♩', '♬'];
-            const note = document.createElement('div');
-            note.className = 'jazz-note';
-            note.textContent = notes[Math.floor(Math.random() * notes.length)];
-            note.style.left = Math.random() * window.innerWidth + 'px';
-            note.style.top = window.innerHeight + 'px';
-            document.querySelector('.musical-notes').appendChild(note);
-
-            // Remove note after animation
-            note.addEventListener('animationend', () => {
-                note.remove();
-            });
-        }
-
-        // Create notes periodically
-        setInterval(createJazzNote, 2000);
-
-        // Close modal when clicking outside
+        // Close modal on outside click
         window.onclick = function(event) {
             if (event.target == document.getElementById('bookingModal')) {
                 closeBookingModal();
             }
         }
 
-        // Handle mobile form scrolling
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            document.querySelector('.booking-form').addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        }
-
-        // Set minimum date to today for the date input
+        // Set minimum date to today
         const dateInput = document.getElementById('date');
         if (dateInput) {
             const today = new Date().toISOString().split('T')[0];
