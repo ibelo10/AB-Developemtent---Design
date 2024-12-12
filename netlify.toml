@@ -1,20 +1,16 @@
 [build]
   command = "npm install && npm run build"
-  publish = "projects/transaction-ticker/build"
+  publish = "/"  # or your actual build directory if you have one
   functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "18.19.0"
   NPM_VERSION = "9.8.1"
 
+# If you need any redirects for your AB Development site, add them here
 [[redirects]]
-  from = "/projects/transaction-ticker/*"
-  to = "/projects/transaction-ticker/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 [[headers]]
@@ -25,5 +21,5 @@
       script-src 'self' 'unsafe-inline' 'unsafe-eval';
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
-      connect-src 'self' connect.squareup.com '/.netlify/functions/*';
+      connect-src 'self';
     """
