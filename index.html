@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>Negroar Resilient - Welcome</title>
     <link
@@ -18,17 +18,25 @@
         box-sizing: border-box;
       }
 
+      html,
       body {
         margin: 0;
-        min-height: 100vh;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         background: #000;
         font-family: "Cormorant Garamond", serif;
-        overflow: hidden;
-        perspective: 1000px;
+        min-height: 100vh;
         position: relative;
+        background: linear-gradient(to bottom, #1a1208 0%, #000 100%);
       }
 
       .video-container {
@@ -47,40 +55,84 @@
         opacity: 0.7;
       }
 
-      .content-wrapper {
-        position: relative;
+      .initial-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        z-index: 95;
+        height: 100%;
+        background: #000;
+        z-index: 100;
+        animation: initialFade 2s forwards;
+      }
+
+      .curtain {
+        position: fixed;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(45deg, #000 0%, #1a1208 100%);
+        transition: transform 1.8s cubic-bezier(0.7, 0, 0.3, 1);
+        box-shadow: 0 0 20px rgba(218, 165, 32, 0.2);
+        z-index: 90;
+      }
+
+      .curtain::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 2px,
+          rgba(218, 165, 32, 0.05) 2px,
+          rgba(218, 165, 32, 0.05) 4px
+        );
+      }
+
+      .curtain-left {
+        left: 0;
+        transform: translateX(0);
+        animation: slideLeft 1.8s cubic-bezier(0.7, 0, 0.3, 1) 0.5s forwards;
+      }
+
+      .curtain-right {
+        right: 0;
+        transform: translateX(0);
+        animation: slideRight 1.8s cubic-bezier(0.7, 0, 0.3, 1) 0.5s forwards;
       }
 
       .content {
         text-align: center;
+        z-index: 95;
+        padding: 20px;
         width: 100%;
         max-width: 800px;
-        padding: 20px;
-        margin: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
       }
 
       .welcome {
         color: #daa520;
         font-family: "Italianno", cursive;
-        font-size: min(10vw, 72px);
+        font-size: clamp(48px, 10vw, 72px);
         opacity: 0;
         transform: translateY(-50px) rotateX(-90deg);
         animation: revealWelcome 1.5s ease-out 1.8s forwards;
         text-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+        position: relative;
         margin-bottom: 20px;
       }
 
       .main-title {
         color: #daa520;
-        font-size: min(8vw, 64px);
+        font-size: clamp(36px, 8vw, 64px);
         margin: 20px 0;
         opacity: 0;
         transform: scale(0.5);
@@ -94,10 +146,10 @@
       .subtitle {
         display: block;
         font-family: "Montserrat", sans-serif;
-        font-size: min(4vw, 28px);
+        font-size: clamp(16px, 4vw, 28px);
         color: #b8860b;
         font-weight: 300;
-        letter-spacing: min(1vw, 8px);
+        letter-spacing: clamp(4px, 1vw, 8px);
         opacity: 0;
         transform: translateY(50px);
         animation: revealSubtitle 1.5s ease-out 2.8s forwards;
@@ -107,11 +159,17 @@
         position: fixed;
         bottom: 20px;
         left: 0;
-        right: 0;
-        display: flex;
-        justify-content: space-between;
+        width: 100%;
         padding: 0 20px;
         z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .audio-control {
+        opacity: 0;
+        animation: fadeIn 1s ease-out 3.3s forwards;
       }
 
       .audio-button {
@@ -127,8 +185,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        opacity: 0;
-        animation: fadeIn 1s ease-out 3.3s forwards;
       }
 
       .enter-site {
@@ -140,16 +196,61 @@
         text-decoration: none;
         font-family: "Montserrat", sans-serif;
         font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease;
         opacity: 0;
         animation: fadeIn 1s ease-out 3.3s forwards;
+        transition: all 0.3s ease;
       }
 
       .audio-button:hover,
       .enter-site:hover {
         background-color: rgba(218, 165, 32, 0.3);
         transform: scale(1.1);
+      }
+
+      .vignette {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at center,
+          transparent 30%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      @keyframes initialFade {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      @keyframes videoFade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideLeft {
+        to {
+          transform: translateX(-100%) rotateY(20deg);
+        }
+      }
+
+      @keyframes slideRight {
+        to {
+          transform: translateX(100%) rotateY(-20deg);
+        }
       }
 
       @keyframes revealWelcome {
@@ -182,46 +283,33 @@
         }
       }
 
-      /* Mobile Responsiveness */
       @media (max-height: 600px) {
-        .content-wrapper {
-          padding: 60px 20px;
-        }
-
-        .welcome {
-          font-size: min(8vw, 54px);
-          margin-bottom: 10px;
-        }
-
-        .main-title {
-          font-size: min(6vw, 48px);
-          margin: 10px 0;
-        }
-
-        .subtitle {
-          font-size: min(3vw, 20px);
+        .content {
+          min-height: 40vh;
+          padding: 10px;
         }
 
         .controls-container {
           bottom: 10px;
         }
-      }
-
-      @media (max-width: 480px) {
-        .content {
-          padding: 10px;
-        }
 
         .welcome {
-          font-size: min(12vw, 48px);
+          margin-bottom: 10px;
         }
 
         .main-title {
-          font-size: min(10vw, 42px);
+          margin: 10px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .controls-container {
+          padding: 0 10px;
         }
 
-        .subtitle {
-          font-size: min(5vw, 18px);
+        .audio-button {
+          width: 36px;
+          height: 36px;
         }
 
         .enter-site {
@@ -232,82 +320,116 @@
     </style>
   </head>
   <body>
+    <div class="initial-overlay"></div>
     <div class="video-container">
-      <video id="intro-video" autoplay loop playsinline>
+      <video id="intro-video" autoplay loop playsinline muted>
         <source src="videos/intro.mp4" type="video/mp4" />
       </video>
     </div>
     <audio id="lion-roar" preload="auto">
       <source src="audio/lionroar.mp3" type="audio/mpeg" />
     </audio>
-
-    <div class="content-wrapper">
-      <div class="content">
-        <div class="welcome">Welcome to</div>
-        <div class="main-title">Negroar Resilient</div>
-        <span class="subtitle">Community Driven Progress</span>
-      </div>
+    <div class="vignette"></div>
+    <div class="curtain curtain-left"></div>
+    <div class="curtain curtain-right"></div>
+    <div class="content">
+      <div class="welcome">Welcome to</div>
+      <div class="main-title">Negroar Resilient</div>
+      <span class="subtitle">Community Driven Progress</span>
     </div>
-
     <div class="controls-container">
-      <button class="audio-button" onclick="toggleAudio()" title="Toggle Sound">
-        <svg
-          class="audio-icon"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="currentColor"
+      <div class="audio-control">
+        <button
+          class="audio-button"
+          onclick="toggleAudio()"
+          title="Toggle Sound"
         >
-          <path
-            d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
-          />
-        </svg>
-      </button>
+          <svg
+            class="audio-icon"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="currentColor"
+          >
+            <path
+              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+            />
+          </svg>
+        </button>
+      </div>
       <a href="home.html" class="enter-site">Enter Site</a>
     </div>
 
     <script>
-      const lionRoar = document.getElementById("lion-roar");
-      const video = document.getElementById("intro-video");
+      document.addEventListener("DOMContentLoaded", function () {
+        const lionRoar = document.getElementById("lion-roar");
+        const video = document.getElementById("intro-video");
+        let audioPlayed = false;
 
-      // Try to play audio on page load
-      function playAudio() {
-        lionRoar.play().catch((e) => {
-          console.log("Auto-play prevented:", e);
-          // Will try again on first interaction
-          document.addEventListener(
-            "click",
-            () => {
-              lionRoar.play().catch((e) => console.log("Play failed:", e));
-            },
-            { once: true }
-          );
-        });
-      }
+        // Function to play audio
+        function playAudio() {
+          if (!audioPlayed && lionRoar.readyState >= 2) {
+            lionRoar.volume = 0.7;
+            const playPromise = lionRoar.play();
 
-      // Multiple attempts to start audio
-      window.addEventListener("load", playAudio);
-      setTimeout(playAudio, 100);
-      setTimeout(playAudio, 500);
-
-      function toggleAudio() {
-        if (lionRoar.paused) {
-          lionRoar.play().catch((e) => console.log("Toggle failed:", e));
-        } else {
-          lionRoar.pause();
-          lionRoar.currentTime = 0;
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => {
+                  audioPlayed = true;
+                  console.log("Audio played successfully");
+                })
+                .catch((error) => {
+                  console.log("Audio autoplay blocked:", error);
+                  // Enable play on first interaction
+                  document.addEventListener("click", playAudioOnce);
+                  document.addEventListener("touchstart", playAudioOnce);
+                });
+            }
+          }
         }
-      }
 
-      // Ensure video loops
-      video.addEventListener("ended", () => {
-        video.play().catch((e) => console.log("Video loop failed:", e));
+        // Play audio once on interaction
+        function playAudioOnce() {
+          if (!audioPlayed) {
+            playAudio();
+            document.removeEventListener("click", playAudioOnce);
+            document.removeEventListener("touchstart", playAudioOnce);
+          }
+        }
+
+        // Multiple attempts to start audio
+        setTimeout(playAudio, 100);
+        setTimeout(playAudio, 500);
+        setTimeout(playAudio, 1000);
+
+        // Ensure audio is loaded
+        lionRoar.load();
+
+        // Toggle audio function
+        window.toggleAudio = function () {
+          if (lionRoar.paused) {
+            lionRoar
+              .play()
+              .then(() => {
+                audioPlayed = true;
+              })
+              .catch((e) => console.log("Toggle failed:", e));
+          } else {
+            lionRoar.pause();
+            lionRoar.currentTime = 0;
+          }
+        };
+
+        // Handle video loop
+        video.addEventListener("ended", () => {
+          video.play().catch((e) => console.log("Video loop failed:", e));
+        });
+
+        // Redirect after 8 seconds
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 8000);
       });
-
-      // Auto-redirect after 8 seconds
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 8000);
     </script>
   </body>
 </html>
