@@ -1,20 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chef 24/7 Kitchen Drip - Authentic New Orleans cuisine, private chef services, and catering in Fort Worth. Experience the true taste of Louisiana.">
-    <meta name="keywords" content="New Orleans cuisine, Fort Worth catering, private chef, Louisiana food, Creole cooking, Cajun food">
     <title>Chef 24/7 Kitchen Drip | Authentic New Orleans Cuisine</title>
     <style>
         :root {
-            --purple: #522D80;
-            --deep-purple: #2C1810;
+            --deep-brown: #2C1810;
             --gold: #FFD700;
             --burgundy: #800020;
-            --olive: #4a4a40;
             --cream: #FFFDD0;
-            --mardi-purple: #58427C;
         }
 
         * {
@@ -26,9 +22,8 @@
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-            background: var(--deep-purple);
+            background: var(--deep-brown);
+            color: white;
         }
 
         #floating-icons {
@@ -37,7 +32,7 @@
             height: 100vh;
             pointer-events: none;
             overflow: hidden;
-            z-index: 10;
+            z-index: 1;
         }
 
         .floating-icon {
@@ -45,254 +40,137 @@
             animation: float 4s linear infinite;
             pointer-events: none;
             color: var(--gold);
-            opacity: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            opacity: 0.3;
             z-index: 1;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg) scale(1);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(-20vh) rotate(360deg) scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--mardi-purple) 100%);
-            min-height: 100vh;
-            color: white;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 2rem;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero p {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            color: var(--cream);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .container {
             position: relative;
             z-index: 2;
         }
 
         .btn {
-            position: relative;
-            display: inline-block;
-            padding: 1.2rem 3.5rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--deep-purple);
             background: var(--gold);
+            color: black;
             border: none;
             border-radius: 50px;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 2;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            background: #FFE44D;
-        }
-
-        .btn:active {
-            transform: translateY(1px);
-        }
-
-        .services {
-            background: linear-gradient(to bottom, var(--mardi-purple) 0%, var(--burgundy) 100%);
-            padding: 6rem 2rem;
-            color: white;
+            width: 100%;
+            max-width: 400px;
+            letter-spacing: 1px;
             position: relative;
+            z-index: 3;
         }
 
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,215,0,0.2);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .social-showcase {
-            background: linear-gradient(to bottom, var(--burgundy) 0%, var(--deep-purple) 100%);
-            padding: 6rem 2rem;
-            color: white;
-            position: relative;
-        }
-
-        .social-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .social-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .social-header h2 {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .youtube-container {
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
+        /* Modal Styles */
+        .booking-modal {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            background-color: var(--deep-brown);
+            z-index: 1000;
+            overflow-y: auto;
         }
 
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: var(--gold);
-            color: var(--deep-purple);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-
-        .social-icon {
-            font-size: 1.5rem;
-        }
-
-        .facebook-container {
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
+        .modal-content {
+            width: 100%;
+            min-height: 100%;
             padding: 2rem;
-            text-align: center;
+            color: white;
         }
 
-        .facebook-content {
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .form-header {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .form-group {
             margin-bottom: 1.5rem;
         }
 
+        .form-group label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid white;
+            border-radius: 5px;
+            background: white;
+            font-size: 1rem;
+        }
+
+        .social-btn {
+            background: var(--gold);
+            color: black;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 400px;
+            justify-content: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .modal-content {
+                padding: 1rem;
             }
 
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .social-header h2 {
+            .form-header {
                 font-size: 2rem;
-            }
-
-            .social-grid {
-                gap: 2rem;
-            }
-
-            .video-wrapper {
-                margin: 0 -1rem;
-                border-radius: 0;
+                margin-top: 2rem;
             }
         }
     </style>
@@ -301,149 +179,112 @@
 <body>
     <div id="floating-icons"></div>
 
-    <div class="hero">
-        <h1>Chef 24/7<br>Kitchen Drip</h1>
-        <p>Taste the Soul of New Orleans</p>
-        <button class="btn" onclick="openBookingModal()">REQUEST DA CHEF</button>
-    </div>
-
-    <section class="services">
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Private Chef Experience</h3>
-                <p>Authentic New Orleans cuisine prepared in your home</p>
-            </div>
-            <div class="service-card">
-                <h3>Event Catering</h3>
-                <p>Bring the flavor of the French Quarter to your event</p>
-            </div>
-            <div class="service-card">
-                <h3>Creole Cuisine Classes</h3>
-                <p>Learn the secrets of Louisiana cooking</p>
-            </div>
+    <div class="container">
+        <!-- Social Media Section -->
+        <div class="social-section" style="text-align: center; padding: 2rem;">
+            <a href="https://www.facebook.com/chefskitchendrip" class="social-btn">
+                <span style="font-size: 1.5rem;">📱</span>
+                FOLLOW ON FACEBOOK
+            </a>
         </div>
-    </section>
 
-    <section class="social-showcase">
-        <div class="social-container">
-            <div class="social-header">
-                <h2>Follow Our Culinary Journey</h2>
-            </div>
-            
-            <div class="social-grid">
-                <div class="youtube-container">
-                    <h3>Latest Videos</h3>
-                    <div class="video-wrapper">
-                        <iframe 
-                            src="https://www.youtube.com/embed/RqOkHrbKTuY" 
-                            title="Chef's Kitchen Demo"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+        <!-- Request Form -->
+        <div class="booking-modal" id="bookingModal">
+            <button class="close-modal" onclick="closeBookingModal()">✕</button>
+            <div class="modal-content">
+                <h2 class="form-header">Request Da Chef</h2>
+                <form id="bookingForm" onsubmit="submitBookingForm(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                    <a href="https://www.youtube.com/@infomuxmedia" target="_blank" class="social-btn">
-                        <span class="social-icon">📺</span>
-                        Subscribe on YouTube
-                    </a>
-                </div>
-
-                <div class="facebook-container">
-                    <h3>Connect With Us</h3>
-                    <div class="facebook-content">
-                        <p>Follow us for daily updates, behind-the-scenes content, and special offers!</p>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                    <a href="https://www.facebook.com/chefskitchendrip" target="_blank" class="social-btn">
-                        <span class="social-icon">📱</span>
-                        Follow on Facebook
-                    </a>
-                </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Requested Date *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Preferred Time *</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Number of Guests *</label>
+                        <input type="number" id="guests" name="guests" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceType">Type of Service *</label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="">Select a service</option>
+                            <option value="private-chef">Private Chef Experience</option>
+                            <option value="catering">Catering Service</option>
+                            <option value="cooking-class">Cooking Class</option>
+                            <option value="meal-prep">Meal Prep Service</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dietary">Dietary Restrictions</label>
+                        <textarea id="dietary" name="dietary" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">SUBMIT REQUEST</button>
+                </form>
             </div>
-        </div>
-    </section>
-
-    <!-- Booking Modal -->
-    <div class="booking-modal" id="bookingModal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeBookingModal()">×</button>
-            <h2>Request Da Chef</h2>
-            <form id="bookingForm" onsubmit="submitBookingForm(event)">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="date">Requested Date *</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-                <div class="form-group">
-                    <label for="time">Preferred Time *</label>
-                    <input type="time" id="time" name="time" required>
-                </div>
-                <div class="form-group">
-                    <label for="guests">Number of Guests *</label>
-                    <input type="number" id="guests" name="guests" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="serviceType">Type of Service *</label>
-                    <select id="serviceType" name="serviceType" required>
-                        <option value="">Select a service</option>
-                        <option value="private-chef">Private Chef Experience</option>
-                        <option value="catering">Catering Service</option>
-                        <option value="cooking-class">Cooking Class</option>
-                        <option value="meal-prep">Meal Prep Service</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="dietary">Dietary Restrictions</label>
-                    <textarea id="dietary" name="dietary" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="notes">Additional Notes</label>
-                    <textarea id="notes" name="notes" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn">Submit Request</button>
-            </form>
         </div>
     </div>
 
     <script>
         function createFloatingIcon() {
             const icons = [
-                '♪', '♫', '🎭', '🎺', '🎷', '🎪', '🪗',
-                '🌶️', '🍜', '🥘', '🎵', '🎹', '🎼'
+                '🌶️', '🍳', '🥘', '♪', '♫', '🎵', '🎶',
+                '🍽️', '👨‍🍳', '🥄', '🍴', '🥂', '🍷'
             ];
             
             const icon = document.createElement('div');
             icon.className = 'floating-icon';
             
-            // Randomly select icon and size
+            // Random icon and size
             icon.textContent = icons[Math.floor(Math.random() * icons.length)];
             icon.style.fontSize = Math.random() * (32 - 20) + 20 + 'px';
             
-            // Random starting position and animation duration
+            // Random position and duration
             icon.style.left = Math.random() * window.innerWidth + 'px';
             icon.style.animationDuration = Math.random() * (6 - 3) + 3 + 's';
             
             document.getElementById('floating-icons').appendChild(icon);
             
-            // Remove icon after animation
+            // Remove after animation
             icon.addEventListener('animationend', () => icon.remove());
         }
 
-        // Create icons periodically
+        // Create icons every second
         setInterval(createFloatingIcon, 1000);
 
         function openBookingModal() {
-            document.getElementById('bookingModal').style.display = 'block';
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            
+            // Reset form when opening
+            document.getElementById('bookingForm').reset();
         }
 
         function closeBookingModal() {
@@ -486,15 +327,9 @@ ${formProps.notes || 'None provided'}
             
             window.location.href = mailtoLink;
             
+            // Reset form and close modal
             event.target.reset();
             closeBookingModal();
-        }
-
-        // Close modal on outside click
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('bookingModal')) {
-                closeBookingModal();
-            }
         }
 
         // Set minimum date to today
@@ -502,6 +337,27 @@ ${formProps.notes || 'None provided'}
         if (dateInput) {
             const today = new Date().toISOString().split('T')[0];
             dateInput.min = today;
+        }
+
+        // Initialize form display
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show form by default on page load
+            document.getElementById('bookingModal').style.display = 'block';
+        });
+
+        // Prevent form submission on enter key
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Add touch event handling for mobile
+        if ('ontouchstart' in window) {
+            document.querySelector('.modal-content').addEventListener('touchmove', function(e) {
+                e.stopPropagation();
+            }, { passive: true });
         }
     </script>
 </body>
