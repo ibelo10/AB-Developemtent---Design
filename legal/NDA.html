@@ -157,7 +157,7 @@
 
             // Get selected information types
             const infoTypes = Array.from(document.querySelectorAll('input[name="info_type"]:checked'))
-                .map(cb => cb.value.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()));
+                .map(cb => cb.value.replace('_', ' ').replace(//b/w/g, l => l.toUpperCase()));
 
             // Add content to the PDF
             doc.setFontSize(16);
@@ -168,7 +168,7 @@
             
             // Party Information
             doc.text("1. PARTIES", 10, 40);
-            doc.text("This Non-Disclosure Agreement (\"Agreement\") is entered into between:", 10, 50);
+            doc.text("This Non-Disclosure Agreement (/"Agreement/") is entered into between:", 10, 50);
             doc.text(`Receiving Party: ${name}`, 20, 60);
             doc.text(`Title: ${title}`, 20, 70);
             doc.text(`Company: ${company}`, 20, 80);
