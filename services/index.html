@@ -32,7 +32,7 @@
       property="og:description"
       content="Professional web development and design services to bring your digital vision to life."
     />
-    <meta property="og:image" content="assets/images/ABLogo.png" />
+    <meta property="og:image" content="../assets/images/ABLogo.png" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,16 +41,16 @@
       rel="stylesheet"
     />
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/messenger.css" />
-    <link rel="stylesheet" href="assets/css/services.css" />
-    <link rel="stylesheet" href="assets/css/scrollbar.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="messenger.css" />
+    <link rel="stylesheet" href="services.css" />
+    <link rel="stylesheet" href="scrollbar.css" />
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-logo">
-        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+        <img src="../assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
         <span>AB Development & Design</span>
       </div>
       <div class="nav-links">
@@ -70,7 +70,7 @@
             <!-- Header -->
             <header class="services-header">
               <h1>Our Services</h1>
-              <p>Professional solutions for your digital needs</p>
+              <p>Comprehensive digital solutions for your business needs</p>
             </header>
             <!-- Service Categories -->
             <div class="service-categories">
@@ -85,6 +85,9 @@
               </button>
               <button class="category-btn" data-category="maintenance">
                 Maintenance
+              </button>
+              <button class="category-btn" data-category="consulting">
+                Consulting
               </button>
             </div>
             <!-- Services Grid -->
@@ -106,7 +109,23 @@
                 <div class="service-price">Starting at $2,500</div>
                 <button class="inquiry-btn">Request Quote</button>
               </div>
-              <!-- Web Design -->
+
+              <!-- E-commerce Solutions -->
+              <div class="service-card" data-category="development">
+                <div class="service-icon">🛍️</div>
+                <h3>E-commerce Solutions</h3>
+                <p>Complete online store development with advanced features.</p>
+                <ul class="service-features">
+                  <li>Product Management</li>
+                  <li>Secure Checkout</li>
+                  <li>Inventory System</li>
+                  <li>Order Management</li>
+                </ul>
+                <div class="service-price">Starting at $3,000</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- UI/UX Design -->
               <div class="service-card" data-category="design">
                 <div class="service-icon">🎨</div>
                 <h3>UI/UX Design</h3>
@@ -122,30 +141,12 @@
                 <div class="service-price">Starting at $1,500</div>
                 <button class="inquiry-btn">Request Quote</button>
               </div>
-              <!-- E-commerce -->
-              <div class="service-card" data-category="development">
-                <div class="service-icon">🛍️</div>
-                <h3>E-commerce Solutions</h3>
-                <p>
-                  Full-featured online stores with secure payment processing.
-                </p>
-                <ul class="service-features">
-                  <li>Product Management</li>
-                  <li>Secure Checkout</li>
-                  <li>Inventory System</li>
-                  <li>Order Management</li>
-                </ul>
-                <div class="service-price">Starting at $3,000</div>
-                <button class="inquiry-btn">Request Quote</button>
-              </div>
-              <!-- Maintenance -->
+
+              <!-- Website Maintenance -->
               <div class="service-card" data-category="maintenance">
                 <div class="service-icon">🔧</div>
                 <h3>Website Maintenance</h3>
-                <p>
-                  Keep your website running smoothly with regular updates and
-                  maintenance.
-                </p>
+                <p>Keep your website running smoothly with regular updates.</p>
                 <ul class="service-features">
                   <li>Regular Updates</li>
                   <li>Security Monitoring</li>
@@ -153,6 +154,126 @@
                   <li>Content Updates</li>
                 </ul>
                 <div class="service-price">Starting at $200/month</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- Mobile App Development -->
+              <div class="service-card" data-category="development">
+                <div class="service-icon">📱</div>
+                <h3>Mobile App Development</h3>
+                <p>Native and cross-platform mobile applications.</p>
+                <ul class="service-features">
+                  <li>iOS & Android Apps</li>
+                  <li>React Native</li>
+                  <li>App Store Submission</li>
+                  <li>App Maintenance</li>
+                </ul>
+                <div class="service-price">Starting at $5,000</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- Blockchain Development -->
+              <div class="service-card" data-category="development">
+                <div class="service-icon">⛓️</div>
+                <h3>Blockchain Solutions</h3>
+                <p>Custom blockchain development and smart contracts.</p>
+                <ul class="service-features">
+                  <li>Smart Contracts</li>
+                  <li>DApp Development</li>
+                  <li>Token Creation</li>
+                  <li>Blockchain Integration</li>
+                </ul>
+                <div class="service-price">Starting at $4,000</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- Brand Identity -->
+              <div class="service-card" data-category="design">
+                <div class="service-icon">🎯</div>
+                <h3>Brand Identity Design</h3>
+                <p>Complete brand identity development and guidelines.</p>
+                <ul class="service-features">
+                  <li>Logo Design</li>
+                  <li>Brand Guidelines</li>
+                  <li>Marketing Materials</li>
+                  <li>Social Media Assets</li>
+                </ul>
+                <div class="service-price">Starting at $2,000</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- SEO Services -->
+              <div class="service-card" data-category="maintenance">
+                <div class="service-icon">📈</div>
+                <h3>SEO Services</h3>
+                <p>Improve your website's search engine rankings.</p>
+                <ul class="service-features">
+                  <li>Keyword Research</li>
+                  <li>On-Page SEO</li>
+                  <li>Technical SEO</li>
+                  <li>Monthly Reports</li>
+                </ul>
+                <div class="service-price">Starting at $500/month</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- Technical Consulting -->
+              <div class="service-card" data-category="consulting">
+                <div class="service-icon">📋</div>
+                <h3>Technical Consulting</h3>
+                <p>Expert guidance on technical decisions and architecture.</p>
+                <ul class="service-features">
+                  <li>Architecture Review</li>
+                  <li>Technology Selection</li>
+                  <li>Security Assessment</li>
+                  <li>Performance Audit</li>
+                </ul>
+                <div class="service-price">Starting at $150/hour</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- API Development -->
+              <div class="service-card" data-category="development">
+                <div class="service-icon">🔌</div>
+                <h3>API Development</h3>
+                <p>Custom API development and integration services.</p>
+                <ul class="service-features">
+                  <li>RESTful APIs</li>
+                  <li>GraphQL APIs</li>
+                  <li>API Integration</li>
+                  <li>Documentation</li>
+                </ul>
+                <div class="service-price">Starting at $2,000</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- DevOps Services -->
+              <div class="service-card" data-category="maintenance">
+                <div class="service-icon">🚀</div>
+                <h3>DevOps Services</h3>
+                <p>Streamline your development and deployment processes.</p>
+                <ul class="service-features">
+                  <li>CI/CD Pipeline</li>
+                  <li>Cloud Infrastructure</li>
+                  <li>Monitoring Setup</li>
+                  <li>Automation</li>
+                </ul>
+                <div class="service-price">Starting at $1,500</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+
+              <!-- Security Audit -->
+              <div class="service-card" data-category="consulting">
+                <div class="service-icon">🔒</div>
+                <h3>Security Audit</h3>
+                <p>Comprehensive security assessment and recommendations.</p>
+                <ul class="service-features">
+                  <li>Vulnerability Scanning</li>
+                  <li>Code Review</li>
+                  <li>Security Testing</li>
+                  <li>Compliance Check</li>
+                </ul>
+                <div class="service-price">Starting at $2,500</div>
                 <button class="inquiry-btn">Request Quote</button>
               </div>
             </div>
@@ -165,14 +286,14 @@
     <div id="fb-customer-chat" class="fb-customerchat"></div>
     <div id="special-offer-popup"></div>
     <!-- Scripts -->
-    <script src="assets/js/special-offer.js"></script>
+    <script src="special-offer.js"></script>
     <script type="module">
-      import { initializeBackgroundEffects } from "./assets/js/components/background-effects.js";
+      import { initializeBackgroundEffects } from "./components/background-effects.js";
       document.addEventListener("DOMContentLoaded", () => {
         initializeBackgroundEffects("services");
       });
     </script>
-    <script src="assets/js/services.js"></script>
-    <script src="assets/js/messenger.js"></script>
+    <script src="services.js"></script>
+    <script src="messenger.js"></script>
   </body>
 </html>
