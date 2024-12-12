@@ -1,26 +1,35 @@
 #!/bin/bash
 
+echo "Starting cleanup process..."
+
 # Clean up existing files
-echo "Cleaning up..."
+echo "Cleaning up node_modules and build files..."
 rm -rf node_modules
 rm -rf projects/transaction-ticker/node_modules
 rm -rf projects/transaction-ticker/build
 rm -f package-lock.json
 rm -f projects/transaction-ticker/package-lock.json
+npm cache clean --force
 
-# Ensure correct Node version
-echo "Setting up Node version..."
-if command -v nvm &> /dev/null; then
-    nvm install 18.19.0
-    nvm use 18.19.0
-fi
+# Create necessary configuration files
+echo "Creating configuration files..."
 
-# Install dependencies
+# Create .nvmrc
+echo "18.19.0" > .nvmrc
+
+# Create .npmrc
+cat > .npmrc << EOL
+save-exact=true
+legacy-peer-deps=true
+engine-strict=true
+EOL
+
+# Navigate to project directory and install
 echo "Installing dependencies..."
 cd projects/transaction-ticker
-npm install
+npm install --legacy-peer-deps
 
-echo "Build test..."
+echo "Running build test..."
 npm run build
 
-echo "Setup complete!"
+echo "Cleanup process complete!"

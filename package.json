@@ -16,11 +16,7 @@
     "@babel/plugin-transform-class-properties": "^7.23.4",
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.23.4",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@eslint/eslint-config": "^4.0.0",
-    "@eslint/config-array": "^3.0.0",
-    "@eslint/object-schema": "^2.0.0",
-    "eslint": "^8.57.0",
-    "svgo": "^3.2.0"
+    "eslint": "^8.57.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,11 +35,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "resolutions": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "svgo": "^3.2.0",
-    "@humanwhocodes/config-array": "^3.0.0",
-    "@humanwhocodes/object-schema": "^2.0.0"
   }
 }
