@@ -1,1 +1,178 @@
-<!DOCTYPE html><html><head><title>AB Development & Design - Services</title></head><body><h1>Services</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-H16CFGEXZP");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services - AB Development & Design</title>
+    <!-- Meta tags for better SEO -->
+    <meta
+      name="description"
+      content="Professional web development and design services offered by AB Development & Design."
+    />
+    <meta property="og:title" content="Services - AB Development & Design" />
+    <meta
+      property="og:description"
+      content="Professional web development and design services to bring your digital vision to life."
+    />
+    <meta property="og:image" content="assets/images/ABLogo.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/messenger.css" />
+    <link rel="stylesheet" href="assets/css/services.css" />
+    <link rel="stylesheet" href="assets/css/scrollbar.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+        <span>AB Development & Design</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/services">Services</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="https://github.com/Iaarondev/" target="_blank">GitHub</a>
+      </div>
+    </nav>
+    <!-- Main Content -->
+    <div class="page-container services-container">
+      <div class="page-content">
+        <div class="glass-panel">
+          <main class="services-content">
+            <!-- Header -->
+            <header class="services-header">
+              <h1>Our Services</h1>
+              <p>Professional solutions for your digital needs</p>
+            </header>
+            <!-- Service Categories -->
+            <div class="service-categories">
+              <button class="category-btn active" data-category="all">
+                All Services
+              </button>
+              <button class="category-btn" data-category="development">
+                Development
+              </button>
+              <button class="category-btn" data-category="design">
+                Design
+              </button>
+              <button class="category-btn" data-category="maintenance">
+                Maintenance
+              </button>
+            </div>
+            <!-- Services Grid -->
+            <div class="services-grid">
+              <!-- Web Development -->
+              <div class="service-card" data-category="development">
+                <div class="service-icon">💻</div>
+                <h3>Custom Website Development</h3>
+                <p>
+                  Fully custom-built websites tailored to your specific needs
+                  and brand.
+                </p>
+                <ul class="service-features">
+                  <li>Responsive Design</li>
+                  <li>SEO Optimization</li>
+                  <li>Custom Functionality</li>
+                  <li>Performance Optimized</li>
+                </ul>
+                <div class="service-price">Starting at $2,500</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+              <!-- Web Design -->
+              <div class="service-card" data-category="design">
+                <div class="service-icon">🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>
+                  Beautiful, intuitive designs that enhance user experience.
+                </p>
+                <ul class="service-features">
+                  <li>User Research</li>
+                  <li>Wireframing</li>
+                  <li>Visual Design</li>
+                  <li>Prototyping</li>
+                </ul>
+                <div class="service-price">Starting at $1,500</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+              <!-- E-commerce -->
+              <div class="service-card" data-category="development">
+                <div class="service-icon">🛍️</div>
+                <h3>E-commerce Solutions</h3>
+                <p>
+                  Full-featured online stores with secure payment processing.
+                </p>
+                <ul class="service-features">
+                  <li>Product Management</li>
+                  <li>Secure Checkout</li>
+                  <li>Inventory System</li>
+                  <li>Order Management</li>
+                </ul>
+                <div class="service-price">Starting at $3,000</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+              <!-- Maintenance -->
+              <div class="service-card" data-category="maintenance">
+                <div class="service-icon">🔧</div>
+                <h3>Website Maintenance</h3>
+                <p>
+                  Keep your website running smoothly with regular updates and
+                  maintenance.
+                </p>
+                <ul class="service-features">
+                  <li>Regular Updates</li>
+                  <li>Security Monitoring</li>
+                  <li>Performance Optimization</li>
+                  <li>Content Updates</li>
+                </ul>
+                <div class="service-price">Starting at $200/month</div>
+                <button class="inquiry-btn">Request Quote</button>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <!-- Messenger Chat Plugin -->
+    <div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+    <div id="special-offer-popup"></div>
+    <!-- Scripts -->
+    <script src="assets/js/special-offer.js"></script>
+    <script type="module">
+      import { initializeBackgroundEffects } from "./assets/js/components/background-effects.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeBackgroundEffects("services");
+      });
+    </script>
+    <script src="assets/js/services.js"></script>
+    <script src="assets/js/messenger.js"></script>
+  </body>
+</html>
