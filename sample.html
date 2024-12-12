@@ -1,164 +1,208 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toyata - Playful World of Toys</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chef 24/7 Kitchen Drip</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
     <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Comic Sans MS', sans-serif;
-            background: linear-gradient(to bottom, #ffa726, #ffcc80);
-            overflow-x: hidden;
-            color: #fff;
-        }
+      :root {
+        --purple: #522d80;
+        --green: #2d8042;
+        --gold: #ffd700;
+      }
 
-        h1, p {
-            text-align: center;
-            margin: 0;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        /* Header */
-        header {
-            position: relative;
-            padding: 2rem;
-            text-align: center;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+      }
 
-        header h1 {
-            font-size: 3rem;
-            text-shadow: 2px 2px #ff7043;
-        }
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("/api/placeholder/1200/600");
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-        header p {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        animation: fadeInDown 1s;
+      }
 
-        .cta-button {
-            margin-top: 1rem;
-            padding: 0.8rem 2rem;
-            background: #ff7043;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s;
+      }
 
-        .cta-button:hover {
-            background: #d84315;
-        }
+      .services {
+        padding: 4rem 2rem;
+        background-color: var(--purple);
+        color: white;
+      }
 
-        /* Background Animation */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://via.placeholder.com/150/toy-background') repeat;
-            opacity: 0.3;
-            animation: moveToys 10s linear infinite;
-            z-index: -1;
-        }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        @keyframes moveToys {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 100% 100%;
-            }
-        }
+      .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        color: black;
+        text-align: center;
+        transition: transform 0.3s;
+        animation: fadeIn 1s;
+      }
 
-        /* Toy Cards */
-        .toy-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            padding: 2rem;
-        }
+      .service-card:hover {
+        transform: translateY(-10px);
+      }
 
-        .toy-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 1rem;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: #333;
-        }
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.3s;
+        animation: pulse 2s infinite;
+      }
 
-        .toy-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
+      .btn-primary {
+        background-color: var(--gold);
+        color: black;
+      }
 
-        .toy-card h3 {
-            margin: 0.5rem 0;
-            font-size: 1.2rem;
-        }
+      .btn-secondary {
+        background-color: var(--green);
+        color: white;
+      }
 
-        .toy-card p {
-            font-size: 1rem;
-            color: #ff5722;
-        }
+      .contact {
+        padding: 4rem 2rem;
+        background-color: var(--gold);
+        text-align: center;
+      }
 
-        .buy-button {
-            margin-top: 0.5rem;
-            padding: 0.6rem 1.5rem;
-            background: #ff7043;
-            border: none;
-            border-radius: 20px;
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+      .contact-info {
+        margin-top: 2rem;
+      }
 
-        .buy-button:hover {
-            background: #d84315;
+      .fleur-de-lis {
+        font-size: 2rem;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
         }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(0, 15px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .hero p {
+          font-size: 1.2rem;
+        }
+      }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Toyata</h1>
-        <p>Bringing joy to every child!</p>
-        <button class="cta-button">Shop Now</button>
+  </head>
+  <body>
+    <header class="hero">
+      <h1 class="animate__animated animate__fadeInDown">
+        Chef 24/7 Kitchen Drip
+      </h1>
+      <p class="animate__animated animate__fadeInUp">
+        Bringing New Orleans Flavor to Your Table
+      </p>
+      <a href="#contact" class="btn btn-primary">Book Now</a>
     </header>
 
-    <main>
-        <section class="toy-cards">
-            <div class="toy-card">
-                <img src="https://via.placeholder.com/150/toy1" alt="Toy 1">
-                <h3>Teddy Bear</h3>
-                <p>$19.99</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-            <div class="toy-card">
-                <img src="https://via.placeholder.com/150/toy2" alt="Toy 2">
-                <h3>Race Car</h3>
-                <p>$14.99</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-            <div class="toy-card">
-                <img src="https://via.placeholder.com/150/toy3" alt="Toy 3">
-                <h3>Doll House</h3>
-                <p>$39.99</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-        </section>
-    </main>
-</body>
+    <section class="services">
+      <div class="services-grid">
+        <div class="service-card floating">
+          <h3>Catering Services</h3>
+          <p>
+            Professional catering for events of all sizes with authentic New
+            Orleans cuisine
+          </p>
+        </div>
+        <div class="service-card floating">
+          <h3>Specialized Seasoning</h3>
+          <p>
+            Custom spice blends that bring the taste of the bayou to your
+            kitchen
+          </p>
+        </div>
+        <div class="service-card floating">
+          <h3>Private Chef</h3>
+          <p>
+            Exclusive in-home dining experience with personalized menu creation
+          </p>
+        </div>
+        <div class="service-card floating">
+          <h3>Vegan Menu</h3>
+          <p>Plant-based alternatives to classic New Orleans dishes</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Let's Cook Something Special</h2>
+      <div class="contact-info">
+        <p class="fleur-de-lis">⚜</p>
+        <a href="tel:8178066854" class="btn btn-secondary"
+          >Call (817) 806-6854</a
+        >
+        <br /><br />
+        <a href="mailto:724chef@gmail.com" class="btn btn-secondary"
+          >Email: 724chef@gmail.com</a
+        >
+      </div>
+    </section>
+  </body>
 </html>
