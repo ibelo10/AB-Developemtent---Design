@@ -1,16 +1,12 @@
-// main.js
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize ripple effect with error handling
+  // Initialize ripple effect
   initializeRipples();
 
   // Initialize navigation
   initializeNavigation();
 
-  // Initialize scroll animations
-  initializeScrollAnimations();
-
-  // Initialize performance optimizations
-  initializePerformance();
+  // Initialize interactions
+  initializeInteractions();
 });
 
 function initializeRipples() {
@@ -21,6 +17,7 @@ function initializeRipples() {
       perturbance: 0.04,
       interactive: true,
       crossOrigin: "",
+      imageUrl: "/assets/images/laptop-bg.jpg",
     });
 
     // Add automatic ripples
@@ -46,17 +43,7 @@ function initializeNavigation() {
     }
   });
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth",
-      });
-    });
-  });
-
-  // Navbar visibility on scroll
+  // Handle navbar visibility on scroll
   let lastScroll = 0;
   const navbar = document.querySelector(".navbar");
 
@@ -72,10 +59,8 @@ function initializeNavigation() {
       currentScroll > lastScroll &&
       !navbar.contains(document.activeElement)
     ) {
-      // Scrolling down & not focusing on navbar
       navbar.style.transform = "translateY(-100%)";
     } else {
-      // Scrolling up
       navbar.style.transform = "translateY(0)";
     }
 
@@ -83,59 +68,21 @@ function initializeNavigation() {
   });
 }
 
-function initializeScrollAnimations() {
-  // Intersection Observer for fade-in animations
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("fade-in");
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-    }
-  );
+function initializeInteractions() {
+  // Add hover effect for hero container
+  const hero = document.querySelector(".hero-container");
 
-  // Observe all animate-on-scroll elements
-  document.querySelectorAll(".animate-on-scroll").forEach((element) => {
-    observer.observe(element);
+  hero.addEventListener("mousemove", (e) => {
+    const { left, top, width, height } = hero.getBoundingClientRect();
+    const x = (e.clientX - left) / width;
+    const y = (e.clientY - top) / height;
+
+    hero.style.setProperty("--mouse-x", x);
+    hero.style.setProperty("--mouse-y", y);
   });
 }
 
-function initializePerformance() {
-  // Lazy load images
-  const images = document.querySelectorAll("img[data-src]");
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.removeAttribute("data-src");
-        imageObserver.unobserve(img);
-      }
-    });
-  });
-
-  images.forEach((img) => imageObserver.observe(img));
-
-  // Preload critical resources
-  const preloadLinks = [
-    "/assets/images/ABLogo.png",
-    // Add other critical resources here
-  ];
-
-  preloadLinks.forEach((link) => {
-    const preloadLink = document.createElement("link");
-    preloadLink.href = link;
-    preloadLink.rel = "preload";
-    preloadLink.as = "image";
-    document.head.appendChild(preloadLink);
-  });
-}
-
-// Utility functions
+// Utility function for performance
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -145,16 +92,5 @@ function debounce(func, wait) {
     };
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
-  };
-}
-
-function throttle(func, limit) {
-  let inThrottle;
-  return function (...args) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
   };
 }
