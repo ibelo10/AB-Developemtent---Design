@@ -1,0 +1,11 @@
+Created directory: assets/fonts
+Created file: assets/js/chef24-animations.js
+Created file: assets/css/chef24-main.css
+Created file: assets/css/chef24-animations.css
+Created file: assets/css/chef24-modal.css
+Created file: assets/js/chef24-utils.js
+Created file: assets/js/chef24-form.js
+
+Project setup complete! Directory structure:
+
+Setup completed successfully! Check the log file for details: setup_log_20241212_195915.txt

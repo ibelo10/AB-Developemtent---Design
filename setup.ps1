@@ -1,170 +1,51 @@
-# Create base project structure for GitHub Pages website
+# PowerShell script for setting up Chef 24/7 Kitchen Drip Website structure
+$timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+$logFile = "setup_log_$timestamp.txt"
 
-# Function to create directory if it doesn't exist
-function New-DirectoryIfNotExists {
-    param([string]$path)
-    if (-not (Test-Path $path)) {
-        New-Item -ItemType Directory -Path $path
-        Write-Host "Created directory: $path" -ForegroundColor Green
-    }
+# Function to write to console and log file
+function Write-Log {
+    param($Message)
+    Write-Host $Message
+    Add-Content -Path $logFile -Value $Message
 }
 
-# Base directory structure
+# Create directories
 $directories = @(
+    "assets",
     "assets/css",
     "assets/js",
     "assets/images",
-    "components",
-    "scripts"
+    "assets/fonts"
 )
 
-# Create directories
 foreach ($dir in $directories) {
-    New-DirectoryIfNotExists $dir
-}
-
-# Create base HTML file
-$htmlContent = @"
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AB Development & Design</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/components.css">
-</head>
-<body>
-    <div id="app"></div>
-    <script src="assets/js/main.js" type="module"></script>
-</body>
-</html>
-"@
-
-# Create CSS files
-$stylesCSS = @"
-/* Base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Raleway', sans-serif;
-    min-height: 100vh;
-}
-"@
-
-$componentsCSS = @"
-/* Component styles */
-.full-mountain-image {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-"@
-
-# Create main JavaScript file
-$mainJS = @"
-// Main JavaScript file
-import { initializeRipples } from './components/ripple.js';
-import { initializeAnimations } from './components/animations.js';
-
-document.addEventListener('DOMContentLoaded', () => {
-    initializeRipples();
-    initializeAnimations();
-});
-"@
-
-# Create component files
-$rippleJS = @"
-// Ripple effect component
-export function initializeRipples() {
-    // Ripple implementation will go here
-}
-"@
-
-$animationsJS = @"
-// Animations component
-export function initializeAnimations() {
-    // Animation implementation will go here
-}
-"@
-
-# Write files
-$files = @{
-    "index.html" = $htmlContent
-    "assets/css/styles.css" = $stylesCSS
-    "assets/css/components.css" = $componentsCSS
-    "assets/js/main.js" = $mainJS
-    "assets/js/components/ripple.js" = $rippleJS
-    "assets/js/components/animations.js" = $animationsJS
-}
-
-foreach ($file in $files.GetEnumerator()) {
-    $filePath = $file.Key
-    $content = $file.Value
-    
-    # Create parent directory if it doesn't exist
-    $parentDir = Split-Path $filePath -Parent
-    if ($parentDir -and -not (Test-Path $parentDir)) {
-        New-Item -ItemType Directory -Path $parentDir -Force
+    if (-not (Test-Path $dir)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+        Write-Log "Created directory: $dir"
     }
-    
-    # Create file
-    Set-Content -Path $filePath -Value $content
-    Write-Host "Created file: $filePath" -ForegroundColor Green
 }
 
-# Create GitHub-specific files
-$gitignore = @"
-# Dependencies
-node_modules/
+# Create files with placeholder content
+$files = @{
+    "index.html" = "<!-- Chef 24/7 Kitchen Drip Website -->"
+    "assets/css/chef24-main.css" = "/* Main CSS styles */"
+    "assets/css/chef24-modal.css" = "/* Modal CSS styles */"
+    "assets/css/chef24-animations.css" = "/* Animation CSS styles */"
+    "assets/js/chef24-form.js" = "// Form handling code"
+    "assets/js/chef24-animations.js" = "// Animation code"
+    "assets/js/chef24-utils.js" = "// Utility functions"
+    ".gitignore" = "node_modules/`n.DS_Store`nThumbs.db"
+    "README.md" = "# Chef 24/7 Kitchen Drip Website`n`nPlaceholder README content"
+}
 
-# Build output
-dist/
+foreach ($file in $files.Keys) {
+    if (-not (Test-Path $file)) {
+        $files[$file] | Out-File -FilePath $file -Encoding UTF8
+        Write-Log "Created file: $file"
+    }
+}
 
-# Environment files
-.env
-.env.local
+Write-Log "`nProject setup complete! Directory structure:"
+Get-ChildItem -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object FullName
 
-# Editor directories
-.vscode/
-.idea/
-
-# System files
-.DS_Store
-Thumbs.db
-"@
-
-Set-Content -Path ".gitignore" -Value $gitignore
-Write-Host "Created .gitignore file" -ForegroundColor Green
-
-# Create README
-$readme = @"
-# AB Development & Design
-
-A modern, responsive landing page for AB Development & Design.
-
-## Project Structure
-
-- \`assets/\`: Contains CSS, JavaScript, and image files
-- \`components/\`: Reusable component files
-- \`scripts/\`: Utility scripts
-
-## Setup
-
-1. Clone this repository
-2. Open index.html in your browser
-3. For development, use a local server
-"@
-
-Set-Content -Path "README.md" -Value $readme
-Write-Host "Created README.md file" -ForegroundColor Green
-
-Write-Host "`nProject structure created successfully!" -ForegroundColor Cyan
-Write-Host "You can now start developing your website." -ForegroundColor Cyan
+Write-Log "`nSetup completed successfully! Check the log file for details: $logFile"
