@@ -7,6 +7,10 @@
       name="description"
       content="Chef 24/7 Kitchen Drip - Authentic New Orleans cuisine, private chef services, and catering in Fort Worth. Experience genuine Creole and Cajun flavors."
     />
+    <meta
+      name="keywords"
+      content="New Orleans chef, Fort Worth catering, private chef, Creole food, Cajun cuisine, Louisiana cooking"
+    />
     <title>
       Chef 24/7 Kitchen Drip | Authentic New Orleans Private Chef & Catering
     </title>
@@ -15,6 +19,12 @@
     <link rel="stylesheet" href="assets/css/chef24-main.css" />
     <link rel="stylesheet" href="assets/css/chef24-modal.css" />
     <link rel="stylesheet" href="assets/css/chef24-animations.css" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Loading Spinner -->
@@ -28,9 +38,7 @@
     <!-- Navigation -->
     <nav class="main-nav">
       <div class="nav-content">
-        <div class="logo">
-          <img src="assets/images/logo.png" alt="Chef 24/7 Kitchen Drip Logo" />
-        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
         <div class="nav-links">
           <a href="#home">Home</a>
           <a href="#about">About</a>
@@ -57,14 +65,15 @@
 
     <!-- About Section -->
     <section id="about" class="about reveal">
+      <h2>About Chef Eliot</h2>
       <div class="about-content">
-        <h2>About Chef Anthony</h2>
         <div class="chef-info">
-          <img src="assets/images/chef.jpg" alt="Chef Anthony" />
           <p>
-            Bringing the authentic flavors of New Orleans to Fort Worth, Chef
-            Anthony combines traditional Creole and Cajun cooking with modern
-            culinary techniques.
+            Bringing authentic New Orleans flavors to Fort Worth, Chef Eliot
+            combines traditional Creole and Cajun cooking with modern culinary
+            techniques. With over 15 years of experience, he creates
+            unforgettable dining experiences that celebrate the rich culture and
+            heritage of Louisiana cuisine.
           </p>
         </div>
       </div>
@@ -76,15 +85,33 @@
       <div class="service-cards">
         <div class="service-card reveal">
           <h3>Private Chef</h3>
-          <p>Personalized dining experience in your home</p>
+          <p>
+            Experience a personalized dining journey in your home with custom
+            menus tailored to your preferences.
+          </p>
+          <button class="service-btn" onclick="openBookingModal()">
+            Book Private Chef
+          </button>
         </div>
         <div class="service-card reveal">
           <h3>Catering</h3>
-          <p>Full-service catering for events of all sizes</p>
+          <p>
+            Full-service catering for events of all sizes, featuring authentic
+            New Orleans cuisine.
+          </p>
+          <button class="service-btn" onclick="openBookingModal()">
+            Book Catering
+          </button>
         </div>
         <div class="service-card reveal">
           <h3>Cooking Classes</h3>
-          <p>Learn authentic New Orleans cooking techniques</p>
+          <p>
+            Learn the secrets of Creole and Cajun cooking with hands-on classes
+            for all skill levels.
+          </p>
+          <button class="service-btn" onclick="openBookingModal()">
+            Book Class
+          </button>
         </div>
       </div>
     </section>
@@ -93,7 +120,7 @@
     <section id="gallery" class="gallery">
       <h2>Food Gallery</h2>
       <div class="gallery-grid">
-        <!-- Gallery images will be dynamically loaded -->
+        <div class="gallery-placeholder">Gallery Coming Soon</div>
       </div>
     </section>
 
@@ -174,8 +201,39 @@
     </footer>
 
     <!-- JavaScript -->
-    <script type="module" src="assets/js/chef24-utils.js"></script>
     <script src="assets/js/chef24-form.js"></script>
     <script src="assets/js/chef24-animations.js"></script>
+    <script>
+      // Mobile Menu
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+        const navLinks = document.querySelector(".nav-links");
+        const navLinksItems = document.querySelectorAll(".nav-links a");
+
+        mobileMenuBtn.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+          mobileMenuBtn.textContent = navLinks.classList.contains("active")
+            ? "✕"
+            : "☰";
+        });
+
+        navLinksItems.forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            mobileMenuBtn.textContent = "☰";
+          });
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !e.target.closest(".nav-content") &&
+            navLinks.classList.contains("active")
+          ) {
+            navLinks.classList.remove("active");
+            mobileMenuBtn.textContent = "☰";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
