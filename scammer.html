@@ -49,6 +49,9 @@
     ];
     let currentStep = 0;
 
+    // Set a cookie to track scammers
+    document.cookie = "scammer_detected=false; max-age=31536000; path=/";
+
     // Simulate the verification process
     function runVerification() {
       if (currentStep < steps.length) {
@@ -59,6 +62,9 @@
         document.getElementById("message").textContent = "Verification failed.";
         document.getElementById("loader").classList.add("hidden");
         document.getElementById("startCaptcha").classList.remove("hidden");
+
+        // Flag potential scammers
+        document.cookie = "scammer_detected=true; max-age=31536000; path=/";
       }
     }
 
@@ -79,18 +85,40 @@
     function verifyCaptcha() {
       let userAnswer = document.getElementById("captchaInput").value;
       if (parseInt(userAnswer) === a + b) {
-        document.getElementById("captchaResponse").textContent = "Incorrect! Please try again.";
+        document.getElementById("captchaResponse").textContent = "Access Granted!";
+        
+        // Clear the scammer detection cookie
+        document.cookie = "scammer_detected=false; max-age=0; path=/";
+
+        // Redirect to a success page
+        setTimeout(() => {
+          window.location.href = "https://abdevndesign.com/success";
+        }, 1000);
       } else {
         document.getElementById("captchaResponse").textContent = "Incorrect! Please try again.";
+        document.getElementById("captchaInput").value = "";
+        setTimeout(generateCaptcha, 2000);
       }
-      document.getElementById("captchaInput").value = "";
-      setTimeout(generateCaptcha, 2000);
+    }
+
+    // Honeypot: Redirect flagged users to a warning page
+    function checkScammerStatus() {
+      const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+        const [key, value] = cookie.split("=");
+        acc[key] = value;
+        return acc;
+      }, {});
+
+      if (cookies["scammer_detected"] === "true") {
+        window.location.href = "https://abdevndesign.com/report-scam";
+      }
     }
 
     // Start the process when the page loads
     window.onload = () => {
       setTimeout(runVerification, 2000);
       document.getElementById("startCaptcha").onclick = startCaptcha;
+      checkScammerStatus();
     };
   </script>
 </body>
