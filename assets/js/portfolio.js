@@ -18,7 +18,7 @@ const projects = [
     title: "AI Trading Bot",
     description:
       "ALGO and Advanced trading bots to build and customize",
-    icon: "fas fa-shield-alt",
+    icon: "fas fa-bot",
     url: "https://abdevndesign.com/TradingBot",
   },
  
