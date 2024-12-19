@@ -3,386 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';"
-    />
+    <title>Projects - AB Development & Design</title>
 
-    <!-- Enhanced SEO Meta Tags -->
-    <title>
-      Professional Web Development & Design Services | AB Development & Design
-    </title>
-    <meta
-      name="description"
-      content="Transform your digital presence with our professional web development, design, blockchain, and consulting services. Expert solutions tailored to your business needs."
-    />
-    <meta
-      name="keywords"
-      content="web development, web design, blockchain development, UI/UX design, mobile apps, SEO services, technical consulting"
-    />
-    <meta name="author" content="AB Development & Design" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta
-      property="og:title"
-      content="Professional Web Development & Design Services | AB Development & Design"
-    />
-    <meta
-      property="og:description"
-      content="Transform your digital presence with our comprehensive web development and design services. Custom solutions for modern businesses."
-    />
-    <meta property="og:image" content="/assets/images/ABLogo.png" />
-    <meta property="og:url" content="https://abdevndesign.com/services" />
-    <meta property="og:type" content="website" />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Professional Web Development & Design Services"
-    />
-    <meta
-      name="twitter:description"
-      content="Transform your digital presence with our comprehensive web development and design services."
-    />
-    <meta name="twitter:image" content="/assets/images/ABLogo.png" />
-
-    <!-- Schema.org Markup -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "AB Development & Design",
-        "description": "Professional web development and design services",
-        "image": "/assets/images/ABLogo.png",
-        "url": "https://abdevndesign.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "US"
-        },
-        "priceRange": "$$",
-        "servesCuisine": [
-          "Web Development",
-          "Web Design",
-          "Blockchain Development",
-          "Mobile Apps",
-          "Technical Consulting"
-        ]
-      }
-    </script>
-
-    <!-- Analytics and Ads -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-H16CFGEXZP");
-    </script>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7806149173292965"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Preconnect to External Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap"
       rel="stylesheet"
     />
 
     <style>
       :root {
         --primary-color: #2ecc71;
-        --primary-dark: #27ae60;
         --bg-dark: #0a0c10;
         --bg-card: rgba(17, 24, 39, 0.2);
-        --nav-bg: rgba(15, 19, 23, 0.95);
         --text-light: rgba(255, 255, 255, 0.7);
         --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         --border-light: rgba(255, 255, 255, 0.05);
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "Raleway", sans-serif;
-      }
-
-      html {
-        scroll-behavior: smooth;
       }
 
       body {
+        font-family: "Raleway", sans-serif;
+        min-height: 100vh;
         background: var(--bg-dark);
         color: white;
-        line-height: 1.6;
-        min-height: 100vh;
+        overflow-x: hidden;
       }
 
-      .services-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 2rem;
-        position: relative;
-        z-index: 1;
+      #particle-canvas {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
       }
 
-      .services-hero {
-        text-align: center;
-        padding: 4rem 1rem;
-        margin-bottom: 3rem;
-        background: linear-gradient(
-            rgba(10, 12, 16, 0.8),
-            rgba(10, 12, 16, 0.8)
-          ),
-          url("/assets/images/services-bg.jpg") center/cover;
-        border-radius: 15px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .services-hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          45deg,
-          rgba(46, 204, 113, 0.1),
-          rgba(39, 174, 96, 0.1)
-        );
-        z-index: -1;
-      }
-
-      .services-hero h1 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-        font-weight: 700;
-      }
-
-      .services-hero p {
-        font-size: clamp(1rem, 2vw, 1.25rem);
-        max-width: 800px;
-        margin: 0 auto;
-        color: var(--text-light);
-      }
-
-      .service-categories {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin: 3rem 0;
-        flex-wrap: wrap;
-        padding: 0 1rem;
-      }
-
-      .category-btn {
-        padding: 0.75rem 1.5rem;
-        background: transparent;
-        border: 2px solid var(--border-light);
-        color: white;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: var(--transition);
-        font-weight: 500;
-        font-size: 1rem;
-        outline: none;
-      }
-
-      .category-btn:hover,
-      .category-btn.active {
-        background: var(--primary-color);
-        border-color: var(--primary-color);
-        transform: translateY(-2px);
-      }
-
-      .category-btn:focus-visible {
-        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.5);
-      }
-
-      .services-grid {
+      .page-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 2rem;
-        padding: 1rem;
-      }
-
-      .service-card {
-        background: var(--bg-card);
-        border-radius: 15px;
-        padding: 2rem;
-        transition: var(--transition);
-        border: 1px solid var(--border-light);
+        place-items: center;
+        min-height: 100vh;
         position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(10px);
+        z-index: 2;
+        padding: 2rem;
       }
 
-      .service-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        transform: scaleX(0);
-        transition: var(--transition);
-        transform-origin: left;
-      }
-
-      .service-card:hover::before {
-        transform: scaleX(1);
-      }
-
-      .service-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--primary-color);
-        box-shadow: 0 15px 30px rgba(46, 204, 113, 0.1);
-      }
-
-      .service-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        display: inline-block;
-      }
-
-      .service-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: white;
-      }
-
-      .service-card p {
-        color: var(--text-light);
-        margin-bottom: 1.5rem;
-        font-size: 0.95rem;
-      }
-
-      .service-features {
-        list-style: none;
-        margin-bottom: 1.5rem;
-      }
-
-      .service-features li {
-        color: var(--text-light);
-        margin-bottom: 0.75rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.95rem;
-      }
-
-      .service-features li::before {
-        content: "✓";
-        color: var(--primary-color);
-        font-weight: bold;
-      }
-
-      .service-price {
-        font-size: 1.25rem;
-        color: var(--primary-color);
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-      }
-
-      .inquiry-btn {
+      .projects-header {
+        text-align: center;
+        margin-bottom: 3rem;
         width: 100%;
-        padding: 1rem;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: var(--transition);
-        font-weight: 500;
-        font-size: 1rem;
-        outline: none;
+        max-width: 1200px;
       }
 
-      .inquiry-btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
+      .projects-header h1 {
+        font-size: clamp(2rem, 5vw, 2.5rem);
+        margin-bottom: 1rem;
+        color: var(--primary-color);
       }
 
-      .inquiry-btn:focus-visible {
-        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.5);
+      .projects-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
       }
 
-      .tooltip {
-        position: absolute;
-        background: rgba(0, 0, 0, 0.9);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-size: 0.875rem;
-        z-index: 10;
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      .project-card {
+        background: var(--bg-card);
+        border-radius: 10px;
+        overflow: hidden;
+        backdrop-filter: blur(8px);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-light);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-
-      .tooltip.show {
-        opacity: 1;
-      }
-
-      @media (max-width: 768px) {
-        .services-container {
-          padding: 1rem;
-        }
-
-        .service-categories {
-          flex-direction: column;
-          padding: 0;
-        }
-
-        .category-btn {
-          width: 100%;
-        }
-
-        .services-grid {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-          padding: 0;
-        }
-
-        .service-card {
-          padding: 1.5rem;
-        }
-      }
-
-      .fade-in {
         animation: fadeIn 0.5s ease forwards;
-        opacity: 0;
       }
 
       @keyframes fadeIn {
@@ -396,33 +102,96 @@
         }
       }
 
-      .scroll-to-top {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: var(--primary-color);
-        color: white;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        background: var(--bg-dark);
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-        transition: var(--transition);
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
+        padding: 2rem;
       }
 
-      .scroll-to-top.visible {
-        opacity: 1;
-        visibility: visible;
+      .project-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
       }
 
-      .scroll-to-top:hover {
-        background: var(--primary-dark);
-        transform: translateY(-3px);
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      .project-description {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .project-link {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .project-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+      }
+
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+      }
+
+      .loading::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 4px solid var(--text-light);
+        border-top: 4px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .page-container {
+          padding: 1rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+        }
       }
     </style>
     <link rel="stylesheet" href="/assets/css/navbar.css" />
@@ -449,337 +218,157 @@
       </div>
     </nav>
 
-    <div class="services-container">
-      <section class="services-hero fade-in">
-        <h1>Our Services</h1>
-        <p>
-          Transform your digital presence with our comprehensive suite of
-          professional services. From web development to blockchain solutions,
-          we deliver innovative and scalable results.
-        </p>
-      </section>
+    <canvas id="particle-canvas"></canvas>
 
-      <nav
-        class="service-categories"
-        role="navigation"
-        aria-label="Service categories"
-      >
-        <button class="category-btn active" data-category="all">
-          All Services
-        </button>
-        <button class="category-btn" data-category="development">
-          Development
-        </button>
-        <button class="category-btn" data-category="design">Design</button>
-        <button class="category-btn" data-category="maintenance">
-          Maintenance
-        </button>
-        <button class="category-btn" data-category="consulting">
-          Consulting
-        </button>
-      </nav>
-
-      <div class="services-grid">
-        <!-- Web Development -->
-        <div class="service-card fade-in" data-category="development">
-          <div class="service-icon">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <h3>Custom Website Development</h3>
-          <p>
-            Fully custom-built websites tailored to your specific needs and
-            brand identity.
-          </p>
-          <ul class="service-features">
-            <li>Responsive Design</li>
-            <li>SEO Optimization</li>
-            <li>Custom Functionality</li>
-            <li>Performance Optimized</li>
-          </ul>
-          <div class="service-price">Starting at $2,500</div>
-          <button class="inquiry-btn" data-service="Web Development">
-            Request Quote
-          </button>
-        </div>
-
-        <!-- E-commerce -->
-        <div class="service-card fade-in" data-category="development">
-          <div class="service-icon">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-          <h3>E-commerce Solutions</h3>
-          <p>
-            Complete online store development with advanced features and secure
-            payment integration.
-          </p>
-          <ul class="service-features">
-            <li>Product Management</li>
-            <li>Secure Checkout</li>
-            <li>Inventory System</li>
-            <li>Order Management</li>
-          </ul>
-          <div class="service-price">Starting at $3,000</div>
-          <button class="inquiry-btn" data-service="E-commerce">
-            Request Quote
-          </button>
-        </div>
-
-        <!-- UI/UX Design -->
-        <div class="service-card fade-in" data-category="design">
-          <div class="service-icon">
-            <i class="fas fa-paint-brush"></i>
-          </div>
-          <h3>UI/UX Design</h3>
-          <p>
-            Beautiful, intuitive designs that enhance user experience and drive
-            engagement.
-          </p>
-          <ul class="service-features">
-            <li>User Research & Analysis</li>
-            <li>Wireframing & Prototyping</li>
-            <li>Visual Design</li>
-            <li>Usability Testing</li>
-          </ul>
-          <div class="service-price">Starting at $1,500</div>
-          <button class="inquiry-btn" data-service="UI/UX Design">
-            Request Quote
-          </button>
-        </div>
-
-        <!-- Mobile Development -->
-        <div class="service-card fade-in" data-category="development">
-          <div class="service-icon">
-            <i class="fas fa-mobile-alt"></i>
-          </div>
-          <h3>Mobile App Development</h3>
-          <p>
-            Native and cross-platform mobile applications built for performance
-            and user engagement.
-          </p>
-          <ul class="service-features">
-            <li>iOS & Android Development</li>
-            <li>React Native & Flutter</li>
-            <li>App Store Optimization</li>
-            <li>Ongoing Support</li>
-          </ul>
-          <div class="service-price">Starting at $5,000</div>
-          <button class="inquiry-btn" data-service="Mobile Development">
-            Request Quote
-          </button>
-        </div>
-
-        <!-- Blockchain Development -->
-        <div class="service-card fade-in" data-category="development">
-          <div class="service-icon">
-            <i class="fas fa-link"></i>
-          </div>
-          <h3>Blockchain Solutions</h3>
-          <p>
-            Custom blockchain development and smart contract implementation for
-            modern businesses.
-          </p>
-          <ul class="service-features">
-            <li>Smart Contract Development</li>
-            <li>DApp Creation</li>
-            <li>Token Development</li>
-            <li>Web3 Integration</li>
-          </ul>
-          <div class="service-price">Starting at $4,000</div>
-          <button class="inquiry-btn" data-service="Blockchain">
-            Request Quote
-          </button>
-        </div>
-
-        <!-- Add remaining service cards following the same pattern --><!-- Business Formation Package -->
-        <div class="service-card fade-in" data-category="consulting">
-          <div class="service-icon">
-            <i class="fas fa-building"></i>
-          </div>
-          <h3>Complete Business Formation Package</h3>
-          <p>
-            Comprehensive business formation service including legal
-            documentation, consultation, and ongoing support.
-          </p>
-          <ul class="service-features">
-            <li>Articles of Organization & Operating Agreement</li>
-            <li>Federal Tax ID (EIN) Registration</li>
-            <li>Business Attorney Consultation</li>
-            <li>1-Year eSignature Service</li>
-            <li>Unlimited Document Customization</li>
-            <li>30-Day Legal Consultation Access</li>
-            <li>Compliance Monitoring</li>
-            <li>24/7 Customer Support</li>
-          </ul>
-          <div class="service-price">Starting at $599</div>
-          <button class="inquiry-btn" data-service="Business Formation">
-            Request Quote
-          </button>
-        </div>
-
-        <!-- Brand Identity -->
-        <div class="service-card fade-in" data-category="design">
-          <!-- Card content -->
-        </div>
-
-        <!-- SEO Services -->
-        <div class="service-card fade-in" data-category="maintenance">
-          <!-- Card content -->
-        </div>
-
-        <!-- More cards... -->
+    <div class="page-container">
+      <div class="projects-header">
+        <h1>Our Projects</h1>
+        <p>Explore our portfolio of innovative solutions and creative works</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Projects will be loaded here -->
       </div>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" aria-label="Scroll to top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Messenger Chat Integration -->
-    <div id="fb-root"></div>
-    <div id="fb-customer-chat" class="fb-customerchat"></div>
-
     <script>
-      class ServiceManager {
+      // Project data
+      const projects = [
+        {
+          title: "Zero Knowledge Proofs",
+          description:
+            "Explore blockchain privacy solutions and advanced cryptographic techniques.",
+          image: "../assets/images/zkp-logo.png",
+          url: "https://abdevndesign.com/ZKPsAB",
+        },
+        {
+          title: "Ariel's Pralines",
+          description:
+            "Artisanal chocolate confections with an elegant online presence.",
+          image: "../assets/images/pralines-logo.png",
+          url: "https://www.arielspralines.com/home",
+        },
+      ];
+
+      class ProjectManager {
         constructor() {
-          this.initializeElements();
-          this.setupEventListeners();
-          this.initializeObserver();
-          this.initializeMessenger();
+          this.projectsGrid = document.getElementById("projectsGrid");
+          this.loadProjects();
         }
 
-        initializeElements() {
-          this.categoryButtons = document.querySelectorAll(".category-btn");
-          this.serviceCards = document.querySelectorAll(".service-card");
-          this.inquiryButtons = document.querySelectorAll(".inquiry-btn");
-          this.scrollButton = document.querySelector(".scroll-to-top");
-        }
+        loadProjects() {
+          this.projectsGrid.innerHTML = '<div class="loading"></div>';
 
-        setupEventListeners() {
-          // Category filtering
-          this.categoryButtons.forEach((button) => {
-            button.addEventListener("click", () => this.filterServices(button));
-          });
-
-          // Inquiry buttons
-          this.inquiryButtons.forEach((button) => {
-            button.addEventListener("click", (e) => this.handleInquiry(e));
-          });
-
-          // Scroll to top
-          window.addEventListener("scroll", () => this.handleScroll());
-          this.scrollButton.addEventListener("click", () => this.scrollToTop());
-
-          // Tooltip handling
-          document.addEventListener("mouseover", (e) => this.handleTooltip(e));
-        }
-
-        filterServices(button) {
-          const category = button.dataset.category;
-
-          // Update active button
-          this.categoryButtons.forEach((btn) => btn.classList.remove("active"));
-          button.classList.add("active");
-
-          // Filter cards
-          this.serviceCards.forEach((card) => {
-            const shouldShow =
-              category === "all" || card.dataset.category === category;
-            card.style.opacity = "0";
-            card.style.transform = "translateY(20px)";
-
-            setTimeout(() => {
-              card.style.display = shouldShow ? "block" : "none";
-              if (shouldShow) {
-                card.style.opacity = "1";
-                card.style.transform = "translateY(0)";
-              }
-            }, 300);
-          });
-        }
-
-        handleInquiry(e) {
-          const service = e.target.dataset.service;
-          const message = `Hi, I'm interested in your ${service} service. Could you provide more information?`;
-
-          // Open Facebook Messenger with pre-filled message
-          if (window.FB) {
-            FB.CustomerChat.show();
-            FB.CustomerChat.showDialog();
-          }
-
-          // Track inquiry event
-          if (window.gtag) {
-            gtag("event", "service_inquiry", {
-              service_name: service,
+          setTimeout(() => {
+            this.projectsGrid.innerHTML = "";
+            projects.forEach((project, index) => {
+              this.renderProject(project, index);
             });
-          }
+          }, 1000);
         }
 
-        handleScroll() {
-          const scrolled = window.scrollY > 300;
-          this.scrollButton.classList.toggle("visible", scrolled);
-        }
+        renderProject(project, index) {
+          const card = document.createElement("div");
+          card.className = "project-card";
+          card.style.animationDelay = `${index * 0.2}s`;
 
-        scrollToTop() {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        }
+          card.innerHTML = `
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h2 class="project-title">${project.title}</h2>
+                        <p class="project-description">${project.description}</p>
+                        <a href="${project.url}" target="_blank" rel="noopener" class="project-link">
+                            View Project
+                        </a>
+                    </div>
+                `;
 
-        handleTooltip(e) {
-          const target = e.target.closest(".service-features li");
-          if (!target) return;
-
-          const tooltip = this.createTooltip(target.textContent);
-          const rect = target.getBoundingClientRect();
-
-          tooltip.style.left = `${rect.left}px`;
-          tooltip.style.top = `${rect.bottom + 5}px`;
-
-          target.addEventListener("mouseleave", () => tooltip.remove());
-        }
-
-        createTooltip(text) {
-          const tooltip = document.createElement("div");
-          tooltip.className = "tooltip";
-          tooltip.textContent = text;
-          document.body.appendChild(tooltip);
-          setTimeout(() => tooltip.classList.add("show"), 10);
-          return tooltip;
-        }
-
-        initializeObserver() {
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("fade-in");
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.1 }
-          );
-
-          document
-            .querySelectorAll(".service-card, .services-hero")
-            .forEach((el) => observer.observe(el));
-        }
-
-        initializeMessenger() {
-          // Facebook Messenger setup
-          const chatbox = document.getElementById("fb-customer-chat");
-          chatbox.setAttribute("page_id", "113394291657712");
-          chatbox.setAttribute("attribution", "biz_inbox");
-          chatbox.setAttribute("theme_color", "#2ecc71");
+          this.projectsGrid.appendChild(card);
         }
       }
 
-      // Initialize when DOM is ready
+      // Particle animation
+      class ParticleAnimation {
+        constructor() {
+          this.canvas = document.getElementById("particle-canvas");
+          this.ctx = this.canvas.getContext("2d");
+          this.particles = [];
+          this.mouse = { x: 0, y: 0 };
+          this.colors = ["#2ecc71", "#27ae60", "#145a32", "#186a3b", "#1d8348"];
+
+          this.initCanvas();
+          this.animate();
+          this.setupEventListeners();
+        }
+
+        initCanvas() {
+          this.width = this.canvas.width = window.innerWidth;
+          this.height = this.canvas.height = window.innerHeight;
+          this.createParticles();
+        }
+
+        createParticles() {
+          this.particles = Array.from({ length: 50 }, () => ({
+            x: Math.random() * this.width,
+            y: Math.random() * this.height,
+            vx: Math.random() * 2 - 1,
+            vy: Math.random() * 1 - 0.5,
+            size: Math.random() * 4 + 1,
+            color: this.colors[Math.floor(Math.random() * this.colors.length)],
+          }));
+        }
+
+        animate() {
+          this.ctx.clearRect(0, 0, this.width, this.height);
+
+          this.particles.forEach((p) => {
+            const dist = Math.hypot(this.mouse.x - p.x, this.mouse.y - p.y);
+            const size = p.size * Math.max(1, 10 - dist / 50);
+
+            this.ctx.beginPath();
+            this.ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+
+            const gradient = this.ctx.createRadialGradient(
+              p.x,
+              p.y,
+              0,
+              p.x,
+              p.y,
+              size
+            );
+            gradient.addColorStop(0, p.color);
+            gradient.addColorStop(1, "transparent");
+
+            this.ctx.fillStyle = gradient;
+            this.ctx.fill();
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0) p.x = this.width;
+            if (p.x > this.width) p.x = 0;
+            if (p.y < 0) p.y = this.height;
+            if (p.y > this.height) p.y = 0;
+          });
+
+          requestAnimationFrame(() => this.animate());
+        }
+
+        setupEventListeners() {
+          window.addEventListener("resize", () => this.initCanvas());
+          this.canvas.addEventListener("mousemove", (e) => {
+            const rect = this.canvas.getBoundingClientRect();
+            this.mouse.x = e.clientX - rect.left;
+            this.mouse.y = e.clientY - rect.top;
+          });
+        }
+      }
+
+      // Initialize
       document.addEventListener("DOMContentLoaded", () => {
-        new ServiceManager();
+        new ProjectManager();
+        new ParticleAnimation();
       });
     </script>
   </body>
