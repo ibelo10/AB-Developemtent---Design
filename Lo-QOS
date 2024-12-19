@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lo-QOS | AB Development</title>
+    <meta name="description" content="Lo-QOS is a revolutionary operating system integrating quantum computing, AI, and blockchain.">
+    <meta name="keywords" content="Lo-QOS, operating system, quantum computing, AI, blockchain, open source">
+    
+    <meta property="og:title" content="Lo-QOS | AB Development">
+    <meta property="og:description" content="Discover Lo-QOS: A future-proof operating system powered by quantum computing, AI, and blockchain.">
+    <meta property="og:image" content="https://github.com/ABDevNDesign/Lo-QOS/raw/main/assets/lo-qos-preview.png">
+    <meta property="og:type" content="product">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="LoQOS.css" rel="stylesheet">
+    <link href="mobile.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img src="assets/images/ABLogo.png" alt="AB Development Logo" width="40" height="40">
+                <span>AB Development</span>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="https://github.com/ABDevNDesign/Lo-QOS">GitHub</a>
+                <a href="#features">Features</a>
+                <a href="#fork">Fork Guide</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1>Lo-QOS</h1>
+            <p class="subtitle">A next-gen operating system integrating quantum computing, AI, and blockchain.</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/ABDevNDesign/Lo-QOS" class="github-button">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="#features" class="learn-button">
+                    Learn More
+                </a>
+            </div>
+        </section>
+
+        <section class="why-lo-qos">
+            <h2>Why Lo-QOS?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="fade-up">
+                    <i class="fas fa-atom fa-2x"></i>
+                    <h3>Quantum-Enhanced</h3>
+                    <p>Leverage the power of quantum computing for advanced problem-solving.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-brain fa-2x"></i>
+                    <h3>AI-Driven Features</h3>
+                    <p>Customizable AI tools that adapt to your workflow.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-shield-alt fa-2x"></i>
+                    <h3>Blockchain Secure</h3>
+                    <p>Built-in blockchain for decentralized applications and quantum-safe security.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-code fa-2x"></i>
+                    <h3>Open Source</h3>
+                    <p>Extensible and free for developers to innovate.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <h2>Core Features</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="fade-up">
+                    <i class="fas fa-desktop fa-2x"></i>
+                    <h3>Modern GUI</h3>
+                    <p>Intuitive and user-friendly design for seamless interaction.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-cogs fa-2x"></i>
+                    <h3>AI Programming Playgrounds</h3>
+                    <p>Dedicated AI tools to create, test, and refine your ideas.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-network-wired fa-2x"></i>
+                    <h3>Marketplace Integration</h3>
+                    <p>Monetize or share user-generated apps within a decentralized marketplace.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-lock fa-2x"></i>
+                    <h3>Quantum-Safe Security</h3>
+                    <p>Advanced encryption and blockchain safeguards for your data.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fork-guide" id="fork">
+            <h2>Getting Started with Your Fork</h2>
+            <div class="code-example" data-aos="fade-up">
+                <h3>Quick Start</h3>
+                <pre><code># Clone the repository
+git clone https://github.com/ABDevNDesign/Lo-QOS.git
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the OS (example)
+python loqos.py
+</code></pre>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-content">
+                    <h3>Have Questions? Let's Talk</h3>
+                    <p>Reach out for collaborations or support</p>
+                    <a href="mailto:info@abdevndesign.com" class="premium-button">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 AB Development. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/ABDevNDesign/Lo-QOS">GitHub</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="LoQOS.js" defer></script>
+</body>
+</html>
