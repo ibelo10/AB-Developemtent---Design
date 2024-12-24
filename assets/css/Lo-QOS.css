@@ -1,13 +1,19 @@
+/* Root Variables */
 :root {
     --primary-color: #1db954;
     --primary-dark: #14843d;
+    --primary-light: rgba(29, 185, 84, 0.1);
     --bg-dark: #1e1e2d;
+    --bg-darker: #15151f;
     --bg-light: #f5f5f5;
     --text-light: #fff;
     --text-dark: #333;
     --text-gray: #666;
+    --text-muted: rgba(255, 255, 255, 0.7);
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2);
     --border-radius: 8px;
+    --transition: all 0.3s ease;
 }
 
 /* Base Styles */
@@ -15,6 +21,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -26,11 +36,19 @@ body {
 
 /* Header & Navigation */
 header {
-    background: var(--bg-dark);
-    position: sticky;
+    background: var(--bg-darker);
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+header.scrolled {
+    background: rgba(30, 30, 45, 0.95);
+    backdrop-filter: blur(10px);
 }
 
 .navbar {
@@ -46,46 +64,153 @@ header {
     display: flex;
     align-items: center;
     color: var(--text-light);
+    text-decoration: none;
+    gap: 0.75rem;
 }
 
 .nav-logo img {
-    margin-right: 0.5rem;
+    height: 40px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.nav-logo span {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .nav-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
-    color: var(--text-light);
+    color: var(--text-muted);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
 }
 
 .nav-links a:hover {
+    color: var(--text-light);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
     color: var(--primary-color);
 }
 
 .mobile-menu-btn {
     display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
-/* Hero Buttons */
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+    color: var(--text-light);
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(29, 185, 84, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(29, 185, 84, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.development-banner {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.dev-badge {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: var(--shadow);
+}
+
+.hero-section h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section .subtitle {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.hero-section .hero-description {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
 .hero-buttons {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    gap: 1.5rem;
     margin: 2rem 0;
 }
 
 .hero-buttons a {
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
+    padding: 1rem 2rem;
+    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
 }
 
 .github-button {
@@ -96,6 +221,7 @@ header {
 .github-button:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .contribute-button {
@@ -105,53 +231,45 @@ header {
 }
 
 .contribute-button:hover {
-    background: var(--primary-color);
-    color: var(--text-light);
+    background: var(--primary-light);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Roadmap Section */
-.roadmap-section {
-    padding: 4rem 1rem;
-}
-
-.roadmap-timeline {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.roadmap-item {
-    background: white;
-    padding: 1.5rem;
+.development-status {
+    background: rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius);
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
-    position: relative;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
 }
 
-.roadmap-item.current {
-    border-left: 4px solid var(--primary-color);
-}
-
-.roadmap-item .status {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+.status-badge {
+    background: var(--primary-color);
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
+    margin-bottom: 1rem;
+    display: inline-block;
 }
 
-.roadmap-item.current .status {
-    background: var(--primary-color);
-    color: var(--text-light);
+/* Sections Common Styles */
+section {
+    padding: 5rem 1rem;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+    font-weight: 700;
 }
 
 /* Features Section */
 .features-section {
-    padding: 4rem 1rem;
     background: white;
 }
 
@@ -164,15 +282,28 @@ header {
 }
 
 .feature-card {
+    background: var(--bg-light);
     padding: 2rem;
     border-radius: var(--border-radius);
-    background: var(--bg-light);
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    transition: var(--transition);
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
 }
 
 .feature-status {
@@ -181,54 +312,79 @@ header {
     border-radius: 15px;
     font-size: 0.8rem;
     margin: 0.5rem 0;
-    background: rgba(29, 185, 84, 0.1);
+    background: var(--primary-light);
     color: var(--primary-color);
 }
 
-/* Contributing Section */
-.contributing-section {
-    padding: 4rem 1rem;
+/* Roadmap Section */
+.roadmap-section {
     background: var(--bg-light);
 }
 
-.contribution-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+.roadmap-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.step {
-    text-align: center;
-    padding: 1.5rem;
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-light);
+}
+
+.roadmap-item {
     background: white;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    margin-left: 2rem;
     box-shadow: var(--shadow);
+    position: relative;
 }
 
-.step i {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+.roadmap-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.roadmap-item.current {
+    border-left: 4px solid var(--primary-color);
 }
 
 /* Contact Section */
 .contact-section {
-    padding: 4rem 1rem;
     background: white;
 }
 
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+.contact-info h3,
+.newsletter-signup h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
 .contact-links {
     list-style: none;
-    padding: 0;
 }
 
 .contact-links li {
@@ -240,21 +396,33 @@ header {
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    transition: var(--transition);
+}
+
+.contact-links a:hover {
+    color: var(--primary-dark);
+    transform: translateX(5px);
 }
 
 .newsletter-form {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .newsletter-form input {
     flex: 1;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     border: 1px solid #ddd;
     border-radius: var(--border-radius);
     outline: none;
+    transition: var(--transition);
+}
+
+.newsletter-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
 }
 
 .newsletter-form button {
@@ -264,11 +432,12 @@ header {
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: var(--transition);
 }
 
 .newsletter-form button:hover {
     background: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -281,28 +450,29 @@ footer {
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .footer-section h4 {
-    margin-bottom: 1rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .footer-section ul {
     list-style: none;
-    padding: 0;
 }
 
 .footer-section ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .footer-section a {
-    color: #aaa;
+    color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: var(--transition);
 }
 
 .footer-section a:hover {
@@ -314,17 +484,27 @@ footer {
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
+    color: var(--text-muted);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .hero-section .subtitle {
+        font-size: 1.25rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
     .mobile-menu-btn {
         display: block;
-        background: none;
-        border: none;
-        color: var(--text-light);
-        font-size: 1.5rem;
-        cursor: pointer;
     }
 
     .nav-links {
@@ -333,9 +513,9 @@ footer {
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--bg-dark);
-        flex-direction: column;
+        background: var(--bg-darker);
         padding: 1rem;
+        flex-direction: column;
         text-align: center;
     }
 
@@ -343,11 +523,266 @@ footer {
         display: flex;
     }
 
-    .hero-buttons {
+    .newsletter-form {
         flex-direction: column;
     }
 
+    .feature-card {
+        margin: 0 1rem;
+    }
+
+    section {
+        padding: 3rem 1rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-section > * {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Continuing Animations */
+.hero-section h1 { 
+    animation-delay: 0.2s;
+}
+
+.hero-section .subtitle {
+    animation-delay: 0.4s;
+}
+
+.hero-section .hero-description {
+    animation-delay: 0.6s;
+}
+
+.hero-buttons {
+    animation-delay: 0.8s;
+}
+
+.development-status {
+    animation-delay: 1s;
+}
+
+/* Feature Card Animations */
+.feature-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.feature-card.visible {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Roadmap Animations */
+.roadmap-item {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.roadmap-item.visible {
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0; 
+        transform: translateX(-20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-color);
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
+
+/* Enhanced Button Effects */
+.hero-buttons a,
+.newsletter-form button {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-buttons a::after,
+.newsletter-form button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.hero-buttons a:active::after,
+.newsletter-form button:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Enhanced Feature Cards */
+.feature-card i {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover i {
+    transform: scale(1.1);
+}
+
+.feature-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.feature-card ul li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card ul li::before {
+    content: '→';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover ul li::before {
+    transform: translateX(3px);
+}
+
+/* Enhanced Roadmap */
+.roadmap-timeline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: var(--primary-color);
+    transition: height 1s ease;
+}
+
+.roadmap-timeline.visible::after {
+    height: 100%;
+}
+
+/* Focus Styles */
+a:focus,
+button:focus,
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Loading State */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-darker);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--primary-light);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: var(--text-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+/* Print Styles */
+@media print {
+    .hero-buttons,
+    .nav-links,
+    .mobile-menu-btn,
+    .scroll-top,
     .newsletter-form {
-        flex-direction: column;
+        display: none;
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding: 2rem;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .feature-card,
+    .roadmap-item {
+        break-inside: avoid;
     }
 }
