@@ -438,9 +438,265 @@
             }
         ];
 
+I'll continue with the JavaScript portion of the Vegas Raiders themed site.<antArtifact identifier="vegas-raiders-js" type="text/html">
+
         let promoters = [
             {
                 id: 1,
                 name: "John Smith",
                 specialties: ["Raiders Events", "Sports Bars"],
-                rating
+                rating: 4.8,
+                eventsPromoted: 150
+            },
+            {
+                id: 2,
+                name: "Sarah Johnson",
+                specialties: ["Nightclub Events", "Game Day Parties"],
+                rating: 4.9,
+                eventsPromoted: 200
+            }
+        ];
+
+        // Animation function for new cards
+        function animateCard(element) {
+            element.classList.add('animate__animated', 'animate__fadeInUp');
+            element.addEventListener('animationend', () => {
+                element.classList.remove('animate__animated', 'animate__fadeInUp');
+            });
+        }
+
+        // Functions
+        function renderEvents(filteredEvents = events) {
+            const grid = document.getElementById('eventsGrid');
+            grid.innerHTML = filteredEvents.map(event => `
+                <div class="card animate__animated animate__fadeIn">
+                    <h3>${event.title}</h3>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span>📅</span>
+                            <span>${event.date}</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📍</span>
+                            <span>${event.venue}</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤</span>
+                            <span>${event.promoter}</span>
+                        </div>
+                        <p>${event.description}</p>
+                        <div class="tag-container">
+                            ${event.tags.map(tag => `
+                                <span class="tag animate__animated animate__fadeIn">${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add hover animation to new cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('animate__pulse');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('animate__pulse');
+                });
+            });
+        }
+
+        function renderPromoters(filteredPromoters = promoters) {
+            const grid = document.getElementById('promotersGrid');
+            grid.innerHTML = filteredPromoters.map(promoter => `
+                <div class="card animate__animated animate__fadeIn">
+                    <h3>${promoter.name}</h3>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span>⭐</span>
+                            <span>${promoter.rating}/5.0</span>
+                        </div>
+                        <div>
+                            <strong>Specialties:</strong>
+                            <div class="tag-container">
+                                ${promoter.specialties.map(specialty => `
+                                    <span class="tag animate__animated animate__fadeIn">${specialty}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span>📊</span>
+                            <span>${promoter.eventsPromoted} Events Promoted</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add hover animation to new cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('animate__pulse');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('animate__pulse');
+                });
+            });
+        }
+
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const eventsGrid = document.getElementById('eventsGrid');
+            const promotersGrid = document.getElementById('promotersGrid');
+
+            if (tab === 'events') {
+                eventsGrid.style.display = 'grid';
+                promotersGrid.style.display = 'none';
+                renderEvents();
+            } else {
+                eventsGrid.style.display = 'none';
+                promotersGrid.style.display = 'grid';
+                renderPromoters();
+            }
+        }
+
+        function showModal() {
+            const modal = document.getElementById('addEventModal');
+            modal.style.display = 'flex';
+            modal.classList.add('animate__animated', 'animate__fadeIn');
+            modal.querySelector('.modal-content').classList.add('animate__animated', 'animate__zoomIn');
+        }
+
+        function hideModal() {
+            const modal = document.getElementById('addEventModal');
+            const content = modal.querySelector('.modal-content');
+            content.classList.remove('animate__zoomIn');
+            content.classList.add('animate__zoomOut');
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+                content.classList.remove('animate__zoomOut');
+                content.classList.add('animate__zoomIn');
+            }, 500);
+        }
+
+        function addEvent(e) {
+            e.preventDefault();
+            const newEvent = {
+                id: events.length + 1,
+                title: document.getElementById('eventTitle').value,
+                date: document.getElementById('eventDate').value,
+                venue: document.getElementById('eventVenue').value,
+                promoter: document.getElementById('eventPromoter').value,
+                description: document.getElementById('eventDescription').value,
+                tags: document.getElementById('eventTags').value.split(',').map(tag => tag.trim())
+            };
+            events.push(newEvent);
+            renderEvents();
+            hideModal();
+            e.target.reset();
+        }
+
+        // Search functionality with animation
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = e.target.value.toLowerCase();
+                const activeTab = document.querySelector('.tab.active').textContent.toLowerCase();
+
+                if (activeTab === 'events') {
+                    const filteredEvents = events.filter(event =>
+                        event.title.toLowerCase().includes(searchTerm) ||
+                        event.venue.toLowerCase().includes(searchTerm) ||
+                        event.promoter.toLowerCase().includes(searchTerm) ||
+                        event.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                    );
+                    renderEvents(filteredEvents);
+                } else {
+                    const filteredPromoters = promoters.filter(promoter =>
+                        promoter.name.toLowerCase().includes(searchTerm) ||
+                        promoter.specialties.some(specialty => 
+                            specialty.toLowerCase().includes(searchTerm)
+                        )
+                    );
+                    renderPromoters(filteredPromoters);
+                }
+            }, 300);
+        });
+
+        // Spotlight effect for header
+        const header = document.querySelector('header');
+        setInterval(() => {
+            header.classList.add('spotlight');
+            setTimeout(() => {
+                header.classList.remove('spotlight');
+            }, 1000);
+        }, 5000);
+
+        // Initial render with animations
+        renderEvents();
+        renderPromoters();
+
+        // Add animated background effect
+        document.body.innerHTML += `
+            <div class="animated-bg"></div>
+        `;
+    </script>
+</body>
+</html>
+</antArtifact>
+
+
+I've enhanced the site with Vegas Raiders theming and club-style animations:
+
+1. Raiders Theme:
+- Silver and black color scheme
+- Raiders shield logo animation
+- Hexagonal design elements
+- Custom Raiders-themed sample events
+
+2. Animations Added:
+- Neon pulse effect on headers
+- Spotlight scanning effect in header
+- Card hover animations with glow effect
+- Smooth fade-in animations for new content
+- Pulse animations on buttons
+- Zoom effects for modal windows
+
+3. Club-Style Elements:
+- Dark theme with metallic accents
+- Gradient overlays
+- Blur effects on modal backgrounds
+- Animated backgrounds
+- Glow effects on interactive elements
+
+4. Enhanced Features:
+- Animated search filtering
+- Smooth tab transitions
+- Interactive card animations
+- Responsive design for all devices
+
+To deploy this on GitHub Pages:
+
+1. Create a new repository
+2. Name it `vegas-raiders-promoter`
+3. Save the complete code as `index.html`
+4. Upload using these commands:
+
+```bash
+mkdir vegas-raiders-promoter
+cd vegas-raiders-promoter
+# Create index.html and paste the code
+git init
+git add index.html
+git commit -m "Initial commit with Raiders theme"
+git remote add origin https://github.com/YOUR_USERNAME/vegas-raiders-promoter.git
+git branch -M main
+git push -u origin main
+```
+
+5. Enable GitHub Pages in your repository settings
+
+Would you like me to enhance any particular aspect of the theme or add more Raiders-specific features?​​​​​​​​​​​​​​​​
