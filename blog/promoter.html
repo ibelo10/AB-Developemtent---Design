@@ -1,206 +1,83 @@
-import React, { useState } from 'react';
-import { Search, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
-
-const PromoterNetwork = () => {
-  const [activeTab, setActiveTab] = useState('events');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);
-
-  // Sample data
-  const events = [
-    {
-      id: 1,
-      title: "Raiders Fan Night",
-      date: "2025-02-15",
-      venue: "Allegiant Stadium",
-      promoter: "Vegas Sports Co",
-      tags: ["Game Day", "Fan Event"]
-    },
-    {
-      id: 2,
-      title: "Pre-Season Meetup",
-      date: "2025-03-01",
-      venue: "Raiders HQ",
-      promoter: "Silver & Black Events",
-      tags: ["Pre-Season", "Meet & Greet"]
-    }
-  ];
-
-  const promoters = [
-    {
-      id: 1,
-      name: "Vegas Sports Co",
-      events: 15,
-      rating: 4.8,
-      tags: ["VIP Events", "Game Day"]
-    },
-    {
-      id: 2,
-      name: "Silver & Black Events",
-      events: 12,
-      rating: 4.6,
-      tags: ["Family Events", "Pre-Season"]
-    }
-  ];
-
-  const Card = ({ item, type }) => (
-    <div className="bg-gray-800 rounded-lg p-6 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-      <h3 className="text-xl font-bold text-pink-500 mb-4">
-        {type === 'event' ? item.title : item.name}
-      </h3>
-      <div className="space-y-2">
-        {type === 'event' ? (
-          <>
-            <p className="text-gray-300">Date: {item.date}</p>
-            <p className="text-gray-300">Venue: {item.venue}</p>
-            <p className="text-gray-300">Promoter: {item.promoter}</p>
-          </>
-        ) : (
-          <>
-            <p className="text-gray-300">Events: {item.events}</p>
-            <p className="text-gray-300">Rating: {item.rating}/5.0</p>
-          </>
-        )}
-      </div>
-      <div className="flex flex-wrap gap-2 mt-4">
-        {item.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="bg-purple-600 px-3 py-1 rounded-full text-sm text-white"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-
-  const Modal = () => (
-    <div className={`fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center ${showModal ? '' : 'hidden'}`}>
-      <div className="bg-gray-800 rounded-lg p-6 w-full max-w-md">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-white">Add New Event</h2>
-          <button
-            onClick={() => setShowModal(false)}
-            className="text-gray-400 hover:text-white"
-          >
-            ×
-          </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raiders Nation Promoter Network</title>
+    <link rel="stylesheet" href="promoter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="raiders-shield">
+            <div class="shield-inner"></div>
+            <div class="crossed-swords"></div>
         </div>
-        <form className="space-y-4">
-          <div>
-            <label className="block text-gray-300 mb-2">Event Title</label>
-            <input
-              type="text"
-              className="w-full bg-gray-700 rounded p-2 text-white"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-300 mb-2">Date</label>
-            <input
-              type="date"
-              className="w-full bg-gray-700 rounded p-2 text-white"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-pink-600 text-white rounded-full py-2 hover:bg-pink-700 transition-colors"
-          >
-            Add Event
-          </button>
-        </form>
-      </div>
-    </div>
-  );
+        <h1>RAIDERS NATION PROMOTER NETWORK</h1>
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search events or promoters..." id="searchInput">
+                <div class="search-icon"></div>
+            </div>
+            <button class="add-button" onclick="showModal()">
+                <span class="button-text">ADD EVENT</span>
+                <span class="button-icon">+</span>
+            </button>
+        </div>
+        <nav class="tabs">
+            <button class="tab active" data-tab="events">EVENTS</button>
+            <button class="tab" data-tab="promoters">PROMOTERS</button>
+        </nav>
+    </header>
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900">
-      <header className="bg-gradient-to-r from-cyan-500 to-pink-500 text-center py-8 shadow-lg">
-        <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-r from-cyan-500 to-gray-900 animate-pulse" 
-             style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}
-        />
-        <h1 className="text-4xl font-bold text-white mb-8">
-          Vegas Raiders Promoter Network
-        </h1>
+    <main>
+        <div id="eventsGrid" class="grid"></div>
+        <div id="promotersGrid" class="grid" style="display: none;"></div>
         
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 px-4">
-          <div className="relative w-full md:w-96">
-            <input
-              type="text"
-              placeholder="Search events or promoters..."
-              className="w-full bg-gray-800 rounded-full py-3 px-6 text-white"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <Search className="absolute right-4 top-3 text-gray-400" />
-          </div>
-          <button
-            onClick={() => setShowModal(true)}
-            className="flex items-center gap-2 bg-pink-600 text-white rounded-full px-6 py-3 hover:bg-pink-700 transition-colors"
-          >
-            <Plus size={20} />
-            Add Event
-          </button>
+        <div class="pagination">
+            <button id="prevPage" class="page-btn" disabled>
+                <span class="arrow">←</span> PREVIOUS
+            </button>
+            <span id="pageInfo" class="page-info">PAGE 1 OF 1</span>
+            <button id="nextPage" class="page-btn">
+                NEXT <span class="arrow">→</span>
+            </button>
         </div>
+    </main>
 
-        <div className="flex justify-center gap-8 mt-8">
-          <button
-            className={`pb-2 border-b-2 ${
-              activeTab === 'events'
-                ? 'text-cyan-400 border-cyan-400'
-                : 'text-white border-transparent'
-            }`}
-            onClick={() => setActiveTab('events')}
-          >
-            Events
-          </button>
-          <button
-            className={`pb-2 border-b-2 ${
-              activeTab === 'promoters'
-                ? 'text-cyan-400 border-cyan-400'
-                : 'text-white border-transparent'
-            }`}
-            onClick={() => setActiveTab('promoters')}
-          >
-            Promoters
-          </button>
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ADD NEW EVENT</h2>
+                <button class="close-button" onclick="hideModal()">&times;</button>
+            </div>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">EVENT TITLE</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">DATE</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventTime">TIME</label>
+                    <input type="time" id="eventTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventVenue">VENUE</label>
+                    <input type="text" id="eventVenue" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventTags">TAGS</label>
+                    <input type="text" id="eventTags" placeholder="Separate tags with commas">
+                </div>
+                <button type="submit" class="submit-btn">COMMIT TO THE NATION</button>
+            </form>
         </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeTab === 'events'
-            ? events.map(event => <Card key={event.id} item={event} type="event" />)
-            : promoters.map(promoter => <Card key={promoter.id} item={promoter} type="promoter" />)
-          }
-        </div>
-
-        <div className="flex justify-center items-center gap-4 mt-8">
-          <button
-            className="flex items-center gap-2 bg-cyan-500 text-white rounded-full px-6 py-2 disabled:bg-gray-600"
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-          >
-            <ChevronLeft size={20} />
-            Previous
-          </button>
-          <span className="text-white">Page {currentPage}</span>
-          <button
-            className="flex items-center gap-2 bg-cyan-500 text-white rounded-full px-6 py-2"
-            onClick={() => setCurrentPage(prev => prev + 1)}
-          >
-            Next
-            <ChevronRight size={20} />
-          </button>
-        </div>
-      </main>
-
-      <Modal />
     </div>
-  );
-};
 
-export default PromoterNetwork;
+    <script src="promoter.js"></script>
+</body>
+</html>
