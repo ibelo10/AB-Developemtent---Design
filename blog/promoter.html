@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegas Promoter Network</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f3f4f6;
+            --card-background: #ffffff;
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--card-background);
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .search-box {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 300px;
+            max-width: 100%;
+        }
+
+        .add-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background-color: var(--background-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Vegas Promoter Network</h1>
+            <div class="controls">
+                <input type="text" class="search-box" placeholder="Search events or promoters..." id="searchInput">
+                <button class="add-button" onclick="showModal()">Add Event</button>
+            </div>
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('events')">Events</button>
+                <button class="tab" onclick="switchTab('promoters')">Promoters</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="eventsGrid" class="grid"></div>
+        <div id="promotersGrid" class="grid" style="display: none;"></div>
+    </main>
+
+    <div class="modal" id="addEventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Event</h2>
+                <button class="close-button" onclick="hideModal()">&times;</button>
+            </div>
+            <form id="addEventForm" onsubmit="addEvent(event)">
+                <div class="form-group">
+                    <label for="eventTitle">Event Title</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Date</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventVenue">Venue</label>
+                    <input type="text" id="eventVenue" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventPromoter">Promoter</label>
+                    <input type="text" id="eventPromoter" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description</label>
+                    <textarea id="eventDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventTags">Tags (comma-separated)</label>
+                    <input type="text" id="eventTags" placeholder="e.g., pool, summer, dance">
+                </div>
+                <button type="submit" class="add-button">Add Event</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        let events = [
+            {
+                id: 1,
+                title: "Summer Pool Party",
+                date: "2025-06-15",
+                venue: "Luxor Pool",
+                promoter: "John Smith",
+                description: "The hottest pool party of the summer!",
+                tags: ["pool", "summer", "dance"]
+            },
+            {
+                id: 2,
+                title: "EDM Night",
+                date: "2025-01-20",
+                venue: "XS Nightclub",
+                promoter: "Sarah Johnson",
+                description: "Featured DJ lineup with international stars",
+                tags: ["edm", "nightclub", "dance"]
+            }
+        ];
+
+        let promoters = [
+            {
+                id: 1,
+                name: "John Smith",
+                specialties: ["Pool Parties", "EDM Events"],
+                rating: 4.8,
+                eventsPromoted: 150
+            },
+            {
+                id: 2,
+                name: "Sarah Johnson",
+                specialties: ["Nightclub Events", "Concerts"],
+                rating: 4.9,
+                eventsPromoted: 200
+            }
+        ];
+
+        // Functions
+        function renderEvents(filteredEvents = events) {
+            const grid = document.getElementById('eventsGrid');
+            grid.innerHTML = filteredEvents.map(event => `
+                <div class="card">
+                    <h3>${event.title}</h3>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span>📅</span>
+                            <span>${event.date}</span>
+                        </div>
+                        <div class="info-row">
+                            <span>📍</span>
+                            <span>${event.venue}</span>
+                        </div>
+                        <div class="info-row">
+                            <span>👤</span>
+                            <span>${event.promoter}</span>
+                        </div>
+                        <p>${event.description}</p>
+                        <div class="tag-container">
+                            ${event.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderPromoters(filteredPromoters = promoters) {
+            const grid = document.getElementById('promotersGrid');
+            grid.innerHTML = filteredPromoters.map(promoter => `
+                <div class="card">
+                    <h3>${promoter.name}</h3>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span>⭐</span>
+                            <span>${promoter.rating}/5.0</span>
+                        </div>
+                        <div>
+                            <strong>Specialties:</strong>
+                            <div class="tag-container">
+                                ${promoter.specialties.map(specialty => `
+                                    <span class="tag">${specialty}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span>📊</span>
+                            <span>${promoter.eventsPromoted} Events Promoted</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const eventsGrid = document.getElementById('eventsGrid');
+            const promotersGrid = document.getElementById('promotersGrid');
+
+            if (tab === 'events') {
+                eventsGrid.style.display = 'grid';
+                promotersGrid.style.display = 'none';
+                renderEvents();
+            } else {
+                eventsGrid.style.display = 'none';
+                promotersGrid.style.display = 'grid';
+                renderPromoters();
+            }
+        }
+
+        function showModal() {
+            document.getElementById('addEventModal').style.display = 'flex';
+        }
+
+        function hideModal() {
+            document.getElementById('addEventModal').style.display = 'none';
+        }
+
+        function addEvent(e) {
+            e.preventDefault();
+            const newEvent = {
+                id: events.length + 1,
+                title: document.getElementById('eventTitle').value,
+                date: document.getElementById('eventDate').value,
+                venue: document.getElementById('eventVenue').value,
+                promoter: document.getElementById('eventPromoter').value,
+                description: document.getElementById('eventDescription').value,
+                tags: document.getElementById('eventTags').value.split(',').map(tag => tag.trim())
+            };
+            events.push(newEvent);
+            renderEvents();
+            hideModal();
+            e.target.reset();
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const activeTab = document.querySelector('.tab.active').textContent.toLowerCase();
+
+            if (activeTab === 'events') {
+                const filteredEvents = events.filter(event =>
+                    event.title.toLowerCase().includes(searchTerm) ||
+                    event.venue.toLowerCase().includes(searchTerm) ||
+                    event.promoter.toLowerCase().includes(searchTerm)
+                );
+                renderEvents(filteredEvents);
+            } else {
+                const filteredPromoters = promoters.filter(promoter =>
+                    promoter.name.toLowerCase().includes(searchTerm) ||
+                    promoter.specialties.some(specialty => 
+                        specialty.toLowerCase().includes(searchTerm)
+                    )
+                );
+                renderPromoters(filteredPromoters);
+            }
+        });
+
+        // Initial render
+        renderEvents();
+        renderPromoters();
+    </script>
+</body>
+</html>
