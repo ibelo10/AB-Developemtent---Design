@@ -1,0 +1,264 @@
+:root {
+    --raiders-silver: #C4C4C4;
+    --raiders-black: #000000;
+    --raiders-white: #FFFFFF;
+    --accent-silver: #A5ACAF;
+    --dark-silver: #666666;
+    --glow-silver: rgba(196, 196, 196, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    background: var(--raiders-black);
+    color: var(--raiders-silver);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(180deg, #000000 0%, #222222 100%);
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 3px solid var(--raiders-silver);
+    box-shadow: 0 0 20px rgba(165, 172, 175, 0.2);
+}
+
+.raiders-shield {
+    width: 120px;
+    height: 140px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    animation: shieldGlow 3s infinite alternate;
+}
+
+.shield-inner {
+    width: 100%;
+    height: 100%;
+    background: var(--raiders-silver);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    position: relative;
+}
+
+.crossed-swords {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000000" d="M6.92 5H5l9 9 1-.94L6.92 5z"/><path fill="%23000000" d="M19 13.06L10.94 5H9l9 9h1z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@keyframes shieldGlow {
+    0% {
+        filter: drop-shadow(0 0 5px var(--glow-silver));
+    }
+    100% {
+        filter: drop-shadow(0 0 20px var(--glow-silver));
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--raiders-silver);
+    text-shadow: 0 0 10px var(--glow-silver);
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+
+.search-container {
+    position: relative;
+    flex: 0 1 400px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(165, 172, 175, 0.1);
+    border: 2px solid var(--raiders-silver);
+    border-radius: 4px;
+    color: var(--raiders-white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: var(--raiders-white);
+    box-shadow: 0 0 15px var(--glow-silver);
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--raiders-silver);
+    color: var(--raiders-black);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-button:hover {
+    background: var(--raiders-white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(165, 172, 175, 0.3);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tab {
+    padding: 0.75rem 2rem;
+    background: transparent;
+    border: none;
+    color: var(--raiders-silver);
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--raiders-silver);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tab.active {
+    color: var(--raiders-white);
+}
+
+.tab.active::after {
+    transform: scaleX(1);
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    border: 1px solid var(--raiders-silver);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px var(--glow-silver);
+}
+
+.card h3 {
+    color: var(--raiders-white);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--raiders-silver);
+    padding-bottom: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--raiders-silver);
+    color: var(--raiders-black);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    border: 2px solid var(--raiders-silver);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    position: relative;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--raiders-silver);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(165, 172, 175, 0.1);
+    border: 1px solid var(--raiders-silver);
+    border-radius: 4px;
+    color: var(--raiders-white);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--raiders-silver);
+    color: var(--raiders-black);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--raiders-white);
+}
