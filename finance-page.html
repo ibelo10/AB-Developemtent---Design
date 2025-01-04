@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Financial Analysis Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+        .summary-box {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .summary-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .income { color: #28a745; }
+        .expenses { color: #dc3545; }
+        .net { color: #007bff; }
+        .section {
+            margin-bottom: 30px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .grid-item {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .recommendations {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .alert {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .spending-guide {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .bill-category {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Enhanced Financial Analysis Report</h1>
+            <p>September - November 2024</p>
+        </div>
+
+        <div class="alert">
+            <strong>Daily Spending Alert:</strong> Based on your current income and expenses, your recommended daily spending limit is $80.00 to maintain a sustainable budget.
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-item">
+                <h3>Average Daily Income</h3>
+                <p class="income">$252.08</p>
+            </div>
+            <div class="summary-item">
+                <h3>Average Daily Expenses</h3>
+                <p class="expenses">$251.56</p>
+            </div>
+            <div class="summary-item">
+                <h3>Monthly Net Income</h3>
+                <p class="net">$11.95</p>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <h2>Monthly Bills Breakdown</h2>
+                <div class="bill-category">
+                    <h3>Subscriptions & Services</h3>
+                    <div class="expense-item">
+                        <span>Apple Services</span>
+                        <span>$260.32</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Claude AI</span>
+                        <span>$40.00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Credit One</span>
+                        <span>$30.00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Revvi</span>
+                        <span>$104.33</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Cleo</span>
+                        <span>$1.06</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <h2>Recommended Budget Allocation</h2>
+                <div class="expense-item">
+                    <span>Essential Bills (35%)</span>
+                    <span>$88.23/day</span>
+                </div>
+                <div class="expense-item">
+                    <span>Transportation (15%)</span>
+                    <span>$37.81/day</span>
+                </div>
+                <div class="expense-item">
+                    <span>Food & Groceries (20%)</span>
+                    <span>$50.42/day</span>
+                </div>
+                <div class="expense-item">
+                    <span>Savings (20%)</span>
+                    <span>$50.42/day</span>
+                </div>
+                <div class="expense-item">
+                    <span>Discretionary (10%)</span>
+                    <span>$25.21/day</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="spending-guide">
+            <h2>Spending Optimization Recommendations</h2>
+            <ul>
+                <li><strong>Subscription Review:</strong> Your Apple services charges ($260.32/month) seem high. Consider reviewing and consolidating subscriptions.</li>
+                <li><strong>Credit Card Payments:</strong> You're paying $134.33/month in credit card related charges (Credit One + Revvi). Look into debt consolidation or balance transfer options.</li>
+                <li><strong>Daily Spending Target:</strong> Aim to keep non-essential daily spending under $80 to build savings.</li>
+                <li><strong>Emergency Fund:</strong> With your current income, try to set aside $50/day for emergencies.</li>
+                <li><strong>Gas Budget:</strong> Current gas spending is efficient at about $295/month considering your work. Maintain this level.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Monthly Savings Plan</h2>
+            <div class="expense-item">
+                <span>Current Monthly Net:</span>
+                <span>$11.95</span>
+            </div>
+            <div class="expense-item">
+                <span>Potential Monthly Savings (with optimizations):</span>
+                <span>$450-600</span>
+            </div>
+            <ul>
+                <li>Reduce Apple subscriptions by 50%: +$130/month</li>
+                <li>Consolidate credit card payments: +$40/month</li>
+                <li>Optimize ATM withdrawals (reduce fees): +$30/month</li>
+                <li>Better categorize "Other" expenses: potential +$250/month</li>
+            </ul>
+        </div>
+
+        <div class="section recommendations">
+            <h2>Action Items</h2>
+            <ol>
+                <li>Review all Apple subscriptions and cancel unnecessary ones</li>
+                <li>Look into credit card consolidation options</li>
+                <li>Set up automatic savings transfers for $50/day</li>
+                <li>Track all "Other" expenses for one month to identify potential savings</li>
+                <li>Consider increasing Uber hours during peak tip times</li>
+                <li>Set up a separate savings account for emergency fund</li>
+                <li>Use gas rewards programs to maximize fuel savings</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
