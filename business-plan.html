@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resilient Negroar - Business Plan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #1e3d59;
+            --secondary: #f5a623;
+            --accent: #17a2b8;
+            --light: #f4f4f9;
+            --dark: #333;
+            --success: #28a745;
+            --warning: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .top-bar {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem;
+            text-align: right;
+        }
+
+        header {
+            background: linear-gradient(rgba(30, 61, 89, 0.95), rgba(30, 61, 89, 0.95)),
+                        url('/api/placeholder/1200/300');
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .chart-container {
+            margin: 2rem 0;
+            height: 400px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .highlight-box {
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            Contact: invest@resilientnegroar.com
+        </div>
+    </div>
+
+    <header>
+        <h1>Resilient Negroar</h1>
+        <p>Comprehensive Business Plan 2025-2030</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#company-overview">Company Overview</a></li>
+            <li><a href="#market-analysis">Market Analysis</a></li>
+            <li><a href="#operations">Operations</a></li>
+            <li><a href="#financial">Financial Plan</a></li>
+            <li><a href="#implementation">Implementation</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+            <div class="highlight-box">
+                <p><strong>Mission:</strong> To provide high-quality, sustainably packaged sugar products while building a resilient business that empowers our community.</p>
+            </div>
+            <p>Resilient Negroar is a Louisiana-based sugar repackaging and distribution company, strategically positioned to serve both local and national markets. We aim to capture a significant share of the $12 billion U.S. sugar market through innovative packaging, sustainable practices, and efficient distribution.</p>
+        </section>
+
+        <section id="company-overview">
+            <h2>Company Overview</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Core Business</h3>
+                    <ul>
+                        <li>Wholesale sugar procurement</li>
+                        <li>Custom repackaging services</li>
+                        <li>Retail and bulk distribution</li>
+                        <li>Eco-friendly packaging solutions</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Target Market</h3>
+                    <ul>
+                        <li>Local grocery stores</li>
+                        <li>Bakeries and restaurants</li>
+                        <li>Food service businesses</li>
+                        <li>Online retail customers</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Competitive Advantage</h3>
+                    <ul>
+                        <li>Strategic Louisiana location</li>
+                        <li>Sustainable packaging</li>
+                        <li>Local partnerships</li>
+                        <li>Efficient distribution</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="market-analysis">
+            <h2>Market Analysis</h2>
+            <div class="chart-container">
+                <canvas id="marketChart"></canvas>
+            </div>
+            <h3>Market Opportunities</h3>
+            <ul>
+                <li>Growing demand for sustainably packaged products</li>
+                <li>Increasing interest in local sourcing</li>
+                <li>Rising online grocery sales</li>
+                <li>Expansion potential in specialty sugars</li>
+            </ul>
+        </section>
+
+        <section id="operations">
+            <h2>Operational Plan</h2>
+            <h3>Facility Requirements</h3>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Details</th>
+                    <th>Cost Range</th>
+                </tr>
+                <tr>
+                    <td>Warehouse Space</td>
+                    <td>2,000-3,000 sq ft</td>
+                    <td>$1,000-$5,000/month</td>
+                </tr>
+                <tr>
+                    <td>Equipment</td>
+                    <td>Packaging machinery, scales</td>
+                    <td>$10,000-$20,000</td>
+                </tr>
+                <tr>
+                    <td>Initial Inventory</td>
+                    <td>10-50 tons of sugar</td>
+                    <td>$5,000-$50,000</td>
+                </tr>
+                <tr>
+                    <td>Packaging Materials</td>
+                    <td>Eco-friendly materials</td>
+                    <td>$5,000-$15,000</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="financial">
+            <h2>Financial Plan</h2>
+            <div class="chart-container">
+                <canvas id="financialChart"></canvas>
+            </div>
+            <h3>Startup Costs</h3>
+            <div class="grid">
+                <div class="card">
+                    <h3>Initial Investment</h3>
+                    <p>Total Required: $50,000-$100,000</p>
+                    <ul>
+                        <li>Equipment: 20%</li>
+                        <li>Inventory: 30%</li>
+                        <li>Operations: 30%</li>
+                        <li>Marketing: 20%</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Revenue Projections</h3>
+                    <ul>
+                        <li>Year 1: $150,000</li>
+                        <li>Year 2: $250,000</li>
+                        <li>Year 3: $350,000</li>
+                        <li>Year 4: $425,000</li>
+                        <li>Year 5: $500,000</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="implementation">
+            <h2>Implementation Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Phase 1: Setup (Months 1-3)</h3>
+                    <ul>
+                        <li>Secure facility lease</li>
+                        <li>Purchase equipment</li>
+                        <li>Establish supplier relationships</li>
+                        <li>Obtain necessary permits</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>Phase 2: Launch (Months 4-6)</h3>
+                    <ul>
+                        <li>Begin operations</li>
+                        <li>Secure initial customers</li>
+                        <li>Launch marketing campaign</li>
+                        <li>Establish distribution network</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>Phase 3: Growth (Months 7-12)</h3>
+                    <ul>
+                        <li>Expand customer base</li>
+                        <li>Optimize operations</li>
+                        <li>Develop online presence</li>
+                        <li>Scale distribution</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Resilient Negroar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Market Analysis Chart
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        new Chart(marketCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Local Retail', 'Food Service', 'Online Sales', 'Wholesale'],
+                datasets: [{
+                    label: 'Market Opportunity ($K)',
+                    data: [200, 150, 100, 300],
+                    backgroundColor: [
+                        '#1e3d59',
+                        '#f5a623',
+                        '#17a2b8',
+                        '#28a745'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Market Opportunity by Segment'
+                    }
+                }
+            }
+        });
+
+        // Financial Projections Chart
+        const financialCtx = document.getElementById('financialChart').getContext('2d');
+        new Chart(financialCtx, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [150000, 250000, 350000, 425000, 500000],
+                    borderColor: '#1e3d59',
+                    backgroundColor: 'rgba(30, 61, 89, 0.1)',
+                    fill: true
+                }, {
+                    label: 'Profit',
+                    data: [15000, 30000, 60000, 90000, 125000],
+                    borderColor: '#28a745',
+                    backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '5-Year Financial Projections'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
