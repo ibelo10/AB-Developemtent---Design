@@ -1,171 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Analytics with CSP nonce -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H16CFGEXZP"
-      nonce="analytics-tag"
-    ></script>
-    <script nonce="analytics-inline">
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-H16CFGEXZP");
-    </script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AB Development & Design | Building Innovative Solutions</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">
+      <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
+      <span>AB Development & Design</span>
+    </div>
+    <button class="hamburger-menu" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/services/">Services</a>
+      <a href="/blog/">Blog</a>
+      <a href="/store/">Store</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://lo-qos.com" target="_blank" rel="noopener">Lo-QOS</a>
+      <a href="https://github.com/Iaarondev/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AB Development & Design | Building Innovative Solutions</title>
-
-    <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="AB Development & Design is a full-service agency specializing in innovative solutions, web development, blockchain, and quantum OS like Lo-QOS."
-    />
-    <meta
-      name="keywords"
-      content="web development, blockchain, quantum OS, innovative solutions, Lo-QOS, AB Development & Design"
-    />
-    <meta name="author" content="AB Development & Design" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="AB Development & Design" />
-    <meta
-      property="og:description"
-      content="We build innovative solutions, including Lo-QOS, a revolutionary quantum operating system."
-    />
-    <meta property="og:image" content="/assets/images/ABLogo.png" />
-    <meta property="og:url" content="https://abdevndesign.com" />
-    <meta property="og:type" content="website" />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://abdevndesign.com" />
-
-    <!-- Google Fonts - preloaded -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500,600,700,800,900&display=swap"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
-
-    <!-- Local Resources -->
-    <script defer src="/assets/js/jquery.min.js"></script>
-    <script defer src="/assets/js/jquery.ripples.min.js"></script>
-    <link rel="stylesheet" href="/assets/css/all.min.css" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <link rel="stylesheet" href="/assets/css/messenger.css" />
-  </head>
-
-  <body>
-    <nav class="navbar">
-      <div class="nav-logo">
-        <img src="/assets/images/ABLogo.png" alt="AB Logo" class="logo-img" />
-        <span>AB Development & Design</span>
-      </div>
-      <div class="nav-links">
-        <a href="/" class="active">Home</a>
-        <a href="/portfolio/">Portfolio</a>
-        <a href="/services/">Services</a>
-        <a href="/blog/">Blog</a>
-        <a href="/store/">Store</a>
-        <a href="/contact/">Contact</a>
-        <a
-          href="https://lo-qos.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Lo-QOS</a
-        >
-        <a
-          href="https://github.com/Iaarondev/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >GitHub</a
-        >
-      </div>
-    </nav>
-
-    <div class="hero-container">
-      <div class="logo-large">
-        <img
-          src="/assets/images/ABLogo.png"
-          alt="AB Logo"
-          class="logo-img-large"
-        />
-      </div>
-      <div class="content-wrapper">
-        <h1>AB Development & Design</h1>
-        <div class="tagline-container">
-          <span>We</span>
-          <div class="scrolling-text">
-            <span class="scrolling-text__item">build innovative solutions</span>
-          </div>
-          <span>with passion</span>
-        </div>
-        <div class="hero-social">
-          <div class="cta-container">
-            <a href="/portfolio/" class="cta-button">VIEW PORTFOLIO</a>
-            <a href="/services/" class="cta-button cta-button--secondary"
-              >OUR SERVICES</a
-            >
-          </div>
-          <a
-            href="https://lo-qos.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-button cta-button--highlight"
-          >
-            Learn More About Lo-QOS
-          </a>
-        </div>
+  <div class="hero-container">
+    <div class="content-wrapper">
+      <h1>AB Development & Design</h1>
+      <p class="tagline">We build innovative solutions with passion</p>
+      <div class="cta-container">
+        <a href="/portfolio/" class="cta-button">View Portfolio</a>
+        <a href="/services/" class="cta-button secondary">Our Services</a>
+        <a href="https://lo-qos.com" class="cta-button highlight">Learn More About Lo-QOS</a>
       </div>
     </div>
+  </div>
 
-    <section class="feature-highlight">
-      <div class="feature-card">
-        <h2>About Lo-QOS</h2>
-        <p>
-          Lo-QOS is a lightweight, browser-based quantum operating system
-          developed by AB Development & Design. It integrates blockchain,
-          artificial intelligence, and distributed computing to redefine
-          technology.
-        </p>
-        <a
-          href="https://lo-qos.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="cta-button cta-button--secondary"
-        >
-          Visit Lo-QOS
-        </a>
-      </div>
-    </section>
+  <section class="about-section">
+    <h2>About Lo-QOS</h2>
+    <p>Lo-QOS is a lightweight, browser-based quantum operating system...</p>
+    <a href="https://lo-qos.com" class="cta-button">Visit Lo-QOS</a>
+  </section>
 
-    <!-- Chat Toast Notification -->
-    <div class="chat-toast" id="chatToast">
-      <div class="toast-content">
-        <span class="toast-icon">💬</span>
-        <p>Need help? Chat with us!</p>
-        <button class="toast-close" onclick="closeToast()">&times;</button>
-      </div>
-      <div class="toast-progress"></div>
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/services/">Services</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://lo-qos.com">Lo-QOS</a>
     </div>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-links">
-        <a href="/">Home</a> |
-        <a href="/services/">Services</a> |
-        <a href="https://lo-qos.com" target="_blank">Lo-QOS</a> |
-        <a href="/contact/">Contact</a>
-      </div>
-      <p>&copy; 2025 AB Development & Design. All rights reserved.</p>
-    </footer>
-  </body>
+    <p>&copy; 2025 AB Development & Design. All rights reserved.</p>
+  </footer>
+</body>
 </html>
-
