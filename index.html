@@ -1,10 +1,41 @@
+Untitled
+Preview
+Code
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AB Development & Design - Quantum Innovation</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <title>AB Development & Design | Quantum Innovation & Web Development</title>
+    <meta name="title" content="AB Development & Design | Quantum Innovation & Web Development">
+    <meta name="description" content="Pioneering quantum computing solutions with Lo-QOS. We specialize in blockchain development, AI integration, and innovative web solutions for forward-thinking businesses.">
+    <meta name="keywords" content="quantum computing, Lo-QOS, blockchain development, web development, AI integration, quantum OS, innovative technology">
+    <meta name="author" content="AB Development & Design">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abdevndesign.com/">
+    <meta property="og:title" content="AB Development & Design | Quantum Innovation">
+    <meta property="og:description" content="Experience the future of computing with Lo-QOS, our revolutionary quantum operating system. Discover how we're reshaping technology through blockchain and AI integration.">
+    <meta property="og:image" content="https://abdevndesign.com/assets/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://abdevndesign.com/">
+    <meta property="twitter:title" content="AB Development & Design | Quantum Innovation">
+    <meta property="twitter:description" content="Experience the future of computing with Lo-QOS, our revolutionary quantum operating system. Discover how we're reshaping technology through blockchain and AI integration.">
+    <meta property="twitter:image" content="https://abdevndesign.com/assets/images/twitter-card.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://abdevndesign.com/"><link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         :root {
             --primary: #6200EA;
@@ -100,29 +131,55 @@
             transform: translateY(-5px);
         }
     </style>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AB Development & Design",
+      "url": "https://abdevndesign.com",
+      "logo": "https://abdevndesign.com/assets/images/logo.png",
+      "description": "Pioneering quantum computing solutions with Lo-QOS. We specialize in blockchain development, AI integration, and innovative web solutions.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://github.com/Iaarondev/",
+        "https://lo-qos.com"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "name": "Web Development Services",
+        "description": "Custom web development solutions with quantum computing integration"
+      }
+    }
+    </script>
 </head>
 <body class="quantum-bg text-white">
     <!-- Quantum Particles -->
     <div id="particles"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-lg z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img src="/api/placeholder/40/40" alt="AB Logo" class="h-10">
-                    <span class="ml-3 text-xl font-bold">AB Development & Design</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="nav-link">Home</a>
-                    <a href="#" class="nav-link">Portfolio</a>
-                    <a href="#" class="nav-link">Services</a>
-                    <a href="#" class="nav-link">Lo-QOS</a>
-                    <a href="#" class="nav-link">Contact</a>
-                </div>
+    <header class="nav-container" role="banner">
+        <nav class="main-nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <img src="/assets/images/logo.png" alt="AB Development & Design Logo" class="logo-img" width="40" height="40">
+                <span>AB Development & Design</span>
             </div>
-        </div>
-    </nav>
+            <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <span class="menu-icon"></span>
+            </button>
+            <div class="nav-links" role="menu">
+                <a href="#home" class="nav-link" role="menuitem">Home</a>
+                <a href="#portfolio" class="nav-link" role="menuitem">Portfolio</a>
+                <a href="#services" class="nav-link" role="menuitem">Services</a>
+                <a href="#lo-qos" class="nav-link" role="menuitem">Lo-QOS</a>
+                <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+            </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center pt-20">
