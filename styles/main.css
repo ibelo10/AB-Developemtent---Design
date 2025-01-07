@@ -1,0 +1,72 @@
+:root {
+    --primary: #6200EA;
+    --secondary: #00E5FF;
+    --dark: #1A1A2E;
+    --light: #FFFFFF;
+    --particle-trace: rgba(98, 0, 234, 0.2);
+}
+
+.quantum-bg {
+    background: linear-gradient(135deg, var(--dark), #000);
+    position: relative;
+    overflow: hidden;
+}
+
+.quantum-particle {
+    position: absolute;
+    background: radial-gradient(circle at center, var(--secondary) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.particle-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quantum-particle:hover + .particle-tooltip {
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+.quantum-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 0.5rem;
+    color: var(--light);
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quantum-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(98, 0, 234, 0.3);
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(98, 0, 234, 0.2);
+}
