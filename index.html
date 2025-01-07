@@ -11,6 +11,7 @@
             --secondary: #00E5FF;
             --dark: #1A1A2E;
             --light: #FFFFFF;
+            --particle-trace: rgba(98, 0, 234, 0.2);
         }
 
         .quantum-bg {
@@ -19,184 +20,555 @@
             overflow: hidden;
         }
 
+        /* Base particle styles */
         .quantum-particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--secondary);
+            background: radial-gradient(circle at center, var(--secondary) 0%, transparent 70%);
             border-radius: 50%;
-            filter: blur(1px);
-            animation: float 8s infinite ease-in-out;
+            pointer-events: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: default;
+            will-change: transform, opacity;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            25% {
-                transform: translateY(-50px) translateX(50px);
-                opacity: 0.5;
-            }
-            75% {
-                transform: translateY(50px) translateX(-50px);
-                opacity: 0.5;
-            }
+        /* Interactive particle styles */
+        .quantum-particle.interactive {
+            cursor: pointer;
+            filter: drop-shadow(0 0 5px var(--secondary));
+            z-index: 2;
         }
 
-        .nav-link {
-            position: relative;
-            overflow: hidden;
+        .quantum-particle.interactive:hover {
+            transform: scale(1.5);
+            filter: drop-shadow(0 0 15px var(--secondary));
         }
 
-        .nav-link::after {
-            content: '';
+        /* Mouse-following particle styles */
+        .quantum-particle.follower {
+            background: radial-gradient(circle at center, #FF5722 0%, transparent 70%);
+            z-index: 3;
+        }
+
+        .quantum-particle.avoider {
+            background: radial-gradient(circle at center, #FF1744 0%, transparent 70%);
+            z-index: 3;
+        }
+
+        /* Touch effect styles */
+        .touch-ripple {
             position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--secondary);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            transform: translateX(0);
-        }
-
-        .quantum-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-
-        .quantum-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            background: radial-gradient(circle at center, 
+                rgba(98, 0, 234, 0.4) 0%,
+                rgba(0, 229, 255, 0.2) 50%,
+                transparent 70%);
+            transform: scale(0);
             opacity: 0;
-            z-index: -1;
-            transition: opacity 0.3s ease;
+            pointer-events: none;
+            animation: ripple 1s ease-out forwards;
         }
 
-        .quantum-button:hover::before {
+        /* Particle trace effect */
+        .particle-trace {
+            position: absolute;
+            background: var(--particle-trace);
+            height: 2px;
+            width: 2px;
+            border-radius: 50%;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Tooltip styles */
+        .particle-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quantum-particle.interactive:hover + .particle-tooltip {
             opacity: 1;
         }
 
-        .quantum-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
+        /* Animation keyframes */
+        @keyframes quantum-float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(var(--random-x1), var(--random-y1)) scale(var(--random-scale1));
+            }
+            50% {
+                transform: translate(var(--random-x2), var(--random-y2)) scale(var(--random-scale2));
+            }
+            75% {
+                transform: translate(var(--random-x3), var(--random-y3)) scale(var(--random-scale3));
+            }
         }
 
-        .quantum-card:hover {
-            transform: translateY(-5px);
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(20);
+                opacity: 0;
+            }
         }
+
+        /* Navigation and Layout Styles */
+.nav-container {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 46, 0.8);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--light);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Content Sections */
+.section {
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Card and Grid Styles */
+.quantum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(98, 0, 234, 0.2);
+}
+
+/* Button Styles */
+.quantum-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 0.5rem;
+    color: var(--light);
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quantum-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quantum-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(98, 0, 234, 0.3);
+}
+
+.quantum-button:hover::before {
+    opacity: 1;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .quantum-grid {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 </head>
 <body class="quantum-bg text-white">
-    <!-- Quantum Particles -->
-    <div id="particles"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-lg z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img src="/api/placeholder/40/40" alt="AB Logo" class="h-10">
-                    <span class="ml-3 text-xl font-bold">AB Development & Design</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="nav-link">Home</a>
-                    <a href="#" class="nav-link">Portfolio</a>
-                    <a href="#" class="nav-link">Services</a>
-                    <a href="#" class="nav-link">Lo-QOS</a>
-                    <a href="#" class="nav-link">Contact</a>
-                </div>
-            </div>
+    <nav class="nav-container">
+    <div class="main-nav">
+        <div class="nav-brand">
+            <img src="/api/placeholder/40/40" alt="AB Logo" class="logo-img">
+            <span>AB Development & Design</span>
         </div>
-    </nav>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#lo-qos" class="nav-link">Lo-QOS</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </div>
+</nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-20">
-        <div class="container mx-auto px-6 py-20 text-center">
-            <h1 class="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+<main>
+    <section id="home" class="section">
+        <div class="section-content">
+            <h1 class="text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
                 Quantum Innovation
             </h1>
-            <p class="text-xl md:text-2xl mb-12 text-gray-300">
-                Pioneering the future with Lo-QOS: The browser-based quantum operating system
+            <p class="text-2xl mb-12 text-gray-300">
+                Pioneering the future with Lo-QOS: The quantum operating system
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="#" class="quantum-button px-8 py-4 rounded-lg bg-purple-700 hover:bg-purple-600 transition-all">
-                    Explore Lo-QOS
-                </a>
-                <a href="#" class="quantum-button px-8 py-4 rounded-lg border border-blue-400 hover:border-blue-300">
-                    View Our Work
-                </a>
+            <div class="flex gap-6">
+                <a href="#lo-qos" class="quantum-button">Explore Lo-QOS</a>
+                <a href="#portfolio" class="quantum-button">View Our Work</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
+    <section id="features" class="section">
+        <div class="section-content">
             <h2 class="text-4xl font-bold text-center mb-16">Revolutionary Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="quantum-card p-8 rounded-lg">
+            <div class="quantum-grid">
+                <div class="feature-card">
                     <h3 class="text-2xl font-bold mb-4 text-blue-400">Quantum Computing</h3>
                     <p class="text-gray-300">Harness the power of quantum mechanics for unprecedented computing capabilities</p>
                 </div>
-                <div class="quantum-card p-8 rounded-lg">
+                <div class="feature-card">
                     <h3 class="text-2xl font-bold mb-4 text-purple-400">Blockchain Integration</h3>
                     <p class="text-gray-300">Secure and decentralized operations powered by advanced blockchain technology</p>
                 </div>
-                <div class="quantum-card p-8 rounded-lg">
+                <div class="feature-card">
                     <h3 class="text-2xl font-bold mb-4 text-pink-400">AI Enhancement</h3>
                     <p class="text-gray-300">Intelligent systems that learn and adapt to optimize performance</p>
                 </div>
             </div>
         </div>
     </section>
+</main>
 
-    <!-- About Lo-QOS Section -->
-    <section class="py-20 relative">
-        <div class="container mx-auto px-6">
-            <div class="quantum-card p-12 rounded-lg">
-                <h2 class="text-4xl font-bold mb-8">About Lo-QOS</h2>
-                <p class="text-xl text-gray-300 mb-8">
-                    Lo-QOS represents the convergence of quantum computing, blockchain technology, and artificial intelligence in a revolutionary browser-based operating system.
-                </p>
-                <a href="#" class="quantum-button inline-block px-8 py-4 rounded-lg bg-blue-600 hover:bg-blue-500">
-                    Learn More
-                </a>
-            </div>
-        </div>
-    </section>
-
+<div id="particles"></div>
+    
     <script>
-        // Create quantum particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'quantum-particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(particle);
+        class QuantumParticle {
+            constructor(container, options = {}) {
+                this.container = container;
+                this.options = {
+                    interactive: false,
+                    link: '',
+                    tooltip: '',
+                    type: 'normal',
+                    ...options
+                };
+
+                this.particle = document.createElement('div');
+                this.setupParticle();
+                this.addEventListeners();
+            }
+
+            setupParticle() {
+                const baseClass = 'quantum-particle';
+                const typeClass = this.options.type !== 'normal' ? ` ${this.options.type}` : '';
+                const interactiveClass = this.options.interactive ? ' interactive' : '';
+                this.particle.className = baseClass + typeClass + interactiveClass;
+
+                // Size based on particle type
+                const size = this.getParticleSize();
+                this.particle.style.width = `${size}px`;
+                this.particle.style.height = `${size}px`;
+
+                // Initial position
+                this.updatePosition(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight
+                );
+
+                // Set random movement properties
+                this.setRandomMovement();
+
+                // Add to container
+                this.container.appendChild(this.particle);
+
+                // Add tooltip if interactive
+                if (this.options.interactive) {
+                    this.addTooltip();
+                }
+            }
+
+            getParticleSize() {
+                const sizes = {
+                    normal: Math.random() * 8 + 4,
+                    interactive: Math.random() * 8 + 8,
+                    follower: 12,
+                    avoider: 10
+                };
+                return sizes[this.options.type] || sizes.normal;
+            }
+
+            setRandomMovement() {
+                const generateRandomValue = () => `${Math.random() * 200 - 100}px`;
+                const generateRandomScale = () => Math.random() * 0.5 + 0.75;
+
+                ['x1', 'x2', 'x3', 'y1', 'y2', 'y3'].forEach(coord => {
+                    this.particle.style.setProperty(`--random-${coord}`, generateRandomValue());
+                });
+
+                ['1', '2', '3'].forEach(num => {
+                    this.particle.style.setProperty(`--random-scale${num}`, generateRandomScale());
+                });
+
+                if (this.options.type === 'normal') {
+                    this.particle.style.animation = 
+                        `quantum-float ${Math.random() * 15 + 10}s infinite alternate`;
+                    this.particle.style.animationDelay = `-${Math.random() * 10}s`;
+                }
+            }
+
+            addTooltip() {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'particle-tooltip';
+                tooltip.textContent = this.options.tooltip;
+                this.container.appendChild(tooltip);
+
+                this.particle.addEventListener('mouseover', (e) => {
+                    const rect = this.particle.getBoundingClientRect();
+                    tooltip.style.left = `${rect.left}px`;
+                    tooltip.style.top = `${rect.bottom + 5}px`;
+                });
+            }
+
+            updatePosition(x, y) {
+                this.particle.style.left = `${x}px`;
+                this.particle.style.top = `${y}px`;
+            }
+
+            addEventListeners() {
+                if (this.options.interactive) {
+                    this.particle.addEventListener('click', () => {
+                        window.location.href = this.options.link;
+                    });
+                }
+            }
+
+            moveTowards(targetX, targetY, speed = 0.1) {
+                const rect = this.particle.getBoundingClientRect();
+                const currentX = rect.left;
+                const currentY = rect.top;
+                
+                const dx = targetX - currentX;
+                const dy = targetY - currentY;
+                
+                const newX = currentX + dx * speed;
+                const newY = currentY + dy * speed;
+                
+                this.updatePosition(newX, newY);
+            }
+
+            moveAway(targetX, targetY, speed = 0.1) {
+                const rect = this.particle.getBoundingClientRect();
+                const currentX = rect.left;
+                const currentY = rect.top;
+                
+                const dx = currentX - targetX;
+                const dy = currentY - targetY;
+                
+                const newX = currentX + dx * speed;
+                const newY = currentY + dy * speed;
+                
+                this.updatePosition(newX, newY);
+            }
+        }
+
+        class ParticleSystem {
+            constructor() {
+                this.container = document.getElementById('particles');
+                this.particles = [];
+                this.mouseX = 0;
+                this.mouseY = 0;
+                this.isTouch = false;
+                this.traces = [];
+                this.traceCount = 0;
+
+                this.init();
+            }
+
+            init() {
+                this.createParticles();
+                this.addEventListeners();
+                this.startAnimation();
+            }
+
+            createParticles() {
+                // Interactive particles
+                const interactiveParticles = [
+                    { link: '#portfolio', tooltip: 'View Our Work' },
+                    { link: '#about', tooltip: 'About Us' },
+                    { link: '#lo-qos', tooltip: 'Explore Lo-QOS' },
+                    { link: '#contact', tooltip: 'Get in Touch' },
+                    { link: '#services', tooltip: 'Our Services' }
+                ];
+
+                interactiveParticles.forEach(config => {
+                    this.particles.push(new QuantumParticle(this.container, {
+                        interactive: true,
+                        link: config.link,
+                        tooltip: config.tooltip
+                    }));
+                });
+
+                // Regular particles
+                for (let i = 0; i < 40; i++) {
+                    this.particles.push(new QuantumParticle(this.container));
+                }
+
+                // Special behavior particles
+                this.particles.push(new QuantumParticle(this.container, { type: 'follower' }));
+                this.particles.push(new QuantumParticle(this.container, { type: 'avoider' }));
+            }
+
+            addEventListeners() {
+                window.addEventListener('mousemove', (e) => {
+                    this.mouseX = e.clientX;
+                    this.mouseY = e.clientY;
+                    this.addTrace(e.clientX, e.clientY);
+                });
+
+                window.addEventListener('touchstart', (e) => {
+                    this.isTouch = true;
+                    this.handleTouch(e);
+                });
+
+                window.addEventListener('touchmove', (e) => {
+                    this.handleTouch(e);
+                });
+
+                window.addEventListener('touchend', () => {
+                    this.isTouch = false;
+                });
+            }
+
+            handleTouch(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                this.mouseX = touch.clientX;
+                this.mouseY = touch.clientY;
+                this.createTouchRipple(touch.clientX, touch.clientY);
+            }
+
+            createTouchRipple(x, y) {
+                const ripple = document.createElement('div');
+                ripple.className = 'touch-ripple';
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                this.container.appendChild(ripple);
+
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            }
+
+            addTrace(x, y) {
+                if (this.traceCount++ % 3 !== 0) return; // Only add trace every 3rd frame
+
+                const trace = document.createElement('div');
+                trace.className = 'particle-trace';
+                trace.style.left = `${x}px`;
+                trace.style.top = `${y}px`;
+                this.container.appendChild(trace);
+                this.traces.push({
+                    element: trace,
+                    created: Date.now()
+                });
+
+                // Remove old traces
+                this.cleanupTraces();
+            }
+
+            cleanupTraces() {
+                const now = Date.now();
+                this.traces = this.traces.filter(trace => {
+                    if (now - trace.created > 1000) {
+                        trace.element.remove();
+                        return false;
+                    }
+                    return true;
+                });
+            }
+
+            startAnimation() {
+                const animate = () => {
+                    this.particles.forEach(particle => {
+                        if (particle.options.type === 'follower') {
+                            particle.moveTowards(this.mouseX, this.mouseY, 0.05);
+                        } else if (particle.options.type === 'avoider') {
+                            particle.moveAway(this.mouseX, this.mouseY, 0.03);
+                        }
+                    });
+
+                    requestAnimationFrame(animate);
+                };
+
+                animate();
             }
         }
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
+            new ParticleSystem();
         });
     </script>
 </body>
