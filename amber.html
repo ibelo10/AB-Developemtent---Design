@@ -1,156 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gen Zen - Serenity in Every Flame</title>
-  <style>
-    /* General Reset */
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      overflow-x: hidden;
-      background: #000;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumCatch - Fishing Gear Redefined</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #001f3f, #004080);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-    /* Landing Page Styles */
-    .landing-page {
-      position: relative;
-      text-align: center;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    /* Animated Background */
-    .background-animation {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)), 
-                  url('https://source.unsplash.com/1600x900/?candle') center/cover no-repeat;
-      animation: flicker 3s infinite alternate;
-      z-index: -1;
-    }
+        header h1 {
+            font-size: 3rem;
+            color: #00d9ff;
+            text-shadow: 0 0 10px #00d9ff, 0 0 20px #00a6d6;
+        }
 
-    @keyframes flicker {
-      0% { opacity: 0.95; }
-      50% { opacity: 1; }
-      100% { opacity: 0.9; }
-    }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
 
-    /* Header */
-    header {
-      margin-bottom: 50px;
-    }
+        .quantum-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border: 2px solid #00d9ff;
+            border-radius: 50%;
+            animation: rotateQuantum 5s linear infinite;
+            box-shadow: 0 0 20px #00d9ff, 0 0 50px #00a6d6;
+        }
 
-    .title {
-      font-size: 4rem;
-      background: linear-gradient(90deg, teal, pink);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: glow 1.5s infinite alternate;
-    }
+        @keyframes rotateQuantum {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
 
-    .subtitle {
-      font-size: 1.5rem;
-      margin: 10px 0;
-    }
+        .quantum-animation::before,
+        .quantum-animation::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid #00ff99;
+            box-shadow: 0 0 10px #00ff99, 0 0 30px #00b378;
+            animation: pulseQuantum 2s infinite alternate;
+        }
 
-    .cta-button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      color: #fff;
-      background: linear-gradient(90deg, teal, pink);
-      border: none;
-      border-radius: 10px;
-      text-decoration: none;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+        .quantum-animation::before {
+            width: 200px;
+            height: 200px;
+        }
 
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
-    }
+        .quantum-animation::after {
+            width: 100px;
+            height: 100px;
+        }
 
-    /* Cards Section */
-    .product-section {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
+        @keyframes pulseQuantum {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
 
-    .card {
-      width: 300px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
-      backdrop-filter: blur(15px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .fish-container {
+            position: relative;
+            margin-top: 50px;
+            width: 80%;
+            height: 200px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 2px solid #00d9ff;
+            box-shadow: 0 0 15px #00d9ff;
+        }
 
-    .card h2 {
-      margin: 10px 0;
-      font-size: 1.5rem;
-      color: teal;
-    }
+        .fish {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background: linear-gradient(to right, #ff7b00, #ffd700);
+            border-radius: 50%;
+            animation: swim 6s linear infinite;
+            transform: rotate(-20deg);
+        }
 
-    .card p {
-      color: #ddd;
-      font-size: 1rem;
-    }
+        .fish::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 90%;
+            width: 15px;
+            height: 15px;
+            background: #ff4500;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    }
+        .fish::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-    /* Animations */
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px teal, 0 0 20px pink;
-      }
-      to {
-        text-shadow: 0 0 20px teal, 0 0 30px pink;
-      }
-    }
-  </style>
+        @keyframes swim {
+            0% {
+                left: -10%;
+                transform: rotate(-20deg);
+            }
+            50% {
+                transform: rotate(20deg);
+            }
+            100% {
+                left: 110%;
+                transform: rotate(-20deg);
+            }
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        footer a {
+            color: #00d9ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="landing-page">
-    <div class="background-animation"></div>
     <header>
-      <h1 class="title">Gen Zen</h1>
-      <p class="subtitle">Serenity in Every Flame</p>
-      <a href="#products" class="cta-button">Shop Now</a>
+        <h1>QuantumCatch</h1>
+        <p>Redefining fishing gear with quantum-inspired designs</p>
     </header>
+    
+    <div class="quantum-animation"></div>
 
-    <section id="products" class="product-section">
-      <div class="card">
-        <h2>Peaceful Lavender</h2>
-        <p>Relax and unwind with the soothing scent of lavender.</p>
-      </div>
-      <div class="card">
-        <h2>Cozy Vanilla</h2>
-        <p>A warm, inviting fragrance to set a calming mood.</p>
-      </div>
-      <div class="card">
-        <h2>Energizing Citrus</h2>
-        <p>Brighten your day with the zesty aroma of citrus.</p>
-      </div>
-    </section>
-  </div>
+    <div class="fish-container">
+        <div class="fish" style="top: 20%;"></div>
+        <div class="fish" style="top: 50%; animation-delay: 1s;"></div>
+        <div class="fish" style="top: 80%; animation-delay: 2s;"></div>
+    </div>
+
+    <footer>
+        <p>Powered by QuantumCatch. <a href="#">Shop Now</a></p>
+    </footer>
 </body>
 </html>
