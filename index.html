@@ -3,281 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Enhanced SEO Meta Tags -->
-    <meta name="description" content="AB Development & Design - Pioneering quantum computing solutions with Lo-QOS, blockchain integration, and AI development. Creating innovative software solutions for future-ready businesses.">
-    <meta name="keywords" content="Lo-QOS, Quantum OS, Blockchain Development, AI Integration, Web Development, Software Engineering, Smart Contracts, Machine Learning, Digital Innovation, AB Development">
+    <meta name="description" content="AB Development & Design - Pioneering quantum computing solutions with Lo-QOS, blockchain integration, and AI solutions.">
+    <meta name="keywords" content="Lo-QOS, Quantum Development, Blockchain Solutions, AI Integration">
     <meta name="author" content="AB Development & Design">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
     
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="AB Development & Design - Quantum Solutions & Lo-QOS">
-    <meta property="og:description" content="Pioneering quantum computing solutions with Lo-QOS and blockchain integration for innovative businesses.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://abdevndesign.com">
-    <meta property="og:image" content="https://abdevndesign.com/assets/images/og-image.jpg">
+    <title>AB Development & Design - Quantum Innovation</title>
     
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AB Development & Design - Quantum Solutions">
-    <meta name="twitter:description" content="Leading the future of technology with Lo-QOS quantum computing and blockchain solutions.">
-    <meta name="twitter:image" content="https://abdevndesign.com/assets/images/twitter-card.jpg">
-    
-    <!-- Schema.org Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Organization",
-        "name": "AB Development & Design",
-        "description": "Innovative quantum computing and blockchain solutions provider",
-        "url": "https://abdevndesign.com",
-        "logo": "/assets/images/ABLogo.png",
-        "sameAs": [
-            "https://github.com/iaarondev",
-            "https://lo-qos.com"
-        ],
-        "owns": {
-            "@type": "Product",
-            "name": "Lo-QOS",
-            "description": "Revolutionary quantum operating system",
-            "url": "https://lo-qos.com"
-        }
-    }
-    </script>
-
-    <title>AB Development & Design - Quantum Solutions & Lo-QOS Development</title>
-    <link rel="canonical" href="https://abdevndesign.com">
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Critical CSS for immediate layout */
+        #particles-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        #content-wrapper {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            background: transparent;
+        }
+        .nav-container {
+            background: rgba(10, 11, 30, 0.8);
+            backdrop-filter: blur(10px);
+        }
+    </style>
 </head>
 <body>
-    <div class="quantum-container">
+    <!-- Particles Background -->
+    <div id="particles-background" aria-hidden="true"></div>
+    
+    <!-- Main Content Wrapper -->
+    <div id="content-wrapper">
         <!-- Navigation -->
-        <nav class="nav-container" aria-label="Main navigation">
+        <nav class="nav-container">
             <div class="nav-content">
                 <div class="nav-brand">
-                    <img src="/assets/images/ABLogo.png" alt="AB Development Logo" class="logo" width="40" height="40">
-                    <span class="brand-text quantum-text">AB Development & Design</span>
+                    <img src="/assets/images/ABLogo.png" alt="AB Development Logo" class="logo">
+                    <span class="brand-text gradient-text">AB Development & Design</span>
                 </div>
-                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-                    <span class="hamburger"></span>
-                </button>
                 <div class="nav-links">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#services" class="nav-link">Services</a>
                     <a href="#projects" class="nav-link">Projects</a>
-                    <a href="/blog" class="nav-link">Blog</a>
+                    <a href="#blog" class="nav-link">Blog</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
             </div>
         </nav>
 
-        <main>
-            <!-- Hero Section -->
-            <section id="home" class="hero-section">
-                <div class="hero-content">
-                    <h1 class="quantum-title">Quantum Innovation</h1>
-                    <p class="hero-subtitle">Pioneering the future with Lo-QOS and cutting-edge quantum solutions</p>
-                    <div class="button-group">
-                        <a href="https://lo-qos.com" class="quantum-button primary" target="_blank" rel="noopener">
-                            Explore Lo-QOS
-                            <span class="button-glow"></span>
-                        </a>
-                        <a href="#contact" class="quantum-button secondary">
-                            Start Your Project
-                            <span class="button-glow"></span>
-                        </a>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="quantum-title">Quantum Innovation</h1>
+                <p class="hero-subtitle">Pioneering the future with Lo-QOS and cutting-edge quantum solutions</p>
+                <div class="button-group">
+                    <a href="https://lo-qos.com" class="quantum-button primary">
+                        Explore Lo-QOS
+                    </a>
+                    <a href="#contact" class="quantum-button secondary">
+                        Start Your Project
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="section-content">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="quantum-card">
+                        <h3>Lo-QOS Development</h3>
+                        <p>Quantum operating system development and integration</p>
+                        <a href="https://lo-qos.com" class="card-link">Learn More →</a>
+                    </div>
+                    <div class="quantum-card">
+                        <h3>Blockchain Solutions</h3>
+                        <p>Advanced blockchain and smart contract development</p>
+                        <a href="#blockchain" class="card-link">Explore →</a>
+                    </div>
+                    <div class="quantum-card">
+                        <h3>AI Integration</h3>
+                        <p>Cutting-edge AI solutions for modern businesses</p>
+                        <a href="#ai" class="card-link">Discover →</a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Services Section -->
-            <section id="services" class="services-section">
-                <div class="section-content">
-                    <h2 class="section-title quantum-text">Our Core Services</h2>
-                    <div class="services-grid">
-                        <div class="quantum-card">
-                            <div class="card-icon">
-                                <svg class="quantum-icon" viewBox="0 0 24 24" width="48" height="48">
-                                    <!-- Quantum Computing Icon -->
-                                    <circle cx="12" cy="12" r="10" class="icon-circle"></circle>
-                                    <path d="M12 2v20M2 12h20" class="icon-path"></path>
-                                </svg>
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="section-content">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card quantum-card">
+                        <img src="/api/placeholder/600/300" alt="Lo-QOS Project" class="project-image">
+                        <div class="project-content">
+                            <h3>Lo-QOS</h3>
+                            <p>Revolutionary quantum operating system</p>
+                            <div class="project-links">
+                                <a href="https://lo-qos.com" class="card-link">Visit Site →</a>
+                                <a href="https://github.com/iaarondev/lo-qos" class="card-link">GitHub →</a>
                             </div>
-                            <h3>Lo-QOS Development</h3>
-                            <p>Specialized quantum operating system development and integration services.</p>
-                            <a href="https://lo-qos.com" class="quantum-link" target="_blank" rel="noopener">Learn More →</a>
-                        </div>
-                        <div class="quantum-card">
-                            <div class="card-icon">
-                                <svg class="quantum-icon" viewBox="0 0 24 24" width="48" height="48">
-                                    <!-- Blockchain Icon -->
-                                    <rect x="4" y="4" width="16" height="16" rx="2" class="icon-rect"></rect>
-                                    <path d="M4 12h16M12 4v16" class="icon-path"></path>
-                                </svg>
-                            </div>
-                            <h3>Blockchain Solutions</h3>
-                            <p>Advanced blockchain development and smart contract implementation.</p>
-                            <a href="#blockchain" class="quantum-link">Explore →</a>
-                        </div>
-                        <div class="quantum-card">
-                            <div class="card-icon">
-                                <svg class="quantum-icon" viewBox="0 0 24 24" width="48" height="48">
-                                    <!-- AI Icon -->
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5" class="icon-path"></path>
-                                </svg>
-                            </div>
-                            <h3>AI Integration</h3>
-                            <p>Cutting-edge artificial intelligence solutions for modern businesses.</p>
-                            <a href="#ai" class="quantum-link">Discover →</a>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Projects Section -->
-            <section id="projects" class="projects-section">
-                <div class="section-content">
-                    <h2 class="section-title quantum-text">Featured Projects</h2>
-                    <div class="projects-grid">
-                        <article class="quantum-card featured-project">
-                            <div class="project-image">
-                                <img src="/assets/images/lo-qos-preview.jpg" alt="Lo-QOS Project Preview" class="project-preview">
-                            </div>
-                            <div class="project-content">
-                                <h3>Lo-QOS</h3>
-                                <p>Revolutionary quantum operating system integrating blockchain and AI capabilities.</p>
-                                <div class="project-links">
-                                    <a href="https://lo-qos.com" class="quantum-link" target="_blank" rel="noopener">Visit Site →</a>
-                                    <a href="https://github.com/iaarondev/lo-qos" class="quantum-link" target="_blank" rel="noopener">GitHub →</a>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="quantum-card featured-project">
-                            <div class="project-image">
-                                <img src="/assets/images/trading-bot-preview.jpg" alt="Trading Bot Project Preview" class="project-preview">
-                            </div>
-                            <div class="project-content">
-                                <h3>Trading Bot</h3>
-                                <p>Advanced algorithmic trading platform with AI-driven insights.</p>
-                                <div class="project-links">
-                                    <a href="/TradingBot.html" class="quantum-link">Learn More →</a>
-                                    <a href="https://github.com/iaarondev/trading-bot" class="quantum-link" target="_blank" rel="noopener">GitHub →</a>
-                                </div>
-                            </div>
-                        </article>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-content">
+                <h2 class="section-title">Get In Touch</h2>
+                <form class="contact-form quantum-card">
+                    <div class="form-group">
+                        <input type="text" class="quantum-input" placeholder="Your Name" required>
                     </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="contact-section">
-                <div class="section-content">
-                    <h2 class="section-title quantum-text">Get In Touch</h2>
-                    <form class="quantum-form" id="contact-form" action="/api/contact" method="POST">
-                        <div class="form-group">
-                            <label for="name" class="quantum-label">Name</label>
-                            <input type="text" id="name" name="name" class="quantum-input" required>
-                            <div class="input-glow"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="quantum-label">Email</label>
-                            <input type="email" id="email" name="email" class="quantum-input" required>
-                            <div class="input-glow"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="quantum-label">Message</label>
-                            <textarea id="message" name="message" class="quantum-input" rows="4" required></textarea>
-                            <div class="input-glow"></div>
-                        </div>
-                        <button type="submit" class="quantum-button primary">
-                            Send Message
-                            <span class="button-glow"></span>
-                        </button>
-                    </form>
-                </div>
-            </section>
-        </main>
+                    <div class="form-group">
+                        <input type="email" class="quantum-input" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="quantum-input" placeholder="Your Message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="quantum-button primary">Send Message</button>
+                </form>
+            </div>
+        </section>
 
         <!-- Footer -->
-        <footer class="quantum-footer">
+        <footer class="site-footer">
             <div class="footer-content">
-                <div class="footer-grid">
-                    <div class="footer-section">
-                        <span class="quantum-text">AB Development & Design</span>
-                        <p>Building the future with quantum innovation</p>
-                    </div>
+                <div class="footer-brand">
+                    <span class="gradient-text">AB Development & Design</span>
+                    <p>Building the future with quantum innovation</p>
+                </div>
+                <div class="footer-links">
                     <div class="footer-section">
                         <h4>Quick Links</h4>
-                        <a href="https://lo-qos.com" class="footer-link">Lo-QOS</a>
-                        <a href="https://github.com/iaarondev" class="footer-link">GitHub</a>
-                        <a href="/blog" class="footer-link">Blog</a>
+                        <a href="https://lo-qos.com">Lo-QOS</a>
+                        <a href="https://github.com/iaarondev">GitHub</a>
+                        <a href="/blog">Blog</a>
                     </div>
                     <div class="footer-section">
                         <h4>Legal</h4>
-                        <a href="/legal/privacy-policy.html" class="footer-link">Privacy Policy</a>
-                        <a href="/legal/terms.html" class="footer-link">Terms of Service</a>
+                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/terms">Terms of Service</a>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p class="copyright">&copy; 2025 AB Development & Design. All rights reserved.</p>
-                    <a href="/sitemap.xml" class="footer-link">Sitemap</a>
+                    <p>© 2025 AB Development & Design. All rights reserved.</p>
                 </div>
             </div>
         </footer>
-
-        <!-- Mobile Navigation Menu -->
-        <div class="mobile-menu" aria-hidden="true">
-            <nav class="mobile-nav">
-                <a href="#home" class="mobile-nav-link">Home</a>
-                <a href="#services" class="mobile-nav-link">Services</a>
-                <a href="#projects" class="mobile-nav-link">Projects</a>
-                <a href="/blog" class="mobile-nav-link">Blog</a>
-                <a href="#contact" class="mobile-nav-link">Contact</a>
-            </nav>
-        </div>
     </div>
 
-    <!-- Interactive Background -->
-    <div id="particles" aria-hidden="true"></div>
-    
-    <!-- Scripts -->
     <script src="scripts/particles.js"></script>
-    <script>
-        // Simple form validation and submission
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData
-                });
-                if (response.ok) {
-                    alert('Message sent successfully!');
-                    form.reset();
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            } catch (error) {
-                alert('Failed to send message. Please try again later.');
-            }
-        });
-
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-        });
-    </script>
 </body>
 </html>
