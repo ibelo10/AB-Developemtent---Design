@@ -189,6 +189,11 @@ class QuantumParticle {
               title: "Lo-QOS Development Updates", 
               link: "/blog/lo-qos-updates",
               date: "2025-01-15"
+            },
+            {
+              title: "Future of Blockchain",
+              link: "/blog/blockchain-future",
+              date: "2025-01-10"
             }
           ];
         }
@@ -223,7 +228,7 @@ class QuantumParticle {
       this.resize();
   
       // Create regular particles
-      for (let i = 0; i < this.particleCount; i++) {
+      for (let i = 0; i < this.particleCount - this.blogPosts.length; i++) {
         this.particles.push(new QuantumParticle(this.canvas));
       }
     }
